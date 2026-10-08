@@ -47,6 +47,7 @@
   .card .ic{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:rgba(212,169,74,.12);color:var(--gold);margin-bottom:16px}
   .card h3{font-size:18px;margin-bottom:8px}
   .card p{color:var(--muted);font-size:15px}
+  .badge{display:inline-block;font-size:12px;font-weight:600;color:var(--gold);background:rgba(212,169,74,.12);padding:3px 10px;border-radius:99px;margin-bottom:12px}
   .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
   .pillars div{border-left:3px solid var(--gold);padding-left:18px}
   .pillars h3{font-size:18px;margin-bottom:6px}
@@ -73,6 +74,7 @@
     <a class="logo" href="#"><b>E</b><span>EDELMANN<small>Tecnologia</small></span></a>
     <div class="menu">
       <a href="#servicos">Serviços</a>
+      <a href="#apps">Aplicativos</a>
       <a href="#porque">Por que a Edelmann</a>
       <a href="#como">Como trabalhamos</a>
       <a href="#contato">Contato</a>
@@ -108,7 +110,20 @@
     </div>
   </section>
 
-  <section id="porque" class="alt">
+  <section id="apps" class="alt">
+    <div class="wrap">
+      <h2>Nossos aplicativos</h2>
+      <p class="sub">Sistemas desenvolvidos pela Edelmann que já estão funcionando no dia a dia. Quer usar no seu negócio? Fale com a gente.</p>
+      <div class="grid">
+        <div class="card"><span class="badge">Em funcionamento</span><h3>Atendente de IA no WhatsApp</h3><p>Responde clientes 24 horas com inteligência artificial, conforme o seu negócio: provedor de internet, farmácia, restaurante, loja ou clínica. Entende áudio, tem painel de conversas e faz follow-up automático.</p></div>
+        <div class="card"><span class="badge">Em funcionamento</span><h3>Balcão PDV</h3><p>Ponto de venda completo para Windows, Linux e Mac: frente de caixa, estoque, balança, crediário, fiado, contas a pagar, comandas e cozinha, vários caixas em rede e emissão de NFC-e. Funciona mesmo sem internet.</p></div>
+        <div class="card"><span class="badge">Em funcionamento</span><h3>Sistema de Chamados de TI</h3><p>Abertura e acompanhamento de chamados de suporte, com base de conhecimento, painel de indicadores, anexos e relatórios em Excel. Perfis para usuário, técnico e gerente.</p></div>
+        <div class="card"><span class="badge">Em breve na Play Store</span><h3>Leitor de Bolso</h3><p>Leitor e scanner de PDF para Android: fotografa documentos, reconhece o texto, deixa corrigir e gera o PDF. Tudo no próprio celular, sem anúncios, sem conta e sem pedir permissões.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="porque">
     <div class="wrap">
       <h2>Por que a Edelmann</h2>
       <p class="sub">Edelmann quer dizer "homem nobre". É o compromisso que levamos para cada atendimento: seriedade, palavra cumprida e trabalho bem feito.</p>
@@ -121,7 +136,7 @@
     </div>
   </section>
 
-  <section id="como">
+  <section id="como" class="alt">
     <div class="wrap">
       <h2>Como trabalhamos</h2>
       <p class="sub">Um caminho simples, do primeiro contato até o problema resolvido.</p>
@@ -134,7 +149,7 @@
     </div>
   </section>
 
-  <section id="contato" class="alt">
+  <section id="contato">
     <div class="wrap">
       <h2>Fale com a Edelmann</h2>
       <p class="sub">Peça um orçamento sem compromisso. Respondemos o mais rápido possível.</p>
