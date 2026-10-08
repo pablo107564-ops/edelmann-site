@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leitor de Bolso | Edelmann Tecnologia</title>
+<meta name="description" content="Leitor e scanner de PDF para Android, com busca sem acento, índice, modo escuro e OCR no próprio aparelho. Grátis, sem anúncios e sem permissões.">
+<link rel="canonical" href="https://edelmann.com.br/leitor-de-bolso/">
+<meta name="theme-color" content="#0C1730">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Edelmann Tecnologia">
+<meta property="og:title" content="Leitor de Bolso | Edelmann Tecnologia">
+<meta property="og:description" content="Leitor e scanner de PDF grátis, sem anúncios e sem permissões. Seus documentos não saem do celular.">
+<meta property="og:url" content="https://edelmann.com.br/leitor-de-bolso/">
+<meta property="og:image" content="https://edelmann.com.br/leitor-de-bolso/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Leitor de Bolso: abra o PDF e leia. Celular com um guia de Lisboa aberto no app">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Leitor de Bolso | Edelmann Tecnologia">
+<meta name="twitter:description" content="Leitor e scanner de PDF grátis, sem anúncios e sem permissões. Seus documentos não saem do celular.">
+<meta name="twitter:image" content="https://edelmann.com.br/leitor-de-bolso/img/og.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Crect%20width='48'%20height='48'%20rx='2'%20fill='%2313284B'/%3E%3Crect%20x='3.5'%20y='3.5'%20width='41'%20height='41'%20fill='none'%20stroke='%23C9A96B'/%3E%3Cpath%20fill='%23E2CC9C'%20d='M13.75%2012h20.5v6h-2v-3H20.25v7.5h7.4v-1.5h1.6v5.6h-1.6v-1.5h-7.4V33h12v-3h2v6H13.75v-3h2.5V15h-2.5z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Leitor de Bolso",
+      "url": "https://edelmann.com.br/leitor-de-bolso/",
+      "image": "https://edelmann.com.br/leitor-de-bolso/img/og.jpg",
+      "description": "Leitor e scanner de PDF para Android, com busca sem acento, índice, favoritos, modo escuro e reconhecimento de texto feito no próprio aparelho. Sem anúncios, sem cadastro e sem permissões.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Android",
+      "inLanguage": "pt-BR",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
+      "publisher": { "@type": "Organization", "name": "Edelmann Tecnologia", "url": "https://edelmann.com.br/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://edelmann.com.br/" },
+        { "@type": "ListItem", "position": 2, "name": "Aplicativos", "item": "https://edelmann.com.br/#aplicativos" },
+        { "@type": "ListItem", "position": 3, "name": "Leitor de Bolso", "item": "https://edelmann.com.br/leitor-de-bolso/" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#FAF8F4;
+  --paper:#FFFFFF;
+  --sand:#F2EDE4;
+  --ink:#0F1B33;
+  --navy:#13284B;
+  --night:#0C1730;
+  --text:#2B3446;
+  --muted:#5A6477;
+  --line:#E5DFD4;
+  --line-2:#D5CDBF;
+  --bar:#E4DDD0;
+  --bar-2:#CBC1AF;
+  --gold:#B8955A;
+  --gold-ink:#8A6A2B;
+  --gold-soft:#D9C49A;
+  --live:#2E6B4F;
+  --on-night:#AEB8CA;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --max:1200px;
+  --gutter:clamp(1.25rem,5vw,3rem);
+  --section:clamp(4.5rem,9vw,8rem);
+  --h2:clamp(2.125rem,1.3rem + 2.9vw,3.5rem);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* Base */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:5.5rem}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--ink);letter-spacing:-.015em;text-wrap:balance}
+p{text-wrap:pretty}
+a{color:inherit}
+svg{display:block}
+img{display:block;max-width:100%;height:auto}
+[hidden]{display:none!important}
+::selection{background:var(--gold-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--gold-ink);outline-offset:3px}
+main:focus{outline:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:1rem;top:-6rem;z-index:100;padding:.75rem 1.25rem;background:var(--ink);color:#fff;text-decoration:none;font-weight:500}
+.skip:focus{top:1rem}
+.wrap{width:100%;max-width:calc(var(--max) + 2 * var(--gutter));margin-inline:auto;padding-inline:var(--gutter)}
+.i{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* Botões e links */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;min-height:3.25rem;padding:.9rem 1.6rem;border:1px solid transparent;border-radius:2px;font:500 .9375rem/1.2 var(--sans);letter-spacing:.01em;text-decoration:none;white-space:nowrap;transition:background-color .25s,border-color .25s,color .25s}
+.btn .i,.link .i{width:18px;height:18px;transition:transform .3s var(--ease)}
+.btn:hover .i,.link:hover .i{transform:translateX(4px)}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--night)}
+.btn-ghost{border-color:var(--line-2);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-sm{min-height:2.75rem;padding:.6rem 1.15rem;font-size:.875rem}
+.link{display:inline-flex;align-items:center;gap:.5rem;font-weight:500;color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:.3em}
+
+/* Rótulo de seção */
+.eyebrow{display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem;font:500 .75rem/1.2 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink)}
+.eyebrow::before{content:"";width:2.5rem;height:1px;background:var(--gold)}
+.eyebrow .n{order:-1;font:italic 400 1rem/1 var(--serif);letter-spacing:0}
+
+/* Cabeçalho */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.92);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;min-height:4.75rem}
+.brand{display:inline-flex;align-items:center;gap:.8rem;color:var(--ink);text-decoration:none}
+.brand svg{width:40px;height:40px;flex:none}
+.brand span{display:flex;flex-direction:column;line-height:1}
+.brand b{font:500 1.0625rem/1 var(--serif);letter-spacing:.16em;text-transform:uppercase}
+.brand small{margin-top:.4rem;font:500 .6875rem/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.menu ul{display:flex;align-items:center;gap:2rem;list-style:none;padding:0}
+.menu a:not(.btn){position:relative;display:inline-block;padding:.4rem 0;font-size:.9375rem;font-weight:500;color:var(--text);text-decoration:none;transition:color .2s}
+.menu a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.menu a:not(.btn):hover{color:var(--ink)}
+.menu a:not(.btn):hover::after{transform:scaleX(1)}
+.bar-cta,.menu-toggle,.cta-s{display:none}
+.menu-toggle{align-items:center;justify-content:center;gap:.7rem;min-width:2.75rem;min-height:2.75rem;padding:.5rem .95rem;border:1px solid var(--line-2);border-radius:2px;background:transparent;color:var(--ink);font:500 .875rem/1 var(--sans);cursor:pointer}
+.burger{position:relative;width:18px;height:10px}
+.burger::before,.burger::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .3s var(--ease),top .3s var(--ease)}
+.burger::before{top:0}
+.burger::after{top:8.5px}
+[aria-expanded="true"] .burger::before{top:4.25px;transform:rotate(45deg)}
+[aria-expanded="true"] .burger::after{top:4.25px;transform:rotate(-45deg)}
+
+@media (max-width:959.98px){
+  .bar{flex-wrap:wrap}
+  .menu{width:100%}
+  .menu ul{flex-wrap:wrap;gap:.25rem 1.5rem;padding-bottom:1rem}
+  html:not(.js) .site-header{position:static}
+  .js .bar{flex-wrap:nowrap;gap:.5rem}
+  .js .brand{margin-right:auto}
+  .js .bar-cta,.js .menu-toggle{display:inline-flex}
+  .js .menu{display:none;position:absolute;top:100%;left:0;right:0;width:auto;padding:.5rem var(--gutter) 2rem;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 30px 40px -30px rgba(15,27,51,.3)}
+  .js .menu-toggle[aria-expanded="true"]+.menu{display:block}
+  .js .menu ul{flex-direction:column;align-items:stretch;gap:0;padding:0}
+  .js .menu a:not(.btn){display:block;padding:1rem 0;border-bottom:1px solid var(--line);font:400 1.375rem/1.2 var(--serif);color:var(--ink)}
+  .js .menu a:not(.btn)::after{display:none}
+  .js .menu-cta{display:none}
+}
+@media (max-width:559.98px){.cta-l{display:none}.cta-s{display:inline}}
+@media (max-width:479.98px){
+  .brand{gap:.65rem}
+  .brand svg{width:36px;height:36px}
+  .brand b{font-size:1rem;letter-spacing:.06em}
+  .brand small{letter-spacing:.2em}
+  .bar-cta{padding-inline:.8rem;font-size:.8125rem}
+  .menu-toggle{padding:.5rem}
+  .menu-toggle .t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+
+/* Trilha */
+.crumbs{margin-bottom:2.25rem;font-size:.875rem;color:var(--muted)}
+.crumbs ol{display:flex;flex-wrap:wrap;gap:.25rem .6rem;padding:0;list-style:none}
+.crumbs li+li::before{content:"›";content:"›" / "";margin-right:.6rem;color:var(--gold-ink)}
+.crumbs a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:.25em}
+.crumbs a:hover{text-decoration-color:var(--gold)}
+.crumbs [aria-current]{font-weight:500;color:var(--ink)}
+
+/* Abertura */
+.hero{position:relative;overflow:hidden;padding-block:clamp(2rem,5vw,3.5rem) clamp(4.5rem,9vw,7rem);border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60rem 30rem at 85% -10%,rgba(184,149,90,.13),transparent 60%),linear-gradient(to right,rgba(15,27,51,.045) 1px,transparent 1px) 0 0/calc(100% / 6) 100%;-webkit-mask-image:linear-gradient(#000 45%,transparent);mask-image:linear-gradient(#000 45%,transparent)}
+.hero .wrap{position:relative}
+.hero-grid{display:grid;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.5rem,1.35rem + 4.2vw,4.5rem);line-height:1.04;letter-spacing:-.025em}
+.hero h1 span,.hero h1 em{display:block}
+.hero h1 em{font-style:italic;color:var(--gold-ink)}
+.lead{max-width:35rem;margin-top:1.75rem;font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.6;color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:.75rem 1rem;margin-top:2.5rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem;padding:0;list-style:none}
+.tags li{padding:.3rem .65rem;border:1px solid var(--line-2);border-radius:2px;background:var(--paper);font-size:.8125rem;line-height:1.3;color:var(--text)}
+.by{margin-top:1.5rem;font-size:.9375rem;color:var(--muted)}
+.by a{color:var(--ink);text-decoration-color:var(--gold);text-underline-offset:.25em}
+.status{align-self:flex-start;display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.5rem;padding:.4rem .85rem;border:1px solid var(--line);border-radius:99px;background:var(--paper);font-size:.8125rem;font-weight:500;line-height:1.3;color:var(--ink)}
+.status::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px rgba(46,107,79,.14)}
+.status.soon::before{background:transparent;border:1.5px solid var(--gold);box-shadow:none}
+.fone{width:100%;max-width:280px;margin-inline:auto;padding:9px;border-radius:34px;background:var(--night);box-shadow:0 34px 50px -30px rgba(15,27,51,.55)}
+.fone img{border-radius:26px}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:4rem}
+  .fone{max-width:320px;margin-inline:auto 0}
+}
+
+/* Ilustração */
+.art{background:var(--sand);border:1px solid var(--line)}
+.art svg{width:100%;height:auto}
+.art .f{fill:#fff;stroke:var(--line-2)}
+.art .s{fill:var(--sand)}
+.art .n{fill:var(--navy)}
+.art .b,.art .b2{fill:none;stroke-linecap:round;stroke-width:6}
+.art .b{stroke:var(--bar)}
+.art .b2{stroke:var(--bar-2)}
+.art .thin{stroke-width:4}
+.art .scan{fill:none;stroke:var(--gold);stroke-width:2}
+.art .arrow{fill:none;stroke:var(--gold-ink);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.art .t{fill:var(--navy);font:600 11px/1 var(--sans);letter-spacing:.12em}
+
+/* Seções */
+.section{padding-block:var(--section)}
+.paper{background:var(--paper);border-block:1px solid var(--line)}
+.head{display:grid;gap:1.25rem 4rem;margin-bottom:clamp(2.75rem,6vw,5rem)}
+.head h2,.about h2,.contact h2,.duo h2,.qa h2{font-size:var(--h2);line-height:1.08;letter-spacing:-.02em}
+.sub{max-width:33rem;color:var(--muted)}
+@media (min-width:900px){
+  .head{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end}
+  .head .sub{justify-self:end}
+}
+
+/* Scanner */
+.duo{display:grid;gap:clamp(2.5rem,5vw,5rem)}
+.duo .sub{margin-top:1.25rem}
+.duo .art{margin-top:2.5rem}
+.duo h3{margin-bottom:.5rem;font-size:1.5rem;line-height:1.2}
+.flow{margin-top:1rem;padding:0;list-style:none;counter-reset:f;border-top:1px solid var(--line)}
+.flow li{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);font-size:1rem}
+.flow li::before{counter-increment:f;content:counter(f);content:counter(f) / "";flex:none;width:1.25rem;font:italic 400 1.25rem/1.3 var(--serif);color:var(--gold-ink)}
+.flow b{font-weight:600;color:var(--ink)}
+@media (min-width:960px){.duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
+
+/* Telas */
+.galeria{display:flex;gap:1.5rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);margin-inline:calc(-1 * var(--gutter));padding:.5rem var(--gutter) 1.5rem;list-style:none;scrollbar-width:thin}
+.galeria li{flex:0 0 min(15rem,70vw);scroll-snap-align:start}
+.tela{padding:7px;border-radius:26px;background:var(--night);box-shadow:0 22px 40px -26px rgba(15,27,51,.5)}
+.tela img{border-radius:20px}
+.galeria figcaption{margin-top:1rem;font-size:.9375rem;font-weight:600;line-height:1.4;color:var(--ink)}
+.galeria figcaption span{display:block;margin-top:.3rem;font-weight:400;color:var(--muted)}
+
+/* Recursos e instalação */
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem}
+@media (min-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.cards.tres{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card{display:flex;flex-direction:column;padding:clamp(1.5rem,3vw,2.5rem);background:var(--bg);border:1px solid var(--line)}
+.section:not(.paper) .card{background:var(--paper)}
+.card-top{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.card-top .i{width:30px;height:30px;stroke-width:1.25;color:var(--gold-ink)}
+.card h3{font-size:clamp(1.375rem,1.25rem + .6vw,1.75rem);line-height:1.15}
+.feats{display:grid;gap:.6rem;padding:1.5rem 0 0;list-style:none;border-top:1px solid var(--line)}
+.feats li{display:flex;gap:.75rem;font-size:.9375rem;line-height:1.5}
+.feats li::before{content:"";flex:none;width:.85rem;height:1px;margin-top:.75em;background:var(--gold)}
+.feats b{font-weight:600;color:var(--ink)}
+.card .flow{margin-top:0;margin-bottom:1.75rem}
+.card .btn{margin-top:auto;align-self:flex-start;white-space:normal;text-align:center}
+
+/* Privacidade */
+.band{background:var(--night);color:var(--on-night)}
+.band .eyebrow{color:var(--gold-soft)}
+.band :focus-visible{outline-color:var(--gold-soft)}
+.band .link{color:#fff;text-decoration-color:var(--gold-soft)}
+.about{display:grid;gap:clamp(3rem,6vw,6rem)}
+.about h2{color:#fff}
+.about-text{max-width:32rem;margin-block:2rem;font-size:1.125rem;color:#C3CBD9}
+.facts{align-self:end;border-top:1px solid rgba(255,255,255,.12)}
+.facts div{display:grid;gap:.35rem 2rem;padding:1.5rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.facts dt{font-size:.9375rem}
+.facts dd b{display:block;font:400 1.375rem/1.25 var(--serif);color:#fff}
+.facts dd small{display:block;margin-top:.35rem;font-size:.9375rem;line-height:1.5}
+@media (min-width:560px){.facts div{grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);align-items:baseline}}
+@media (min-width:960px){.about{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+
+/* Perguntas */
+.qa{display:grid;gap:3rem}
+.faq{border-top:1px solid var(--line-2)}
+.faq details{border-bottom:1px solid var(--line-2)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.4rem 0;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";content:"+" / "";flex:none;font:400 1.75rem/1 var(--serif);color:var(--gold-ink);transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq h3{font-size:clamp(1.1875rem,1.1rem + .4vw,1.375rem);line-height:1.3}
+.faq summary:hover h3{color:var(--navy)}
+.faq p{max-width:40rem;padding-bottom:1.5rem;color:var(--muted)}
+@media (min-width:960px){.qa{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:6rem;align-items:start}}
+
+/* Contato */
+.contact{display:grid;gap:3rem}
+.contact .sub{margin-top:1.25rem}
+.channels{display:grid;gap:1rem}
+.channel{display:flex;flex-direction:column;gap:1rem;padding:clamp(1.5rem,4vw,2.75rem);background:var(--night);border:1px solid var(--night);color:#fff;text-decoration:none;transition:background-color .3s,border-color .3s}
+.channel:hover{background:var(--navy)}
+.channel:focus-visible{outline-color:var(--gold-ink)}
+.channel-label{display:flex;align-items:center;gap:.6rem;font:500 .75rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft)}
+.channel-label .i{width:18px;height:18px}
+.channel-value{font:400 clamp(1.2rem,.95rem + 1.5vw,2rem)/1.2 var(--serif);overflow-wrap:anywhere}
+.channel-cta{display:inline-flex;align-items:center;gap:.6rem;margin-top:.75rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.14);font-size:.9375rem;font-weight:500}
+.channel-cta .i{width:18px;height:18px;transition:transform .3s var(--ease)}
+.channel:hover .channel-cta .i{transform:translateX(4px)}
+.channel-alt{background:var(--paper);border-color:var(--line);color:var(--ink)}
+.channel-alt:hover{background:var(--paper);border-color:var(--ink)}
+.channel-alt .channel-label{color:var(--gold-ink)}
+.channel-alt .channel-cta{border-top-color:var(--line)}
+.note{margin-top:1rem;font-size:.875rem;color:var(--muted)}
+.more{margin-top:2rem}
+@media (min-width:960px){.contact{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6rem;align-items:start}}
+
+/* Rodapé */
+.site-footer{padding-block:4rem 2rem;background:var(--night);color:var(--on-night);font-size:.9375rem}
+.site-footer a{color:#DCE2EC;text-decoration:none;transition:color .2s}
+.site-footer a:hover{color:var(--gold-soft)}
+.site-footer :focus-visible{outline-color:var(--gold-soft)}
+.site-footer .brand b{color:#fff}
+.site-footer .brand small{color:var(--on-night)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem 3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot ul{display:flex;flex-wrap:wrap;gap:.75rem 2rem;padding:0;list-style:none}
+.foot-mail{overflow-wrap:anywhere}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem;padding-top:1.5rem;font-size:.875rem}
+
+/* Movimento */
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
+}
+@media print{.site-header{position:static}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="eg" d="M13.75 12h20.5v6h-2v-3H20.25v7.5h7.4v-1.5h1.6v5.6h-1.6v-1.5h-7.4V33h12v-3h2v6H13.75v-3h2.5V15h-2.5z"/>
+    <symbol id="logo" viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="2" fill="#13284B"/>
+      <rect x="3.5" y="3.5" width="41" height="41" fill="none" stroke="#C9A96B"/>
+      <use href="#eg" fill="#E2CC9C"/>
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4.5h6a2 2 0 0 1 2 2v13a1.5 1.5 0 0 0-1.5-1.5H4z"/><path d="M20 4.5h-6a2 2 0 0 0-2 2v13a1.5 1.5 0 0 1 1.5-1.5H20z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.4-4.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2.5h8a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></symbol>
+    <symbol id="i-desktop" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5Z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></symbol>
+    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.75"/><path d="M16.75 7.25h.01"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header" id="topo">
+  <div class="wrap bar">
+    <a class="brand" href="../">
+      <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+      <span><b>Edelmann</b> <small>Tecnologia</small></span>
+    </a>
+    <a class="btn btn-primary btn-sm bar-cta" href="../#contato"><span class="cta-l">Solicitar orçamento</span><span class="cta-s">Orçamento</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="burger" aria-hidden="true"></span><span class="t">Menu</span>
+    </button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="../#servicos">Serviços</a></li>
+        <li><a href="../#aplicativos">Aplicativos</a></li>
+        <li><a href="../#sobre">A Edelmann</a></li>
+        <li><a href="../#metodo">Método</a></li>
+        <li class="menu-cta"><a class="btn btn-primary btn-sm" href="../#contato">Solicitar orçamento</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+
+  <section class="hero" aria-labelledby="titulo">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Trilha de navegação">
+        <ol>
+          <li><a href="../">Início</a></li>
+          <li><a href="../#aplicativos">Aplicativos</a></li>
+          <li><span aria-current="page">Leitor de Bolso</span></li>
+        </ol>
+      </nav>
+      <div class="hero-grid">
+        <div>
+          <p class="status soon" data-status="android"><span class="sr">Situação: </span>Em breve na Play Store</p>
+          <h1 id="titulo"><span>Leitor de Bolso</span> <em>leia e crie PDFs no próprio celular.</em></h1>
+          <p class="lead">Na leitura, busca sem acento, índice, favoritos e modo escuro. No scanner, a foto do documento vira PDF, com o texto reconhecido e pronto para corrigir. Não exige cadastro, e seus arquivos não saem do aparelho.</p>
+          <div class="ctas">
+            <a class="btn btn-primary" data-cta href="#instalar">Quero o app<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="#telas">Ver as telas</a>
+          </div>
+          <ul class="tags" aria-label="Destaques">
+            <li>Grátis</li>
+            <li>Sem anúncios</li>
+            <li>Zero permissões</li>
+            <li>Funciona sem internet</li>
+          </ul>
+          <p class="by">Um app da <a href="../">Edelmann Tecnologia</a></p>
+        </div>
+        <div class="fone">
+          <picture><source type="image/webp" srcset="img/02-leitura.webp"><img src="img/02-leitura.jpg" width="540" height="960" alt="Leitor de Bolso exibindo um guia de Lisboa em rolagem contínua, com as barras de página e de zoom"></picture>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="scanner" aria-labelledby="scanner-titulo">
+    <div class="wrap duo">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">01</span>Scanner</p>
+        <h2 id="scanner-titulo">Do papel ao PDF pesquisável.</h2>
+        <p class="sub">Além de ler, o Leitor de Bolso digitaliza documentos. Cada foto vira uma página inteira do PDF, sem cortes, e o texto é reconhecido no próprio celular, sem internet e sem permissão de câmera.</p>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 480 200" focusable="false">
+            <rect class="f" x="124" y="8" width="108" height="184" rx="14"/>
+            <rect class="s" x="134" y="24" width="88" height="148" rx="4"/>
+            <rect class="f" x="148" y="40" width="60" height="84" rx="2"/>
+            <path class="b thin" d="M156 54h44M156 66h36M156 78h44M156 90h28M156 102h40M156 114h32"/>
+            <path class="arrow" d="M142 46v-10h10M204 36h10v10M214 118v10h-10M152 128h-10v-10"/>
+            <path class="scan" d="M140 84h76"/>
+            <circle class="n" cx="178" cy="152" r="9"/>
+            <path class="arrow" d="M256 100h40M286 90l10 10-10 10"/>
+            <rect class="f" x="318" y="32" width="104" height="136" rx="3"/>
+            <path class="b2" d="M334 54h72M334 68h60M334 82h72M334 96h44M334 110h66M334 124h52"/>
+            <text class="t" x="334" y="152">PDF</text>
+          </svg>
+        </div>
+      </div>
+      <div>
+        <h3>Como funciona</h3>
+        <ol class="flow">
+          <li><span><b>Fotografe</b> o documento ou escolha uma imagem já salva.</span></li>
+          <li><span><b>Toque em Ler texto.</b> O app reconhece as palavras da foto (OCR em português).</span></li>
+          <li><span><b>Corrija</b> tocando na linha errada. O trecho antigo sai da imagem e a correção entra no PDF como texto de verdade.</span></li>
+          <li><span><b>Gere o PDF.</b> As linhas que você não editou viram texto invisível sobre a imagem: o arquivo fica pesquisável sem mudar a aparência do original.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section paper" id="telas" aria-labelledby="telas-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">02</span>As telas</p>
+          <h2 id="telas-titulo">Tudo o que um leitor precisa, nada que atrapalhe.</h2>
+        </div>
+        <p class="sub">Capturas reais do app no Android. Deslize para ver as sete.</p>
+      </div>
+      <ul class="galeria" tabindex="0" aria-label="Capturas de tela do Leitor de Bolso">
+        <li><figure><div class="tela"><picture><source type="image/webp" srcset="img/01-inicio.webp"><img src="img/01-inicio.jpg" width="540" height="960" loading="lazy" alt="Tela inicial com o botão Abrir PDF e a lista de recentes"></picture></div><figcaption>Seus PDFs sempre à mão<span>Os últimos 8 arquivos, com a página onde você parou.</span></figcaption></figure></li>
+        <li><figure><div class="tela"><picture><source type="image/webp" srcset="img/02-leitura.webp"><img src="img/02-leitura.jpg" width="540" height="960" loading="lazy" alt="Leitura em rolagem contínua, com um guia de viagem aberto"></picture></div><figcaption>Leitura contínua e nítida<span>Zoom com pinça, com os botões ou com toque duplo.</span></figcaption></figure></li>
+        <li><figure><div class="tela"><picture><source type="image/webp" srcset="img/03-busca.webp"><img src="img/03-busca.jpg" width="540" height="960" loading="lazy" alt="Busca pela palavra Alfama, com o primeiro de seis resultados destacado na página"></picture></div><figcaption>Qualquer palavra em segundos<span>“acao” encontra “Ação”: acentos e maiúsculas não importam.</span></figcaption></figure></li>
+        <li><figure><div class="tela"><picture><source type="image/webp" srcset="img/04-indice.webp"><img src="img/04-indice.jpg" width="540" height="960" loading="lazy" alt="Índice do PDF com capítulos e seções"></picture></div><figcaption>Direto ao capítulo<span>O índice do próprio PDF, com capítulos e seções.</span></figcaption></figure></li>
+        <li><figure><div class="tela"><picture><source type="image/webp" srcset="img/05-favoritos.webp"><img src="img/05-favoritos.jpg" width="540" height="960" loading="lazy" alt="Lista de páginas favoritas de um PDF"></picture></div><figcaption>Marque as páginas importantes<span>Favoritos por página, em cada arquivo.</span></figcaption></figure></li>
+        <li><figure><div class="tela"><picture><source type="image/webp" srcset="img/06-escuro.webp"><img src="img/06-escuro.jpg" width="540" height="960" loading="lazy" alt="PDF no modo escuro, com fundo preto e texto claro"></picture></div><figcaption>Modo escuro para ler à noite<span>Inverte só a página, e o app lembra a escolha.</span></figcaption></figure></li>
+        <li><figure><div class="tela"><picture><source type="image/webp" srcset="img/07-modo-leitura.webp"><img src="img/07-modo-leitura.jpg" width="540" height="960" loading="lazy" alt="Modo leitura em tela cheia, só com o número da página"></picture></div><figcaption>Um toque e a tela é toda sua<span>As barras somem e a tela não apaga enquanto você lê.</span></figcaption></figure></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="recursos" aria-labelledby="recursos-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">03</span>Recursos</p>
+          <h2 id="recursos-titulo">Feito para ler sem distrações.</h2>
+        </div>
+        <p class="sub">Manuais, contratos, livros, receitas, material de estudo: tudo o que chega em PDF.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-book"/></svg><h3>Leia do seu jeito</h3></div>
+          <ul class="feats">
+            <li><span><b>Rolagem contínua</b>, com páginas nítidas mesmo em zoom alto</span></li>
+            <li><span><b>Zoom</b> com pinça, com os botões + e − ou com toque duplo</span></li>
+            <li><span>Retomada na <b>página onde você parou</b>, em cada arquivo</span></li>
+            <li><span>Um toque esconde as barras, e <b>a tela não apaga</b> durante a leitura</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-search"/></svg><h3>Encontre o que procura</h3></div>
+          <ul class="feats">
+            <li><span><b>Busca no texto</b> que ignora acentos e maiúsculas</span></li>
+            <li><span>Resultados <b>destacados na página</b>, com navegação entre eles</span></li>
+            <li><span><b>Índice</b> do próprio PDF, com capítulos e seções</span></li>
+            <li><span><b>Favoritos</b> para as páginas mais consultadas</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg><h3>Conforto à noite</h3></div>
+          <ul class="feats">
+            <li><span><b>Modo escuro do documento</b>, que liga e desliga com um toque</span></li>
+            <li><span>Interface que acompanha o <b>tema claro ou escuro</b> do celular</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-folder"/></svg><h3>Abra arquivos de qualquer lugar</h3></div>
+          <ul class="feats">
+            <li><span>Toque num PDF no <b>gerenciador de arquivos, no WhatsApp ou no <span style="white-space:nowrap">e-mail</span></b> e escolha o Leitor de Bolso</span></li>
+            <li><span>Pode virar o <b>leitor padrão</b> do “Abrir com” do Android</span></li>
+            <li><span>Abre <b>PDF protegido por senha</b>, sem guardar a senha</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="privacidade" aria-labelledby="privacidade-titulo">
+    <div class="wrap about">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">04</span>Seus dados</p>
+        <h2 id="privacidade-titulo">Privacidade de verdade, não de rodapé.</h2>
+        <p class="about-text">O Leitor de Bolso desenha o PDF e reconhece o texto no próprio aparelho. Nenhum conteúdo sai do celular, e o app não executa scripts embutidos em PDFs.</p>
+        <a class="link" href="privacidade.html">Ler a política completa<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+      </div>
+      <dl class="facts">
+        <div><dt>Dados coletados</dt><dd><b>Nenhum</b><small>Sem conta, sem análise, sem anúncios.</small></dd></div>
+        <div><dt>Permissões do Android</dt><dd><b>Zero</b><small>Nem internet, nem armazenamento, nem câmera: o scanner usa a câmera do sistema.</small></dd></div>
+        <div><dt>O que fica no aparelho</dt><dd><b>Cópia dos últimos 8 PDFs</b><small>Mais a página lida, os favoritos e a escolha do modo escuro. Você apaga quando quiser.</small></dd></div>
+        <div><dt>Fotos do scanner</dt><dd><b>Só na memória do app</b><small>Enquanto você monta o PDF. Nenhuma imagem, texto reconhecido ou correção vai para a internet.</small></dd></div>
+        <div><dt>Senha de PDF protegido</dt><dd><b>Nunca é guardada</b><small>Serve só para abrir; ao reabrir, o app pede de novo.</small></dd></div>
+        <div><dt>Ao desinstalar</dt><dd><b>Tudo é apagado</b></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="instalar" aria-labelledby="instalar-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">05</span>Plataformas</p>
+          <h2 id="instalar-titulo">Instale de graça.</h2>
+        </div>
+        <p class="sub">No Android, o app vira o “Abrir com” padrão. No iPhone e no computador, ele roda pelo navegador e, depois de instalado, abre sem internet.</p>
+      </div>
+      <div class="cards tres">
+        <article class="card">
+          <p class="status soon" data-status="android"><span class="sr">Situação: </span><span>Em breve na Play Store</span></p>
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><h3>Android</h3></div>
+          <ol class="flow">
+            <li><span>Baixe e instale o app.</span></li>
+            <li><span>Segure um PDF no gerenciador de arquivos e toque em <b>Abrir com</b> › Leitor de Bolso › <b>Sempre</b>.</span></li>
+            <li><span>Pronto: todo PDF abre nele.</span></li>
+          </ol>
+          <a class="btn btn-primary" data-link="android" href="mailto:pablo107564@gmail.com?subject=Leitor%20de%20Bolso%20-%20Edelmann%20Tecnologia&amp;body=Ol%C3%A1!%20Quero%20o%20Leitor%20de%20Bolso%20no%20meu%20Android.">Pedir o app por e-mail</a>
+        </article>
+        <article class="card">
+          <p class="status soon" data-status="web"><span class="sr">Situação: </span><span>Em breve</span></p>
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg><h3>iPhone</h3></div>
+          <ol class="flow">
+            <li><span>Abra o endereço do app no Safari.</span></li>
+            <li><span>Toque em Compartilhar › <b>Adicionar à Tela de Início</b>.</span></li>
+            <li><span>O ícone fica junto dos outros apps e abre sem internet.</span></li>
+          </ol>
+          <a class="btn btn-ghost" data-link="web" href="#instalar" hidden>Abrir no navegador</a>
+        </article>
+        <article class="card">
+          <p class="status soon" data-status="web"><span class="sr">Situação: </span><span>Em breve</span></p>
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-desktop"/></svg><h3>Computador</h3></div>
+          <ol class="flow">
+            <li><span>Abra o endereço do app no Chrome ou no Edge.</span></li>
+            <li><span>Clique em <b>Instalar</b> na barra de endereço.</span></li>
+            <li><span>Arraste um PDF até a janela para abri-lo.</span></li>
+          </ol>
+          <a class="btn btn-ghost" data-link="web" href="#instalar" hidden>Abrir no navegador</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section paper" id="perguntas" aria-labelledby="perguntas-titulo">
+    <div class="wrap qa">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">06</span>Perguntas</p>
+        <h2 id="perguntas-titulo">Antes de instalar.</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary><h3>É grátis mesmo?</h3></summary>
+          <p>É. Sem anúncios e sem cadastro.</p>
+        </details>
+        <details>
+          <summary><h3>Precisa de internet?</h3></summary>
+          <p>Não. O app para Android nem pede permissão de internet, e o scanner reconhece o texto sem ela. A versão para navegador só precisa de conexão na primeira abertura.</p>
+        </details>
+        <details>
+          <summary><h3>O scanner pede acesso à câmera?</h3></summary>
+          <p>Não. Ao fotografar, o app abre a câmera do sistema, sem permissão própria; também é possível escolher uma imagem já salva. As fotos ficam só na memória do app enquanto você monta o PDF.</p>
+        </details>
+        <details>
+          <summary><h3>Consigo grifar, anotar ou assinar o PDF?</h3></summary>
+          <p>Ainda não. O Leitor de Bolso lê e cria PDFs; anotações, grifos, formulários e assinatura ficam para versões futuras.</p>
+        </details>
+        <details>
+          <summary><h3>Ele guarda cópia dos meus arquivos?</h3></summary>
+          <p>Guarda uma cópia dos últimos 8 PDFs abertos, só no armazenamento privado do app, para a lista de recentes. Cada item tem um ×, “Limpar lista” apaga tudo, e desinstalar o app também.</p>
+        </details>
+        <details>
+          <summary><h3>Abre PDF com senha?</h3></summary>
+          <p>Abre. O app pede a senha, avisa se estiver errada e não a guarda em lugar nenhum.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato" aria-labelledby="contato-titulo">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">07</span>Contato</p>
+        <h2 id="contato-titulo">Vamos conversar.</h2>
+        <p class="sub">Fale com a Edelmann para tirar uma dúvida, sugerir um recurso ou pedir o app para Android.</p>
+      </div>
+      <div>
+        <div class="channels">
+          <a class="channel" href="mailto:pablo107564@gmail.com?subject=Leitor%20de%20Bolso%20-%20Edelmann%20Tecnologia">
+            <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>E-mail</span>
+            <span class="channel-value" data-email>pablo107564@gmail.com</span>
+            <span class="channel-cta">Escrever mensagem<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+          </a>
+          <a class="channel channel-alt" data-link="whatsapp" href="#contato" hidden>
+            <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>WhatsApp</span>
+            <span class="channel-cta">Iniciar conversa<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+          </a>
+          <a class="channel channel-alt" data-link="instagram" href="#contato" hidden>
+            <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-camera"/></svg>Instagram</span>
+            <span class="channel-cta">Ver o perfil<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+          </a>
+        </div>
+        <p class="note">O assunto já vem preenchido.</p>
+        <p class="more"><a class="link" href="../#aplicativos">Ver os outros aplicativos<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="../">
+        <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+        <span><b>Edelmann</b> <small>Tecnologia</small></span>
+      </a>
+      <nav aria-label="Rodapé">
+        <ul>
+          <li><a href="../#servicos">Serviços</a></li>
+          <li><a href="../#aplicativos">Aplicativos</a></li>
+          <li><a href="../#sobre">A Edelmann</a></li>
+          <li><a href="../#metodo">Método</a></li>
+          <li><a href="../#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <a class="foot-mail" href="mailto:pablo107564@gmail.com?subject=Leitor%20de%20Bolso%20-%20Edelmann%20Tecnologia" data-email>pablo107564@gmail.com</a>
+    </div>
+    <div class="legal">
+      <p>© 2026 Edelmann Tecnologia</p>
+      <a href="privacidade.html">Política de privacidade do Leitor de Bolso</a>
+      <a href="#topo">Voltar ao topo</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== Configuração: preencha quando existir e publique de novo ===== */
+var CONFIG = {
+  email: "pablo107564@gmail.com",
+  whatsapp: "",   // DDD + número; vazio esconde tudo o que depende dele
+  instagram: "",  // só o nome, sem @
+  download: "",   // link de download do app, se houver
+  loja: "",       // página do app numa loja
+  play: "",       // link do app na Google Play
+  apk: "",        // link direto do arquivo .apk
+  web: ""         // endereço do app no navegador
+};
+/* ================================================================== */
+(function(){
+  var d=document,C=CONFIG;
+  function each(s,f){Array.prototype.forEach.call(d.querySelectorAll(s),f)}
+  function abrir(a,url){a.href=url;a.target="_blank";a.rel="noopener";a.hidden=false}
+
+  // E-mail: troca o endereço e mantém assunto e texto
+  if(C.email){
+    each('a[href^="mailto:"]',function(a){a.href=a.href.replace(/^mailto:[^?]*/,"mailto:"+C.email)});
+    each("[data-email]",function(e){e.textContent=C.email});
+  }
+  // Android: Play ou loja, senão arquivo; sem nada, fica o pedido por e-mail
+  var loja=C.play||C.loja,arq=C.apk||C.download;
+  if(loja||arq){
+    each('[data-link="android"]',function(a){abrir(a,loja||arq);a.textContent=C.play?"Baixar na Google Play":C.loja?"Ver na loja":"Baixar o app"});
+    each('[data-status="android"]',function(s){s.classList.remove("soon");s.lastChild.textContent=C.play?"Disponível na Play Store":"Disponível"});
+    each("[data-cta]",function(a){a.firstChild.textContent="Baixar grátis"});
+  }
+  // Navegador: os botões só aparecem com endereço
+  if(C.web){
+    each('[data-link="web"]',function(a){abrir(a,C.web)});
+    each('[data-status="web"]',function(s){s.classList.remove("soon");s.lastChild.textContent="Disponível"});
+  }
+  var n=C.whatsapp.replace(/\D/g,"");
+  if(n){
+    if(n.length===10||n.length===11)n="55"+n;
+    each('[data-link="whatsapp"]',function(a){abrir(a,"https://wa.me/"+n+"?text="+encodeURIComponent("Olá! Vim pela página do Leitor de Bolso."))});
+  }
+  if(C.instagram)each('[data-link="instagram"]',function(a){abrir(a,"https://instagram.com/"+encodeURIComponent(C.instagram.replace(/^@/,"")))});
+
+  // Menu do celular
+  var t=d.querySelector(".menu-toggle");
+  if(!t)return;
+  function set(o){t.setAttribute("aria-expanded",String(o))}
+  t.addEventListener("click",function(){set(t.getAttribute("aria-expanded")!=="true")});
+  d.addEventListener("click",function(e){if(t.getAttribute("aria-expanded")==="true"&&(e.target.closest("a")||!e.target.closest(".bar")))set(false)});
+  d.addEventListener("keydown",function(e){
+    if(e.key==="Escape"&&t.getAttribute("aria-expanded")==="true"){set(false);t.focus()}
+  });
+  var mq=matchMedia("(min-width:960px)"),wide=function(e){if(e.matches)set(false)};
+  if(mq.addEventListener)mq.addEventListener("change",wide);else if(mq.addListener)mq.addListener(wide);
+})();
+</script>
+</body>
+</html>

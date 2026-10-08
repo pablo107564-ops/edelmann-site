@@ -1,0 +1,963 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Balcão PDV, sistema de frente de caixa | Edelmann Tecnologia</title>
+<meta name="description" content="Frente de caixa (PDV) com NFC-e, estoque, fiado, mesas, comandas e pedido na cozinha, que continua vendendo sem internet. Windows, Linux e Mac. 15 dias grátis.">
+<link rel="canonical" href="https://edelmann.com.br/balcao/">
+<meta name="theme-color" content="#0C1730">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Edelmann Tecnologia">
+<meta property="og:title" content="Balcão PDV | Edelmann Tecnologia">
+<meta property="og:description" content="O caixa da sua loja: registra as vendas com rapidez, controla o estoque, emite a NFC-e e não para quando a internet cai. 15 dias grátis.">
+<meta property="og:url" content="https://edelmann.com.br/balcao/">
+<meta property="og:image" content="https://edelmann.com.br/balcao/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Balcão PDV: bipou, somou, fechou. Tela de venda do sistema.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Balcão PDV | Edelmann Tecnologia">
+<meta name="twitter:description" content="O caixa da sua loja: registra as vendas com rapidez, controla o estoque, emite a NFC-e e não para quando a internet cai. 15 dias grátis.">
+<meta name="twitter:image" content="https://edelmann.com.br/balcao/img/og.jpg">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Crect%20width='48'%20height='48'%20rx='2'%20fill='%2313284B'/%3E%3Crect%20x='3.5'%20y='3.5'%20width='41'%20height='41'%20fill='none'%20stroke='%23C9A96B'/%3E%3Cpath%20fill='%23E2CC9C'%20d='M13.75%2012h20.5v6h-2v-3H20.25v7.5h7.4v-1.5h1.6v5.6h-1.6v-1.5h-7.4V33h12v-3h2v6H13.75v-3h2.5V15h-2.5z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Balcão PDV",
+      "url": "https://edelmann.com.br/balcao/",
+      "image": "https://edelmann.com.br/balcao/img/og.jpg",
+      "description": "Sistema de frente de caixa (PDV) que funciona sem internet, com NFC-e, estoque, fiado, crediário, mesas, comandas, pedido na cozinha e vários caixas em rede. Configurado conforme o tipo de negócio: mercado, padaria, conveniência, bar e restaurante, roupas e calçados.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows 10, Windows 11, Linux, macOS",
+      "inLanguage": "pt-BR",
+      "featureList": [
+        "Frente de caixa com leitor de código de barras",
+        "Emissão de NFC-e, inclusive depois, para as vendas feitas sem internet",
+        "Até 30 dias de vendas sem internet",
+        "Estoque com entrada pelo XML da NF-e e inventário",
+        "Balança e etiquetas de peso",
+        "Fiado, crediário e carnê",
+        "Promoção, atacado, kits e combos",
+        "Mesas, comandas, pedido na cozinha e divisão da conta",
+        "Cashback",
+        "Catálogo e avisos pelo WhatsApp",
+        "Encomendas",
+        "Grade de tamanho e cor",
+        "Operadores com senha e permissões",
+        "Contas a pagar e conferência de caixa",
+        "Vários caixas em rede",
+        "Relatórios com curva ABC e PDF"
+      ],
+      "offers": [
+        { "@type": "Offer", "name": "Essencial", "price": "119.90", "priceCurrency": "BRL", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "119.90", "priceCurrency": "BRL", "unitCode": "MON" }, "description": "Mensalidade por loja, 1 computador" },
+        { "@type": "Offer", "name": "Profissional", "price": "229.90", "priceCurrency": "BRL", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "229.90", "priceCurrency": "BRL", "unitCode": "MON" }, "description": "Mensalidade por loja, até 3 computadores" },
+        { "@type": "Offer", "name": "Premium", "price": "449.90", "priceCurrency": "BRL", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "449.90", "priceCurrency": "BRL", "unitCode": "MON" }, "description": "Mensalidade por loja, até 10 computadores" }
+      ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Edelmann Tecnologia",
+        "url": "https://edelmann.com.br/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://edelmann.com.br/" },
+        { "@type": "ListItem", "position": 2, "name": "Aplicativos", "item": "https://edelmann.com.br/#aplicativos" },
+        { "@type": "ListItem", "position": 3, "name": "Balcão PDV", "item": "https://edelmann.com.br/balcao/" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#FAF8F4;
+  --paper:#FFFFFF;
+  --sand:#F2EDE4;
+  --ink:#0F1B33;
+  --navy:#13284B;
+  --night:#0C1730;
+  --text:#2B3446;
+  --muted:#5A6477;
+  --line:#E5DFD4;
+  --line-2:#D5CDBF;
+  --gold:#B8955A;
+  --gold-ink:#8A6A2B;
+  --gold-soft:#D9C49A;
+  --live:#2E6B4F;
+  --on-night:#AEB8CA;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --max:1200px;
+  --gutter:clamp(1.25rem,5vw,3rem);
+  --section:clamp(4.5rem,9vw,8rem);
+  --h2:clamp(2.125rem,1.3rem + 2.9vw,3.5rem);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* Base */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:5.5rem}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--ink);letter-spacing:-.015em;text-wrap:balance}
+p{text-wrap:pretty}
+a{color:inherit}
+svg,img{display:block}
+img{max-width:100%;height:auto}
+[hidden]{display:none!important}
+::selection{background:var(--gold-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--gold-ink);outline-offset:3px}
+main:focus{outline:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:1rem;top:-6rem;z-index:100;padding:.75rem 1.25rem;background:var(--ink);color:#fff;text-decoration:none;font-weight:500}
+.skip:focus{top:1rem}
+.wrap{width:100%;max-width:calc(var(--max) + 2 * var(--gutter));margin-inline:auto;padding-inline:var(--gutter)}
+.i{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* Botões e links */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;min-height:3.25rem;padding:.9rem 1.6rem;border:1px solid transparent;border-radius:2px;font:500 .9375rem/1.2 var(--sans);letter-spacing:.01em;text-decoration:none;white-space:nowrap;transition:background-color .25s,border-color .25s,color .25s}
+.btn .i,.link .i{width:18px;height:18px;transition:transform .3s var(--ease)}
+.btn:hover .i,.link:hover .i{transform:translateX(4px)}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--night)}
+.btn-ghost{border-color:var(--line-2);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-sm{min-height:2.75rem;padding:.6rem 1.15rem;font-size:.875rem}
+.link{display:inline-flex;align-items:center;gap:.5rem;font-weight:500;color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:.3em}
+
+/* Rótulo de seção */
+.eyebrow{display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem;font:500 .75rem/1.2 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink)}
+.eyebrow::before{content:"";width:2.5rem;height:1px;background:var(--gold)}
+.eyebrow .n{order:-1;font:italic 400 1rem/1 var(--serif);letter-spacing:0}
+
+/* Cabeçalho */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.92);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;min-height:4.75rem}
+.brand{display:inline-flex;align-items:center;gap:.8rem;color:var(--ink);text-decoration:none}
+.brand svg{width:40px;height:40px;flex:none}
+.brand span{display:flex;flex-direction:column;line-height:1}
+.brand b{font:500 1.0625rem/1 var(--serif);letter-spacing:.16em;text-transform:uppercase}
+.brand small{margin-top:.4rem;font:500 .6875rem/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.menu ul{display:flex;align-items:center;gap:2rem;list-style:none;padding:0}
+.menu a:not(.btn){position:relative;display:inline-block;padding:.4rem 0;font-size:.9375rem;font-weight:500;color:var(--text);text-decoration:none;transition:color .2s}
+.menu a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.menu a:not(.btn):hover{color:var(--ink)}
+.menu a:not(.btn):hover::after{transform:scaleX(1)}
+.bar-cta,.menu-toggle,.cta-s{display:none}
+.menu-toggle{align-items:center;justify-content:center;gap:.7rem;min-width:2.75rem;min-height:2.75rem;padding:.5rem .95rem;border:1px solid var(--line-2);border-radius:2px;background:transparent;color:var(--ink);font:500 .875rem/1 var(--sans);cursor:pointer}
+.burger{position:relative;width:18px;height:10px}
+.burger::before,.burger::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .3s var(--ease),top .3s var(--ease)}
+.burger::before{top:0}
+.burger::after{top:8.5px}
+[aria-expanded="true"] .burger::before{top:4.25px;transform:rotate(45deg)}
+[aria-expanded="true"] .burger::after{top:4.25px;transform:rotate(-45deg)}
+
+@media (max-width:959.98px){
+  .bar{flex-wrap:wrap}
+  .menu{width:100%}
+  .menu ul{flex-wrap:wrap;gap:.25rem 1.5rem;padding-bottom:1rem}
+  html:not(.js) .site-header{position:static}
+  .js .bar{flex-wrap:nowrap;gap:.5rem}
+  .js .brand{margin-right:auto}
+  .js .bar-cta,.js .menu-toggle{display:inline-flex}
+  .js .menu{display:none;position:absolute;top:100%;left:0;right:0;width:auto;padding:.5rem var(--gutter) 2rem;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 30px 40px -30px rgba(15,27,51,.3)}
+  .js .menu-toggle[aria-expanded="true"]+.menu{display:block}
+  .js .menu ul{flex-direction:column;align-items:stretch;gap:0;padding:0}
+  .js .menu a:not(.btn){display:block;padding:1rem 0;border-bottom:1px solid var(--line);font:400 1.375rem/1.2 var(--serif);color:var(--ink)}
+  .js .menu a:not(.btn)::after{display:none}
+  .js .menu-cta{display:none}
+}
+@media (max-width:559.98px){.cta-l{display:none}.cta-s{display:inline}}
+@media (max-width:479.98px){
+  .brand{gap:.65rem}
+  .brand svg{width:36px;height:36px}
+  .brand b{font-size:1rem;letter-spacing:.06em}
+  .brand small{letter-spacing:.2em}
+  .bar-cta{padding-inline:.8rem;font-size:.8125rem}
+  .menu-toggle{padding:.5rem}
+  .menu-toggle .t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+
+/* Trilha */
+.crumbs{margin-bottom:2.25rem;font-size:.875rem;color:var(--muted)}
+.crumbs ol{display:flex;flex-wrap:wrap;gap:.25rem .6rem;padding:0;list-style:none}
+.crumbs li+li::before{content:"›";content:"›" / "";margin-right:.6rem;color:var(--gold-ink)}
+.crumbs a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:.25em}
+.crumbs a:hover{text-decoration-color:var(--gold)}
+.crumbs [aria-current]{font-weight:500;color:var(--ink)}
+
+/* Abertura */
+.hero{position:relative;overflow:hidden;padding-block:clamp(2rem,5vw,3.5rem) clamp(4rem,8vw,6.5rem);border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60rem 30rem at 85% -10%,rgba(184,149,90,.13),transparent 60%),linear-gradient(to right,rgba(15,27,51,.045) 1px,transparent 1px) 0 0/calc(100% / 6) 100%;-webkit-mask-image:linear-gradient(#000 45%,transparent);mask-image:linear-gradient(#000 45%,transparent)}
+.hero .wrap{position:relative}
+.hero-grid{display:grid;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.5rem,1.35rem + 4.2vw,4.5rem);line-height:1.04;letter-spacing:-.025em}
+.hero h1 span,.hero h1 em{display:block}
+.hero h1 em{font-style:italic;color:var(--gold-ink)}
+.lead{max-width:35rem;margin-top:1.75rem;font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.6;color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:.75rem 1rem;margin-top:2.5rem}
+.status{display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.5rem;padding:.4rem .85rem;border:1px solid var(--line);border-radius:99px;background:var(--paper);font-size:.8125rem;font-weight:500;line-height:1.3;color:var(--ink)}
+.status::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px rgba(46,107,79,.14)}
+.checks{display:flex;flex-wrap:wrap;gap:.5rem 1.75rem;margin-top:2rem;padding:0;list-style:none;font-size:.9375rem;color:var(--text)}
+.checks li{display:flex;align-items:center;gap:.6rem}
+.checks li::before{content:"";flex:none;width:.85rem;height:1px;background:var(--gold)}
+.frame{background:var(--paper);border:1px solid var(--line);box-shadow:0 30px 50px -34px rgba(15,27,51,.4)}
+.frame img{width:100%}
+.hero-shot figcaption{margin-top:1rem;font-size:.875rem;color:var(--muted)}
+@media (min-width:900px){.hero-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:4rem}}
+
+/* Números */
+.facts{background:var(--paper);border-bottom:1px solid var(--line)}
+.facts dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.facts dl div{padding:1.75rem 1rem 1.75rem 0}
+@media (max-width:899.98px){
+  .facts dl div:nth-child(n+3){border-top:1px solid var(--line)}
+  .facts dl div:nth-child(even){padding-left:1rem;border-left:1px solid var(--line)}
+}
+.facts dt{font:400 clamp(1.625rem,1.2rem + 1.6vw,2.5rem)/1.1 var(--serif);letter-spacing:-.02em;color:var(--ink)}
+.facts dd{margin-top:.5rem;font-size:.9375rem;line-height:1.45;color:var(--muted)}
+@media (min-width:900px){
+  .facts dl{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .facts dl div{padding-block:2.25rem}
+  .facts dl div+div{padding-left:2rem;border-left:1px solid var(--line)}
+}
+
+/* Seções */
+.section{padding-block:var(--section)}
+.paper{background:var(--paper);border-block:1px solid var(--line)}
+.head{display:grid;gap:1.25rem 4rem;margin-bottom:clamp(2.75rem,6vw,5rem)}
+.head h2,.about h2,.contact h2,.qa h2{font-size:var(--h2);line-height:1.08;letter-spacing:-.02em}
+.sub{max-width:33rem;color:var(--muted)}
+@media (min-width:900px){
+  .head{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end}
+  .head .sub{justify-self:end}
+}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;padding:.85rem 0 0;list-style:none}
+.tags li{padding:.3rem .65rem;border:1px solid var(--line-2);border-radius:2px;font-size:.8125rem;line-height:1.3;color:var(--text)}
+
+/* Ramos */
+.niches{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;padding:0;list-style:none}
+.niche{display:flex;flex-direction:column;padding:clamp(1.5rem,3vw,2.25rem);background:var(--paper);border:1px solid var(--line)}
+.niche.base{background:var(--sand)}
+.niche .i{width:32px;height:32px;margin-bottom:1.5rem;stroke-width:1.25;color:var(--gold-ink)}
+.niche h3{font-size:1.5rem;line-height:1.2}
+.niche>p{margin-top:.75rem;font-size:1rem;color:var(--muted)}
+.niche .count{margin-top:auto;padding-top:1.5rem;font-size:.875rem;color:var(--text)}
+.count b{font:400 1.25rem/1 var(--serif);color:var(--ink)}
+@media (min-width:760px){.niches{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1080px){.niches{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Telas */
+.shots{display:grid;grid-template-columns:minmax(0,1fr);gap:3rem 1.5rem;padding:0;list-style:none}
+.shots figcaption{margin-top:1.25rem}
+.shots h3{font-size:1.375rem;line-height:1.25}
+.shots figcaption p{margin-top:.5rem;font-size:1rem;color:var(--muted)}
+@media (min-width:640px) and (max-width:999.98px){
+  .shots figure{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:1.75rem;align-items:center}
+  .shots figcaption{margin-top:0}
+}
+@media (min-width:1000px){.shots{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Sem internet */
+.band{background:var(--night);color:var(--on-night)}
+.band .eyebrow{color:var(--gold-soft)}
+.band :focus-visible{outline-color:var(--gold-soft)}
+.about{display:grid;gap:clamp(3rem,6vw,6rem)}
+.about h2{color:#fff}
+.about-text{max-width:32rem;margin-top:2rem;font-size:1.125rem;color:#C3CBD9}
+.principles{display:grid;padding:0;list-style:none;counter-reset:p;border-top:1px solid rgba(255,255,255,.12)}
+.principles li{padding:2rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.principles .lbl{margin-bottom:.75rem;font:500 .75rem/1.2 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft)}
+.principles h3{display:flex;align-items:baseline;gap:.85rem;margin-bottom:.6rem;font-size:1.375rem;color:#fff}
+.principles h3::before{counter-increment:p;content:counter(p,upper-roman);content:counter(p,upper-roman) / "";min-width:1.5rem;font:italic 400 1rem/1 var(--serif);color:var(--gold-soft)}
+.principles p{font-size:1rem}
+@media (min-width:960px){.about{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+
+/* Funções */
+.fx{display:grid;grid-template-columns:minmax(0,1fr);gap:1px;padding:0;list-style:none;background:var(--line);border:1px solid var(--line)}
+.fn{position:relative;display:flex;flex-direction:column;padding:clamp(1.5rem,2.6vw,2.25rem);background:var(--bg);transition:background-color .35s}
+.fn::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.fn:hover{background:var(--paper)}
+.fn:hover::before{transform:scaleX(1)}
+.fn-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem}
+.fn .i{width:32px;height:32px;stroke-width:1.25;color:var(--gold-ink)}
+.num{font:italic 400 1rem/1 var(--serif);color:var(--muted)}
+.fn h3{margin-bottom:.65rem;font-size:1.375rem;line-height:1.2}
+.fn p{font-size:1rem;color:var(--muted)}
+@media (min-width:640px){.fx{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1080px){.fx{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Planos */
+.plans{display:grid;grid-template-columns:minmax(0,1fr);gap:2rem 1.25rem;padding:0;list-style:none}
+.plan{position:relative;display:flex;flex-direction:column;padding:clamp(1.75rem,3vw,2.5rem);background:var(--bg);border:1px solid var(--line)}
+.plan.top{border-color:var(--navy);box-shadow:0 30px 50px -34px rgba(15,27,51,.45)}
+.seal{position:absolute;top:-.75rem;left:clamp(1.75rem,3vw,2.5rem);padding:.35rem .7rem;background:var(--navy);color:#fff;font:500 .6875rem/1 var(--sans);letter-spacing:.18em;text-transform:uppercase}
+.plan h3{font-size:1.75rem;line-height:1.15}
+.plan .for{margin-top:.4rem;font-size:.9375rem;color:var(--muted)}
+.price{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem;margin-top:1.75rem;font:400 clamp(2.25rem,1.9rem + 1.2vw,2.875rem)/1 var(--serif);letter-spacing:-.02em;color:var(--ink)}
+.price small{font:400 .9375rem/1 var(--sans);letter-spacing:0;color:var(--muted)}
+.seats{margin-top:.9rem;font:500 .75rem/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink)}
+.plan ul{display:grid;gap:.6rem;margin:1.5rem 0 2rem;padding:1.5rem 0 0;list-style:none;border-top:1px solid var(--line)}
+.plan li{display:flex;gap:.75rem;font-size:.9375rem;line-height:1.5}
+.plan li::before{content:"";flex:none;width:.85rem;height:1px;margin-top:.75em;background:var(--gold)}
+.plan li.plus{font-weight:600;color:var(--ink)}
+.plan li.plus::before{display:none}
+.plan .btn{margin-top:auto;width:100%}
+@media (min-width:900px){.plans{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.compare{margin-top:3rem;border-block:1px solid var(--line-2)}
+.tbl{overflow-x:auto;padding-bottom:1.5rem}
+.tbl table{width:100%;min-width:30rem;border-collapse:collapse;font-size:.9375rem;line-height:1.4}
+.tbl th,.tbl td{padding:.7rem .75rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+.tbl thead th{font-size:.875rem;font-weight:600;color:var(--ink)}
+.tbl tbody th{font-weight:400}
+.tbl thead th+th,.tbl td{width:8rem;text-align:center}
+.tbl .y::before{content:"";display:inline-block;width:.85rem;height:.45rem;margin-bottom:.2rem;border-left:2px solid var(--live);border-bottom:2px solid var(--live);transform:rotate(-45deg)}
+.tbl .n::before{content:"";display:inline-block;width:.75rem;height:1px;vertical-align:middle;background:var(--muted)}
+@media (max-width:540px){.tbl table{min-width:0;font-size:.8125rem}.tbl th,.tbl td{padding:.6rem .35rem}.tbl thead th{font-size:.75rem}.tbl thead th+th,.tbl td{width:auto}}
+
+/* Como começar */
+.steps{display:grid;grid-template-columns:1fr;row-gap:3rem;padding:0;list-style:none;counter-reset:s}
+.step{position:relative;padding:2.25rem 2rem 0 0;border-top:1px solid var(--line-2)}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);content:counter(s,decimal-leading-zero) / "";display:block;margin-bottom:1.5rem;font:400 3.25rem/1 var(--serif);letter-spacing:-.02em;color:var(--gold-ink)}
+.step::after{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;background:var(--bg);border:1px solid var(--gold);transform:rotate(45deg)}
+.step h3{margin-bottom:.6rem;font-size:1.375rem;line-height:1.25}
+.step p{max-width:22rem;font-size:1rem;color:var(--muted)}
+@media (min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
+
+/* Dúvidas */
+.qa{display:grid;gap:2.5rem}
+.ask{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.25rem;margin-top:2rem;color:var(--muted)}
+.faq{border-top:1px solid var(--line-2)}
+.faq details{border-bottom:1px solid var(--line-2)}
+.faq summary,.compare summary{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;padding:1.35rem 0;cursor:pointer;list-style:none;font:400 1.25rem/1.35 var(--serif);color:var(--ink)}
+.faq summary::-webkit-details-marker,.compare summary::-webkit-details-marker{display:none}
+.faq summary::after,.compare summary::after{content:"+";content:"+" / "";flex:none;font:300 1.625rem/1 var(--sans);color:var(--gold-ink);transition:transform .3s var(--ease)}
+.faq details[open] summary::after,.compare[open] summary::after{transform:rotate(45deg)}
+.faq summary:hover,.compare summary:hover{color:var(--navy)}
+.faq p{max-width:40rem;padding-bottom:1.5rem;font-size:1rem;color:var(--muted)}
+@media (min-width:960px){.qa{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:6rem;align-items:start}}
+
+/* Contato */
+.contact{display:grid;gap:3rem}
+.contact .sub{margin-top:1.25rem}
+.more{margin-top:2rem}
+.channels .more{margin-top:1rem}
+.channels{display:grid;gap:1rem}
+.channel{display:flex;flex-direction:column;gap:1rem;padding:clamp(1.5rem,4vw,2.75rem);background:var(--night);border:1px solid var(--night);color:#fff;text-decoration:none;transition:background-color .3s,border-color .3s}
+.channel:hover{background:var(--navy)}
+.channel:focus-visible{outline-color:var(--gold-ink)}
+.channel-label{display:flex;align-items:center;gap:.6rem;font:500 .75rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft)}
+.channel-label .i{width:18px;height:18px}
+.channel-value{font:400 clamp(1.2rem,.95rem + 1.5vw,2rem)/1.2 var(--serif);overflow-wrap:anywhere}
+.channel-cta{display:inline-flex;align-items:center;gap:.6rem;margin-top:.75rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.14);font-size:.9375rem;font-weight:500}
+.channel-cta .i{width:18px;height:18px;transition:transform .3s var(--ease)}
+.channel:hover .channel-cta .i{transform:translateX(4px)}
+.channel-alt{background:var(--paper);border-color:var(--line);color:var(--ink)}
+.channel-alt:hover{background:var(--paper);border-color:var(--ink)}
+.channel-alt .channel-label{color:var(--gold-ink)}
+.channel-alt .channel-cta{border-top-color:var(--line)}
+.note{font-size:.875rem;color:var(--muted)}
+@media (min-width:960px){.contact{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6rem;align-items:start}}
+
+/* Rodapé */
+.site-footer{padding-block:4rem 2rem;background:var(--night);color:var(--on-night);font-size:.9375rem}
+.site-footer a{color:#DCE2EC;text-decoration:none;transition:color .2s}
+.site-footer a:hover{color:var(--gold-soft)}
+.site-footer :focus-visible{outline-color:var(--gold-soft)}
+.site-footer .brand b{color:#fff}
+.site-footer .brand small{color:var(--on-night)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem 3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot ul{display:flex;flex-wrap:wrap;gap:.75rem 2rem;padding:0;list-style:none}
+.foot-mail{overflow-wrap:anywhere}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 2rem;padding-top:1.5rem;font-size:.875rem}
+.legal-links{display:flex;flex-wrap:wrap;gap:.5rem 1.75rem}
+.legal p a{text-decoration:underline;text-decoration-color:rgba(217,196,154,.5);text-underline-offset:.25em}
+
+/* Movimento */
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
+}
+@media print{.site-header{position:static}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="eg" d="M13.75 12h20.5v6h-2v-3H20.25v7.5h7.4v-1.5h1.6v5.6h-1.6v-1.5h-7.4V33h12v-3h2v6H13.75v-3h2.5V15h-2.5z"/>
+    <symbol id="logo" viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="2" fill="#13284B"/>
+      <rect x="3.5" y="3.5" width="41" height="41" fill="none" stroke="#C9A96B"/>
+      <use href="#eg" fill="#E2CC9C"/>
+    </symbol>
+    <symbol id="i-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="m8.5 12.2 2.4 2.4 4.6-4.8"/></symbol>
+    <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2.5 3h2.4l2 12.2A2 2 0 0 0 8.9 17h8.6a2 2 0 0 0 2-1.6L21 7H6"/></symbol>
+    <symbol id="i-bread" viewBox="0 0 24 24"><path d="M4 13a8 6 0 0 1 16 0v5.5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="m9 9.5 1.2 2.5M12.3 8.8l1.2 2.5M15.5 9.8l.9 1.9"/></symbol>
+    <symbol id="i-bottle" viewBox="0 0 24 24"><path d="M10 2.5h4M10.5 2.5v4.2L8.2 10a2 2 0 0 0-.2.9V20a1.5 1.5 0 0 0 1.5 1.5h5A1.5 1.5 0 0 0 16 20v-9.1a2 2 0 0 0-.2-.9l-2.3-3.3V2.5"/><path d="M8 13.5h8"/></symbol>
+    <symbol id="i-dish" viewBox="0 0 24 24"><path d="M7 3v6.5a2 2 0 0 0 4 0V3M9 3v18"/><path d="M17 21V3c-2.2 1.2-3.5 3.8-3.5 7.2V13H17"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 24 24"><path d="M8 3 3 6l2 5 3-1v11h8V10l3 1 2-5-5-3a4 4 0 0 1-8 0z"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3.5h12v17l-2.2-1.5-2.1 1.5L11.5 19l-2.2 1.5-2.1-1.5-1.2 1V3.5Z"/><path d="M8.5 8h7M8.5 11.5h7M8.5 15h4"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 19a6.5 6.5 0 0 1 13 0"/><circle cx="17.2" cy="9" r="2.6"/><path d="M15.8 12.2A5.2 5.2 0 0 1 21.5 17"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-printer" viewBox="0 0 24 24"><path d="M6.5 8.5V3.5h11v5"/><rect x="3.5" y="8.5" width="17" height="8" rx="1.8"/><path d="M6.5 14.5h11v6h-11z"/></symbol>
+    <symbol id="i-split" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M12 3v18M3 12h18"/></symbol>
+    <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M6 9.5v.01M18 14.5v.01" stroke-width="2"/></symbol>
+    <symbol id="i-msg" viewBox="0 0 24 24"><path d="M4 5.5h16v10H9l-5 4v-14Z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M3 7.5 12 3l9 4.5-9 4.5-9-4.5Z"/><path d="M3 7.5V16l9 4.5 9-4.5V7.5"/><path d="M12 12v8.5"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20V10M11 20V4M18 20v-7"/><path d="M2.5 20.5h19"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5Z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header" id="topo">
+  <div class="wrap bar">
+    <a class="brand" href="../">
+      <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+      <span><b>Edelmann</b> <small>Tecnologia</small></span>
+    </a>
+    <a class="btn btn-primary btn-sm bar-cta" href="../#contato"><span class="cta-l">Solicitar orçamento</span><span class="cta-s">Orçamento</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="burger" aria-hidden="true"></span><span class="t">Menu</span>
+    </button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="../#servicos">Serviços</a></li>
+        <li><a href="../#aplicativos">Aplicativos</a></li>
+        <li><a href="../#sobre">A Edelmann</a></li>
+        <li><a href="../#metodo">Método</a></li>
+        <li class="menu-cta"><a class="btn btn-primary btn-sm" href="../#contato">Solicitar orçamento</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+
+  <section class="hero" aria-labelledby="titulo">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Trilha de navegação">
+        <ol>
+          <li><a href="../">Início</a></li>
+          <li><a href="../#aplicativos">Aplicativos</a></li>
+          <li><span aria-current="page">Balcão PDV</span></li>
+        </ol>
+      </nav>
+      <div class="hero-grid">
+        <div>
+          <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
+          <h1 id="titulo"><span>Balcão PDV</span> <em>bipou, somou, fechou.</em></h1>
+          <p class="lead">O sistema de frente de caixa da sua loja: registra as vendas com rapidez, controla o estoque, emite a NFC-e e não para quando a internet cai. Você escolhe o tipo de negócio e vê só o que usa.</p>
+          <div class="ctas">
+            <a class="btn btn-primary" data-link="download" href="mailto:pablo107564@gmail.com?subject=Teste%20gr%C3%A1tis%20do%20Balc%C3%A3o%20PDV">Pedir o teste grátis por e-mail<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="#planos">Ver os planos</a>
+          </div>
+          <ul class="checks">
+            <li>Sem fidelidade</li>
+            <li>Funciona sem internet</li>
+            <li>Windows, Linux e Mac</li>
+          </ul>
+        </div>
+        <figure class="hero-shot">
+          <div class="frame">
+            <picture><source type="image/webp" srcset="img/venda-claro.webp"><img src="img/venda-claro.jpg" width="1600" height="1025" fetchpriority="high" alt="Tela de venda do Balcão: lista de produtos com preço e estoque, à esquerda, e o carrinho com o total, à direita"></picture>
+          </div>
+          <figcaption>Tela de venda: Pix, cartão, dinheiro e fiado, inclusive combinados.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="facts">
+    <div class="wrap">
+      <dl>
+        <div><dt>&lt;&thinsp;0,1&thinsp;s</dt><dd>por item bipado, mesmo com milhares de produtos cadastrados</dd></div>
+        <div><dt>30 dias</dt><dd>de vendas sem internet</dd></div>
+        <div><dt>Vários caixas</dt><dd>na mesma loja, conectados pela rede</dd></div>
+        <div><dt>15 dias</dt><dd>de teste, com tudo liberado</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <section class="section" id="ramos" aria-labelledby="ramos-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">01</span>Para quem</p>
+          <h2 id="ramos-titulo">Feito para o seu tipo de negócio.</h2>
+        </div>
+        <p class="sub">Na instalação, você escolhe o ramo, e o Balcão já liga as funções dele. As demais você liga em Ajustes, quando precisar.</p>
+      </div>
+      <ul class="niches">
+        <li class="niche base">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-ok"/></svg>
+          <h3>Em todos os ramos</h3>
+          <p>Funções que já vêm ligadas desde a instalação.</p>
+          <p class="count"><b>12</b> funções:</p>
+          <ul class="tags"><li>Nota fiscal (NFC-e)</li><li>Fiado</li><li>Promoção e atacado</li><li>Etiquetas de preço</li><li>Entrada de mercadoria</li><li>Importar XML da NF-e</li><li>Financeiro e contas a pagar</li><li>Envio pelo WhatsApp</li><li>Inventário</li><li>Sugestão de compra</li><li>Curva ABC</li><li>Fidelidade e cashback</li></ul>
+        </li>
+        <li class="niche">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-cart"/></svg>
+          <h3>Mercado e mercearia</h3>
+          <p>Balança e etiqueta de peso, atacado por fardo, fiado com limite e crediário com carnê. O caixa anda rápido mesmo com milhares de produtos.</p>
+          <p class="count"><b>15</b> de 22 funções ligadas. Além da base:</p>
+          <ul class="tags"><li>Crediário e carnê</li><li>Catálogo para o WhatsApp</li><li>Kits e combos</li></ul>
+        </li>
+        <li class="niche">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-bread"/></svg>
+          <h3>Padaria e confeitaria</h3>
+          <p>Pão no peso, encomendas de bolo e salgado com data e sinal pago, kits e aviso de retirada pelo WhatsApp.</p>
+          <p class="count"><b>14</b> de 22 funções ligadas. Além da base:</p>
+          <ul class="tags"><li>Encomendas</li><li>Kits e combos</li></ul>
+        </li>
+        <li class="niche">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-bottle"/></svg>
+          <h3>Conveniência e adega</h3>
+          <p>Cerveja no fardo, mesas e comandas para quem consome na loja, pedido impresso no bar e catálogo no WhatsApp.</p>
+          <p class="count"><b>18</b> de 22 funções ligadas. Além da base:</p>
+          <ul class="tags"><li>Mesas</li><li>Comanda individual</li><li>Pedido na cozinha e no bar</li><li>Dividir a conta</li><li>Catálogo para o WhatsApp</li><li>Kits e combos</li></ul>
+        </li>
+        <li class="niche">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-dish"/></svg>
+          <h3>Bar e restaurante</h3>
+          <p>Mapa de mesas, comanda por cartão, pedido separado para cozinha e bar, taxa de serviço e conta dividida por item.</p>
+          <p class="count"><b>18</b> de 22 funções ligadas. Além da base:</p>
+          <ul class="tags"><li>Mesas</li><li>Comanda individual</li><li>Pedido na cozinha e no bar</li><li>Dividir a conta</li><li>Taxa de serviço</li><li>Kits e combos</li></ul>
+        </li>
+        <li class="niche">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-shirt"/></svg>
+          <h3>Roupas e calçados</h3>
+          <p>Grade de tamanho e cor com estoque por variação, crediário com carnê, etiquetas e catálogo para enviar às clientes.</p>
+          <p class="count"><b>15</b> de 22 funções ligadas. Além da base:</p>
+          <ul class="tags"><li>Grade (tamanho e cor)</li><li>Crediário e carnê</li><li>Catálogo para o WhatsApp</li></ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section paper" id="telas" aria-labelledby="telas-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">02</span>Telas</p>
+          <h2 id="telas-titulo">Simples no caixa. Completo no escritório.</h2>
+        </div>
+        <p class="sub">Capturas reais do Balcão, com um dia de vendas de exemplo. O programa tem tema claro e escuro.</p>
+      </div>
+      <ul class="shots">
+        <li>
+          <figure>
+            <div class="frame"><picture><source type="image/webp" srcset="img/painel-claro.webp"><img src="img/painel-claro.jpg" width="1600" height="1025" loading="lazy" alt="Painel do dia: vendido hoje, ticket médio, lucro bruto, vendas por hora, formas de pagamento e mais vendidos"></picture></div>
+            <figcaption><h3>Painel do dia</h3><p>Vendas, ticket médio, lucro bruto e os produtos que mais saíram, logo ao abrir o programa.</p></figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <div class="frame"><picture><source type="image/webp" srcset="img/produtos-claro.webp"><img src="img/produtos-claro.jpg" width="1600" height="1025" loading="lazy" alt="Cadastro de produtos com categoria, preço e estoque, e os botões de entrada de mercadoria, inventário e etiquetas"></picture></div>
+            <figcaption><h3>Estoque</h3><p>Cada venda dá baixa no estoque. A nota do fornecedor entra pelo XML, e o inventário é feito bipando os produtos.</p></figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <div class="frame"><picture><source type="image/webp" srcset="img/relatorios-claro.webp"><img src="img/relatorios-claro.jpg" width="1600" height="1025" loading="lazy" alt="Relatórios: faturamento, vendas dos últimos 7 dias, formas de pagamento e mais vendidos, com botão para gerar PDF"></picture></div>
+            <figcaption><h3>Relatórios</h3><p>A semana, as formas de pagamento, a curva ABC e o PDF para o contador.</p></figcaption>
+          </figure>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section band" id="internet" aria-labelledby="internet-titulo">
+    <div class="wrap about">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">03</span>Sem internet</p>
+        <h2 id="internet-titulo">A internet caiu. O caixa não.</h2>
+        <p class="about-text">O Balcão guarda tudo no computador da loja e, sem internet, continua vendendo por até 30 dias.</p>
+      </div>
+      <ul class="principles">
+        <li>
+          <p class="lbl">Na loja</p>
+          <h3>Computador servidor</h3>
+          <p>Guarda as vendas, o estoque e os clientes, com cópia de segurança automática.</p>
+        </li>
+        <li>
+          <p class="lbl">Pela rede da loja</p>
+          <h3>Os outros caixas</h3>
+          <p>Conectam-se ao servidor sozinhos, sem digitar endereço, e vendem ao mesmo tempo, com o mesmo estoque.</p>
+        </li>
+        <li>
+          <p class="lbl">Quando disponível</p>
+          <h3>Internet</h3>
+          <p>Emite a NFC-e, busca atualizações e confirma a licença. As notas do período sem conexão são emitidas depois, com um botão.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="funcoes" aria-labelledby="funcoes-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">04</span>Funções</p>
+          <h2 id="funcoes-titulo">Tudo o que o Balcão faz.</h2>
+        </div>
+        <p class="sub">Atualização automática no Windows; no Linux e no Mac, o programa avisa quando há versão nova.</p>
+      </div>
+      <ul class="fx">
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-receipt"/></svg><span class="num" aria-hidden="true">01</span></div>
+          <h3>Nota fiscal (NFC-e)</h3>
+          <p>Emitida ao fechar a venda. Sem internet, a nota sai depois.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span class="num" aria-hidden="true">02</span></div>
+          <h3>Fiado e crediário</h3>
+          <p>Limite por cliente, carnê impresso e cobrança pelo WhatsApp.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-grid"/></svg><span class="num" aria-hidden="true">03</span></div>
+          <h3>Mesas e comandas</h3>
+          <p>Mapa de mesas, comanda por cartão e taxa de serviço.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-printer"/></svg><span class="num" aria-hidden="true">04</span></div>
+          <h3>Pedido na cozinha e no bar</h3>
+          <p>Cada setor recebe só o que é dele, impresso na hora.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-split"/></svg><span class="num" aria-hidden="true">05</span></div>
+          <h3>Dividir a conta</h3>
+          <p>Cada um paga o que consumiu; o restante fica na mesa.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cash"/></svg><span class="num" aria-hidden="true">06</span></div>
+          <h3>Cashback</h3>
+          <p>O cliente acumula saldo e volta para gastar na sua loja.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-msg"/></svg><span class="num" aria-hidden="true">07</span></div>
+          <h3>Catálogo no WhatsApp</h3>
+          <p>Produtos e preços prontos para enviar aos clientes.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-box"/></svg><span class="num" aria-hidden="true">08</span></div>
+          <h3>Promoção, atacado e kits</h3>
+          <p>Preço por quantidade e por fardo, promoções com data e combos.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-cal"/></svg><span class="num" aria-hidden="true">09</span></div>
+          <h3>Encomendas</h3>
+          <p>Data, sinal pago e aviso de retirada pelo WhatsApp.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-shirt"/></svg><span class="num" aria-hidden="true">10</span></div>
+          <h3>Grade de tamanho e cor</h3>
+          <p>Cada variação com código e estoque próprios.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-lock"/></svg><span class="num" aria-hidden="true">11</span></div>
+          <h3>Operadores e senhas</h3>
+          <p>Permissões por pessoa, senha do gerente e registro de todas as ações.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chart"/></svg><span class="num" aria-hidden="true">12</span></div>
+          <h3>Financeiro</h3>
+          <p>Contas a pagar, conferência de caixa, sangria e troca de turno.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section paper" id="planos" aria-labelledby="planos-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">05</span>Planos</p>
+          <h2 id="planos-titulo">Mensal, por loja. Sem fidelidade.</h2>
+        </div>
+        <p class="sub">Pagamento por Pix ou cartão. Antes, teste por 15 dias com tudo liberado, sem pagar nada.</p>
+      </div>
+      <ul class="plans">
+        <li class="plan">
+          <h3>Essencial</h3>
+          <p class="for">Para quem está começando</p>
+          <p class="price">R$&nbsp;119,90<small>/mês</small></p>
+          <p class="seats">1 computador</p>
+          <ul>
+            <li>Venda, estoque, caixa e relatórios</li>
+            <li>Nota fiscal (NFC-e)</li>
+            <li>Fiado</li>
+            <li>Promoção e atacado</li>
+            <li>Etiquetas de preço e entrada de mercadoria</li>
+          </ul>
+          <a class="btn btn-ghost" data-link="comprar" data-plano="essencial" href="mailto:pablo107564@gmail.com?subject=Assinar%20o%20plano%20Essencial%20do%20Balc%C3%A3o%20PDV">Assinar o Essencial</a>
+        </li>
+        <li class="plan top">
+          <p class="seal">Recomendado</p>
+          <h3>Profissional</h3>
+          <p class="for">Para a loja que quer crescer</p>
+          <p class="price">R$&nbsp;229,90<small>/mês</small></p>
+          <p class="seats">Até 3 computadores</p>
+          <ul>
+            <li class="plus">Tudo do Essencial, mais:</li>
+            <li>XML da NF-e, financeiro e contas a pagar</li>
+            <li>Crediário, carnê e grade</li>
+            <li>Mesas, comandas, cozinha e divisão da conta</li>
+            <li>Cashback e WhatsApp</li>
+            <li>Inventário, sugestão de compra e curva ABC</li>
+            <li>Catálogo, kits e encomendas</li>
+          </ul>
+          <a class="btn btn-primary" data-link="comprar" data-plano="profissional" href="mailto:pablo107564@gmail.com?subject=Assinar%20o%20plano%20Profissional%20do%20Balc%C3%A3o%20PDV">Assinar o Profissional</a>
+        </li>
+        <li class="plan">
+          <h3>Premium</h3>
+          <p class="for">Para lojas grandes, com vários caixas</p>
+          <p class="price">R$&nbsp;449,90<small>/mês</small></p>
+          <p class="seats">Até 10 computadores</p>
+          <ul>
+            <li class="plus">Todas as funções do Balcão</li>
+            <li>Taxa de serviço nas mesas</li>
+            <li>Funções novas incluídas automaticamente</li>
+          </ul>
+          <a class="btn btn-ghost" data-link="comprar" data-plano="premium" href="mailto:pablo107564@gmail.com?subject=Assinar%20o%20plano%20Premium%20do%20Balc%C3%A3o%20PDV">Assinar o Premium</a>
+        </li>
+      </ul>
+      <details class="compare">
+        <summary>Comparar todas as funções</summary>
+        <div class="tbl" role="region" aria-label="Funções por plano" tabindex="0">
+          <table>
+            <thead><tr><th scope="col">Função</th><th scope="col">Essencial</th><th scope="col">Profissional</th><th scope="col">Premium</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Nota fiscal (<span style="white-space:nowrap">NFC-e</span>)</th><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Fiado</th><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Promoção e atacado</th><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Etiquetas de preço</th><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Entrada de mercadoria</th><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Importar XML da <span style="white-space:nowrap">NF-e</span></th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Financeiro e contas a pagar</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Envio pelo WhatsApp</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Inventário</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Sugestão de compra</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Curva ABC</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Fidelidade e cashback</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Crediário e carnê</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Grade (tamanho e cor)</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Mesas</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Comanda individual</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Pedido na cozinha e no bar</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Dividir a conta</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Taxa de serviço</th><td class="n"><span class="sr">Não</span></td><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Catálogo para o WhatsApp</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Kits e combos</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+              <tr><th scope="row">Encomendas</th><td class="n"><span class="sr">Não</span></td><td class="y"><span class="sr">Sim</span></td><td class="y"><span class="sr">Sim</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" id="comecar" aria-labelledby="comecar-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">06</span>Como começar</p>
+          <h2 id="comecar-titulo">Vendendo hoje, em 3 passos.</h2>
+        </div>
+        <p class="sub">Sem técnico nem visita: você mesmo instala, em poucos minutos.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <h3>Baixe e instale</h3>
+          <p>Windows 10 e 11, Linux e Mac. Nos primeiros 15 dias, tudo liberado.</p>
+        </li>
+        <li class="step">
+          <h3>Escolha o seu negócio</h3>
+          <p>Mercado, padaria, conveniência, bar ou loja de roupas: o Balcão já vem ajustado para ele.</p>
+        </li>
+        <li class="step">
+          <h3>Cadastre e venda</h3>
+          <p>Importe os produtos por planilha ou pelo XML das notas, abra o caixa e comece a vender.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section paper" id="duvidas" aria-labelledby="duvidas-titulo">
+    <div class="wrap qa">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">07</span>Dúvidas</p>
+        <h2 id="duvidas-titulo">Perguntas de quem está no balcão.</h2>
+        <p class="ask">Não encontrou a resposta?
+          <a class="link" data-link="email" href="mailto:pablo107564@gmail.com?subject=Balc%C3%A3o%20PDV%20-%20Edelmann%20Tecnologia">Escreva para nós<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          <a class="link" data-link="whatsapp" hidden>WhatsApp<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        </p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Precisa de internet para vender?</summary>
+          <p>Não. O Balcão guarda tudo no computador da loja e, sem internet, continua vendendo por até 30 dias. A conexão só é usada para a nota fiscal, as atualizações e a licença.</p>
+        </details>
+        <details>
+          <summary>Emite nota fiscal (NFC-e)?</summary>
+          <p>Sim. A nota sai ao fechar a venda. Se a internet ou a Sefaz estiverem fora do ar, a venda é feita normalmente, e as notas pendentes são emitidas depois, com um botão. A configuração fiscal é feita com o seu contador.</p>
+        </details>
+        <details>
+          <summary>Funciona com a minha impressora, balança e leitor?</summary>
+          <p>Funciona com impressora térmica de cupom, balança de caixa e etiquetas de peso, e com leitor de código de barras de mesa ou de gatilho.</p>
+        </details>
+        <details>
+          <summary>Dá para usar em mais de um caixa?</summary>
+          <p>Sim. Um computador fica como servidor, e os outros caixas se conectam a ele pela rede da loja, sem digitar nada. O número de computadores depende do plano.</p>
+        </details>
+        <details>
+          <summary>E se eu atrasar a mensalidade?</summary>
+          <p>Há alguns dias de tolerância, com aviso. Depois, as vendas novas ficam bloqueadas até o pagamento, mas relatórios, cadastros e exportação de dados continuam funcionando. Seus dados nunca ficam presos.</p>
+        </details>
+        <details>
+          <summary>Posso cancelar quando quiser?</summary>
+          <p>Pode. Não há fidelidade nem multa, e o período já pago vale até o vencimento.</p>
+        </details>
+        <details>
+          <summary>Meus dados ficam seguros?</summary>
+          <p>Os dados das vendas ficam no computador da sua loja, com cópia de segurança automática, e não são enviados para nós. Cada operador tem a própria senha, e as ações importantes pedem a senha do gerente.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato" aria-labelledby="contato-titulo">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">08</span>Contato</p>
+        <h2 id="contato-titulo">Teste o Balcão por 15 dias, grátis.</h2>
+        <p class="sub">Instale, escolha o seu tipo de negócio e comece a vender hoje.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" data-link="download" href="mailto:pablo107564@gmail.com?subject=Teste%20gr%C3%A1tis%20do%20Balc%C3%A3o%20PDV">Pedir o teste por e-mail<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+      <div class="channels">
+        <a class="channel" data-link="email" href="mailto:pablo107564@gmail.com?subject=Balc%C3%A3o%20PDV%20-%20Edelmann%20Tecnologia">
+          <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>E-mail</span>
+          <span class="channel-value" data-email>pablo107564@gmail.com</span>
+          <span class="channel-cta">Escrever mensagem<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+        </a>
+        <a class="channel channel-alt" data-link="whatsapp" hidden>
+          <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>WhatsApp</span>
+          <span class="channel-value" data-numero></span>
+          <span class="channel-cta">Iniciar conversa<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+        </a>
+        <p class="note">O assunto já vem preenchido.</p>
+        <p class="more"><a class="link" href="../#aplicativos">Ver os outros aplicativos<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="../">
+        <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+        <span><b>Edelmann</b> <small>Tecnologia</small></span>
+      </a>
+      <nav aria-label="Rodapé">
+        <ul>
+          <li><a href="../#servicos">Serviços</a></li>
+          <li><a href="../#aplicativos">Aplicativos</a></li>
+          <li><a href="../#sobre">A Edelmann</a></li>
+          <li><a href="../#metodo">Método</a></li>
+          <li><a href="../#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <a class="foot-mail" data-link="email" data-email href="mailto:pablo107564@gmail.com?subject=Balc%C3%A3o%20PDV%20-%20Edelmann%20Tecnologia">pablo107564@gmail.com</a>
+    </div>
+    <div class="legal">
+      <p>© 2026 Edelmann Tecnologia</p>
+      <p class="legal-links">
+        <a data-link="instagram" hidden>Instagram<span class="sr"> (abre em nova aba)</span></a>
+        <a data-link="termos" hidden>Termos e privacidade</a>
+        <a href="#topo">Voltar ao topo</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ===== Configuração da página: preencha e publique de novo =====
+   Campo vazio = o link some, ou a chamada cai no e-mail. */
+var CONFIG = {
+  email: "pablo107564@gmail.com",
+  whatsapp: "",   // DDD + número, ex.: "11 99999-8888" (o 55 entra sozinho)
+  instagram: "",  // só o nome, sem @
+  download: "",   // link do instalador para o teste grátis
+  loja: "",       // site de vendas com pagamento: leva o "Assinar" e os termos
+  play: "",       // não usados nesta página (apps Android e web)
+  apk: "",
+  web: ""
+};
+/* =============================================================== */
+(function(){
+  var d = document;
+  var zap = CONFIG.whatsapp.replace(/\D/g, "");
+  var num = zap.length === 11 ? "(" + zap.slice(0,2) + ") " + zap.slice(2,7) + "-" + zap.slice(7)
+          : zap.length === 10 ? "(" + zap.slice(0,2) + ") " + zap.slice(2,6) + "-" + zap.slice(6) : CONFIG.whatsapp;
+  if (zap.length === 10 || zap.length === 11) zap = "55" + zap;
+  var loja = CONFIG.loja.replace(/\/+$/, "");
+  function mail(s){ return CONFIG.email ? "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent(s) : ""; }
+  function wa(t){ return zap ? "https://wa.me/" + zap + "?text=" + encodeURIComponent(t) : ""; }
+  var url = {
+    email: mail("Balcão PDV - Edelmann Tecnologia"),
+    whatsapp: wa("Olá! Quero saber mais sobre o Balcão PDV."),
+    instagram: CONFIG.instagram ? "https://instagram.com/" + encodeURIComponent(CONFIG.instagram.replace(/^@/, "")) : "",
+    termos: loja ? loja + "/termos" : ""
+  };
+  url.download = CONFIG.download || url.whatsapp || mail("Teste grátis do Balcão PDV");
+  d.querySelectorAll("[data-link]").forEach(function(a){
+    var p = a.getAttribute("data-plano"), u = url[a.getAttribute("data-link")];
+    if (p) {
+      var n = p.charAt(0).toUpperCase() + p.slice(1);
+      u = loja ? loja + "/comprar?plano=" + encodeURIComponent(p)
+        : wa("Olá! Quero assinar o plano " + n + " do Balcão PDV.") || mail("Assinar o plano " + n + " do Balcão PDV");
+    }
+    a.hidden = !u;
+    if (!u) { a.removeAttribute("href"); return; }
+    a.href = u;
+    if (/^https?:/.test(u)) { a.target = "_blank"; a.rel = "noopener"; }
+  });
+  if (CONFIG.download || zap) d.querySelectorAll('[data-link="download"]').forEach(function(a){ a.firstChild.textContent = CONFIG.download ? "Baixar o teste grátis" : "Pedir o teste pelo WhatsApp"; });
+  d.querySelectorAll("[data-numero]").forEach(function(s){ s.textContent = num; });
+  d.querySelectorAll("[data-email]").forEach(function(s){ s.textContent = CONFIG.email; });
+
+  // Menu do celular
+  var t = d.querySelector(".menu-toggle");
+  if (!t) return;
+  function set(o){ t.setAttribute("aria-expanded", String(o)); }
+  t.addEventListener("click", function(){ set(t.getAttribute("aria-expanded") !== "true"); });
+  d.addEventListener("click", function(e){ if (t.getAttribute("aria-expanded") === "true" && (e.target.closest("a") || !e.target.closest(".bar"))) set(false); });
+  d.addEventListener("keydown", function(e){ if (e.key === "Escape" && t.getAttribute("aria-expanded") === "true") { set(false); t.focus(); } });
+  var mq = matchMedia("(min-width:960px)"), wide = function(e){ if (e.matches) set(false); };
+  if (mq.addEventListener) mq.addEventListener("change", wide); else if (mq.addListener) mq.addListener(wide);
+})();
+</script>
+</body>
+</html>

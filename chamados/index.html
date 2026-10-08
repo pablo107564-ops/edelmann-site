@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sistema de Chamados | Edelmann Tecnologia</title>
+<meta name="description" content="Sistema web de chamados de suporte no servidor da própria empresa, com perfis, base de conhecimento, painel, relatórios e assistente de IA opcional.">
+<link rel="canonical" href="https://edelmann.com.br/chamados/">
+<meta name="theme-color" content="#0C1730">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Edelmann Tecnologia">
+<meta property="og:title" content="Sistema de Chamados | Edelmann Tecnologia">
+<meta property="og:description" content="Pedidos de suporte abertos, atendidos e acompanhados pelo navegador. Cada fechamento exige causa e solução, que formam a base de conhecimento da equipe.">
+<meta property="og:url" content="https://edelmann.com.br/chamados/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sistema de Chamados | Edelmann Tecnologia">
+<meta name="twitter:description" content="Pedidos de suporte abertos, atendidos e acompanhados pelo navegador. Cada fechamento exige causa e solução, que formam a base de conhecimento da equipe.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Crect%20width='48'%20height='48'%20rx='2'%20fill='%2313284B'/%3E%3Crect%20x='3.5'%20y='3.5'%20width='41'%20height='41'%20fill='none'%20stroke='%23C9A96B'/%3E%3Cpath%20fill='%23E2CC9C'%20d='M13.75%2012h20.5v6h-2v-3H20.25v7.5h7.4v-1.5h1.6v5.6h-1.6v-1.5h-7.4V33h12v-3h2v6H13.75v-3h2.5V15h-2.5z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Sistema de Chamados",
+      "url": "https://edelmann.com.br/chamados/",
+      "description": "Sistema web para abrir, atender e acompanhar chamados de suporte na rede interna da organização, com base de conhecimento, painel de indicadores, relatórios e assistente de IA opcional.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Ubuntu Server 24.04",
+      "inLanguage": "pt-BR",
+      "publisher": { "@type": "Organization", "name": "Edelmann Tecnologia", "url": "https://edelmann.com.br/" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://edelmann.com.br/" },
+        { "@type": "ListItem", "position": 2, "name": "Aplicativos", "item": "https://edelmann.com.br/#aplicativos" },
+        { "@type": "ListItem", "position": 3, "name": "Sistema de Chamados", "item": "https://edelmann.com.br/chamados/" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#FAF8F4;
+  --paper:#FFFFFF;
+  --sand:#F2EDE4;
+  --ink:#0F1B33;
+  --navy:#13284B;
+  --night:#0C1730;
+  --text:#2B3446;
+  --muted:#5A6477;
+  --line:#E5DFD4;
+  --line-2:#D5CDBF;
+  --bar:#E4DDD0;
+  --bar-2:#CBC1AF;
+  --gold:#B8955A;
+  --gold-ink:#8A6A2B;
+  --gold-soft:#D9C49A;
+  --live:#2E6B4F;
+  --on-night:#AEB8CA;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --max:1200px;
+  --gutter:clamp(1.25rem,5vw,3rem);
+  --section:clamp(4.5rem,9vw,8rem);
+  --h2:clamp(2.125rem,1.3rem + 2.9vw,3.5rem);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* Base */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:5.5rem}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,p,ul,ol,dl,dd{margin:0}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;color:var(--ink);letter-spacing:-.015em;text-wrap:balance}
+p{text-wrap:pretty}
+a{color:inherit}
+svg{display:block}
+::selection{background:var(--gold-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--gold-ink);outline-offset:3px}
+main:focus{outline:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:1rem;top:-6rem;z-index:100;padding:.75rem 1.25rem;background:var(--ink);color:#fff;text-decoration:none;font-weight:500}
+.skip:focus{top:1rem}
+.wrap{width:100%;max-width:calc(var(--max) + 2 * var(--gutter));margin-inline:auto;padding-inline:var(--gutter)}
+.i{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* Botões e links */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;min-height:3.25rem;padding:.9rem 1.6rem;border:1px solid transparent;border-radius:2px;font:500 .9375rem/1.2 var(--sans);letter-spacing:.01em;text-decoration:none;white-space:nowrap;transition:background-color .25s,border-color .25s,color .25s}
+.btn .i,.link .i{width:18px;height:18px;transition:transform .3s var(--ease)}
+.btn:hover .i,.link:hover .i{transform:translateX(4px)}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--night)}
+.btn-ghost{border-color:var(--line-2);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-sm{min-height:2.75rem;padding:.6rem 1.15rem;font-size:.875rem}
+.link{display:inline-flex;align-items:center;gap:.5rem;font-weight:500;color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:.3em}
+
+/* Rótulo de seção */
+.eyebrow{display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem;font:500 .75rem/1.2 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink)}
+.eyebrow::before{content:"";width:2.5rem;height:1px;background:var(--gold)}
+.eyebrow .n{order:-1;font:italic 400 1rem/1 var(--serif);letter-spacing:0}
+
+/* Cabeçalho */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.92);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;min-height:4.75rem}
+.brand{display:inline-flex;align-items:center;gap:.8rem;color:var(--ink);text-decoration:none}
+.brand svg{width:40px;height:40px;flex:none}
+.brand span{display:flex;flex-direction:column;line-height:1}
+.brand b{font:500 1.0625rem/1 var(--serif);letter-spacing:.16em;text-transform:uppercase}
+.brand small{margin-top:.4rem;font:500 .6875rem/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.menu ul{display:flex;align-items:center;gap:2rem;list-style:none;padding:0}
+.menu a:not(.btn){position:relative;display:inline-block;padding:.4rem 0;font-size:.9375rem;font-weight:500;color:var(--text);text-decoration:none;transition:color .2s}
+.menu a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.menu a:not(.btn):hover{color:var(--ink)}
+.menu a:not(.btn):hover::after{transform:scaleX(1)}
+.bar-cta,.menu-toggle,.cta-s{display:none}
+.menu-toggle{align-items:center;justify-content:center;gap:.7rem;min-width:2.75rem;min-height:2.75rem;padding:.5rem .95rem;border:1px solid var(--line-2);border-radius:2px;background:transparent;color:var(--ink);font:500 .875rem/1 var(--sans);cursor:pointer}
+.burger{position:relative;width:18px;height:10px}
+.burger::before,.burger::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .3s var(--ease),top .3s var(--ease)}
+.burger::before{top:0}
+.burger::after{top:8.5px}
+[aria-expanded="true"] .burger::before{top:4.25px;transform:rotate(45deg)}
+[aria-expanded="true"] .burger::after{top:4.25px;transform:rotate(-45deg)}
+
+@media (max-width:959.98px){
+  .bar{flex-wrap:wrap}
+  .menu{width:100%}
+  .menu ul{flex-wrap:wrap;gap:.25rem 1.5rem;padding-bottom:1rem}
+  html:not(.js) .site-header{position:static}
+  .js .bar{flex-wrap:nowrap;gap:.5rem}
+  .js .brand{margin-right:auto}
+  .js .bar-cta,.js .menu-toggle{display:inline-flex}
+  .js .menu{display:none;position:absolute;top:100%;left:0;right:0;width:auto;padding:.5rem var(--gutter) 2rem;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 30px 40px -30px rgba(15,27,51,.3)}
+  .js .menu-toggle[aria-expanded="true"]+.menu{display:block}
+  .js .menu ul{flex-direction:column;align-items:stretch;gap:0;padding:0}
+  .js .menu a:not(.btn){display:block;padding:1rem 0;border-bottom:1px solid var(--line);font:400 1.375rem/1.2 var(--serif);color:var(--ink)}
+  .js .menu a:not(.btn)::after{display:none}
+  .js .menu-cta{display:none}
+}
+@media (max-width:559.98px){.cta-l{display:none}.cta-s{display:inline}}
+@media (max-width:479.98px){
+  .brand{gap:.65rem}
+  .brand svg{width:36px;height:36px}
+  .brand b{font-size:1rem;letter-spacing:.06em}
+  .brand small{letter-spacing:.2em}
+  .bar-cta{padding-inline:.8rem;font-size:.8125rem}
+  .menu-toggle{padding:.5rem}
+  .menu-toggle .t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+
+/* Trilha */
+.crumbs{margin-bottom:2.25rem;font-size:.875rem;color:var(--muted)}
+.crumbs ol{display:flex;flex-wrap:wrap;gap:.25rem .6rem;padding:0;list-style:none}
+.crumbs li+li::before{content:"›";content:"›" / "";margin-right:.6rem;color:var(--gold-ink)}
+.crumbs a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:.25em}
+.crumbs a:hover{text-decoration-color:var(--gold)}
+.crumbs [aria-current]{font-weight:500;color:var(--ink)}
+
+/* Abertura */
+.hero{position:relative;overflow:hidden;padding-block:clamp(2rem,5vw,3.5rem) clamp(4.5rem,9vw,7rem);border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60rem 30rem at 85% -10%,rgba(184,149,90,.13),transparent 60%),linear-gradient(to right,rgba(15,27,51,.045) 1px,transparent 1px) 0 0/calc(100% / 6) 100%;-webkit-mask-image:linear-gradient(#000 45%,transparent);mask-image:linear-gradient(#000 45%,transparent)}
+.hero .wrap{position:relative}
+.hero-grid{display:grid;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.5rem,1.35rem + 4.2vw,4.5rem);line-height:1.04;letter-spacing:-.025em}
+.hero h1 span,.hero h1 em{display:block}
+.hero h1 em{font-style:italic;color:var(--gold-ink)}
+.lead{max-width:35rem;margin-top:1.75rem;font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.6;color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:.75rem 1rem;margin-top:2.5rem}
+.status{align-self:flex-start;display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.5rem;padding:.4rem .85rem;border:1px solid var(--line);border-radius:99px;background:var(--paper);font-size:.8125rem;font-weight:500;line-height:1.3;color:var(--ink)}
+.status::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px rgba(46,107,79,.14)}
+.panel{width:100%;max-width:540px;margin:0;filter:drop-shadow(0 30px 40px rgba(15,27,51,.08))}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:4rem}
+  .panel{justify-self:end}
+}
+
+/* Ilustrações */
+.art{background:var(--sand);border:1px solid var(--line)}
+.art svg{width:100%;height:auto}
+.art .f{fill:#fff;stroke:var(--line-2)}
+.art .s{fill:var(--sand)}
+.art .k{fill:var(--sand);stroke:var(--line-2)}
+.art .n{fill:var(--navy)}
+.art .g{fill:var(--gold)}
+.art .lv{fill:var(--live)}
+.art .o{fill:none;stroke:var(--line-2)}
+.art .b,.art .b2,.art .bg,.art .bw,.art .bn{fill:none;stroke-linecap:round;stroke-width:6}
+.art .b{stroke:var(--bar)}
+.art .b2{stroke:var(--bar-2)}
+.art .bg{stroke:var(--gold)}
+.art .bw{stroke:rgba(255,255,255,.42)}
+.art .bn{stroke:var(--navy)}
+.art .thin{stroke-width:4}
+.art .big{stroke-width:11}
+.art .ln,.art .lg{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.art .ln{stroke:var(--navy)}
+.art .lg{stroke:var(--gold)}
+.art .ring{fill:none;stroke:var(--bar);stroke-width:9}
+.art .arc{stroke:var(--gold)}
+.art .arc2{stroke:var(--navy)}
+.art .go{fill:none;stroke:var(--gold)}
+
+/* Seções */
+.section{padding-block:var(--section)}
+.paper{background:var(--paper);border-block:1px solid var(--line)}
+.head{display:grid;gap:1.25rem 4rem;margin-bottom:clamp(2.75rem,6vw,5rem)}
+.head h2,.about h2,.contact h2,.duo h2,.qa h2{font-size:var(--h2);line-height:1.08;letter-spacing:-.02em}
+.sub{max-width:33rem;color:var(--muted)}
+@media (min-width:900px){
+  .head{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end}
+  .head .sub{justify-self:end}
+}
+
+/* Ciclo */
+.steps{display:grid;grid-template-columns:1fr;row-gap:3rem;padding:0;list-style:none;counter-reset:s}
+.step{position:relative;padding:2.25rem 2rem 0 0;border-top:1px solid var(--line-2)}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);content:counter(s,decimal-leading-zero) / "";display:block;margin-bottom:1.5rem;font:400 3.25rem/1 var(--serif);letter-spacing:-.02em;color:var(--gold-ink)}
+.step::after{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;background:var(--bg);border:1px solid var(--gold);transform:rotate(45deg)}
+.step h3{margin-bottom:.6rem;font-size:1.375rem;line-height:1.25}
+.step p{max-width:20rem;font-size:1rem;color:var(--muted)}
+@media (min-width:760px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1080px){.steps{grid-template-columns:repeat(4,1fr)}}
+
+/* Perfis */
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem}
+@media (min-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{display:flex;flex-direction:column;padding:clamp(1.5rem,3vw,2.5rem);background:var(--bg);border:1px solid var(--line)}
+.card-top{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+.card-top .i{width:30px;height:30px;stroke-width:1.25;color:var(--gold-ink)}
+.card h3{font-size:clamp(1.5rem,1.3rem + .8vw,1.875rem);line-height:1.15}
+.card>p{margin-bottom:1.75rem;color:var(--muted)}
+.feats{display:grid;gap:.6rem;margin-top:auto;padding:1.5rem 0 0;list-style:none;border-top:1px solid var(--line)}
+.feats li{display:flex;gap:.75rem;font-size:.9375rem;line-height:1.5}
+.feats li::before{content:"";flex:none;width:.85rem;height:1px;margin-top:.75em;background:var(--gold)}
+
+/* Gestão */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:1px;padding:0;list-style:none;background:var(--line);border:1px solid var(--line)}
+.service{position:relative;display:flex;flex-direction:column;padding:clamp(1.75rem,3vw,2.75rem);background:var(--bg);transition:background-color .35s}
+.service::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.service:hover{background:var(--paper)}
+.service:hover::before{transform:scaleX(1)}
+.service-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2.25rem}
+.service .i{width:32px;height:32px;stroke-width:1.25;color:var(--gold-ink)}
+.num{font:italic 400 1rem/1 var(--serif);color:var(--muted)}
+.service h3{margin-bottom:.75rem;font-size:1.5rem;line-height:1.2}
+.service>p{margin-bottom:1.5rem;font-size:1rem;color:var(--muted)}
+
+/* Assistente */
+.duo{display:grid;gap:clamp(2.5rem,5vw,5rem)}
+.duo .sub{margin-top:1.25rem}
+.duo .art{margin-top:2.5rem}
+.flow{margin-top:1.5rem;padding:0;list-style:none;counter-reset:f;border-top:1px solid var(--line)}
+.flow li{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);font-size:1rem}
+.flow li::before{counter-increment:f;content:counter(f);content:counter(f) / "";flex:none;width:1.25rem;font:italic 400 1.25rem/1.3 var(--serif);color:var(--gold-ink)}
+.duo h3{margin-bottom:1.25rem;font-size:1.5rem;line-height:1.2}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));gap:1rem;margin-bottom:3rem}
+.opt{padding:1.5rem;background:var(--bg);border:1px solid var(--line)}
+.opt h4{margin-bottom:.5rem;font-size:1.25rem;line-height:1.2}
+.opt p{font-size:.9375rem;color:var(--muted)}
+.checklist{padding:0;list-style:none;border-top:1px solid var(--line)}
+.checklist li{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);font-size:1rem}
+.checklist li::before{content:"";flex:none;width:.85rem;height:1px;margin-top:.8em;background:var(--gold)}
+@media (min-width:960px){.duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}}
+
+/* Segurança */
+.band{background:var(--night);color:var(--on-night)}
+.band .eyebrow{color:var(--gold-soft)}
+.band :focus-visible{outline-color:var(--gold-soft)}
+.about{display:grid;gap:clamp(3rem,6vw,6rem)}
+.about h2{color:#fff}
+.about-text{max-width:32rem;margin-top:2rem;font-size:1.125rem;color:#C3CBD9}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));column-gap:2.5rem;padding:0;list-style:none;counter-reset:p;align-self:end;border-top:1px solid rgba(255,255,255,.12)}
+.principles li{padding:2rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.principles h3{display:flex;align-items:baseline;gap:.85rem;margin-bottom:.6rem;font-size:1.375rem;color:#fff}
+.principles h3::before{counter-increment:p;content:counter(p,upper-roman);content:counter(p,upper-roman) / "";min-width:1.5rem;font:italic 400 1rem/1 var(--serif);color:var(--gold-soft)}
+.principles p{font-size:1rem}
+@media (min-width:960px){.about{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+
+/* Perguntas */
+.qa{display:grid;gap:3rem}
+.faq{border-top:1px solid var(--line-2)}
+.faq details{border-bottom:1px solid var(--line-2)}
+.faq summary{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:1.4rem 0;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";content:"+" / "";flex:none;font:400 1.75rem/1 var(--serif);color:var(--gold-ink);transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq h3{font-size:clamp(1.1875rem,1.1rem + .4vw,1.375rem);line-height:1.3}
+.faq summary:hover h3{color:var(--navy)}
+.faq p{max-width:40rem;padding-bottom:1.5rem;color:var(--muted)}
+@media (min-width:960px){.qa{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:6rem;align-items:start}}
+
+/* Contato */
+.contact{display:grid;gap:3rem}
+.contact .sub{margin-top:1.25rem}
+.check-label{margin:2.5rem 0 1rem;font-size:.9375rem;font-weight:600;color:var(--ink)}
+.channel{display:flex;flex-direction:column;gap:1rem;padding:clamp(1.5rem,4vw,2.75rem);background:var(--night);border:1px solid var(--night);color:#fff;text-decoration:none;transition:background-color .3s,border-color .3s}
+.channel:hover{background:var(--navy)}
+.channel:focus-visible{outline-color:var(--gold-ink)}
+.channel-label{display:flex;align-items:center;gap:.6rem;font:500 .75rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft)}
+.channel-label .i{width:18px;height:18px}
+.channel-value{font:400 clamp(1.2rem,.95rem + 1.5vw,2rem)/1.2 var(--serif);overflow-wrap:anywhere}
+.channel-cta{display:inline-flex;align-items:center;gap:.6rem;margin-top:.75rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.14);font-size:.9375rem;font-weight:500}
+.channel-cta .i{width:18px;height:18px;transition:transform .3s var(--ease)}
+.channel:hover .channel-cta .i{transform:translateX(4px)}
+.note{margin-top:1rem;font-size:.875rem;color:var(--muted)}
+.more{margin-top:2rem}
+@media (min-width:960px){.contact{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6rem;align-items:start}}
+
+/* Rodapé */
+.site-footer{padding-block:4rem 2rem;background:var(--night);color:var(--on-night);font-size:.9375rem}
+.site-footer a{color:#DCE2EC;text-decoration:none;transition:color .2s}
+.site-footer a:hover{color:var(--gold-soft)}
+.site-footer :focus-visible{outline-color:var(--gold-soft)}
+.site-footer .brand b{color:#fff}
+.site-footer .brand small{color:var(--on-night)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem 3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot ul{display:flex;flex-wrap:wrap;gap:.75rem 2rem;padding:0;list-style:none}
+.foot-mail{overflow-wrap:anywhere}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:1.5rem;font-size:.875rem}
+
+/* Movimento */
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
+}
+@media print{.site-header{position:static}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="eg" d="M13.75 12h20.5v6h-2v-3H20.25v7.5h7.4v-1.5h1.6v5.6h-1.6v-1.5h-7.4V33h12v-3h2v6H13.75v-3h2.5V15h-2.5z"/>
+    <symbol id="logo" viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="2" fill="#13284B"/>
+      <rect x="3.5" y="3.5" width="41" height="41" fill="none" stroke="#C9A96B"/>
+      <use href="#eg" fill="#E2CC9C"/>
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.75"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></symbol>
+    <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.25"/><path d="M3 19.5a6 6 0 0 1 12 0"/><path d="M15.5 4.9a3.25 3.25 0 0 1 0 6.2M17.5 13.6a6 6 0 0 1 3.5 5.9"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15.5" r="4.5"/><path d="m11.2 12.3 8.3-8.3M16.5 7l2.5 2.5M14 9.5l2 2"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1.2"/><path d="M8.5 21h7M12 17v4M7 13.5l3-3 2.5 2 4.5-4.5"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6.5 3h8l4 4v13.5a.5.5 0 0 1-.5.5H6.5a.5.5 0 0 1-.5-.5v-17a.5.5 0 0 1 .5-.5Z"/><path d="M14.5 3v4h4M9 12h6M9 15.5h6M9 19h3"/></symbol>
+    <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1.2"/><path d="M9 4v16M15 4v16M5 7.5h2M11 7.5h2M17 7.5h2M5 11h2M11 11h2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header" id="topo">
+  <div class="wrap bar">
+    <a class="brand" href="../">
+      <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+      <span><b>Edelmann</b> <small>Tecnologia</small></span>
+    </a>
+    <a class="btn btn-primary btn-sm bar-cta" href="../#contato"><span class="cta-l">Solicitar orçamento</span><span class="cta-s">Orçamento</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="burger" aria-hidden="true"></span><span class="t">Menu</span>
+    </button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="../#servicos">Serviços</a></li>
+        <li><a href="../#aplicativos">Aplicativos</a></li>
+        <li><a href="../#sobre">A Edelmann</a></li>
+        <li><a href="../#metodo">Método</a></li>
+        <li class="menu-cta"><a class="btn btn-primary btn-sm" href="../#contato">Solicitar orçamento</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+
+  <section class="hero" aria-labelledby="titulo">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Trilha de navegação">
+        <ol>
+          <li><a href="../">Início</a></li>
+          <li><a href="../#aplicativos">Aplicativos</a></li>
+          <li><span aria-current="page">Sistema de Chamados</span></li>
+        </ol>
+      </nav>
+      <div class="hero-grid">
+        <div>
+          <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
+          <h1 id="titulo"><span>Sistema de Chamados<span class="sr">:</span></span> <em>cada atendimento ensina o próximo.</em></h1>
+          <p class="lead">Os pedidos de suporte são abertos, atendidos e acompanhados pelo navegador, num servidor da própria empresa. Todo fechamento exige causa e solução, que passam a compor uma base de conhecimento pesquisável.</p>
+          <div class="ctas">
+            <a class="btn btn-primary" href="mailto:pablo107564@gmail.com?subject=Sistema%20de%20Chamados%20-%20Edelmann%20Tecnologia">Solicitar orçamento<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="#ciclo">Ver como funciona</a>
+          </div>
+        </div>
+        <div class="panel art" aria-hidden="true">
+          <svg viewBox="0 0 480 360" focusable="false">
+            <rect class="f" x="8" y="8" width="464" height="344" rx="8"/>
+            <path class="o" d="M8 40h464"/>
+            <circle class="k" cx="26" cy="24" r="4"/><circle class="k" cx="40" cy="24" r="4"/><circle class="k" cx="54" cy="24" r="4"/>
+            <path class="b2" d="M80 24h96"/>
+            <path class="b" d="M392 24h36"/><circle class="lv" cx="444" cy="24" r="4"/>
+            <rect class="n" x="24" y="56" width="100" height="64" rx="4"/>
+            <path class="bw thin" d="M38 74h44"/><path class="bg big" d="M38 100h30"/>
+            <rect class="k" x="136" y="56" width="100" height="64" rx="4"/>
+            <path class="b2 thin" d="M150 74h52"/><path class="bn big" d="M150 100h22"/>
+            <rect class="k" x="248" y="56" width="100" height="64" rx="4"/>
+            <path class="b2 thin" d="M262 74h58"/><path class="bn big" d="M262 100h36"/>
+            <rect class="k" x="360" y="56" width="100" height="64" rx="4"/>
+            <path class="b2 thin" d="M374 74h40"/><path class="bn big" d="M374 100h18"/>
+            <rect class="k" x="24" y="136" width="276" height="124" rx="4"/>
+            <path class="b2 thin" d="M40 154h76"/>
+            <circle class="n" cx="222" cy="154" r="3.5"/><path class="b2 thin" d="M231 154h16"/>
+            <circle class="g" cx="262" cy="154" r="3.5"/><path class="b2 thin" d="M271 154h16"/>
+            <path class="o" d="M40 180h244M40 208h244M40 236h244"/>
+            <path class="ln" d="M40 222l35-14 35 6 35-24 35 10 35-20 35 8 34-12"/>
+            <path class="lg" d="M40 238l35-8 35-6 35 2 35-18 35 6 35-16 34 4"/>
+            <rect class="k" x="312" y="136" width="148" height="124" rx="4"/>
+            <path class="b2 thin" d="M328 154h56"/>
+            <circle class="ring" cx="386" cy="210" r="30"/>
+            <circle class="ring arc" cx="386" cy="210" r="30" stroke-dasharray="84 105" transform="rotate(-90 386 210)"/>
+            <circle class="ring arc2" cx="386" cy="210" r="30" stroke-dasharray="46 143" stroke-dashoffset="-88" transform="rotate(-90 386 210)"/>
+            <path class="o" d="M24 298h436M24 322h436"/>
+            <circle class="g" cx="34" cy="286" r="4"/><path class="b2" d="M50 286h150"/><path class="b" d="M300 286h56M380 286h72"/>
+            <circle class="n" cx="34" cy="310" r="4"/><path class="b2" d="M50 310h116"/><path class="b" d="M300 310h56M380 310h72"/>
+            <circle class="f" cx="34" cy="334" r="4"/><path class="b2" d="M50 334h134"/><path class="b" d="M300 334h56M380 334h72"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ciclo" aria-labelledby="ciclo-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">01</span>Como funciona</p>
+          <h2 id="ciclo-titulo">Do pedido à base de conhecimento.</h2>
+        </div>
+        <p class="sub">A abertura, as atribuições, as mudanças de status e urgência e os comentários ficam no histórico do chamado, com autor e data.</p>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <h3>Abertura</h3>
+          <p>O usuário descreve o problema e informa categoria, urgência, local, ramal e patrimônio. É possível anexar fotos, capturas de tela e PDFs.</p>
+        </li>
+        <li class="step">
+          <h3>Atendimento</h3>
+          <p>O técnico assume o pedido na fila e conversa com o usuário. Se faltar informação, o status muda para Aguardando usuário até a resposta.</p>
+        </li>
+        <li class="step">
+          <h3>Resolução</h3>
+          <p>Para fechar, é preciso confirmar a categoria e descrever a causa e a solução aplicada. Nenhum perfil fecha sem esse registro.</p>
+        </li>
+        <li class="step">
+          <h3>Conhecimento</h3>
+          <p>Esse conteúdo alimenta uma base com filtro por categoria e busca que ignora acentos. Ao atender, o técnico vê como casos parecidos foram resolvidos.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section paper" id="perfis" aria-labelledby="perfis-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">02</span>Para quem</p>
+          <h2 id="perfis-titulo">Quem pede, quem atende e quem coordena.</h2>
+        </div>
+        <p class="sub">Cada um vê as telas da sua função. Mudanças de perfil e desativações valem na hora, sem que a pessoa precise sair e entrar de novo.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-user"/></svg><h3>Usuário</h3></div>
+          <p>Abre pedidos pelo navegador e acompanha os seus.</p>
+          <ul class="feats">
+            <li>Guia ilustrado de acesso e abertura</li>
+            <li>Resposta ao técnico no próprio chamado</li>
+            <li>Reabertura de chamados fechados</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-tool"/></svg><h3>Técnico</h3></div>
+          <p>Trabalha numa fila dividida nas abas Não atribuídos, Meus chamados e Fechados por mim.</p>
+          <ul class="feats">
+            <li>Assume chamados livres e pode devolvê-los à fila</li>
+            <li>Altera apenas os que assumiu</li>
+            <li>Consulta a base de conhecimento</li>
+            <li>Recebe atividades e registra o andamento</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-team"/></svg><h3>Gerente</h3></div>
+          <p>Distribui o trabalho, acompanha os resultados e também atende.</p>
+          <ul class="feats">
+            <li>Contadores por status e filtros por urgência, setor, técnico e texto</li>
+            <li>Atribuição, urgência, status e comentário num só formulário</li>
+            <li>Exclusão de chamados com confirmação</li>
+            <li>Painel, relatórios e quadro de atividades</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-key"/></svg><h3>Administrador</h3></div>
+          <p>Tem as funções do gerente e cuida das contas de acesso.</p>
+          <ul class="feats">
+            <li>Cadastro, edição, ativação e desativação de usuários</li>
+            <li>Redefinição de senhas, registrada no log de segurança</li>
+            <li>Bloqueio contra rebaixar ou desativar a própria conta, para o sistema não ficar sem administrador</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="gestao" aria-labelledby="gestao-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">03</span>Gestão</p>
+          <h2 id="gestao-titulo">Do retrato do dia ao histórico do período.</h2>
+        </div>
+        <p class="sub">O painel mostra o momento, os relatórios cobrem qualquer período e o quadro organiza o trabalho da equipe.</p>
+      </div>
+      <ul class="services">
+        <li class="service">
+          <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chart"/></svg><span class="num" aria-hidden="true">01</span></div>
+          <h3>Painel de parede</h3>
+          <p>Atualiza sozinho a cada 60 segundos e exibe a fila atual sem o nome de quem abriu cada pedido.</p>
+          <ul class="feats">
+            <li>Chamados na fila, em andamento, à espera do usuário e fechados hoje</li>
+            <li>Tempo médio de solução</li>
+            <li>Abertos e fechados nos últimos 30 dias</li>
+            <li>Gráficos por urgência, categoria e setor</li>
+          </ul>
+        </li>
+        <li class="service">
+          <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-file"/></svg><span class="num" aria-hidden="true">02</span></div>
+          <h3>Relatórios</h3>
+          <p>Filtram por período, status, setor, categoria e técnico. Mostram o total, os chamados em aberto, os fechados e o tempo médio de solução.</p>
+          <ul class="feats">
+            <li>Gráficos por status e categoria</li>
+            <li>Exportação em CSV, que abre corretamente no Excel, ou em .xlsx</li>
+          </ul>
+        </li>
+        <li class="service">
+          <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-board"/></svg><span class="num" aria-hidden="true">03</span></div>
+          <h3>Quadro de atividades</h3>
+          <p>Gerentes e administradores criam atividades, com prioridade e prazo opcional, e as direcionam a alguém da equipe.</p>
+          <ul class="feats">
+            <li>Colunas A fazer, Em andamento e Concluída</li>
+            <li>Andamentos registrados pelo responsável</li>
+            <li>Histórico em cada cartão</li>
+            <li>Atividades concluídas entram na base de conhecimento</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section paper" id="assistente" aria-labelledby="assistente-titulo">
+    <div class="wrap duo">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">04</span>Assistente de IA</p>
+        <h2 id="assistente-titulo">Ajuda ao usuário antes de abrir o chamado.</h2>
+        <p class="sub">É opcional e vem desligado. A instalação pode até deixá-lo de fora, sem mudar nada no restante do sistema.</p>
+        <div class="art" aria-hidden="true">
+          <svg viewBox="0 0 480 220" focusable="false">
+            <rect class="f" x="20" y="12" width="440" height="196" rx="6"/>
+            <path class="o" d="M20 46h440"/>
+            <circle class="n" cx="46" cy="29" r="9"/>
+            <path class="b2" d="M64 25h80"/><path class="b thin" d="M64 36h48"/>
+            <rect class="s" x="236" y="60" width="200" height="34" rx="8"/>
+            <path class="b2" d="M252 77h150"/>
+            <rect class="k" x="44" y="104" width="260" height="62" rx="8"/>
+            <circle class="g" cx="62" cy="118" r="4"/><path class="b2 thin" d="M74 118h140"/>
+            <circle class="g" cx="62" cy="135" r="4"/><path class="b2 thin" d="M74 135h170"/>
+            <circle class="g" cx="62" cy="152" r="4"/><path class="b2 thin" d="M74 152h120"/>
+            <rect class="n" x="44" y="176" width="140" height="22" rx="4"/>
+            <path class="bw thin" d="M60 187h90"/>
+            <rect class="go" x="194" y="176" width="160" height="22" rx="4"/>
+            <path class="bg thin" d="M210 187h112"/>
+          </svg>
+        </div>
+        <ol class="flow">
+          <li>O usuário descreve o problema na tela de abertura.</li>
+          <li>O assistente faz perguntas objetivas, consulta a base de conhecimento e sugere até três passos seguros por vez.</li>
+          <li>Se resolver, nenhum chamado é aberto. Se não, ele preenche o formulário com o resumo e o que já foi tentado, e o usuário revisa antes de enviar.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>Duas formas de funcionar</h3>
+        <div class="opts">
+          <div class="opt">
+            <h4>Local</h4>
+            <p>Roda no próprio servidor, com Ollama, e as conversas não saem da rede. A resposta aparece enquanto é escrita.</p>
+          </div>
+          <div class="opt">
+            <h4>Em nuvem</h4>
+            <p>Usa a API da Anthropic, paga por uso e mais capaz em casos difíceis. Nesse modo, os textos saem da rede.</p>
+          </div>
+        </div>
+        <h3>Limites e registro</h3>
+        <ul class="checklist">
+          <li>Não pede nem aceita senhas.</li>
+          <li>Não orienta a desativar antivírus ou firewall, a mexer no registro ou na BIOS nem a instalar programas.</li>
+          <li>Diante de suspeita de vírus ou golpe, orienta a não clicar, desconectar o cabo e abrir chamado.</li>
+          <li>Se o modelo estiver indisponível, exibe um aviso e o formulário segue funcionando.</li>
+          <li>Cada conversa fica registrada com o resultado: resolvida, convertida em chamado ou abandonada.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="seguranca" aria-labelledby="seguranca-titulo">
+    <div class="wrap about">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">05</span>Segurança e instalação</p>
+        <h2 id="seguranca-titulo">No servidor da empresa, com acesso protegido.</h2>
+        <p class="about-text">O sistema roda em Ubuntu Server 24.04, e os usuários o acessam pelo navegador, na rede interna. Um script instala as dependências, configura o servidor web com cabeçalhos de segurança e agenda o backup diário.</p>
+      </div>
+      <ul class="principles">
+        <li>
+          <h3>Senhas</h3>
+          <p>Guardadas com hash PBKDF2-SHA256 e trocadas no primeiro acesso. Cinco tentativas erradas bloqueiam a entrada por 15 minutos.</p>
+        </li>
+        <li>
+          <h3>Registro</h3>
+          <p>Logins e redefinições de senha ficam num log de segurança que não expõe senhas.</p>
+        </li>
+        <li>
+          <h3>Backup</h3>
+          <p>Cópia diária do banco, com os anexos. Recomendamos guardá-la também fora do servidor.</p>
+        </li>
+        <li>
+          <h3>Sigilo</h3>
+          <p>Soluções com dados sensíveis podem ficar fora da base de conhecimento, registradas apenas no chamado.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="perguntas" aria-labelledby="perguntas-titulo">
+    <div class="wrap qa">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">06</span>Perguntas</p>
+        <h2 id="perguntas-titulo">Antes de decidir.</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary><h3>Que servidor é preciso?</h3></summary>
+          <p>Uma máquina física ou virtual com Ubuntu Server 24.04. Só para os chamados, bastam 2 vCPUs, 4 GB de memória e 32 GB de disco; com o assistente local, recomendamos 6 vCPUs, 10 GB de memória e 64 GB de disco.</p>
+        </details>
+        <details>
+          <summary><h3>O assistente exige placa de vídeo?</h3></summary>
+          <p>Não. O modelo local roda no processador, e mais núcleos deixam as respostas mais rápidas; uma placa NVIDIA acelera bastante. A primeira pergunta após ligar o servidor demora mais, porque o modelo é carregado na memória.</p>
+        </details>
+        <details>
+          <summary><h3>Há limite para anexos?</h3></summary>
+          <p>Até 5 MB por arquivo e 10 arquivos por chamado. As imagens aparecem na própria ficha, e todos os anexos podem ser baixados.</p>
+        </details>
+        <details>
+          <summary><h3>Como o sistema é atualizado?</h3></summary>
+          <p>Com os arquivos novos no servidor, basta executar de novo o script de instalação. Ele preserva o banco de dados.</p>
+        </details>
+        <details>
+          <summary><h3>Quem pode redefinir senhas?</h3></summary>
+          <p>Técnicos, gerentes e administradores. Cada redefinição fica no log de segurança.</p>
+        </details>
+        <details>
+          <summary><h3>Em que tecnologia foi feito?</h3></summary>
+          <p>Em Python, com a biblioteca Streamlit e banco SQLite, sem dependências pesadas.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section paper" id="contato" aria-labelledby="contato-titulo">
+    <div class="wrap contact">
+      <div>
+        <p class="eyebrow"><span class="n" aria-hidden="true">07</span>Contato</p>
+        <h2 id="contato-titulo">Vamos conversar.</h2>
+        <p class="sub">Conte como o suporte funciona hoje. Respondemos com os próximos passos e, quando for o caso, com um orçamento.</p>
+        <p class="check-label">Informe, se possível:</p>
+        <ul class="checklist">
+          <li>Quantas pessoas abrem e quantas atendem chamados</li>
+          <li>Se já existe um servidor disponível</li>
+          <li>Se pretende usar o assistente, local ou em nuvem</li>
+        </ul>
+      </div>
+      <div>
+        <a class="channel" href="mailto:pablo107564@gmail.com?subject=Sistema%20de%20Chamados%20-%20Edelmann%20Tecnologia">
+          <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>E-mail</span>
+          <span class="channel-value">pablo107564@gmail.com</span>
+          <span class="channel-cta">Escrever mensagem<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+        </a>
+        <p class="note">O assunto já vem preenchido.</p>
+        <p class="more"><a class="link" href="../#aplicativos">Ver os outros aplicativos<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="../">
+        <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+        <span><b>Edelmann</b> <small>Tecnologia</small></span>
+      </a>
+      <nav aria-label="Rodapé">
+        <ul>
+          <li><a href="../#servicos">Serviços</a></li>
+          <li><a href="../#aplicativos">Aplicativos</a></li>
+          <li><a href="../#sobre">A Edelmann</a></li>
+          <li><a href="../#metodo">Método</a></li>
+          <li><a href="../#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <a class="foot-mail" href="mailto:pablo107564@gmail.com?subject=Sistema%20de%20Chamados%20-%20Edelmann%20Tecnologia">pablo107564@gmail.com</a>
+    </div>
+    <div class="legal">
+      <p>© 2026 Edelmann Tecnologia</p>
+      <a href="#topo">Voltar ao topo</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Menu do celular
+  var d=document,t=d.querySelector('.menu-toggle');
+  if(!t)return;
+  function set(o){t.setAttribute('aria-expanded',String(o))}
+  t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true')});
+  d.addEventListener('click',function(e){if(t.getAttribute('aria-expanded')==='true'&&(e.target.closest('a')||!e.target.closest('.bar')))set(false)});
+  d.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus()}
+  });
+  var mq=matchMedia('(min-width:960px)'),wide=function(e){if(e.matches)set(false)};
+  if(mq.addEventListener)mq.addEventListener('change',wide);else if(mq.addListener)mq.addListener(wide);
+})();
+</script>
+</body>
+</html>

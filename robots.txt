@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://edelmann.com.br/sitemap.xml

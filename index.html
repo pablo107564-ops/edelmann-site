@@ -246,6 +246,14 @@ main:focus{outline:none}
 .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));gap:.6rem 1.5rem;margin-top:auto;padding:1.5rem 0 0;list-style:none;border-top:1px solid var(--line)}
 .feats li{display:flex;gap:.75rem;font-size:.9375rem;line-height:1.5}
 .feats li::before{content:"";flex:none;width:.85rem;height:1px;margin-top:.75em;background:var(--gold)}
+.app{position:relative}
+.app h3 a{color:inherit;text-decoration:none}
+.app h3 a::after{content:"";position:absolute;inset:0;z-index:1}
+.app h3 a:focus-visible{outline:none}
+.app:focus-within{outline:2px solid var(--gold);outline-offset:3px}
+.app-go{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font-size:.9375rem;font-weight:500;color:var(--ink)}
+.app-go .i{width:16px;height:16px;transition:transform .3s var(--ease)}
+.app:hover .app-go .i{transform:translateX(4px)}
 .apps-more{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;margin-top:2.5rem;color:var(--muted)}
 
 /* A Edelmann */
@@ -497,13 +505,14 @@ main:focus{outline:none}
             </svg>
           </div>
           <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
-          <h3>Atendente de IA no WhatsApp</h3>
+          <h3><a href="agente-whatsapp/">Agente de IA no WhatsApp</a></h3>
           <p>Responde aos clientes a qualquer hora, preparado para o seu tipo de negócio: provedor de internet, farmácia, restaurante, loja ou clínica.</p>
           <ul class="feats">
             <li>Entende mensagens de áudio</li>
             <li>Painel de conversas</li>
             <li>Follow-up automático</li>
           </ul>
+          <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
         </article>
         <article class="app">
           <div class="art" aria-hidden="true">
@@ -520,7 +529,7 @@ main:focus{outline:none}
             </svg>
           </div>
           <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
-          <h3>Balcão PDV</h3>
+          <h3><a href="balcao/">Balcão PDV</a></h3>
           <p>Para Windows, Linux e Mac, da frente de caixa à emissão de NFC-e. Funciona sem internet; só a nota fiscal exige conexão.</p>
           <ul class="feats">
             <li>Estoque e balança</li>
@@ -528,6 +537,7 @@ main:focus{outline:none}
             <li>Comandas e cozinha</li>
             <li>Vários caixas em rede</li>
           </ul>
+          <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
         </article>
         <article class="app">
           <div class="art" aria-hidden="true">
@@ -546,13 +556,14 @@ main:focus{outline:none}
             </svg>
           </div>
           <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
-          <h3>Sistema de Chamados</h3>
+          <h3><a href="chamados/">Sistema de Chamados</a></h3>
           <p>Organiza os pedidos de suporte da abertura à solução, com base de conhecimento e painel de indicadores.</p>
           <ul class="feats">
             <li>Anexos</li>
             <li>Relatórios em Excel</li>
             <li>Perfis de usuário, técnico e gerente</li>
           </ul>
+          <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
         </article>
         <article class="app">
           <div class="art" aria-hidden="true">
@@ -571,13 +582,14 @@ main:focus{outline:none}
             </svg>
           </div>
           <p class="status soon"><span class="sr">Situação: </span>Em breve na Play Store</p>
-          <h3>Leitor de Bolso</h3>
+          <h3><a href="leitor-de-bolso/">Leitor de Bolso</a></h3>
           <p>Lê PDFs e digitaliza documentos no Android: fotografa a página, reconhece o texto no próprio aparelho e permite corrigi-lo antes de gerar o arquivo.</p>
           <ul class="feats">
             <li>Sem anúncios</li>
             <li>Sem cadastro</li>
             <li>Sem pedir permissões</li>
           </ul>
+          <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
         </article>
       </div>
       <p class="apps-more reveal">Tem interesse em algum deles? <a class="link" href="#contato">Fale com a Edelmann<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>

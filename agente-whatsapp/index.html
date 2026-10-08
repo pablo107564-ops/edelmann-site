@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agente de IA no WhatsApp | Edelmann Tecnologia</title>
+<meta name="description" content="Agente de IA que responde aos clientes pelo WhatsApp 24 horas, entende áudio e transfere a conversa para a equipe quando necessário.">
+<link rel="canonical" href="https://edelmann.com.br/agente-whatsapp/">
+<meta name="theme-color" content="#0C1730">
+<meta name="color-scheme" content="light">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Edelmann Tecnologia">
+<meta property="og:title" content="Agente de IA no WhatsApp | Edelmann Tecnologia">
+<meta property="og:description" content="Atende os clientes pelo WhatsApp 24 horas, com as informações e o tom de voz do seu negócio, e transfere para a equipe quando necessário.">
+<meta property="og:url" content="https://edelmann.com.br/agente-whatsapp/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Agente de IA no WhatsApp | Edelmann Tecnologia">
+<meta name="twitter:description" content="Atende os clientes pelo WhatsApp 24 horas, com as informações e o tom de voz do seu negócio, e transfere para a equipe quando necessário.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Crect%20width='48'%20height='48'%20rx='2'%20fill='%2313284B'/%3E%3Crect%20x='3.5'%20y='3.5'%20width='41'%20height='41'%20fill='none'%20stroke='%23C9A96B'/%3E%3Cpath%20fill='%23E2CC9C'%20d='M13.75%2012h20.5v6h-2v-3H20.25v7.5h7.4v-1.5h1.6v5.6h-1.6v-1.5h-7.4V33h12v-3h2v6H13.75v-3h2.5V15h-2.5z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap">
+<script>
+/* Marca a página com JS ativo; a revelação ao rolar só liga se houver suporte e o visitante aceitar movimento. */
+(function(c){c.add('js');if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)c.add('rv')})(document.documentElement.classList);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Agente de IA no WhatsApp",
+      "url": "https://edelmann.com.br/agente-whatsapp/",
+      "description": "Agente de inteligência artificial que responde aos clientes pelo WhatsApp 24 horas, configurado conforme o ramo do negócio, com base de conhecimento própria, tom de voz ajustável, compreensão de áudio, painel de conversas, indicadores e follow-up automático.",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "inLanguage": "pt-BR",
+      "featureList": [
+        "Atendimento 24 horas pelo WhatsApp",
+        "Configuração por ramo: provedor de internet, farmácia, restaurante, loja e clínica",
+        "Base de conhecimento a partir de arquivos PDF, Word, Excel, CSV e texto",
+        "Tom de voz ajustável",
+        "Compreensão de áudio, foto e vídeo",
+        "Transferência para atendimento humano",
+        "Follow-up automático",
+        "Pesquisa de satisfação",
+        "Painel de conversas e indicadores",
+        "Vários números de WhatsApp na mesma estrutura"
+      ],
+      "publisher": {
+        "@type": "Organization",
+        "name": "Edelmann Tecnologia",
+        "url": "https://edelmann.com.br/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://edelmann.com.br/" },
+        { "@type": "ListItem", "position": 2, "name": "Aplicativos", "item": "https://edelmann.com.br/#aplicativos" },
+        { "@type": "ListItem", "position": 3, "name": "Agente de IA no WhatsApp", "item": "https://edelmann.com.br/agente-whatsapp/" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#FAF8F4;
+  --paper:#FFFFFF;
+  --sand:#F2EDE4;
+  --ink:#0F1B33;
+  --navy:#13284B;
+  --night:#0C1730;
+  --text:#2B3446;
+  --muted:#5A6477;
+  --line:#E5DFD4;
+  --line-2:#D5CDBF;
+  --bar:#E4DDD0;
+  --bar-2:#CBC1AF;
+  --gold:#B8955A;
+  --gold-ink:#8A6A2B;
+  --gold-soft:#D9C49A;
+  --live:#2E6B4F;
+  --on-night:#AEB8CA;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --max:1200px;
+  --gutter:clamp(1.25rem,5vw,3rem);
+  --section:clamp(4.5rem,9vw,8rem);
+  --h2:clamp(2.125rem,1.3rem + 2.9vw,3.5rem);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+
+/* Base */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:5.5rem}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p,ul,ol,dl,dd{margin:0}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--ink);letter-spacing:-.015em;text-wrap:balance}
+p{text-wrap:pretty}
+a{color:inherit}
+svg{display:block}
+::selection{background:var(--gold-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--gold-ink);outline-offset:3px}
+main:focus{outline:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.skip{position:absolute;left:1rem;top:-6rem;z-index:100;padding:.75rem 1.25rem;background:var(--ink);color:#fff;text-decoration:none;font-weight:500}
+.skip:focus{top:1rem}
+.wrap{width:100%;max-width:calc(var(--max) + 2 * var(--gutter));margin-inline:auto;padding-inline:var(--gutter)}
+.i{width:24px;height:24px;flex:none;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* Botões e links */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.7rem;min-height:3.25rem;padding:.9rem 1.6rem;border:1px solid transparent;border-radius:2px;font:500 .9375rem/1.2 var(--sans);letter-spacing:.01em;text-decoration:none;white-space:nowrap;transition:background-color .25s,border-color .25s,color .25s}
+.btn .i,.link .i{width:18px;height:18px;transition:transform .3s var(--ease)}
+.btn:hover .i,.link:hover .i{transform:translateX(4px)}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-primary:hover{background:var(--night)}
+.btn-ghost{border-color:var(--line-2);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-sm{min-height:2.75rem;padding:.6rem 1.15rem;font-size:.875rem}
+.link{display:inline-flex;align-items:center;gap:.5rem;font-weight:500;color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:.3em}
+
+/* Rótulo de seção */
+.eyebrow{display:flex;align-items:center;gap:.9rem;margin-bottom:1.5rem;font:500 .75rem/1.2 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-ink)}
+.eyebrow::before{content:"";width:2.5rem;height:1px;background:var(--gold)}
+.eyebrow .n{order:-1;font:italic 400 1rem/1 var(--serif);letter-spacing:0}
+
+/* Cabeçalho */
+.site-header{position:sticky;top:0;z-index:50;background:rgba(250,248,244,.92);-webkit-backdrop-filter:saturate(1.4) blur(10px);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1rem 2rem;min-height:4.75rem}
+.brand{display:inline-flex;align-items:center;gap:.8rem;color:var(--ink);text-decoration:none}
+.brand svg{width:40px;height:40px;flex:none}
+.brand span{display:flex;flex-direction:column;line-height:1}
+.brand b{font:500 1.0625rem/1 var(--serif);letter-spacing:.16em;text-transform:uppercase}
+.brand small{margin-top:.4rem;font:500 .6875rem/1 var(--sans);letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+.menu ul{display:flex;align-items:center;gap:2rem;list-style:none;padding:0}
+.menu a:not(.btn){position:relative;display:inline-block;padding:.4rem 0;font-size:.9375rem;font-weight:500;color:var(--text);text-decoration:none;transition:color .2s}
+.menu a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.menu a:not(.btn):hover{color:var(--ink)}
+.menu a:not(.btn):hover::after{transform:scaleX(1)}
+.bar-cta,.menu-toggle,.cta-s{display:none}
+.menu-toggle{align-items:center;justify-content:center;gap:.7rem;min-width:2.75rem;min-height:2.75rem;padding:.5rem .95rem;border:1px solid var(--line-2);border-radius:2px;background:transparent;color:var(--ink);font:500 .875rem/1 var(--sans);cursor:pointer}
+.burger{position:relative;width:18px;height:10px}
+.burger::before,.burger::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .3s var(--ease),top .3s var(--ease)}
+.burger::before{top:0}
+.burger::after{top:8.5px}
+[aria-expanded="true"] .burger::before{top:4.25px;transform:rotate(45deg)}
+[aria-expanded="true"] .burger::after{top:4.25px;transform:rotate(-45deg)}
+
+@media (max-width:959.98px){
+  .bar{flex-wrap:wrap}
+  .menu{width:100%}
+  .menu ul{flex-wrap:wrap;gap:.25rem 1.5rem;padding-bottom:1rem}
+  html:not(.js) .site-header{position:static}
+  .js .bar{flex-wrap:nowrap;gap:.5rem}
+  .js .brand{margin-right:auto}
+  .js .bar-cta,.js .menu-toggle{display:inline-flex}
+  .js .menu{display:none;position:absolute;top:100%;left:0;right:0;width:auto;padding:.5rem var(--gutter) 2rem;background:var(--bg);border-bottom:1px solid var(--line);box-shadow:0 30px 40px -30px rgba(15,27,51,.3)}
+  .js .menu-toggle[aria-expanded="true"]+.menu{display:block}
+  .js .menu ul{flex-direction:column;align-items:stretch;gap:0;padding:0}
+  .js .menu a:not(.btn){display:block;padding:1rem 0;border-bottom:1px solid var(--line);font:400 1.375rem/1.2 var(--serif);color:var(--ink)}
+  .js .menu a:not(.btn)::after{display:none}
+  .js .menu-cta{display:none}
+}
+@media (max-width:559.98px){.cta-l{display:none}.cta-s{display:inline}}
+@media (max-width:479.98px){
+  .brand{gap:.65rem}
+  .brand svg{width:36px;height:36px}
+  .brand b{font-size:1rem;letter-spacing:.06em}
+  .brand small{letter-spacing:.2em}
+  .bar-cta{padding-inline:.8rem;font-size:.8125rem}
+  .menu-toggle{padding:.5rem}
+  .menu-toggle .t{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+}
+
+/* Trilha */
+.crumbs{margin-bottom:2.25rem;font-size:.875rem;color:var(--muted)}
+.crumbs ol{display:flex;flex-wrap:wrap;gap:.25rem .6rem;padding:0;list-style:none}
+.crumbs li+li::before{content:"›";content:"›" / "";margin-right:.6rem;color:var(--gold-ink)}
+.crumbs a{color:var(--text);text-decoration:underline;text-decoration-color:var(--line-2);text-underline-offset:.25em}
+.crumbs a:hover{text-decoration-color:var(--gold)}
+.crumbs [aria-current]{font-weight:500;color:var(--ink)}
+
+/* Abertura */
+.hero{position:relative;overflow:hidden;padding-block:clamp(2rem,5vw,3.5rem) clamp(4.5rem,9vw,7rem);border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60rem 30rem at 85% -10%,rgba(184,149,90,.13),transparent 60%),linear-gradient(to right,rgba(15,27,51,.045) 1px,transparent 1px) 0 0/calc(100% / 6) 100%;-webkit-mask-image:linear-gradient(#000 45%,transparent);mask-image:linear-gradient(#000 45%,transparent)}
+.hero-grid{position:relative;display:grid;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.5rem,1.35rem + 4.2vw,4.5rem);line-height:1.04;letter-spacing:-.025em}
+.hero h1 span,.hero h1 em{display:block}
+.hero h1 em{font-style:italic;color:var(--gold-ink)}
+.lead{max-width:35rem;margin-top:1.75rem;font-size:clamp(1.0625rem,1rem + .35vw,1.25rem);line-height:1.6;color:var(--muted)}
+.ctas{display:flex;flex-wrap:wrap;gap:.75rem 1rem;margin-top:2.5rem}
+.status{align-self:flex-start;display:inline-flex;align-items:center;gap:.55rem;margin-bottom:1.5rem;padding:.4rem .85rem;border:1px solid var(--line);border-radius:99px;background:var(--paper);font-size:.8125rem;font-weight:500;line-height:1.3;color:var(--ink)}
+.status::before{content:"";flex:none;width:.5rem;height:.5rem;border-radius:50%;background:var(--live);box-shadow:0 0 0 3px rgba(46,107,79,.14)}
+.chat{width:100%;max-width:400px;justify-self:center}
+.chat svg{width:100%;height:auto;filter:drop-shadow(0 30px 40px rgba(15,27,51,.08))}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:4rem}
+  .chat{justify-self:end}
+}
+
+/* Ilustrações (mesmo traço dos cartões da página principal) */
+.ill .f{fill:#fff;stroke:var(--line-2)}
+.ill .s{fill:var(--sand)}
+.ill .k{fill:var(--sand);stroke:var(--line-2)}
+.ill .n{fill:var(--navy)}
+.ill .g{fill:var(--gold)}
+.ill .o{fill:none;stroke:var(--line-2)}
+.ill .b,.ill .b2,.ill .bw{fill:none;stroke-linecap:round;stroke-width:6}
+.ill .b{stroke:var(--bar)}
+.ill .b2{stroke:var(--bar-2)}
+.ill .bw{stroke:rgba(255,255,255,.42)}
+.ill .thin{stroke-width:4}
+.ill .wave{fill:none;stroke:var(--gold);stroke-width:3;stroke-linecap:round}
+.ill .mk{fill:var(--gold-soft)}
+.ill .ok{fill:var(--live)}
+.ill .st{fill:var(--gold);stroke:none}
+.ill .st2{fill:var(--bar-2);stroke:none}
+.ill .ring{fill:none;stroke:var(--gold);stroke-width:1.5}
+.ill .t{fill:var(--navy);font:600 9px/1 var(--sans);text-anchor:middle}
+.art{background:var(--sand);border:1px solid var(--line)}
+.art svg{width:100%;height:auto}
+
+/* Seções */
+.section{padding-block:var(--section)}
+.paper{background:var(--paper);border-block:1px solid var(--line)}
+.head{display:grid;gap:1.25rem 4rem;margin-bottom:clamp(2.75rem,6vw,5rem)}
+.head h2,.about h2,.contact h2{font-size:var(--h2);line-height:1.08;letter-spacing:-.02em}
+.sub{max-width:33rem;color:var(--muted)}
+@media (min-width:900px){
+  .head{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:end}
+  .head .sub{justify-self:end}
+}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:auto;padding:1.5rem 0 0;list-style:none}
+.tags li{padding:.3rem .65rem;border:1px solid var(--line-2);border-radius:2px;font-size:.8125rem;line-height:1.3;color:var(--text)}
+
+/* Ramos */
+.niches{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;padding:0;list-style:none}
+.niche{display:flex;flex-direction:column;padding:clamp(1.5rem,3vw,2.25rem);background:var(--paper);border:1px solid var(--line)}
+.niche .i{width:32px;height:32px;margin-bottom:1.75rem;stroke-width:1.25;color:var(--gold-ink)}
+.niche h3{font-size:1.5rem;line-height:1.2}
+.niche p{max-width:34rem;margin-top:.75rem;font-size:1rem;color:var(--muted)}
+.niche.wide{grid-column:1 / -1}
+@media (min-width:640px){.niches{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:860px){
+  .niche.wide{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:3rem;align-items:end}
+  .niche.wide .tags{padding-top:0;justify-content:flex-end}
+}
+@media (min-width:1080px){.niches{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Implantação */
+.steps{display:grid;grid-template-columns:1fr;row-gap:3rem;padding:0;list-style:none;counter-reset:s}
+.step{position:relative;padding:2.25rem 2rem 0 0;border-top:1px solid var(--line-2)}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);content:counter(s,decimal-leading-zero) / "";display:block;margin-bottom:1.5rem;font:400 3.25rem/1 var(--serif);letter-spacing:-.02em;color:var(--gold-ink)}
+.step::after{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;background:var(--paper);border:1px solid var(--gold);transform:rotate(45deg)}
+.step h3{margin-bottom:.6rem;font-size:1.375rem;line-height:1.25}
+.step p{max-width:18rem;font-size:1rem;color:var(--muted)}
+@media (min-width:760px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1080px){.steps{grid-template-columns:repeat(4,1fr)}}
+
+/* Funções */
+.fx{display:grid;grid-template-columns:minmax(0,1fr);gap:1px;padding:0;list-style:none;background:var(--line);border:1px solid var(--line)}
+.fn{position:relative;display:flex;flex-direction:column;padding:clamp(1.5rem,2.6vw,2.25rem);background:var(--bg);transition:background-color .35s}
+.fn::before{content:"";position:absolute;top:-1px;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.fn:hover{background:var(--paper)}
+.fn:hover::before{transform:scaleX(1)}
+.fn-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem}
+.fn .i{width:32px;height:32px;stroke-width:1.25;color:var(--gold-ink)}
+.num{font:italic 400 1rem/1 var(--serif);color:var(--muted)}
+.fn h3{margin-bottom:.65rem;font-size:1.375rem;line-height:1.2}
+.fn p{font-size:1rem;color:var(--muted)}
+@media (min-width:640px){.fx{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1080px){.fx{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* Acompanhamento */
+.band{background:var(--night);color:var(--on-night)}
+.band .eyebrow{color:var(--gold-soft)}
+.band :focus-visible{outline-color:var(--gold-soft)}
+.about{display:grid;gap:clamp(3rem,6vw,6rem)}
+.about h2{color:#fff}
+.about-text{max-width:32rem;margin-top:1.75rem;font-size:1.125rem;color:#C3CBD9}
+.band .art{margin-top:2.5rem;border-color:rgba(217,196,154,.25)}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));column-gap:2.5rem;padding:0;list-style:none;align-self:end;border-top:1px solid rgba(255,255,255,.12)}
+.principles li{padding:2rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.principles h3{display:flex;align-items:baseline;gap:.85rem;margin-bottom:.6rem;font-size:1.375rem;color:#fff}
+.principles h3::before{counter-increment:p;content:counter(p,upper-roman);content:counter(p,upper-roman) / "";min-width:1.5rem;font:italic 400 1rem/1 var(--serif);color:var(--gold-soft)}
+.principles{counter-reset:p}
+.principles p{font-size:1rem}
+@media (min-width:960px){.about{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+
+/* Perguntas */
+.qa{display:grid;gap:2.5rem}
+.qa h2{font-size:var(--h2);line-height:1.08;letter-spacing:-.02em}
+.faq{border-top:1px solid var(--line-2)}
+.faq details{border-bottom:1px solid var(--line-2)}
+.faq summary{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;padding:1.35rem 0;cursor:pointer;list-style:none;font:400 1.25rem/1.35 var(--serif);color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";content:"+" / "";flex:none;font:300 1.625rem/1 var(--sans);color:var(--gold-ink);transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq summary:hover{color:var(--navy)}
+.faq p{max-width:40rem;padding-bottom:1.5rem;font-size:1rem;color:var(--muted)}
+@media (min-width:960px){.qa{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:6rem;align-items:start}}
+
+/* Contato */
+.contact{display:grid;gap:3rem}
+.contact .sub{margin-top:1.25rem}
+.check-label{margin-top:2.5rem;font-size:.9375rem;font-weight:600;color:var(--ink)}
+.checklist{margin-top:1rem;padding:0;list-style:none;border-top:1px solid var(--line)}
+.checklist li{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);font-size:1rem}
+.checklist li::before{content:"";flex:none;width:.85rem;height:1px;margin-top:.8em;background:var(--gold)}
+.more{margin-top:2rem}
+.channel{display:flex;flex-direction:column;gap:1rem;padding:clamp(1.5rem,4vw,2.75rem);background:var(--night);border:1px solid var(--night);color:#fff;text-decoration:none;transition:background-color .3s,border-color .3s}
+.channel:hover{background:var(--navy)}
+.channel:focus-visible{outline-color:var(--gold-ink)}
+.channel-label{display:flex;align-items:center;gap:.6rem;font:500 .75rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft)}
+.channel-label .i{width:18px;height:18px}
+.channel-value{font:400 clamp(1.2rem,.95rem + 1.5vw,2rem)/1.2 var(--serif);overflow-wrap:anywhere}
+.channel-cta{display:inline-flex;align-items:center;gap:.6rem;margin-top:.75rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.14);font-size:.9375rem;font-weight:500}
+.channel-cta .i{width:18px;height:18px;transition:transform .3s var(--ease)}
+.channel:hover .channel-cta .i{transform:translateX(4px)}
+.note{margin-top:1rem;font-size:.875rem;color:var(--muted)}
+@media (min-width:960px){.contact{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6rem;align-items:start}}
+
+/* Rodapé */
+.site-footer{padding-block:4rem 2rem;background:var(--night);color:var(--on-night);font-size:.9375rem}
+.site-footer a{color:#DCE2EC;text-decoration:none;transition:color .2s}
+.site-footer a:hover{color:var(--gold-soft)}
+.site-footer :focus-visible{outline-color:var(--gold-soft)}
+.site-footer .brand b{color:#fff}
+.site-footer .brand small{color:var(--on-night)}
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2rem 3rem;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot ul{display:flex;flex-wrap:wrap;gap:.75rem 2rem;padding:0;list-style:none}
+.foot-mail{overflow-wrap:anywhere}
+.legal{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:1.5rem;font-size:.875rem}
+
+/* Movimento (a classe .rv só existe se o visitante aceitar movimento) */
+.rv .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
+}
+@media print{
+  .site-header{position:static}
+  .reveal{opacity:1!important;transform:none!important}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="eg" d="M13.75 12h20.5v6h-2v-3H20.25v7.5h7.4v-1.5h1.6v5.6h-1.6v-1.5h-7.4V33h12v-3h2v6H13.75v-3h2.5V15h-2.5z"/>
+    <symbol id="logo" viewBox="0 0 48 48">
+      <rect width="48" height="48" rx="2" fill="#13284B"/>
+      <rect x="3.5" y="3.5" width="41" height="41" fill="none" stroke="#C9A96B"/>
+      <use href="#eg" fill="#E2CC9C"/>
+    </symbol>
+    <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.5 16a5 5 0 0 1 7 0"/><path d="M12 19.5h.01" stroke-width="2.5"/></symbol>
+    <symbol id="i-pharm" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8.5v7M8.5 12h7"/></symbol>
+    <symbol id="i-food" viewBox="0 0 24 24"><path d="M4.5 16.5a7.5 7.5 0 0 1 15 0z"/><path d="M2.5 19.5h19M12 9V6.5M10.5 6.5h3"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8.5h14l-1 11.5H6z"/><path d="M9 11V7.5a3 3 0 0 1 6 0V11"/></symbol>
+    <symbol id="i-clinic" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4 4 0 0 1 12 7.6 4 4 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10Z"/><path d="M7.5 12.5h2.2l1.4-2.4 1.9 3.8 1.3-1.4h2.2"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5c-3.5-.5-6.5 0-8.5 1.5Z"/><path d="M12 6.5v13"/></symbol>
+    <symbol id="i-tone" viewBox="0 0 24 24"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5Z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M9.5 7h10M9.5 12h10M9.5 17h10"/><path d="M4.5 7h.01M4.5 12h.01M4.5 17h.01" stroke-width="2.5"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+    <symbol id="i-restore" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4.5v3.8h3.8"/><path d="M12 8v4l2.6 1.6"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="site-header" id="topo">
+  <div class="wrap bar">
+    <a class="brand" href="../">
+      <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+      <span><b>Edelmann</b> <small>Tecnologia</small></span>
+    </a>
+    <a class="btn btn-primary btn-sm bar-cta" href="../#contato"><span class="cta-l">Solicitar orçamento</span><span class="cta-s">Orçamento</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="burger" aria-hidden="true"></span><span class="t">Menu</span>
+    </button>
+    <nav class="menu" id="menu" aria-label="Principal">
+      <ul>
+        <li><a href="../#servicos">Serviços</a></li>
+        <li><a href="../#aplicativos">Aplicativos</a></li>
+        <li><a href="../#sobre">A Edelmann</a></li>
+        <li><a href="../#metodo">Método</a></li>
+        <li class="menu-cta"><a class="btn btn-primary btn-sm" href="../#contato">Solicitar orçamento</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo" tabindex="-1">
+
+  <section class="hero" aria-labelledby="titulo">
+    <div class="wrap hero-grid">
+      <div>
+        <nav class="crumbs" aria-label="Trilha de navegação">
+          <ol>
+            <li><a href="../">Início</a></li>
+            <li><a href="../#aplicativos">Aplicativos</a></li>
+            <li><span aria-current="page">Agente de IA no WhatsApp</span></li>
+          </ol>
+        </nav>
+        <p class="status"><span class="sr">Situação: </span>Em uso no atendimento de um provedor de internet</p>
+        <h1 id="titulo"><span>Agente de IA</span> <em>no WhatsApp.</em></h1>
+        <p class="lead">Responde aos clientes 24 horas por dia, com as informações e o tom de voz do seu negócio. Quando o caso pede uma pessoa, transfere a conversa para a sua equipe.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="mailto:pablo107564@gmail.com?subject=Agente%20de%20IA%20no%20WhatsApp%20-%20Edelmann%20Tecnologia">Solicitar orçamento<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost" href="#funcoes">Ver as funções</a>
+        </div>
+      </div>
+      <div class="chat ill" aria-hidden="true">
+        <svg viewBox="0 0 420 440" focusable="false">
+          <path class="o" d="M6 46V6h40M374 6h40v40M414 394v40h-40M46 434H6v-40"/>
+          <rect class="f" x="95" y="14" width="240" height="412" rx="28"/>
+          <path class="o" d="M95 78h240"/>
+          <circle class="n" cx="133" cy="46" r="16"/>
+          <use class="mk" href="#eg" transform="translate(133 46) scale(.6) translate(-24 -24)"/>
+          <path class="b2" d="M160 40h78"/><path class="b" d="M168 53h40"/>
+          <circle class="ok" cx="161" cy="53" r="3.5"/>
+          <rect class="s" x="113" y="96" width="172" height="40" rx="10"/>
+          <path class="n" d="M127 108l11 8-11 8z"/>
+          <path class="wave" d="M148 113v6M154 109v14M160 105v22M166 111v10M172 107v18M178 104v24M184 110v12M190 106v20M196 112v8M202 108v16M208 105v22M214 111v10M220 107v18M226 112v8M232 109v14M238 113v6M244 110v12M250 112v8M256 111v10M262 114v4"/>
+          <rect class="n" x="153" y="148" width="164" height="50" rx="10"/>
+          <path class="bw" d="M169 165h120M169 181h84"/>
+          <rect class="n" x="153" y="206" width="164" height="86" rx="10"/>
+          <rect class="g" x="167" y="218" width="16" height="16" rx="3"/><text class="t" x="175" y="229">1</text>
+          <rect class="g" x="167" y="241" width="16" height="16" rx="3"/><text class="t" x="175" y="252">2</text>
+          <rect class="g" x="167" y="264" width="16" height="16" rx="3"/><text class="t" x="175" y="275">3</text>
+          <path class="bw" d="M195 226h92M195 249h70M195 272h84"/>
+          <rect class="s" x="113" y="304" width="64" height="32" rx="10"/>
+          <path class="b2" d="M127 320h36"/>
+          <rect class="k" x="257" y="348" width="60" height="28" rx="14"/>
+          <circle class="g" cx="275" cy="362" r="3"/><circle class="g" cx="287" cy="362" r="3"/><circle class="g" cx="299" cy="362" r="3"/>
+          <rect class="s" x="113" y="392" width="170" height="22" rx="11"/>
+          <circle class="n" cx="305" cy="403" r="13"/>
+          <path class="bw thin" d="M305 398v10"/>
+          <rect class="f" x="300" y="86" width="104" height="58" rx="6"/>
+          <rect class="n" x="314" y="112" width="8" height="20" rx="1"/><rect class="n" x="328" y="104" width="8" height="28" rx="1"/><rect class="g" x="342" y="96" width="8" height="36" rx="1"/><rect class="n" x="356" y="108" width="8" height="24" rx="1"/><rect class="n" x="370" y="100" width="8" height="32" rx="1"/>
+          <path class="o" d="M310 132.5h80"/>
+          <rect class="f" x="16" y="226" width="120" height="70" rx="6"/>
+          <path class="b2" d="M30 246h60"/>
+          <use class="st" href="#i-star" x="27" y="257" width="16" height="16"/><use class="st" href="#i-star" x="44" y="257" width="16" height="16"/><use class="st" href="#i-star" x="61" y="257" width="16" height="16"/><use class="st" href="#i-star" x="78" y="257" width="16" height="16"/><use class="st2" href="#i-star" x="95" y="257" width="16" height="16"/>
+          <path class="b thin" d="M30 284h44"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ramos" aria-labelledby="ramos-titulo">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">01</span>Ramos</p>
+          <h2 id="ramos-titulo">Preparado para o seu ramo.</h2>
+        </div>
+        <p class="sub">Cada um tem um formulário próprio no painel, com as informações que o agente usa ao responder.</p>
+      </div>
+      <ul class="niches reveal">
+        <li class="niche wide">
+          <div>
+            <svg class="i" aria-hidden="true" focusable="false"><use href="#i-wifi"/></svg>
+            <h3>Provedor de internet</h3>
+            <p>Quando a conversa passa para atendimento humano, os técnicos cadastrados recebem um aviso no WhatsApp.</p>
+          </div>
+          <ul class="tags"><li>Região de atendimento</li><li>Telefone do suporte</li><li>Técnicos de campo</li></ul>
+        </li>
+        <li class="niche">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-pharm"/></svg>
+          <h3>Farmácia</h3>
+          <ul class="tags"><li>Entrega</li><li>Receita médica</li><li>Horário</li><li>Chave Pix</li></ul>
+        </li>
+        <li class="niche">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-food"/></svg>
+          <h3>Restaurante</h3>
+          <ul class="tags"><li>Área de entrega</li><li>Tempo médio de entrega</li><li>Horário</li><li>Formas de pagamento</li></ul>
+        </li>
+        <li class="niche">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-bag"/></svg>
+          <h3>Loja</h3>
+          <ul class="tags"><li>Horário</li><li>Formas de pagamento</li><li>Entrega e frete</li></ul>
+        </li>
+        <li class="niche">
+          <svg class="i" aria-hidden="true" focusable="false"><use href="#i-clinic"/></svg>
+          <h3>Clínica</h3>
+          <ul class="tags"><li>Especialidades</li><li>Convênios</li><li>Horário</li><li>Agendamento</li></ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section paper" id="implantacao" aria-labelledby="implantacao-titulo">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">02</span>Implantação</p>
+          <h2 id="implantacao-titulo">Do cadastro à primeira resposta.</h2>
+        </div>
+        <p class="sub">Ramo, arquivos e número são definidos no painel, pelo navegador.</p>
+      </div>
+      <ol class="steps reveal">
+        <li class="step">
+          <h3>Perfil do negócio</h3>
+          <p>Ramo, nome e tom de voz, além das informações pedidas no formulário.</p>
+        </li>
+        <li class="step">
+          <h3>Base de conhecimento</h3>
+          <p>Envio dos arquivos que o agente vai consultar, como tabela de preços, catálogo e políticas.</p>
+        </li>
+        <li class="step">
+          <h3>Conexão do número</h3>
+          <p>Basta ler um QR code com o celular do número, como no WhatsApp Web.</p>
+        </li>
+        <li class="step">
+          <h3>Atendimento</h3>
+          <p>O agente começa a responder, e a equipe acompanha cada conversa pelo painel.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="funcoes" aria-labelledby="funcoes-titulo">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">03</span>Funções</p>
+          <h2 id="funcoes-titulo">O que o agente faz.</h2>
+        </div>
+        <p class="sub">Da primeira mensagem à avaliação do atendimento.</p>
+      </div>
+      <ul class="fx reveal">
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mic"/></svg><span class="num" aria-hidden="true">01</span></div>
+          <h3>Áudio, foto e vídeo</h3>
+          <p>Transcreve mensagens de voz, analisa fotos e, nos vídeos, considera a miniatura e o áudio.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-book"/></svg><span class="num" aria-hidden="true">02</span></div>
+          <h3>Consulta aos arquivos</h3>
+          <p>A cada pergunta, busca nos arquivos enviados os trechos que tratam do assunto.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-tone"/></svg><span class="num" aria-hidden="true">03</span></div>
+          <h3>Tom de voz</h3>
+          <p>Equilibrado, descontraído, formal ou direto: o negócio escolhe como o agente fala.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg><span class="num" aria-hidden="true">04</span></div>
+          <h3>Conversa fluida</h3>
+          <p>Responde de uma só vez às mensagens enviadas em sequência e mostra “digitando…” enquanto escreve.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span class="num" aria-hidden="true">05</span></div>
+          <h3>Boas-vindas</h3>
+          <p>No primeiro contato, oferece opções numeradas, como preços, dúvidas frequentes ou atendimento humano.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-person"/></svg><span class="num" aria-hidden="true">06</span></div>
+          <h3>Transferência para atendimento humano</h3>
+          <p>Quando não consegue resolver ou o cliente pede um atendente, pausa as respostas e avisa o responsável pelo WhatsApp, com o motivo.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-restore"/></svg><span class="num" aria-hidden="true">07</span></div>
+          <h3>Follow-up automático</h3>
+          <p>Quando ativado, envia uma única mensagem curta retomando o assunto se o cliente parar de responder, no prazo definido no painel.</p>
+        </li>
+        <li class="fn">
+          <div class="fn-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-star"/></svg><span class="num" aria-hidden="true">08</span></div>
+          <h3>Pesquisa de satisfação</h3>
+          <p>Ao fim do atendimento, feito pelo agente ou pela equipe, pede ao cliente uma nota de 1 a 5.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section band" id="acompanhamento" aria-labelledby="acompanhamento-titulo">
+    <div class="wrap about">
+      <div class="reveal">
+        <p class="eyebrow"><span class="n" aria-hidden="true">04</span>Acompanhamento</p>
+        <h2 id="acompanhamento-titulo">Cada conversa à vista, e a equipe assume quando quiser.</h2>
+        <p class="about-text">O painel abre no navegador. Cada número conectado funciona como um negócio à parte, com arquivos, ajustes e indicadores próprios.</p>
+        <div class="art ill" aria-hidden="true">
+          <svg viewBox="0 0 480 220" focusable="false">
+            <rect class="f" x="16" y="12" width="448" height="196" rx="6"/>
+            <path class="o" d="M16 38h448M160 38v170"/>
+            <circle class="k" cx="32" cy="25" r="4"/><circle class="k" cx="46" cy="25" r="4"/><circle class="k" cx="60" cy="25" r="4"/>
+            <rect class="s" x="16.5" y="88" width="143" height="40"/>
+            <path class="o" d="M16 88h144M16 128h144M16 168h144"/>
+            <circle class="n" cx="36" cy="63" r="9"/><path class="b2" d="M54 58h70"/><path class="b thin" d="M54 70h44"/>
+            <circle class="g" cx="36" cy="108" r="9"/><path class="b2" d="M54 103h60"/><path class="b thin" d="M54 115h50"/>
+            <circle class="ring" cx="144" cy="108" r="5"/>
+            <circle class="k" cx="36" cy="148" r="9"/><path class="b2" d="M54 143h74"/><path class="b thin" d="M54 155h38"/>
+            <circle class="n" cx="36" cy="188" r="9"/><path class="b2" d="M54 183h56"/><path class="b thin" d="M54 195h46"/>
+            <rect class="s" x="180" y="54" width="150" height="30" rx="8"/><path class="b2" d="M194 69h104"/>
+            <rect class="n" x="290" y="94" width="158" height="42" rx="8"/><path class="bw" d="M304 108h118M304 122h76"/>
+            <rect class="s" x="180" y="146" width="118" height="24" rx="8"/><path class="b2 thin" d="M194 158h80"/>
+            <rect class="k" x="180" y="180" width="208" height="18" rx="4"/><path class="b thin" d="M192 189h96"/>
+            <rect class="n" x="396" y="180" width="52" height="18" rx="4"/><path class="bw thin" d="M408 189h28"/>
+          </svg>
+        </div>
+      </div>
+      <ul class="principles reveal">
+        <li>
+          <h3>Conversas</h3>
+          <p>Histórico de cada cliente, com as conversas pausadas em destaque e a opção de responder por ali mesmo.</p>
+        </li>
+        <li>
+          <h3>Indicadores</h3>
+          <p>Volume de conversas e mensagens, gráfico dos últimos 14 dias, transferências pendentes, notas de satisfação e os motivos mais comuns de transferência.</p>
+        </li>
+        <li>
+          <h3>Controle</h3>
+          <p>Botão para ligar e desligar o agente e lista dos clientes que aguardam atendimento humano, com a opção de devolvê-los às respostas automáticas.</p>
+        </li>
+        <li>
+          <h3>Configuração</h3>
+          <p>Ajustes a qualquer momento, inclusive o prazo do follow-up e o encerramento, após certo tempo, das transferências que ninguém retomou.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="perguntas" aria-labelledby="perguntas-titulo">
+    <div class="wrap qa">
+      <div class="reveal">
+        <p class="eyebrow"><span class="n" aria-hidden="true">05</span>Perguntas</p>
+        <h2 id="perguntas-titulo">Antes de começar.</h2>
+      </div>
+      <div class="faq reveal">
+        <details>
+          <summary>De onde vêm as respostas?</summary>
+          <p>Das informações cadastradas no painel e dos arquivos enviados pelo negócio, em PDF, Word, Excel, CSV ou texto.</p>
+        </details>
+        <details>
+          <summary>A equipe pode assumir uma conversa a qualquer momento?</summary>
+          <p>Sim. Basta responder pelo painel: o agente fica em pausa naquele número. Quando a conversa é devolvida, ele retoma e pede uma nota ao cliente.</p>
+        </details>
+        <details>
+          <summary>E enquanto o cliente espera?</summary>
+          <p>Se escrever durante a espera, ele recebe uma vez um aviso de que está na fila. Se preferir, digita 0 e volta a falar com o agente.</p>
+        </details>
+        <details>
+          <summary>E se a inteligência artificial falhar?</summary>
+          <p>O cliente recebe um pedido de desculpas, e a conversa passa para atendimento humano.</p>
+        </details>
+        <details>
+          <summary>E se alguém enviar mensagens sem parar?</summary>
+          <p>Se um número envia muitas mensagens em poucos minutos, o agente suspende as respostas a ele e pede que aguarde.</p>
+        </details>
+        <details>
+          <summary>O agente responde em grupos?</summary>
+          <p>Não. Ele atende apenas conversas individuais.</p>
+        </details>
+        <details>
+          <summary>É possível trocar o número depois?</summary>
+          <p>Sim, pelo próprio painel, com a leitura de um novo QR code.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section paper" id="contato" aria-labelledby="contato-titulo">
+    <div class="wrap contact">
+      <div class="reveal">
+        <p class="eyebrow"><span class="n" aria-hidden="true">06</span>Contato</p>
+        <h2 id="contato-titulo">Coloque o agente no WhatsApp do seu negócio.</h2>
+        <p class="sub">Respondemos a cada pedido com os próximos passos e, quando for o caso, com um orçamento.</p>
+        <p class="check-label">Informe, se possível:</p>
+        <ul class="checklist">
+          <li>O ramo e o nome do negócio</li>
+          <li>Em quantos números de WhatsApp o agente vai funcionar</li>
+          <li>As dúvidas mais comuns dos clientes</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <a class="channel" href="mailto:pablo107564@gmail.com?subject=Agente%20de%20IA%20no%20WhatsApp%20-%20Edelmann%20Tecnologia">
+          <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>E-mail</span>
+          <span class="channel-value">pablo107564@gmail.com</span>
+          <span class="channel-cta">Escrever mensagem<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+        </a>
+        <p class="note">O assunto já vem preenchido.</p>
+        <p class="more"><a class="link" href="../#aplicativos">Ver os outros aplicativos<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <a class="brand" href="../">
+        <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
+        <span><b>Edelmann</b> <small>Tecnologia</small></span>
+      </a>
+      <nav aria-label="Rodapé">
+        <ul>
+          <li><a href="../#servicos">Serviços</a></li>
+          <li><a href="../#aplicativos">Aplicativos</a></li>
+          <li><a href="../#sobre">A Edelmann</a></li>
+          <li><a href="../#metodo">Método</a></li>
+          <li><a href="../#contato">Contato</a></li>
+        </ul>
+      </nav>
+      <a class="foot-mail" href="mailto:pablo107564@gmail.com?subject=Agente%20de%20IA%20no%20WhatsApp%20-%20Edelmann%20Tecnologia">pablo107564@gmail.com</a>
+    </div>
+    <div class="legal">
+      <p>© 2026 Edelmann Tecnologia</p>
+      <a href="#topo">Voltar ao topo</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var d=document,i;
+  // Revelar ao rolar (primeiro, para nada ficar invisível se o resto falhar)
+  if(d.documentElement.classList.contains('rv')){
+    var els=d.querySelectorAll('.reveal');
+    var io=new IntersectionObserver(function(es){
+      for(var k=0;k<es.length;k++)if(es[k].isIntersecting){es[k].target.classList.add('in');io.unobserve(es[k].target)}
+    },{rootMargin:'0px 0px -8% 0px'});
+    for(i=0;i<els.length;i++)io.observe(els[i]);
+  }
+  // Menu do celular
+  var t=d.querySelector('.menu-toggle');
+  if(!t)return;
+  function set(o){t.setAttribute('aria-expanded',String(o))}
+  t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true')});
+  d.addEventListener('click',function(e){if(t.getAttribute('aria-expanded')==='true'&&(e.target.closest('a')||!e.target.closest('.bar')))set(false)});
+  d.addEventListener('keydown',function(e){
+    if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus()}
+  });
+  var mq=matchMedia('(min-width:960px)'),wide=function(e){if(e.matches)set(false)};
+  if(mq.addEventListener)mq.addEventListener('change',wide);else if(mq.addListener)mq.addListener(wide);
+})();
+</script>
+</body>
+</html>
