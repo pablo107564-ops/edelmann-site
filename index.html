@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Edelmann Tecnologia | Suporte de TI, redes e sistemas</title>
+<meta name="description" content="Edelmann Tecnologia: suporte de TI, redes, servidores, segurança e sistemas sob medida, com a competência de quem resolve de verdade.">
+<meta property="og:title" content="Edelmann Tecnologia">
+<meta property="og:description" content="Grandeza em tecnologia. Competência em cada detalhe.">
+<meta property="og:url" content="https://edelmann.com.br/">
+<meta name="theme-color" content="#0b1220">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='38' font-weight='700' text-anchor='middle' fill='%23d4a94a'%3EE%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0b1220; --bg2:#111a2e; --card:#151f36; --line:#24304d;
+    --text:#e8ecf4; --muted:#9aa6bf; --gold:#d4a94a; --gold2:#f0cd7a; --blue:#4f8cff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+  a{color:inherit}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  header{position:sticky;top:0;z-index:10;background:rgba(11,18,32,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:700;letter-spacing:.5px}
+  .logo b{display:grid;place-items:center;width:36px;height:36px;border-radius:9px;background:var(--gold);color:var(--bg);font:700 22px Georgia,serif}
+  .logo span small{display:block;font-weight:400;font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:-4px}
+  .menu{display:flex;gap:24px;font-size:15px}
+  .menu a{text-decoration:none;color:var(--muted)}
+  .menu a:hover{color:var(--text)}
+  .btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:600;text-decoration:none;transition:transform .15s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a1408}
+  .btn-line{border:1px solid var(--line);color:var(--text)}
+  .hero{padding:96px 0 80px;background:radial-gradient(900px 400px at 80% 0%,rgba(79,140,255,.16),transparent),radial-gradient(700px 360px at 10% 20%,rgba(212,169,74,.12),transparent)}
+  .tag{display:inline-block;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(212,169,74,.35);padding:5px 12px;border-radius:99px;margin-bottom:22px}
+  h1{font:700 clamp(34px,6vw,58px)/1.1 Georgia,"Times New Roman",serif;max-width:820px}
+  h1 em{font-style:normal;color:var(--gold)}
+  .lead{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:680px;margin:22px 0 34px}
+  .ctas{display:flex;flex-wrap:wrap;gap:12px}
+  section{padding:80px 0}
+  .alt{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  h2{font:700 clamp(28px,4vw,38px)/1.2 Georgia,serif;margin-bottom:14px}
+  .sub{color:var(--muted);max-width:640px;margin-bottom:44px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+  .card .ic{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:rgba(212,169,74,.12);color:var(--gold);margin-bottom:16px}
+  .card h3{font-size:18px;margin-bottom:8px}
+  .card p{color:var(--muted);font-size:15px}
+  .pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px}
+  .pillars div{border-left:3px solid var(--gold);padding-left:18px}
+  .pillars h3{font-size:18px;margin-bottom:6px}
+  .pillars p{color:var(--muted);font-size:15px}
+  .steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .steps li{list-style:none;counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .steps li::before{content:counter(s,decimal-leading-zero);display:block;font:700 28px Georgia,serif;color:var(--gold);margin-bottom:8px}
+  .steps h3{font-size:17px;margin-bottom:6px}
+  .steps p{color:var(--muted);font-size:15px}
+  .contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .contact a.card{text-decoration:none;display:block}
+  .contact a.card:hover{border-color:var(--gold)}
+  .contact .k{font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .contact .v{font-size:18px;font-weight:600;word-break:break-word}
+  footer{padding:32px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+  @media (max-width:720px){.menu{display:none}.hero{padding:64px 0 56px}section{padding:60px 0}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#"><b>E</b><span>EDELMANN<small>Tecnologia</small></span></a>
+    <div class="menu">
+      <a href="#servicos">Serviços</a>
+      <a href="#porque">Por que a Edelmann</a>
+      <a href="#como">Como trabalhamos</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <span class="tag">Soluções em TI e Informática</span>
+      <h1>Grandeza em tecnologia.<br><em>Competência</em> em cada detalhe.</h1>
+      <p class="lead">A Edelmann Tecnologia cuida da informática da sua casa ou da sua empresa: computadores, redes, servidores, segurança e sistemas sob medida. Você foca no seu negócio; a gente garante que a tecnologia funcione.</p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="#contato">Fale com a gente</a>
+        <a class="btn btn-line" href="#servicos">Ver serviços</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="servicos">
+    <div class="wrap">
+      <h2>Serviços</h2>
+      <p class="sub">Do computador que não liga à rede inteira da empresa: atendimento completo, com diagnóstico honesto e solução definitiva.</p>
+      <div class="grid">
+        <div class="card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Suporte técnico e manutenção</h3><p>Formatação, limpeza, troca de peças, upgrades e resolução de lentidão em computadores e notebooks. Atendimento presencial e remoto.</p></div>
+        <div class="card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/></svg></div><h3>Redes e Wi-Fi</h3><p>Projeto e configuração de redes cabeadas e sem fio, roteadores MikroTik, fibra, VLANs e cobertura de Wi-Fi sem pontos mortos.</p></div>
+        <div class="card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="7" rx="1.5"/><rect x="3" y="14" width="18" height="7" rx="1.5"/><path d="M7 6.5h.01M7 17.5h.01"/></svg></div><h3>Servidores e virtualização</h3><p>Montagem e administração de servidores Linux e Windows, máquinas virtuais, Docker e serviços rodando 24 horas.</p></div>
+        <div class="card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Segurança da informação</h3><p>Firewall, proteção contra invasão, acesso remoto seguro, antivírus e boas práticas para manter seus dados longe de riscos.</p></div>
+        <div class="card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg></div><h3>Sistemas e automação</h3><p>Sistemas sob medida, ponto de venda, abertura de chamados, painéis e atendimento automático com inteligência artificial no WhatsApp e no Telegram.</p></div>
+        <div class="card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 17v3h16v-3"/></svg></div><h3>Backup e recuperação</h3><p>Rotinas de backup automáticas e plano de recuperação, para que nenhuma falha de disco ou queda de energia apague o seu trabalho.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="porque" class="alt">
+    <div class="wrap">
+      <h2>Por que a Edelmann</h2>
+      <p class="sub">Edelmann quer dizer "homem nobre". É o compromisso que levamos para cada atendimento: seriedade, palavra cumprida e trabalho bem feito.</p>
+      <div class="pillars">
+        <div><h3>Competência técnica</h3><p>Conhecimento prático em hardware, redes, servidores e programação. Resolvemos a causa do problema, não só o sintoma.</p></div>
+        <div><h3>Transparência</h3><p>Você entende o que foi feito e quanto custa antes de começar. Sem letras miúdas e sem serviço desnecessário.</p></div>
+        <div><h3>Atendimento próximo</h3><p>Resposta rápida pelo WhatsApp e suporte remoto quando você precisa, sem fila de central.</p></div>
+        <div><h3>Solução que dura</h3><p>Tudo documentado e bem configurado, para a tecnologia trabalhar a seu favor por muito tempo.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <h2>Como trabalhamos</h2>
+      <p class="sub">Um caminho simples, do primeiro contato até o problema resolvido.</p>
+      <ol class="steps">
+        <li><h3>Contato</h3><p>Você conta o que está acontecendo por WhatsApp ou e-mail.</p></li>
+        <li><h3>Diagnóstico</h3><p>Avaliamos a situação e apresentamos a solução e o orçamento.</p></li>
+        <li><h3>Execução</h3><p>Fazemos o serviço com cuidado, presencialmente ou de forma remota.</p></li>
+        <li><h3>Acompanhamento</h3><p>Conferimos que tudo ficou funcionando e seguimos à disposição.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contato" class="alt">
+    <div class="wrap">
+      <h2>Fale com a Edelmann</h2>
+      <p class="sub">Peça um orçamento sem compromisso. Respondemos o mais rápido possível.</p>
+      <div class="contact">
+        <a class="card" href="mailto:pablo107564@gmail.com?subject=Or%C3%A7amento%20-%20Edelmann%20Tecnologia"><div class="k">E-mail</div><div class="v">pablo107564@gmail.com</div></a>
+        <!-- WhatsApp/telefone: trocar NUMERO (só dígitos, com 55 + DDD) e descomentar
+        <a class="card" href="https://wa.me/NUMERO"><div class="k">WhatsApp</div><div class="v">(DDD) 00000-0000</div></a>
+        <a class="card" href="tel:+NUMERO"><div class="k">Telefone alternativo</div><div class="v">(DDD) 00000-0000</div></a>
+        -->
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Edelmann Tecnologia. Todos os direitos reservados.</span>
+    <span>edelmann.com.br</span>
+  </div>
+</footer>
+
+</body>
+</html>
