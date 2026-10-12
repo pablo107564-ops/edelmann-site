@@ -442,6 +442,13 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .channel-value{font:600 clamp(1.125rem,.75rem + 1.9vw,1.875rem)/1.25 var(--serif);letter-spacing:-.02em;overflow-wrap:normal;word-break:normal}
 
 /* ===== Componentes extras ===== */
+.service .more{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.25rem;font:600 .9375rem/1.2 var(--sans);color:var(--gold-ink);text-decoration:none}
+.service .more .i{width:18px;height:18px;stroke-width:2;transition:transform .2s}
+.service .more::after{content:"";position:absolute;inset:0}
+.service:hover .more .i{transform:translateX(3px)}
+.service .more:focus-visible{outline:none}
+.service:has(.more:focus-visible){outline:3px solid var(--gold);outline-offset:-3px}
+
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 400; font-display: swap; src: url(/fonts/inter.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 500; font-display: swap; src: url(/fonts/inter.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 600; font-display: swap; src: url(/fonts/inter.woff2) format('woff2'); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
@@ -566,13 +573,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
           <h3>Suporte técnico</h3>
           <p>Manutenção de desktops e notebooks, do software ao hardware.</p>
           <ul class="tags"><li>Formatação</li><li>Troca e upgrade de peças</li><li>Correção de lentidão</li></ul>
-      <p class="sub reveal" style="margin-top:2.5rem">Veja cada serviço em detalhe:</p>
-      <ul class="svc-links reveal">
-        <li><a href="/servicos/formatacao-e-manutencao/">Formatação e manutenção<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/servicos/redes-e-wifi/">Redes e Wi-Fi<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/servicos/servidores/">Servidores<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
-        <li><a href="/servicos/seguranca-e-backup/">Segurança e backup<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
-      </ul>
+          <a class="more" href="/servicos/formatacao-e-manutencao/">Saiba mais<span class="sr"> sobre formatação e manutenção</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
 
         </li>
         <li class="service">
@@ -580,30 +581,35 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
           <h3>Redes cabeadas e Wi-Fi</h3>
           <p>Projeto e configuração para que a conexão alcance todos os ambientes.</p>
           <ul class="tags"><li>Roteadores MikroTik</li><li>Fibra óptica</li><li>VLANs</li></ul>
+          <a class="more" href="/servicos/redes-e-wifi/">Saiba mais<span class="sr"> sobre redes e Wi-Fi</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
         </li>
         <li class="service">
           <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-server"/></svg><span class="num" aria-hidden="true">03</span></div>
           <h3>Servidores e virtualização</h3>
           <p>Ambientes que mantêm os serviços da empresa no ar 24 horas.</p>
           <ul class="tags"><li>Linux</li><li>Windows</li><li>Docker</li></ul>
+          <a class="more" href="/servicos/servidores/">Saiba mais<span class="sr"> sobre servidores</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
         </li>
         <li class="service">
           <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span class="num" aria-hidden="true">04</span></div>
           <h3>Segurança da informação</h3>
           <p>Defesa contra invasões e boas práticas para o dia a dia.</p>
           <ul class="tags"><li>Firewall</li><li>Antivírus</li><li>Acesso remoto protegido</li></ul>
+          <a class="more" href="/servicos/seguranca-e-backup/">Saiba mais<span class="sr"> sobre segurança</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
         </li>
         <li class="service">
           <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-code"/></svg><span class="num" aria-hidden="true">05</span></div>
           <h3>Sistemas sob medida</h3>
           <p>Programas criados para a rotina do seu negócio.</p>
           <ul class="tags"><li>Automação</li><li>Inteligência artificial</li></ul>
+          <a class="more" href="/produtos/">Saiba mais<span class="sr"> sobre os sistemas</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
         </li>
         <li class="service">
           <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-restore"/></svg><span class="num" aria-hidden="true">06</span></div>
           <h3>Backup e recuperação</h3>
           <p>Seus dados preservados, mesmo diante de uma falha.</p>
           <ul class="tags"><li>Agendamento automático</li><li>Plano de contingência</li></ul>
+          <a class="more" href="/servicos/seguranca-e-backup/">Saiba mais<span class="sr"> sobre backup</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
         </li>
       </ul>
     </div>
