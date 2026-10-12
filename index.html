@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Edelmann Tecnologia | Suporte, redes, servidores e sistemas</title>
-<meta name="description" content="Suporte técnico, redes, servidores, segurança, backup e sistemas sob medida para residências e pequenas e médias empresas. Atendimento presencial e remoto.">
+<meta name="description" content="Suporte técnico, redes, servidores, segurança, backup e sistemas para residências e empresas de pequeno e médio porte. Atendimento presencial e remoto.">
 <link rel="canonical" href="https://edelmann.com.br/">
 <meta name="theme-color" content="#0C1730">
 <meta name="color-scheme" content="light">
@@ -333,6 +333,28 @@ main:focus{outline:none}
   .site-header{position:static}
   .reveal{opacity:1!important;transform:none!important}
 }
+
+/* Páginas internas e início simplificado */
+.head h1,.about h1,.contact h1{font-size:var(--h2);line-height:1.08;letter-spacing:-.02em}
+.about h1{color:#fff}
+.menu a[aria-current="page"]{color:var(--ink);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:.4em}
+.svc-mini{display:grid;grid-template-columns:minmax(0,1fr);gap:1px;padding:0;list-style:none;background:var(--line);border:1px solid var(--line)}
+.svc-mini li{display:flex;align-items:center;gap:1rem;padding:1.5rem 1.75rem;background:var(--bg);font:400 1.25rem/1.25 var(--serif);color:var(--ink)}
+.svc-mini .i{flex:none;width:28px;height:28px;stroke-width:1.25;color:var(--gold-ink)}
+.more{margin-top:2.5rem}
+@media (min-width:560px){.svc-mini{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:900px){.svc-mini{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1080px){.apps.compact{grid-template-columns:repeat(4,minmax(0,1fr))}.apps.compact .app{padding:1.25rem}.apps.compact .app h3{font-size:1.375rem}.apps.compact .app>p{font-size:.9375rem}}
+.apps.compact .app>p{margin-bottom:0}
+.apps.compact .app-go{margin-top:auto;padding-top:1.5rem}
+.cta-band{text-align:center}
+.cta-band h2{font-size:var(--h2);line-height:1.08;color:#fff}
+.cta-band p{max-width:34rem;margin:1.25rem auto 0;color:var(--on-night)}
+.cta-band .ctas{justify-content:center;margin-top:2.25rem}
+.cta-band .btn-primary{background:var(--gold-soft);color:var(--night)}
+.cta-band .btn-primary:hover{background:#fff}
+.cta-band .btn-ghost{border-color:rgba(255,255,255,.35);color:#fff}
+.cta-band .btn-ghost:hover{border-color:#fff}
 </style>
 </head>
 <body>
@@ -362,21 +384,21 @@ main:focus{outline:none}
 
 <header class="site-header" id="topo">
   <div class="wrap bar">
-    <a class="brand" href="#topo">
+    <a class="brand" href="/">
       <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
       <span><b>Edelmann</b> <small>Tecnologia</small></span>
     </a>
-    <a class="btn btn-primary btn-sm bar-cta" href="#contato"><span class="cta-l">Solicitar orçamento</span><span class="cta-s">Orçamento</span></a>
+    <a class="btn btn-primary btn-sm bar-cta" href="/contato/"><span class="cta-l">Solicitar orçamento</span><span class="cta-s">Orçamento</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
       <span class="burger" aria-hidden="true"></span><span class="t">Menu</span>
     </button>
     <nav class="menu" id="menu" aria-label="Principal">
       <ul>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#aplicativos">Aplicativos</a></li>
-        <li><a href="#sobre">A Edelmann</a></li>
-        <li><a href="#metodo">Método</a></li>
-        <li class="menu-cta"><a class="btn btn-primary btn-sm" href="#contato">Solicitar orçamento</a></li>
+        <li><a href="/servicos/">Serviços</a></li>
+        <li><a href="/produtos/">Produtos</a></li>
+        <li><a href="/sobre/">Sobre</a></li>
+        <li><a href="/contato/">Contato</a></li>
+        <li class="menu-cta"><a class="btn btn-primary btn-sm" href="/contato/">Solicitar orçamento</a></li>
       </ul>
     </nav>
   </div>
@@ -391,8 +413,8 @@ main:focus{outline:none}
         <h1 id="titulo"><span>Computadores, redes e sistemas</span> <em>em mãos competentes.</em></h1>
         <p class="lead">Suporte técnico, servidores, segurança e backup para residências e empresas de pequeno e médio porte, com um método claro do diagnóstico ao acompanhamento.</p>
         <div class="ctas">
-          <a class="btn btn-primary" href="#contato">Solicitar orçamento<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-ghost" href="#servicos">Conhecer os serviços</a>
+          <a class="btn btn-primary" href="/contato/">Solicitar orçamento<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost" href="/servicos/">Conhecer os serviços</a>
         </div>
       </div>
       <div class="map" aria-hidden="true">
@@ -432,62 +454,33 @@ main:focus{outline:none}
     <div class="wrap">
       <div class="head reveal">
         <div>
-          <p class="eyebrow"><span class="n" aria-hidden="true">01</span>Serviços</p>
-          <h2 id="servicos-titulo">Seis áreas, um só padrão.</h2>
+          <p class="eyebrow">Serviços</p>
+          <h2 id="servicos-titulo">Do notebook à rede inteira.</h2>
         </div>
-        <p class="sub">Atendemos do conserto de um notebook ao projeto de uma rede inteira.</p>
+        <p class="sub">Atendimento presencial e remoto, com diagnóstico e orçamento antes de começar.</p>
       </div>
-      <ul class="services reveal">
-        <li class="service">
-          <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-support"/></svg><span class="num" aria-hidden="true">01</span></div>
-          <h3>Suporte técnico</h3>
-          <p>Manutenção de desktops e notebooks, do software ao hardware.</p>
-          <ul class="tags"><li>Formatação</li><li>Troca e upgrade de peças</li><li>Correção de lentidão</li></ul>
-        </li>
-        <li class="service">
-          <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-wifi"/></svg><span class="num" aria-hidden="true">02</span></div>
-          <h3>Redes cabeadas e Wi-Fi</h3>
-          <p>Projeto e configuração para que a conexão alcance todos os ambientes.</p>
-          <ul class="tags"><li>Roteadores MikroTik</li><li>Fibra óptica</li><li>VLANs</li></ul>
-        </li>
-        <li class="service">
-          <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-server"/></svg><span class="num" aria-hidden="true">03</span></div>
-          <h3>Servidores e virtualização</h3>
-          <p>Ambientes que mantêm os serviços da empresa no ar 24 horas.</p>
-          <ul class="tags"><li>Linux</li><li>Windows</li><li>Docker</li></ul>
-        </li>
-        <li class="service">
-          <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span class="num" aria-hidden="true">04</span></div>
-          <h3>Segurança da informação</h3>
-          <p>Defesa contra invasões e boas práticas para o dia a dia.</p>
-          <ul class="tags"><li>Firewall</li><li>Antivírus</li><li>Acesso remoto protegido</li></ul>
-        </li>
-        <li class="service">
-          <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-code"/></svg><span class="num" aria-hidden="true">05</span></div>
-          <h3>Sistemas sob medida</h3>
-          <p>Programas criados para a rotina do seu negócio.</p>
-          <ul class="tags"><li>Automação</li><li>Inteligência artificial</li></ul>
-        </li>
-        <li class="service">
-          <div class="service-top"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-restore"/></svg><span class="num" aria-hidden="true">06</span></div>
-          <h3>Backup e recuperação</h3>
-          <p>Seus dados preservados, mesmo diante de uma falha.</p>
-          <ul class="tags"><li>Agendamento automático</li><li>Plano de contingência</li></ul>
-        </li>
+      <ul class="svc-mini reveal">
+        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-support"/></svg>Suporte técnico</li>
+        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-wifi"/></svg>Redes e Wi-Fi</li>
+        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-server"/></svg>Servidores</li>
+        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>Segurança</li>
+        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>Sistemas sob medida</li>
+        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-restore"/></svg>Backup</li>
       </ul>
+      <p class="more reveal"><a class="link" href="/servicos/">Ver todos os serviços<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
     </div>
   </section>
 
-  <section class="section paper" id="aplicativos" aria-labelledby="aplicativos-titulo">
+  <section class="section paper" id="produtos" aria-labelledby="aplicativos-titulo">
     <div class="wrap">
       <div class="head reveal">
         <div>
-          <p class="eyebrow"><span class="n" aria-hidden="true">02</span>Aplicativos</p>
-          <h2 id="aplicativos-titulo">Produtos com a nossa assinatura.</h2>
+          <p class="eyebrow">Produtos</p>
+          <h2 id="aplicativos-titulo">Sistemas prontos para o seu negócio.</h2>
         </div>
         <p class="sub">Além dos serviços, a Edelmann desenvolve ferramentas para atender clientes, vender, organizar o suporte e digitalizar documentos.</p>
       </div>
-      <div class="apps reveal">
+      <div class="apps compact reveal">
         <article class="app">
           <div class="art" aria-hidden="true">
             <svg viewBox="0 0 480 200" focusable="false">
@@ -505,13 +498,8 @@ main:focus{outline:none}
             </svg>
           </div>
           <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
-          <h3><a href="agente-whatsapp/">Agente de IA no WhatsApp</a></h3>
-          <p>Responde aos clientes a qualquer hora, preparado para o seu tipo de negócio: provedor de internet, farmácia, restaurante, loja ou clínica.</p>
-          <ul class="feats">
-            <li>Entende mensagens de áudio</li>
-            <li>Painel de conversas</li>
-            <li>Follow-up automático</li>
-          </ul>
+          <h3><a href="/agente-whatsapp/">Agente de IA no WhatsApp</a></h3>
+          <p>Atende os seus clientes no WhatsApp, a qualquer hora.</p>
           <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
         </article>
         <article class="app">
@@ -529,14 +517,8 @@ main:focus{outline:none}
             </svg>
           </div>
           <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
-          <h3><a href="balcao/">Balcão PDV</a></h3>
-          <p>Para Windows, Linux e Mac, da frente de caixa à emissão de NFC-e. Funciona sem internet; só a nota fiscal exige conexão.</p>
-          <ul class="feats">
-            <li>Estoque e balança</li>
-            <li>Crediário, fiado e contas a pagar</li>
-            <li>Comandas e cozinha</li>
-            <li>Vários caixas em rede</li>
-          </ul>
+          <h3><a href="/balcao/">Balcão PDV</a></h3>
+          <p>Caixa, estoque e NFC-e, mesmo sem internet.</p>
           <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
         </article>
         <article class="app">
@@ -556,13 +538,8 @@ main:focus{outline:none}
             </svg>
           </div>
           <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
-          <h3><a href="chamados/">Sistema de Chamados</a></h3>
-          <p>Organiza os pedidos de suporte da abertura à solução, com base de conhecimento e painel de indicadores.</p>
-          <ul class="feats">
-            <li>Anexos</li>
-            <li>Relatórios em Excel</li>
-            <li>Perfis de usuário, técnico e gerente</li>
-          </ul>
+          <h3><a href="/chamados/">Sistema de Chamados</a></h3>
+          <p>Pedidos de suporte organizados da abertura à solução.</p>
           <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
         </article>
         <article class="app">
@@ -582,125 +559,22 @@ main:focus{outline:none}
             </svg>
           </div>
           <p class="status soon"><span class="sr">Situação: </span>Em breve na Play Store</p>
-          <h3><a href="leitor-de-bolso/">Leitor de Bolso</a></h3>
-          <p>Lê PDFs e digitaliza documentos no Android: fotografa a página, reconhece o texto no próprio aparelho e permite corrigi-lo antes de gerar o arquivo.</p>
-          <ul class="feats">
-            <li>Sem anúncios</li>
-            <li>Sem cadastro</li>
-            <li>Sem pedir permissões</li>
-          </ul>
+          <h3><a href="/leitor-de-bolso/">Leitor de Bolso</a></h3>
+          <p>Leitor e scanner de PDF para Android.</p>
           <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
         </article>
       </div>
-      <p class="apps-more reveal">Tem interesse em algum deles? <a class="link" href="#contato">Fale com a Edelmann<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+      <p class="more reveal"><a class="link" href="/produtos/">Ver todos os produtos<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
     </div>
   </section>
 
-  <section class="section band" id="sobre" aria-labelledby="sobre-titulo">
-    <div class="wrap about">
-      <div class="reveal">
-        <p class="eyebrow"><span class="n" aria-hidden="true">03</span>A Edelmann</p>
-        <h2 id="sobre-titulo">Um nome que é um compromisso.</h2>
-        <p class="origin">Do alemão:</p>
-        <dl class="entry">
-          <div><dt lang="de">Edel</dt><dd>nobre</dd></div>
-          <div><dt lang="de">mann</dt><dd>homem</dd></div>
-        </dl>
-        <p class="about-text">Escolhemos Edelmann pelo que a palavra exige de nós: seriedade, competência e atenção a cada detalhe.</p>
-      </div>
-      <ul class="principles reveal">
-        <li>
-          <h3>A causa, não o sintoma</h3>
-          <p>Conhecemos a tecnologia de ponta a ponta, do equipamento ao código, e investigamos cada falha até a origem.</p>
-        </li>
-        <li>
-          <h3>Só o necessário</h3>
-          <p>Recomendamos apenas o que o caso pede, sempre com o motivo, e não fazemos nada sem a sua aprovação.</p>
-        </li>
-        <li>
-          <h3>Palavra cumprida</h3>
-          <p>Respeitamos o escopo, o prazo e o valor acertados no início.</p>
-        </li>
-        <li>
-          <h3>Feito para durar</h3>
-          <p>Entregamos instalações organizadas e configurações criteriosas, fáceis de manter e de ampliar.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="section" id="metodo" aria-labelledby="metodo-titulo">
-    <div class="wrap">
-      <div class="head reveal">
-        <div>
-          <p class="eyebrow"><span class="n" aria-hidden="true">04</span>Método</p>
-          <h2 id="metodo-titulo">Quatro etapas, nenhuma surpresa.</h2>
-        </div>
-      </div>
-      <ol class="steps reveal">
-        <li class="step">
-          <h3>Solicitação</h3>
-          <p>Você descreve o que precisa: um problema a resolver ou um projeto novo.</p>
-        </li>
-        <li class="step">
-          <h3>Diagnóstico e orçamento</h3>
-          <p>Avaliamos o cenário e apresentamos a solução, com o valor, antes de começar.</p>
-        </li>
-        <li class="step">
-          <h3>Execução</h3>
-          <p>Realizamos o serviço no local ou a distância, conforme o caso.</p>
-        </li>
-        <li class="step">
-          <h3>Acompanhamento</h3>
-          <p>Conferimos o resultado e seguimos à disposição depois da entrega.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section paper" id="contato" aria-labelledby="contato-titulo">
-    <div class="wrap contact">
-      <div class="reveal">
-        <p class="eyebrow"><span class="n" aria-hidden="true">05</span>Contato</p>
-        <h2 id="contato-titulo">Vamos conversar.</h2>
-        <p class="sub">Respondemos a cada pedido com os próximos passos e, quando for o caso, com um orçamento.</p>
-        <p class="check-label">Informe, se possível:</p>
-        <ul class="checklist">
-          <li>O que está acontecendo ou o que deseja fazer</li>
-          <li>O serviço ou aplicativo de interesse</li>
-          <li>Se é para residência ou empresa</li>
-          <li>Se prefere atendimento presencial ou remoto</li>
-        </ul>
-      </div>
-      <div class="reveal">
-        <div class="channels">
-          <a class="channel" href="mailto:pablo107564@gmail.com?subject=Or%C3%A7amento%20-%20Edelmann%20Tecnologia">
-            <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>E-mail</span>
-            <span class="channel-value">pablo107564@gmail.com</span>
-            <span class="channel-cta">Escrever mensagem<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
-          </a>
-<!-- ==================================================================
-     WHATSAPP E TELEFONE: DESATIVADOS ATÉ HAVER NÚMERO
-     Para ativar:
-       1. Troque NUMERO pelos dígitos com código do país e DDD,
-          sem espaços nem sinais (55 + DDD + número).
-       2. Troque "(DDD) NÚMERO" pelo número formatado para leitura.
-       3. Apague as duas linhas marcadas com ABRE e FECHA, logo abaixo.
-     ================================================================== -->
-<!-- ABRE
-          <a class="channel channel-alt" href="https://wa.me/NUMERO" target="_blank" rel="noopener">
-            <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>WhatsApp</span>
-            <span class="channel-value">(DDD) NÚMERO</span>
-            <span class="channel-cta">Iniciar conversa<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
-          </a>
-          <a class="channel channel-alt" href="tel:+NUMERO">
-            <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-phone"/></svg>Telefone alternativo</span>
-            <span class="channel-value">(DDD) NÚMERO</span>
-            <span class="channel-cta">Ligar<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
-          </a>
-FECHA -->
-        </div>
-        <p class="note">O assunto já vem preenchido.</p>
+  <section class="section band cta-band" aria-labelledby="cta-titulo">
+    <div class="wrap reveal">
+      <h2 id="cta-titulo">Vamos conversar.</h2>
+      <p>Conte o que você precisa. Respondemos com os próximos passos e, quando for o caso, com um orçamento.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="/contato/">Solicitar orçamento<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="/sobre/">Conhecer a Edelmann</a>
       </div>
     </div>
   </section>
@@ -710,17 +584,16 @@ FECHA -->
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot">
-      <a class="brand" href="#topo">
+      <a class="brand" href="/">
         <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
         <span><b>Edelmann</b> <small>Tecnologia</small></span>
       </a>
       <nav aria-label="Rodapé">
         <ul>
-          <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#aplicativos">Aplicativos</a></li>
-          <li><a href="#sobre">A Edelmann</a></li>
-          <li><a href="#metodo">Método</a></li>
-          <li><a href="#contato">Contato</a></li>
+          <li><a href="/servicos/">Serviços</a></li>
+          <li><a href="/produtos/">Produtos</a></li>
+          <li><a href="/sobre/">Sobre</a></li>
+          <li><a href="/contato/">Contato</a></li>
         </ul>
       </nav>
       <a class="foot-mail" href="mailto:pablo107564@gmail.com?subject=Or%C3%A7amento%20-%20Edelmann%20Tecnologia">pablo107564@gmail.com</a>
