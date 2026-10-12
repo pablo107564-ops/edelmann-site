@@ -382,6 +382,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .hero h1 em,.hero h2 em{font-style:normal;background:linear-gradient(90deg,#7FB2FF,#5FDDEC);-webkit-background-clip:text;background-clip:text;color:transparent}
 .status{white-space:nowrap}
 .hero li,.hero figcaption,.hero small,.hero dd,.hero dt,.hero .note{color:var(--on-night)}
+.copy{padding:0;border:0;background:none;font:inherit;color:var(--gold-ink);text-decoration:underline;text-underline-offset:.25em;cursor:pointer}
 /* Caixa de contato maior, sem quebrar o e-mail */
 @media (min-width:960px){.contact{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:4rem}}
 .channel-value{font:600 clamp(1.125rem,.75rem + 1.9vw,1.875rem)/1.25 var(--serif);letter-spacing:-.02em;overflow-wrap:normal;word-break:normal}
@@ -478,7 +479,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
           </a>
 FECHA -->
         </div>
-        <p class="note">O assunto já vem preenchido.</p>
+        <p class="note">O assunto já vem preenchido. Abre no Gmail; se preferir outro serviço, <button class="copy" type="button" data-copy="edelmann.tecnologia@gmail.com">copie o endereço</button>.</p>
       </div>
     </div>
   </section>
@@ -530,6 +531,24 @@ FECHA -->
   });
   var mq=matchMedia('(min-width:960px)'),wide=function(e){if(e.matches)set(false)};
   if(mq.addEventListener)mq.addEventListener('change',wide);else if(mq.addListener)mq.addListener(wide);
+})();
+</script>
+<script>
+/* No computador, links de e-mail abrem o Gmail no navegador (mailto depende de programa instalado). No celular, segue o app de e-mail. */
+(function(){
+  if(matchMedia('(pointer:coarse)').matches)return;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="mailto:"]');if(!a)return;
+    var h=a.getAttribute('href'),i=h.indexOf('?'),to=decodeURIComponent(h.slice(7,i<0?h.length:i)),q=new URLSearchParams(i<0?'':h.slice(i+1));
+    var g='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to);
+    if(q.get('subject'))g+='&su='+encodeURIComponent(q.get('subject'));
+    if(q.get('body'))g+='&body='+encodeURIComponent(q.get('body'));
+    e.preventDefault();window.open(g,'_blank','noopener');
+  });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('[data-copy]');if(!b||!navigator.clipboard)return;
+    navigator.clipboard.writeText(b.getAttribute('data-copy')).then(function(){var t=b.textContent;b.textContent='Copiado!';setTimeout(function(){b.textContent=t},1800)});
+  });
 })();
 </script>
 </body>

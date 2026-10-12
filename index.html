@@ -687,5 +687,23 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
   if(mq.addEventListener)mq.addEventListener('change',wide);else if(mq.addListener)mq.addListener(wide);
 })();
 </script>
+<script>
+/* No computador, links de e-mail abrem o Gmail no navegador (mailto depende de programa instalado). No celular, segue o app de e-mail. */
+(function(){
+  if(matchMedia('(pointer:coarse)').matches)return;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="mailto:"]');if(!a)return;
+    var h=a.getAttribute('href'),i=h.indexOf('?'),to=decodeURIComponent(h.slice(7,i<0?h.length:i)),q=new URLSearchParams(i<0?'':h.slice(i+1));
+    var g='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(to);
+    if(q.get('subject'))g+='&su='+encodeURIComponent(q.get('subject'));
+    if(q.get('body'))g+='&body='+encodeURIComponent(q.get('body'));
+    e.preventDefault();window.open(g,'_blank','noopener');
+  });
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('[data-copy]');if(!b||!navigator.clipboard)return;
+    navigator.clipboard.writeText(b.getAttribute('data-copy')).then(function(){var t=b.textContent;b.textContent='Copiado!';setTimeout(function(){b.textContent=t},1800)});
+  });
+})();
+</script>
 </body>
 </html>
