@@ -6,7 +6,7 @@
 <title>Contato | Edelmann Tecnologia</title>
 <meta name="description" content="Fale com a Edelmann Tecnologia por e-mail e peça um orçamento para suporte, redes, servidores, segurança ou sistemas.">
 <link rel="canonical" href="https://edelmann.com.br/contato/">
-<meta name="theme-color" content="#0C1730">
+<meta name="theme-color" content="#060C18">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
@@ -17,34 +17,34 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Contato | Edelmann Tecnologia">
 <meta name="twitter:description" content="Fale com a Edelmann Tecnologia por e-mail e peça um orçamento para suporte, redes, servidores, segurança ou sistemas.">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Crect%20width='48'%20height='48'%20rx='2'%20fill='%2313284B'/%3E%3Crect%20x='3.5'%20y='3.5'%20width='41'%20height='41'%20fill='none'%20stroke='%23C9A96B'/%3E%3Cpath%20fill='%23E2CC9C'%20d='M13.75%2012h20.5v6h-2v-3H20.25v7.5h7.4v-1.5h1.6v5.6h-1.6v-1.5h-7.4V33h12v-3h2v6H13.75v-3h2.5V15h-2.5z'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Crect%20width='48'%20height='48'%20rx='11'%20fill='%230F2A5C'/%3E%3Cpath%20fill='%23fff'%20d='M14%2012h20v5H20v4.5h11v5H20V31h14v5H14z'/%3E%3Crect%20x='36'%20y='31'%20width='4'%20height='5'%20rx='1'%20fill='%235FDDEC'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <script>
 /* Marca a página com JS ativo; a revelação ao rolar só liga se houver suporte e o visitante aceitar movimento. */
 (function(c){c.add('js');if('IntersectionObserver' in window&&!matchMedia('(prefers-reduced-motion: reduce)').matches)c.add('rv')})(document.documentElement.classList);
 </script>
 <style>
 :root{
-  --bg:#FAF8F4;
+  --bg:#F4F7FB;
   --paper:#FFFFFF;
-  --sand:#F2EDE4;
-  --ink:#0F1B33;
-  --navy:#13284B;
-  --night:#0C1730;
-  --text:#2B3446;
-  --muted:#5A6477;
-  --line:#E5DFD4;
-  --line-2:#D5CDBF;
-  --bar:#E4DDD0;
-  --bar-2:#CBC1AF;
-  --gold:#B8955A;
-  --gold-ink:#8A6A2B;
-  --gold-soft:#D9C49A;
-  --live:#2E6B4F;
-  --on-night:#AEB8CA;
-  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sand:#E9EFF7;
+  --ink:#0A1426;
+  --navy:#0F2A5C;
+  --night:#060C18;
+  --text:#22304A;
+  --muted:#526079;
+  --line:#DBE3EE;
+  --line-2:#C3CFE0;
+  --bar:#DBE3EE;
+  --bar-2:#B6C5DA;
+  --gold:#2F7CF6;
+  --gold-ink:#1A5BD0;
+  --gold-soft:#5FDDEC;
+  --live:#119C66;
+  --on-night:#9DB0CF;
+  --serif:"Space Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --max:1200px;
   --gutter:clamp(1.25rem,5vw,3rem);
@@ -327,17 +327,75 @@ main:focus{outline:none}
 .cta-band .btn-primary:hover{background:#fff}
 .cta-band .btn-ghost{border-color:rgba(255,255,255,.35);color:#fff}
 .cta-band .btn-ghost:hover{border-color:#fff}
+
+/* ===== Tema tecnologia ===== */
+:root{--mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+h1,h2,h3{font-weight:600;letter-spacing:-.03em}
+h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3D6);-webkit-background-clip:text;background-clip:text;color:transparent}
+.site-header{background:rgba(244,247,251,.88)}
+.brand b{font-weight:700;letter-spacing:.08em}
+.brand small,.eyebrow,.num,.tags li,.status,.m-label,.channel-label,.entry dd,.origin,.crumbs,.feats li,.check-label{font-family:var(--mono)}
+.eyebrow{gap:.6rem;letter-spacing:.1em}
+.eyebrow::before{content:"//";width:auto;height:auto;background:none;color:var(--gold);letter-spacing:0}
+.num{font-style:normal;font-size:.8125rem;color:var(--gold-ink)}
+.btn{border-radius:8px}
+.btn-primary{background:var(--gold);color:#fff}
+.btn-primary:hover{background:var(--gold-ink)}
+.tags li{border-radius:6px;border-color:transparent;background:var(--sand);font-size:.75rem;color:var(--navy)}
+.services{border-radius:14px;overflow:hidden}
+.service::before{background:linear-gradient(90deg,var(--gold),#22C3D6)}
+.app{border-radius:14px}
+.app:hover{border-color:var(--gold);box-shadow:0 24px 48px -30px rgba(47,124,246,.45)}
+.art{border-radius:10px;overflow:hidden}
+.status{font-size:.75rem}
+.step::before,.principles h3::before{font-family:var(--mono);font-style:normal;font-weight:500}
+.entry dt{font-weight:600}
+.svc-mini{border-radius:14px;overflow:hidden}
+.svc-mini li{font-weight:500}
+/* Abertura escura com grade */
+.hero{background:var(--night);border-bottom:0;color:var(--on-night)}
+.hero::before{background:radial-gradient(50rem 28rem at 82% -5%,rgba(47,124,246,.32),transparent 60%),radial-gradient(34rem 22rem at 5% 105%,rgba(34,195,214,.14),transparent 60%),linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px) 0 0/48px 48px;-webkit-mask-image:none;mask-image:none}
+.hero h1,.hero h2,.hero h3{color:#fff}
+.hero .lead,.hero p{color:var(--on-night)}
+.hero .eyebrow{color:var(--gold-soft)}
+.hero .eyebrow::before{color:var(--gold-soft)}
+.hero .btn-ghost{border-color:rgba(255,255,255,.28);color:#fff}
+.hero .btn-ghost:hover{border-color:#fff}
+.hero .btn-primary:hover{background:#4C93FF}
+.hero .crumbs,.hero .crumbs a{color:var(--on-night)}
+.hero a:not(.btn){color:#fff}
+.hero .status{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);color:#fff}
+.hero :focus-visible{outline-color:var(--gold-soft)}
+.m-disc{fill:rgba(255,255,255,.035)}
+.m-line{stroke:rgba(255,255,255,.16)}
+.m-ring{stroke:var(--gold-soft)}
+.m-node{fill:var(--night);stroke:var(--gold-soft)}
+.m-ico{stroke:#fff}
+.m-label{fill:var(--on-night)}
+.m-core{fill:var(--gold)}
+.m-core-ring{stroke:#fff;stroke-opacity:.35}
+.m-mark{fill:#fff}
+.map svg{filter:drop-shadow(0 0 70px rgba(47,124,246,.3))}
+.band{background:var(--night)}
+.channel{border-radius:14px}
+.channel:hover{background:var(--navy)}
+.hero h1 em,.hero h2 em{font-style:normal;background:linear-gradient(90deg,#7FB2FF,#5FDDEC);-webkit-background-clip:text;background-clip:text;color:transparent}
+.status{white-space:nowrap}
+.hero li,.hero figcaption,.hero small,.hero dd,.hero dt,.hero .note{color:var(--on-night)}
+/* Caixa de contato maior, sem quebrar o e-mail */
+@media (min-width:960px){.contact{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:4rem}}
+.channel-value{font:600 clamp(1.125rem,.75rem + 1.9vw,1.875rem)/1.25 var(--serif);letter-spacing:-.02em;overflow-wrap:normal;word-break:normal}
 </style>
 </head>
 <body>
 
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
   <defs>
-    <path id="eg" d="M13.75 12h20.5v6h-2v-3H20.25v7.5h7.4v-1.5h1.6v5.6h-1.6v-1.5h-7.4V33h12v-3h2v6H13.75v-3h2.5V15h-2.5z"/>
+    <path id="eg" d="M14 12h20v5H20v4.5h11v5H20V31h14v5H14z"/>
     <symbol id="logo" viewBox="0 0 48 48">
-      <rect width="48" height="48" rx="2" fill="#13284B"/>
-      <rect x="3.5" y="3.5" width="41" height="41" fill="none" stroke="#C9A96B"/>
-      <use href="#eg" fill="#E2CC9C"/>
+      <rect width="48" height="48" rx="11" fill="#0F2A5C"/>
+      <use href="#eg" fill="#FFFFFF"/>
+      <rect x="36" y="31" width="4" height="5" rx="1" fill="#5FDDEC"/>
     </symbol>
     <symbol id="i-support" viewBox="0 0 24 24"><path d="M5 6.5A1.5 1.5 0 0 1 6.5 5h11A1.5 1.5 0 0 1 19 6.5V15H5z"/><path d="M2.5 15h19l-1 2.5a1.5 1.5 0 0 1-1.4 1H4.9a1.5 1.5 0 0 1-1.4-1z"/></symbol>
     <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.5 16a5 5 0 0 1 7 0"/><path d="M12 19.5h.01" stroke-width="2.5"/></symbol>
@@ -396,7 +454,7 @@ main:focus{outline:none}
         <div class="channels">
           <a class="channel" href="mailto:edelmann.tecnologia@gmail.com?subject=Or%C3%A7amento%20-%20Edelmann%20Tecnologia">
             <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>E-mail</span>
-            <span class="channel-value">edelmann.tecnologia@gmail.com</span>
+            <span class="channel-value">edelmann.tecnologia@<wbr>gmail.com</span>
             <span class="channel-cta">Escrever mensagem<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
           </a>
 <!-- ==================================================================
