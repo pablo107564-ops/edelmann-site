@@ -424,6 +424,14 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .channel-value{font:600 clamp(1.125rem,.75rem + 1.9vw,1.875rem)/1.25 var(--serif);letter-spacing:-.02em;overflow-wrap:normal;word-break:normal}
 
 /* ===== Componentes extras ===== */
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(13rem,32vw,22rem);gap:.75rem;padding:0;list-style:none}
+@media (min-width:960px){.gallery{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.gallery .wide{grid-column:span 2}
+.gallery figure{position:relative;height:100%;margin:0;overflow:hidden;border-radius:12px;background:var(--line)}
+.gallery img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.gallery li:hover img{transform:scale(1.03)}
+.gallery figcaption{position:absolute;inset:auto 0 0;padding:2.5rem 1rem .85rem;background:linear-gradient(transparent,rgba(6,12,24,.88));color:#fff;font:500 .875rem/1.35 var(--sans)}
+
 .svc-mini li{padding:0}
 .svc-mini-link{display:flex;align-items:center;gap:1rem;width:100%;padding:1.5rem 1.75rem;color:inherit;text-decoration:none;transition:background-color .2s}
 .svc-mini-link:hover{background:var(--paper)}
@@ -487,6 +495,8 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .svc-links a:hover{border-color:var(--gold)}
 
 /* ===== Início: página de captação ===== */
+.home .gallery figure{background:#0E1B33}
+.home .link{color:#fff}
 body.home{background:var(--night)}
 .home main{color:var(--on-night)}
 .home h2,.home h3{color:#fff}
@@ -718,7 +728,25 @@ body.home{background:var(--night)}
     </div>
   </section>
 
-  <section class="section alt" id="atendimento" aria-labelledby="atendimento-titulo">
+  <section class="section alt" id="trabalhos" aria-labelledby="trabalhos-titulo">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow">Trabalhos</p>
+          <h2 id="trabalhos-titulo">Trabalhos realizados.</h2>
+        </div>
+        <p class="sub">Algumas instalações e manutenções que realizamos.</p>
+      </div>
+      <ul class="gallery reveal">
+        <li><figure><img src="/img/trabalhos/torre-enlace.jpg" alt="Antena de enlace de rádio fixada em torre, com a cidade ao fundo" width="676" height="1200" loading="lazy" decoding="async"><figcaption>Enlace de rádio ponto a ponto em torre</figcaption></figure></li>
+        <li><figure><img src="/img/trabalhos/rack.jpg" alt="Rack de rede com switches, patch panels, conversores de mídia e distribuidores ópticos, com os cabos organizados" width="676" height="1200" loading="lazy" decoding="async"><figcaption>Rack com switches, patch panels e distribuidor óptico</figcaption></figure></li>
+        <li class="wide"><figure><img src="/img/trabalhos/bancada-fibra.jpg" alt="Bancada com máquina de fusão de fibra óptica e um gravador aberto com dois discos rígidos" width="1200" height="519" loading="lazy" decoding="async"><figcaption>Fusão de fibra óptica e montagem de equipamento</figcaption></figure></li>
+      </ul>
+      <p class="more reveal"><a class="link" href="/servicos/#trabalhos">Ver mais trabalhos<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+    </div>
+  </section>
+
+  <section class="section" id="atendimento" aria-labelledby="atendimento-titulo">
     <div class="wrap">
       <div class="head reveal">
         <div>
@@ -752,7 +780,7 @@ body.home{background:var(--night)}
     </div>
   </section>
 
-  <section class="section" id="por-que" aria-labelledby="por-que-titulo">
+  <section class="section alt" id="por-que" aria-labelledby="por-que-titulo">
     <div class="wrap why">
       <div class="map" aria-hidden="true">
         <svg viewBox="0 0 400 400" focusable="false">
