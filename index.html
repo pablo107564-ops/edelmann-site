@@ -7,7 +7,7 @@
 <meta name="description" content="Suporte técnico, redes, servidores, segurança, backup e sistemas para residências e empresas de pequeno e médio porte. Atendimento presencial em Itaituba (PA) e remoto.">
 <link rel="canonical" href="https://edelmann.com.br/">
 <meta name="theme-color" content="#060C18">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="dark">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Edelmann Tecnologia">
@@ -485,9 +485,87 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .svc-links{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));margin-top:2rem;padding:0;list-style:none}
 .svc-links a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 1.25rem;background:var(--paper);border:1px solid var(--line);border-radius:12px;font-weight:600;color:var(--ink);text-decoration:none}
 .svc-links a:hover{border-color:var(--gold)}
+
+/* ===== Início: página de captação ===== */
+body.home{background:var(--night)}
+.home main{color:var(--on-night)}
+.home h2,.home h3{color:#fff}
+.home .eyebrow,.home .eyebrow::before{color:var(--gold-soft)}
+.home .sub{color:var(--on-night)}
+.home .section{background:var(--night)}
+.home .section.alt{background:#0A1428;border-block:1px solid rgba(255,255,255,.06)}
+.home :focus-visible{outline-color:var(--gold-soft)}
+.home h2 em{background:linear-gradient(90deg,#7FB2FF,#5FDDEC);-webkit-background-clip:text;background-clip:text;color:transparent}
+.home .site-header{background:rgba(6,12,24,.9);border-bottom-color:rgba(255,255,255,.08)}
+.home .brand,.home .brand b{color:#fff}
+.home .brand small{color:var(--on-night)}
+.home .menu a:not(.btn){color:#DCE2EC}
+.home .menu a:not(.btn):hover{color:#fff}
+.home .menu-toggle{border-color:rgba(255,255,255,.25);color:#fff}
+@media (max-width:959.98px){
+  .js .home .menu{background:var(--night);border-bottom-color:rgba(255,255,255,.08)}
+  .js .home .menu a:not(.btn){color:#fff;border-bottom-color:rgba(255,255,255,.1)}
+}
+.home-hero{padding-block:clamp(3rem,7vw,6rem)}
+.home-hero .hero-grid{align-items:center}
+@media (min-width:960px){.home-hero .hero-grid{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:4rem}}
+.home-hero h1{font-size:clamp(2.4rem,1.3rem + 4vw,4.25rem)}
+.home-hero .lead+.lead{margin-top:1rem}
+.chip{display:inline-flex;margin-bottom:1.5rem;padding:.4rem .85rem;border:1px solid rgba(95,221,236,.45);border-radius:999px;font:500 .75rem/1.35 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--gold-soft)}
+.hero-links{margin-top:2rem}
+.quote{position:relative;padding:clamp(1.25rem,3vw,2rem);background:#0E1B33;border:1px solid rgba(255,255,255,.1);border-radius:16px;box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
+.quote h2{font-size:clamp(1.375rem,1.1rem + 1vw,1.75rem);text-align:center;color:var(--gold-soft)}
+.quote>p{margin:.4rem 0 1.25rem;text-align:center;font-size:.9375rem}
+.quote .form{padding:0;background:none;border:0}
+.quote .form label{color:#DCE2EC}
+.quote .form label small,.quote .fine{color:var(--on-night)}
+.quote .fine a,.alt-send{color:#fff;text-decoration:underline;text-underline-offset:.2em}
+.alt-send{padding:0;border:0;background:none;font:inherit;cursor:pointer}
+.quote .btn-primary{width:100%;background:var(--gold-soft);color:var(--night);font-weight:600}
+.quote .btn-primary:hover{background:#fff}
+.proof{padding-block:1.75rem;background:#0A1428;border-block:1px solid rgba(255,255,255,.06)}
+.proof ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;padding:0;list-style:none}
+@media (min-width:900px){.proof ul{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.proof li{display:flex;align-items:center;gap:.8rem;padding:1rem 1.15rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;font:500 .9375rem/1.35 var(--sans);color:#fff}
+.proof .i{width:22px;height:22px;color:var(--gold-soft)}
+.pillars{display:grid;gap:2.5rem}
+@media (min-width:900px){.pillars{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto}.pillars>div{display:grid;grid-row:span 2;grid-template-rows:subgrid}}
+.pillar-card{padding:clamp(1.5rem,3vw,2.25rem);background:#0E1B33;border:1px solid rgba(95,221,236,.28);border-radius:14px;text-align:center}
+.home .pillar-card h3{font-size:clamp(1.5rem,1.3rem + .8vw,1.875rem);color:var(--gold-soft)}
+.pillar-card p{margin-top:.6rem;font-size:.9375rem}
+.rows{display:grid;gap:.5rem;margin-top:1rem;padding:0;list-style:none}
+.rows a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.9rem 1.15rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:10px;color:#DCE2EC;font-size:.9375rem;text-decoration:none;transition:border-color .2s,background-color .2s,color .2s}
+.rows a:hover{border-color:var(--gold-soft);background:rgba(95,221,236,.06);color:#fff}
+.rows .i{width:18px;height:18px;color:var(--gold-soft);transition:transform .3s var(--ease)}
+.rows a:hover .i{transform:translateX(4px)}
+.modes{display:grid;gap:1.5rem}
+@media (min-width:900px){.modes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.mode{display:flex;flex-direction:column;overflow:hidden;background:#0E1B33;border:1px solid rgba(255,255,255,.1);border-radius:14px}
+.home .mode h3{padding:1.4rem 1.75rem;background:linear-gradient(90deg,var(--gold-ink),#14869B);font-size:1.5rem}
+.mode ul{display:grid;gap:.9rem;padding:1.6rem 1.75rem;list-style:none}
+.mode li{display:flex;gap:.75rem;font-size:1rem;color:#DCE2EC}
+.mode li .i{width:20px;height:20px;margin-top:.15rem;color:var(--gold-soft)}
+.mode .btn{align-self:flex-start;margin:auto 1.75rem 1.75rem}
+.why{display:grid;gap:3rem;align-items:center}
+@media (min-width:960px){.why{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:5rem}}
+.why .map{justify-self:center}
+.why-title{margin-bottom:2rem;font-size:var(--h2);line-height:1.08;letter-spacing:-.02em}
+.home .faq details{background:#0E1B33;border-color:rgba(255,255,255,.1)}
+.home .faq summary{color:#fff}
+.home .faq summary::after{color:var(--gold-soft)}
+.home .faq details p{color:var(--on-night)}
+.cta-accent{padding-block:clamp(4rem,8vw,6.5rem);background:var(--gold-soft);text-align:center}
+.home .cta-accent h2{max-width:40rem;margin-inline:auto;font-size:clamp(1.875rem,1.2rem + 2.6vw,3rem);line-height:1.1;color:var(--night)}
+.cta-accent p{max-width:36rem;margin:1.25rem auto 0;color:#16314F}
+.cta-accent .ctas{justify-content:center}
+.cta-accent .btn-primary{background:var(--night);color:#fff}
+.cta-accent .btn-primary:hover{background:var(--navy)}
+.cta-accent .btn-ghost{border-color:rgba(6,12,24,.45);color:var(--night)}
+.cta-accent .btn-ghost:hover{border-color:var(--night)}
+.home .cta-accent :focus-visible{outline-color:var(--night)}
 </style>
 </head>
-<body>
+<body class="home">
 
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
   <defs>
@@ -507,6 +585,10 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2 4.3 1.7V19a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4Z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12h5M10 15.5h5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7"/><path d="M6.5 9.5V20h11V9.5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7"/></symbol>
   </defs>
 </svg>
 
@@ -536,17 +618,142 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 
 <main id="conteudo" tabindex="-1">
 
-  <section class="hero" aria-labelledby="titulo">
+  <section class="hero home-hero" aria-labelledby="titulo">
     <div class="wrap hero-grid">
       <div>
-        <p class="eyebrow">Itaituba (PA) · presencial e remoto</p>
+        <p class="chip">Suporte técnico · Redes · Sistemas · Itaituba (PA)</p>
         <h1 id="titulo"><span>Computadores, redes e sistemas</span> <em>em mãos competentes.</em></h1>
-        <p class="lead">Suporte técnico, servidores, segurança e backup para residências e empresas de pequeno e médio porte, com um método claro do diagnóstico ao acompanhamento.</p>
-        <div class="ctas">
-          <a class="btn btn-primary" href="/contato/">Solicitar orçamento<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-ghost" href="/servicos/">Conhecer os serviços</a>
+        <p class="lead">A Edelmann Tecnologia cuida da tecnologia de residências e empresas: do conserto do notebook ao projeto da rede, dos servidores aos sistemas do seu comércio.</p>
+        <p class="lead">Você recebe o diagnóstico e o orçamento antes de começarmos, e o serviço só segue com a sua aprovação.</p>
+        <p class="hero-links"><a class="link" href="/servicos/">Conheça os serviços<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+      </div>
+      <div class="quote" id="orcamento">
+        <h2>Peça seu orçamento.</h2>
+        <p>Conte o que precisa. A mensagem sai pronta no seu WhatsApp.</p>
+        <form class="form" id="form-inicio">
+          <div class="row">
+            <label>Seu nome<input name="nome" autocomplete="name" required></label>
+            <label><span>Bairro ou cidade <small>(opcional)</small></span><input name="local" autocomplete="address-level2"></label>
+          </div>
+          <div class="row">
+            <label>Serviço
+              <select name="servico" required>
+                <option value="">Escolha uma opção</option>
+                <option>Formatação e manutenção</option>
+                <option>Redes e Wi-Fi</option>
+                <option>Servidores</option>
+                <option>Segurança e backup</option>
+                <option>Sistemas sob medida</option>
+                <option>Balcão PDV</option>
+                <option>Agente de IA no WhatsApp</option>
+                <option>Sistema de Chamados</option>
+                <option>Leitor de Bolso</option>
+                <option>Outro</option>
+              </select>
+            </label>
+            <label>É para
+              <select name="para">
+                <option>Residência</option>
+                <option>Empresa</option>
+              </select>
+            </label>
+          </div>
+          <label>Como podemos ajudar?<textarea name="descricao" required></textarea></label>
+          <button class="btn btn-primary" type="submit">Enviar pelo WhatsApp<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></button>
+          <p class="fine">Prefere e-mail? <button class="alt-send" type="button" id="inicio-email">Enviar por e-mail</button>. Nada fica guardado no site. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
+        </form>
+        <noscript><p class="fine">Para enviar o pedido, use o WhatsApp (93) 98121-2924 ou o e-mail edelmann.tecnologia@gmail.com.</p></noscript>
+      </div>
+    </div>
+  </section>
+
+  <section class="proof" aria-label="Como trabalhamos">
+    <div class="wrap">
+      <ul>
+        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg>Atendimento presencial em Itaituba</li>
+        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-support"/></svg>Suporte a distância</li>
+        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Orçamento antes de começar</li>
+        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-home"/></svg>Residências e empresas</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="atuacao" aria-labelledby="atuacao-titulo">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow">Áreas de atuação</p>
+          <h2 id="atuacao-titulo">Do suporte do dia a dia <em>aos sistemas do seu negócio.</em></h2>
+        </div>
+        <p class="sub">Cuidamos dos equipamentos e da rede, e desenvolvemos programas para a rotina de quem trabalha.</p>
+      </div>
+      <div class="pillars reveal">
+        <div>
+          <div class="pillar-card">
+            <h3>Suporte e infraestrutura</h3>
+            <p>Computadores, redes, servidores e segurança funcionando sem surpresas.</p>
+          </div>
+          <ul class="rows">
+            <li><a href="/servicos/formatacao-e-manutencao/">Formatação e manutenção<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="/servicos/redes-e-wifi/">Redes e Wi-Fi<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="/servicos/servidores/">Servidores<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="/servicos/seguranca-e-backup/">Segurança e backup<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="/servicos/">Todos os serviços<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="pillar-card">
+            <h3>Sistemas</h3>
+            <p>Programas prontos e sob medida para vender, atender e organizar.</p>
+          </div>
+          <ul class="rows">
+            <li><a href="/balcao/">Balcão PDV<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="/agente-whatsapp/">Agente de IA no WhatsApp<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="/chamados/">Sistema de Chamados<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="/leitor-de-bolso/">Leitor de Bolso<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
+            <li><a href="/produtos/">Sistemas sob medida<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></li>
+          </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="atendimento" aria-labelledby="atendimento-titulo">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow">Atendimento</p>
+          <h2 id="atendimento-titulo">No local ou a distância.</h2>
+        </div>
+        <p class="sub">Escolha o que for melhor para você. Quando o problema permite, resolvemos sem você sair de casa.</p>
+      </div>
+      <div class="modes reveal">
+        <article class="mode">
+          <h3>Presencial</h3>
+          <ul>
+            <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Visita na sua casa ou empresa, em Itaituba</li>
+            <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Instalação de redes, cabeamento e equipamentos</li>
+            <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Diagnóstico e manutenção no local</li>
+            <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Orçamento antes de começar</li>
+          </ul>
+          <a class="btn btn-primary" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20um%20atendimento%20presencial%20da%20Edelmann%20Tecnologia." target="_blank" rel="noopener">Pedir atendimento presencial<span class="sr"> (abre o WhatsApp em nova aba)</span></a>
+        </article>
+        <article class="mode">
+          <h3>A distância</h3>
+          <ul>
+            <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Acesso remoto seguro, sem sair de casa</li>
+            <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Atendimento para outras cidades, quando o serviço permite</li>
+            <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Configuração de programas, e-mail e sistemas</li>
+            <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Suporte aos sistemas da Edelmann</li>
+          </ul>
+          <a class="btn btn-primary" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20um%20atendimento%20a%20dist%C3%A2ncia%20da%20Edelmann%20Tecnologia." target="_blank" rel="noopener">Pedir atendimento a distância<span class="sr"> (abre o WhatsApp em nova aba)</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="por-que" aria-labelledby="por-que-titulo">
+    <div class="wrap why">
       <div class="map" aria-hidden="true">
         <svg viewBox="0 0 400 400" focusable="false">
           <path class="m-line" d="M6 46V6h40M354 6h40v40M394 354v40h-40M46 394H6v-40"/>
@@ -577,134 +784,27 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
           <use class="m-mark" href="#eg" transform="translate(200 200) scale(2.4) translate(-24 -24)"/>
         </svg>
       </div>
-    </div>
-  </section>
-
-  <section class="section" id="servicos" aria-labelledby="servicos-titulo">
-    <div class="wrap">
-      <div class="head reveal">
-        <div>
-          <p class="eyebrow">Serviços</p>
-          <h2 id="servicos-titulo">Do notebook à rede inteira.</h2>
+      <div class="reveal">
+        <p class="eyebrow">Por que a Edelmann</p>
+        <h2 id="por-que-titulo" class="why-title">Um jeito claro de cuidar da sua tecnologia.</h2>
+        <div class="faq">
+          <details open><summary>Orçamento antes de qualquer serviço</summary><p>Você sabe o que será feito e quanto custa antes de começarmos. Nada é feito sem a sua aprovação.</p></details>
+          <details><summary>Você fala com quem resolve</summary><p>O atendimento é direto com o técnico, sem central e sem roteiro pronto.</p></details>
+          <details><summary>Da casa à empresa</summary><p>Atendemos o notebook de casa e também a rede, os servidores e os sistemas de empresas.</p></details>
+          <details><summary>Sistemas próprios</summary><p>Desenvolvemos o Balcão PDV e o Agente de IA no WhatsApp, e damos suporte aqui na cidade.</p></details>
+          <details><summary>Acompanhamento depois da entrega</summary><p>Conferimos o resultado com você e seguimos à disposição depois que o serviço termina.</p></details>
         </div>
-        <p class="sub">Atendimento presencial e remoto, com diagnóstico e orçamento antes de começar.</p>
       </div>
-      <ul class="svc-mini reveal">
-        <li><a class="svc-mini-link" href="/servicos/formatacao-e-manutencao/"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-support"/></svg>Suporte técnico</a></li>
-        <li><a class="svc-mini-link" href="/servicos/redes-e-wifi/"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-wifi"/></svg>Redes e Wi-Fi</a></li>
-        <li><a class="svc-mini-link" href="/servicos/servidores/"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-server"/></svg>Servidores</a></li>
-        <li><a class="svc-mini-link" href="/servicos/seguranca-e-backup/"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>Segurança</a></li>
-        <li><a class="svc-mini-link" href="/produtos/"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>Sistemas sob medida</a></li>
-        <li><a class="svc-mini-link" href="/servicos/seguranca-e-backup/"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-restore"/></svg>Backup</a></li>
-      </ul>
-      <p class="more reveal"><a class="link" href="/servicos/">Ver todos os serviços<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
     </div>
   </section>
 
-  <section class="section paper" id="produtos" aria-labelledby="aplicativos-titulo">
-    <div class="wrap">
-      <div class="head reveal">
-        <div>
-          <p class="eyebrow">Produtos</p>
-          <h2 id="aplicativos-titulo">Sistemas prontos para o seu negócio.</h2>
-        </div>
-        <p class="sub">Além dos serviços, a Edelmann desenvolve ferramentas para atender clientes, vender, organizar o suporte e digitalizar documentos.</p>
-      </div>
-      <div class="apps compact reveal">
-        <article class="app">
-          <div class="art" aria-hidden="true">
-            <svg viewBox="0 0 480 200" focusable="false">
-              <rect class="f" x="60" y="12" width="360" height="176" rx="10"/>
-              <path class="o" d="M60 52h360"/>
-              <circle class="n" cx="86" cy="32" r="10"/>
-              <path class="b2" d="M106 28h80"/><path class="b" d="M106 39h48"/>
-              <rect class="s" x="80" y="64" width="172" height="38" rx="8"/>
-              <path class="n" d="M94 76l11 7-11 7z"/>
-              <path class="wave" d="M116 80v6M122 76v14M128 72v22M134 78v10M140 74v18M146 71v24M152 77v12M158 73v20M164 79v8M170 75v16M176 72v22M182 78v10M188 74v18M194 79v8M200 76v14M206 80v6M212 77v12M218 79v8M224 78v10M230 81v4"/>
-              <rect class="n" x="222" y="112" width="178" height="40" rx="8"/>
-              <path class="bw" d="M238 125h136M238 139h88"/>
-              <rect class="s" x="80" y="160" width="124" height="20" rx="8"/>
-              <path class="b2" d="M94 170h84"/>
-            </svg>
-          </div>
-          <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
-          <h3><a href="/agente-whatsapp/">Agente de IA no WhatsApp</a></h3>
-          <p>Atende os seus clientes no WhatsApp, a qualquer hora.</p>
-          <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
-        </article>
-        <article class="app">
-          <div class="art" aria-hidden="true">
-            <svg viewBox="0 0 480 200" focusable="false">
-              <rect class="f" x="20" y="12" width="440" height="176" rx="6"/>
-              <path class="o" d="M20 38h440M36 70h240M36 96h240M36 122h240M36 148h240"/>
-              <circle class="k" cx="36" cy="25" r="4"/><circle class="k" cx="50" cy="25" r="4"/><circle class="k" cx="64" cy="25" r="4"/>
-              <path class="b2" d="M40 57h140M40 83h110M40 109h160M40 135h96"/>
-              <path class="b" d="M236 57h36M236 83h36M236 109h36M236 135h36M40 170h80"/>
-              <rect class="n" x="300" y="52" width="144" height="52" rx="4"/>
-              <path class="bg" d="M316 68h44"/><path class="bw" d="M316 88h96"/>
-              <rect class="k" x="300" y="114" width="44" height="28" rx="3"/><rect class="k" x="350" y="114" width="44" height="28" rx="3"/><rect class="k" x="400" y="114" width="44" height="28" rx="3"/>
-              <rect class="k" x="300" y="148" width="44" height="28" rx="3"/><rect class="k" x="350" y="148" width="44" height="28" rx="3"/><rect class="g" x="400" y="148" width="44" height="28" rx="3"/>
-            </svg>
-          </div>
-          <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
-          <h3><a href="/balcao/">Balcão PDV</a></h3>
-          <p>Caixa, estoque e NFC-e, mesmo sem internet.</p>
-          <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
-        </article>
-        <article class="app">
-          <div class="art" aria-hidden="true">
-            <svg viewBox="0 0 480 200" focusable="false">
-              <rect class="f" x="20" y="12" width="440" height="176" rx="6"/>
-              <rect class="k" x="36" y="28" width="128" height="68" rx="3"/><rect class="k" x="176" y="28" width="128" height="68" rx="3"/><rect class="k" x="316" y="28" width="128" height="68" rx="3"/>
-              <path class="b2" d="M50 42h50M190 42h40M330 42h56"/>
-              <rect class="n" x="52" y="66" width="12" height="20"/><rect class="n" x="70" y="58" width="12" height="28"/><rect class="n" x="88" y="70" width="12" height="16"/><rect class="g" x="106" y="54" width="12" height="32"/><rect class="n" x="124" y="62" width="12" height="24"/>
-              <path class="o" d="M190 84l22-14 18 8 22-20 16 6 20-10"/>
-              <circle class="ring" cx="380" cy="70" r="16"/>
-              <circle class="ring arc" cx="380" cy="70" r="16" stroke-dasharray="66 101" transform="rotate(-90 380 70)"/>
-              <path class="o" d="M36 132h408M36 158h408"/>
-              <circle class="g" cx="46" cy="118" r="5"/><circle class="n" cx="46" cy="145" r="5"/><circle class="k" cx="46" cy="171" r="5"/>
-              <path class="b2" d="M62 118h170M62 145h130M62 171h150"/>
-              <path class="b" d="M290 118h50M290 145h50M290 171h50M384 118h44M384 145h44M384 171h44"/>
-            </svg>
-          </div>
-          <p class="status"><span class="sr">Situação: </span>Em funcionamento</p>
-          <h3><a href="/chamados/">Sistema de Chamados</a></h3>
-          <p>Pedidos de suporte organizados da abertura à solução.</p>
-          <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
-        </article>
-        <article class="app">
-          <div class="art" aria-hidden="true">
-            <svg viewBox="0 0 480 200" focusable="false">
-              <rect class="f" x="124" y="8" width="108" height="184" rx="14"/>
-              <rect class="s" x="134" y="24" width="88" height="148" rx="4"/>
-              <rect class="f" x="148" y="40" width="60" height="84" rx="2"/>
-              <path class="b thin" d="M156 54h44M156 66h36M156 78h44M156 90h28M156 102h40M156 114h32"/>
-              <path class="arrow" d="M142 46v-10h10M204 36h10v10M214 118v10h-10M152 128h-10v-10"/>
-              <path class="scan" d="M140 84h76"/>
-              <circle class="n" cx="178" cy="152" r="9"/>
-              <path class="arrow" d="M256 100h40M286 90l10 10-10 10"/>
-              <rect class="f" x="318" y="32" width="104" height="136" rx="3"/>
-              <path class="b2" d="M334 54h72M334 68h60M334 82h72M334 96h44M334 110h66M334 124h52"/>
-              <text class="t" x="334" y="152">PDF</text>
-            </svg>
-          </div>
-          <p class="status soon"><span class="sr">Situação: </span>Em breve na Play Store</p>
-          <h3><a href="/leitor-de-bolso/">Leitor de Bolso</a></h3>
-          <p>Leitor e scanner de PDF para Android.</p>
-          <p class="app-go" aria-hidden="true">Conhecer o app<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
-        </article>
-      </div>
-      <p class="more reveal"><a class="link" href="/produtos/">Ver todos os produtos<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
-    </div>
-  </section>
-
-  <section class="section band cta-band" aria-labelledby="cta-titulo">
+  <section class="cta-accent" aria-labelledby="cta-titulo">
     <div class="wrap reveal">
-      <h2 id="cta-titulo">Vamos conversar.</h2>
-      <p>Conte o que você precisa. Respondemos com os próximos passos e, quando for o caso, com um orçamento.</p>
+      <h2 id="cta-titulo">Tem um problema de tecnologia e não sabe por onde começar?</h2>
+      <p>Conte o que está acontecendo. Respondemos com os próximos passos e, quando for o caso, com um orçamento.</p>
       <div class="ctas">
-        <a class="btn btn-primary" href="/contato/">Solicitar orçamento<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-ghost" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Edelmann%20Tecnologia." target="_blank" rel="noopener">Falar no WhatsApp<span class="sr"> (abre em nova aba)</span></a>
+        <a class="btn btn-primary" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Edelmann%20Tecnologia." target="_blank" rel="noopener">Falar no WhatsApp<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="/contato/">Outras formas de contato</a>
       </div>
     </div>
   </section>
@@ -776,6 +876,28 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
   document.addEventListener('click',function(e){
     var b=e.target.closest&&e.target.closest('[data-copy]');if(!b||!navigator.clipboard)return;
     navigator.clipboard.writeText(b.getAttribute('data-copy')).then(function(){var t=b.textContent;b.textContent='Copiado!';setTimeout(function(){b.textContent=t},1800)});
+  });
+})();
+</script>
+<script>
+/* Orçamento do topo: monta a mensagem no navegador e abre WhatsApp ou e-mail. */
+(function(){
+  var f=document.getElementById('form-inicio'); if(!f)return;
+  function msg(){
+    var d=new FormData(f),l=['Olá! Quero um orçamento pela Edelmann Tecnologia.','','Nome: '+d.get('nome')];
+    if(d.get('local'))l.push('Bairro/cidade: '+d.get('local'));
+    l.push('Serviço: '+d.get('servico'),'Para: '+d.get('para'),'','Descrição: '+d.get('descricao'));
+    return l.join('\n');
+  }
+  f.addEventListener('submit',function(e){
+    e.preventDefault(); if(!f.reportValidity())return;
+    window.open('https://wa.me/5593981212924?text='+encodeURIComponent(msg()),'_blank','noopener');
+  });
+  document.getElementById('inicio-email').addEventListener('click',function(){
+    if(!f.reportValidity())return;
+    var a=document.createElement('a');
+    a.href='mailto:edelmann.tecnologia@gmail.com?subject='+encodeURIComponent('Orçamento - '+new FormData(f).get('servico'))+'&body='+encodeURIComponent(msg());
+    document.body.appendChild(a); a.click(); a.remove();
   });
 })();
 </script>

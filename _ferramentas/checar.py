@@ -1,7 +1,7 @@
 import re,os,json,glob
 os.chdir(r'D:\projetos\edelmann-site')
 bad=[];titles={}
-fs=[f.replace(os.sep,'/') for f in glob.glob('**/*.html',recursive=True) if 'google2e5' not in f]
+fs=[f.replace(os.sep,'/') for f in glob.glob('**/*.html',recursive=True) if 'google2e5' not in f and not f.startswith('_')]
 for f in sorted(fs):
     s=open(f,encoding='utf-8').read(); d=os.path.dirname(f); idl=re.findall(r'id="([^"]+)"',s); ids=set(idl)
     h1=s.count('<h1')
