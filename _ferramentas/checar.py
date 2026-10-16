@@ -1,7 +1,10 @@
 import re,os,json,glob
-os.chdir(r'D:\projetos\edelmann-site')
+os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # pasta do site
 bad=[];titles={}
 fs=[f.replace(os.sep,'/') for f in glob.glob('**/*.html',recursive=True) if 'google2e5' not in f and not f.startswith('_')]
+# páginas que só redirecionam (conteúdo removido): não são checadas, e nenhuma página deve apontar para elas
+redir={f for f in fs if 'http-equiv="refresh"' in open(f,encoding='utf-8').read()}
+fs=[f for f in fs if f not in redir]
 for f in sorted(fs):
     s=open(f,encoding='utf-8').read(); d=os.path.dirname(f); idl=re.findall(r'id="([^"]+)"',s); ids=set(idl)
     h1=s.count('<h1')
@@ -21,7 +24,8 @@ for f in sorted(fs):
         tgt=tgt or '.'
         if os.path.isdir(tgt): tgt=os.path.join(tgt,'index.html')
         if not os.path.exists(tgt): bad.append((f,u)); continue
+        if tgt.replace(os.sep,'/') in redir: bad.append((f,u,'aponta para página removida')); continue
         if frag and tgt.endswith('.html') and f'id="{frag}"' not in open(tgt,encoding='utf-8').read(): bad.append((f,u))
 for t,l in titles.items():
     if len(l)>1: bad.append(('titulo repetido',t,l))
-print(len(fs),'paginas'); print('problemas:',bad or 'nenhum')
+print(len(fs),'paginas,',len(redir),'redirecionamentos'); print('problemas:',bad or 'nenhum')

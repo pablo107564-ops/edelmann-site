@@ -1,9 +1,6 @@
-# Galeria "Trabalhos realizados" com as fotos de img/trabalhos/ (tratadas: sem metadados, cortadas e desfocadas).
-# Início: 3 fotos, depois de Áreas de atuação. Serviços: as 6, depois dos cards. Idempotente.
-import os
+# Dados e HTML da galeria "Trabalhos realizados" (fotos tratadas em img/trabalhos/: sem metadados, cortadas e desfocadas).
+# Usado por consultoria.py (início com 3 fotos, Sobre com as 6).
 
-SITE = r'D:\projetos\edelmann-site'
-ARROW = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>'
 # arquivo, largura, altura, legenda, texto alternativo
 FOTOS = [
     ('torre-enlace', 676, 1200, 'Enlace de rádio ponto a ponto em torre', 'Antena de enlace de rádio fixada em torre, com a cidade ao fundo'),
@@ -27,43 +24,3 @@ def items(fotos):
         cls = ' class="wide"' if w > h else ''
         out.append(f'        <li{cls}><figure><img src="/img/trabalhos/{nome}.jpg" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async"><figcaption>{leg}</figcaption></figure></li>')
     return '\n'.join(out)
-
-def secao(fotos, classe, mais=''):
-    return f'''  <section class="section{classe}" id="trabalhos" aria-labelledby="trabalhos-titulo">
-    <div class="wrap">
-      <div class="head reveal">
-        <div>
-          <p class="eyebrow">Trabalhos</p>
-          <h2 id="trabalhos-titulo">Trabalhos realizados.</h2>
-        </div>
-        <p class="sub">Algumas instalações e manutenções que realizamos.</p>
-      </div>
-      <ul class="gallery reveal">
-{items(fotos)}
-      </ul>{mais}
-    </div>
-  </section>
-
-'''
-
-def aplica(p, antes_de, html, trocas=()):
-    f = os.path.join(SITE, p)
-    s = open(f, encoding='utf-8').read()
-    if 'id="trabalhos"' in s:
-        print(p, 'já feito'); return
-    i = s.index(antes_de)
-    s = s[:i] + html + s[i:]
-    s = s.replace('/* ===== Componentes extras ===== */', '/* ===== Componentes extras ===== */\n' + CSS, 1)
-    for a, b in trocas:
-        assert a in s, a
-        s = s.replace(a, b, 1)
-    open(f, 'w', encoding='utf-8', newline='\n').write(s)
-    print(p, 'ok')
-
-# Início (fundo escuro): entra entre Áreas de atuação e Atendimento; Atendimento e Por que trocam de fundo para alternar.
-aplica('index.html', '  <section class="section alt" id="atendimento"',
-       secao(FOTOS[:3], ' alt', f'\n      <p class="more reveal"><a class="link" href="/servicos/#trabalhos">Ver mais trabalhos{ARROW}</a></p>'),
-       [('<section class="section alt" id="atendimento"', '<section class="section" id="atendimento"'),
-        ('<section class="section" id="por-que"', '<section class="section alt" id="por-que"'),
-        ('/* ===== Início: página de captação ===== */', '/* ===== Início: página de captação ===== */\n.home .gallery figure{background:#0E1B33}\n.home .link{color:#fff}')])
-aplica('servicos/index.html', '  <section class="section" id="metodo"', secao(FOTOS, ' paper'))

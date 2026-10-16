@@ -2,7 +2,7 @@
 # Fontes locais, ícones/manifest, botão flutuante do WhatsApp, links novos no rodapé e estilos extras.
 import re, glob, os, sys
 
-SITE = r'D:\projetos\edelmann-site'
+SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # pasta do site
 FONTFACE = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fontface.css'), encoding='utf-8').read()
 
 WA = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Edelmann%20Tecnologia.'

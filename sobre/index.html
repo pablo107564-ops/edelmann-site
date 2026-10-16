@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sobre | Edelmann Tecnologia</title>
-<meta name="description" content="Edelmann vem do alemão e significa homem nobre. Conheça os princípios que orientam o nosso trabalho.">
+<meta name="description" content="A Edelmann Tecnologia é uma consultoria em TI para empresas de pequeno e médio porte, com mais de 15 anos de experiência nos mais diversos setores e em contratos públicos.">
 <link rel="canonical" href="https://edelmann.com.br/sobre/">
 <meta name="theme-color" content="#060C18">
 <meta name="color-scheme" content="light">
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Edelmann Tecnologia">
 <meta property="og:title" content="Sobre | Edelmann Tecnologia">
-<meta property="og:description" content="Edelmann vem do alemão e significa homem nobre. Conheça os princípios que orientam o nosso trabalho.">
+<meta property="og:description" content="A Edelmann Tecnologia é uma consultoria em TI para empresas de pequeno e médio porte, com mais de 15 anos de experiência nos mais diversos setores e em contratos públicos.">
 <meta property="og:url" content="https://edelmann.com.br/sobre/">
 <meta property="og:image" content="https://edelmann.com.br/img/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://edelmann.com.br/img/og.jpg">
 <meta name="twitter:title" content="Sobre | Edelmann Tecnologia">
-<meta name="twitter:description" content="Edelmann vem do alemão e significa homem nobre. Conheça os princípios que orientam o nosso trabalho.">
+<meta name="twitter:description" content="A Edelmann Tecnologia é uma consultoria em TI para empresas de pequeno e médio porte, com mais de 15 anos de experiência nos mais diversos setores e em contratos públicos.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Crect%20width='48'%20height='48'%20rx='11'%20fill='%230F2A5C'/%3E%3Cpath%20fill='%23fff'%20d='M14%2012h20v5H20v4.5h11v5H20V31h14v5H14z'/%3E%3Crect%20x='36'%20y='31'%20width='4'%20height='5'%20rx='1'%20fill='%235FDDEC'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -452,6 +452,15 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .svc-links{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));margin-top:2rem;padding:0;list-style:none}
 .svc-links a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 1.25rem;background:var(--paper);border:1px solid var(--line);border-radius:12px;font-weight:600;color:var(--ink);text-decoration:none}
 .svc-links a:hover{border-color:var(--gold)}
+
+/* ===== Galeria ===== */
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(13rem,32vw,22rem);gap:.75rem;padding:0;list-style:none}
+@media (min-width:960px){.gallery{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.gallery .wide{grid-column:span 2}
+.gallery figure{position:relative;height:100%;margin:0;overflow:hidden;border-radius:12px;background:var(--line)}
+.gallery img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+.gallery li:hover img{transform:scale(1.03)}
+.gallery figcaption{position:absolute;inset:auto 0 0;padding:2.5rem 1rem .85rem;background:linear-gradient(transparent,rgba(6,12,24,.88));color:#fff;font:500 .875rem/1.35 var(--sans)}
 </style>
 </head>
 <body>
@@ -485,17 +494,16 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
       <svg aria-hidden="true" focusable="false"><use href="#logo"/></svg>
       <span><b>Edelmann</b> <small>Tecnologia</small></span>
     </a>
-    <a class="btn btn-primary btn-sm bar-cta" href="/contato/"><span class="cta-l">Solicitar orçamento</span><span class="cta-s">Orçamento</span></a>
+    <a class="btn btn-primary btn-sm bar-cta" href="/contato/#agendar"><span class="cta-l">Agendar conversa</span><span class="cta-s">Agendar</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu">
       <span class="burger" aria-hidden="true"></span><span class="t">Menu</span>
     </button>
     <nav class="menu" id="menu" aria-label="Principal">
       <ul>
-        <li><a href="/servicos/">Serviços</a></li>
-        <li><a href="/produtos/">Produtos</a></li>
+        <li><a href="/#como-atuamos">Como atuamos</a></li>
         <li><a href="/sobre/" aria-current="page">Sobre</a></li>
         <li><a href="/contato/">Contato</a></li>
-        <li class="menu-cta"><a class="btn btn-primary btn-sm" href="/contato/">Solicitar orçamento</a></li>
+        <li class="menu-cta"><a class="btn btn-primary btn-sm" href="/contato/#agendar">Agendar conversa</a></li>
       </ul>
     </nav>
   </div>
@@ -510,7 +518,10 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
           <p class="eyebrow">Sobre</p>
           <h1 id="quem-titulo">Quem somos.</h1>
         </div>
-        <p class="sub">A Edelmann Tecnologia cuida de computadores, redes, servidores e sistemas de residências e de empresas de pequeno e médio porte, com atendimento presencial e remoto. Também desenvolvemos sistemas próprios, que já funcionam no dia a dia de quem os usa.</p>
+        <div class="sub">
+          <p>A Edelmann Tecnologia é uma consultoria em TI para empresas de pequeno e médio porte. Há mais de 15 anos apoiamos os mais diversos setores a gerir e melhorar os processos do negócio, com a tecnologia certa para cada fase da gestão e foco em resultados que aparecem no caixa.</p>
+          <p style="margin-top:1rem">Também temos experiência com contratos públicos, em que prazo, documentação e conformidade não são opcionais. Levamos esse mesmo rigor a cada empresa que atendemos.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -530,11 +541,11 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
       <ul class="principles reveal">
         <li>
           <h3>A causa, não o sintoma</h3>
-          <p>Conhecemos a tecnologia de ponta a ponta, do equipamento ao código, e investigamos cada falha até a origem.</p>
+          <p>Antes de propor qualquer solução, entendemos o negócio e investigamos a origem de cada problema.</p>
         </li>
         <li>
           <h3>Só o necessário</h3>
-          <p>Recomendamos apenas o que o caso pede, sempre com o motivo, e não fazemos nada sem a sua aprovação.</p>
+          <p>Recomendamos apenas o que traz retorno para o negócio, sempre com o motivo, e nada começa sem a sua aprovação.</p>
         </li>
         <li>
           <h3>Palavra cumprida</h3>
@@ -542,42 +553,39 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
         </li>
         <li>
           <h3>Feito para durar</h3>
-          <p>Entregamos instalações organizadas e configurações criteriosas, fáceis de manter e de ampliar.</p>
+          <p>Entregamos soluções organizadas e documentadas, fáceis de manter e de ampliar.</p>
         </li>
       </ul>
     </div>
   </section>
 
-  <section class="section" aria-labelledby="fazemos-titulo">
+  <section class="section" id="experiencia" aria-labelledby="experiencia-titulo">
     <div class="wrap">
       <div class="head reveal">
         <div>
-          <p class="eyebrow">O que fazemos</p>
-          <h2 id="fazemos-titulo">Serviços e produtos.</h2>
+          <p class="eyebrow">Experiência</p>
+          <h2 id="experiencia-titulo">Da estratégia à execução.</h2>
         </div>
+        <p class="sub">Além de planejar, executamos. Algumas instalações e projetos que realizamos:</p>
       </div>
-      <div class="apps reveal">
-        <article class="app">
-          <h3><a href="/servicos/">Serviços</a></h3>
-          <p>Suporte técnico, redes cabeadas e Wi-Fi, servidores, segurança, sistemas sob medida e backup.</p>
-          <p class="app-go" aria-hidden="true">Ver os serviços<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
-        </article>
-        <article class="app">
-          <h3><a href="/produtos/">Produtos</a></h3>
-          <p>Agente de IA no WhatsApp, Balcão PDV, Sistema de Chamados e Leitor de Bolso.</p>
-          <p class="app-go" aria-hidden="true">Ver os produtos<svg class="i" focusable="false"><use href="#i-arrow"/></svg></p>
-        </article>
-      </div>
+      <ul class="gallery reveal">
+        <li><figure><img src="/img/trabalhos/torre-enlace.jpg" alt="Antena de enlace de rádio fixada em torre, com a cidade ao fundo" width="676" height="1200" loading="lazy" decoding="async"><figcaption>Enlace de rádio ponto a ponto em torre</figcaption></figure></li>
+        <li><figure><img src="/img/trabalhos/rack.jpg" alt="Rack de rede com switches, patch panels, conversores de mídia e distribuidores ópticos, com os cabos organizados" width="676" height="1200" loading="lazy" decoding="async"><figcaption>Rack com switches, patch panels e distribuidor óptico</figcaption></figure></li>
+        <li class="wide"><figure><img src="/img/trabalhos/bancada-fibra.jpg" alt="Bancada com máquina de fusão de fibra óptica e um gravador aberto com dois discos rígidos" width="1200" height="519" loading="lazy" decoding="async"><figcaption>Fusão de fibra óptica e montagem de equipamento</figcaption></figure></li>
+        <li><figure><img src="/img/trabalhos/manutencao-pc.jpg" alt="Gabinete aberto com placa-mãe, cooler, fonte e cabos durante a manutenção" width="866" height="1200" loading="lazy" decoding="async"><figcaption>Manutenção de desktop</figcaption></figure></li>
+        <li><figure><img src="/img/trabalhos/torre-fixacao.jpg" alt="Suporte metálico prendendo a antena de rádio à torre" width="676" height="1200" loading="lazy" decoding="async"><figcaption>Fixação e alinhamento da antena</figcaption></figure></li>
+        <li class="wide"><figure><img src="/img/trabalhos/racks-parede.jpg" alt="Dois racks de parede instalados, um preto e um bege, com os cabos de rede chegando por eletrodutos" width="1200" height="676" loading="lazy" decoding="async"><figcaption>Racks de parede para rede e equipamentos</figcaption></figure></li>
+      </ul>
     </div>
   </section>
 
   <section class="section band cta-band" aria-labelledby="cta-titulo">
     <div class="wrap reveal">
-      <h2 id="cta-titulo">Vamos conversar.</h2>
-      <p>Conte o que você precisa. Respondemos com os próximos passos e, quando for o caso, com um orçamento.</p>
+      <h2 id="cta-titulo">Vamos conversar sobre o seu negócio?</h2>
+      <p>Um encontro, presencial ou por videochamada, para entender os seus objetivos e mostrar onde a tecnologia pode gerar resultado.</p>
       <div class="ctas">
-        <a class="btn btn-primary" href="/contato/">Solicitar orçamento<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
-        <a class="btn btn-ghost" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Edelmann%20Tecnologia." target="_blank" rel="noopener">Falar no WhatsApp<span class="sr"> (abre em nova aba)</span></a>
+        <a class="btn btn-primary" href="/contato/#agendar">Agendar conversa<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20com%20a%20Edelmann%20Tecnologia." target="_blank" rel="noopener">Falar no WhatsApp<span class="sr"> (abre em nova aba)</span></a>
       </div>
     </div>
   </section>
@@ -593,11 +601,10 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
       </a>
       <nav aria-label="Rodapé">
         <ul>
-          <li><a href="/servicos/">Serviços</a></li>
-          <li><a href="/produtos/">Produtos</a></li>
+          <li><a href="/#como-atuamos">Como atuamos</a></li>
           <li><a href="/sobre/">Sobre</a></li>
+          <li><a href="/produtos/">Soluções</a></li>
           <li><a href="/contato/">Contato</a></li>
-          <li><a href="/dicas/">Dicas</a></li>
           <li><a href="/privacidade/">Privacidade</a></li>
         </ul>
       </nav>
