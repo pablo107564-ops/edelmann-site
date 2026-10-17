@@ -499,13 +499,6 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .channel-value{font:600 clamp(1.125rem,.75rem + 1.9vw,1.875rem)/1.25 var(--serif);letter-spacing:-.02em;overflow-wrap:normal;word-break:normal}
 
 /* ===== Componentes extras ===== */
-.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(13rem,32vw,22rem);gap:.75rem;padding:0;list-style:none}
-@media (min-width:960px){.gallery{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.gallery .wide{grid-column:span 2}
-.gallery figure{position:relative;height:100%;margin:0;overflow:hidden;border-radius:12px;background:var(--line)}
-.gallery img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
-.gallery li:hover img{transform:scale(1.03)}
-.gallery figcaption{position:absolute;inset:auto 0 0;padding:2.5rem 1rem .85rem;background:linear-gradient(transparent,rgba(6,12,24,.88));color:#fff;font:500 .875rem/1.35 var(--sans)}
 
 .svc-mini li{padding:0}
 .svc-mini-link{display:flex;align-items:center;gap:1rem;width:100%;padding:1.5rem 1.75rem;color:inherit;text-decoration:none;transition:background-color .2s}
@@ -570,7 +563,6 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .svc-links a:hover{border-color:var(--gold)}
 
 /* ===== Início: página de captação ===== */
-.home .gallery figure{background:#0E1B33}
 .home .link{color:#fff}
 body.home{background:var(--night)}
 .home main{color:var(--on-night)}
@@ -609,10 +601,6 @@ body.home{background:var(--night)}
 .quote .btn-primary{width:100%;background:var(--gold-soft);color:var(--night);font-weight:600}
 .quote .btn-primary:hover{background:#fff}
 .proof{padding-block:1.75rem;background:#0A1428;border-block:1px solid rgba(255,255,255,.06)}
-.proof ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;padding:0;list-style:none}
-@media (min-width:900px){.proof ul{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.proof li{display:flex;align-items:center;gap:.8rem;padding:1rem 1.15rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:12px;font:500 .9375rem/1.35 var(--sans);color:#fff}
-.proof .i{width:22px;height:22px;color:var(--gold-soft)}
 .home .faq details{background:#0E1B33;border-color:rgba(255,255,255,.1)}
 .home .faq summary{color:#fff}
 .home .faq summary::after{color:var(--gold-soft)}
@@ -639,7 +627,8 @@ body.home{background:var(--night)}
 .home .alt .step::after{background:#0A1428}
 .home .step p{color:var(--on-night)}
 @media (min-width:760px){.steps.three{grid-template-columns:repeat(3,1fr)}}
-.exp-note{max-width:46rem;margin:0 0 2.5rem;padding:1.25rem 1.5rem;border-left:3px solid var(--gold-soft);border-radius:0 12px 12px 0;background:rgba(95,221,236,.06);color:#DCE2EC}
+.head.exp{margin-bottom:0;align-items:start}
+.exp-note{max-width:46rem;margin:1.5rem 0;padding:1.25rem 1.5rem;border-left:3px solid var(--gold-soft);border-radius:0 12px 12px 0;background:rgba(95,221,236,.06);color:#DCE2EC}
 .sols{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));padding:0;list-style:none}
 .sols a{display:flex;flex-direction:column;gap:.4rem;height:100%;padding:1.25rem 1.35rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:12px;color:#DCE2EC;text-decoration:none;transition:border-color .2s,background-color .2s}
 .sols a:hover{border-color:var(--gold-soft);background:rgba(95,221,236,.06)}
@@ -648,6 +637,24 @@ body.home{background:var(--night)}
 .sols a:hover .i{transform:translateX(4px)}
 .sols span{font-size:.9375rem;color:var(--on-night)}
 .home-hero .crumbs{margin-bottom:1.25rem}
+.signs{display:grid;gap:1px;grid-template-columns:minmax(0,1fr);padding:0;list-style:none;counter-reset:sg;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.09);border-radius:14px;overflow:hidden}
+@media (min-width:640px){.signs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:960px){.signs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.signs li{padding:1.6rem 1.75rem;background:var(--night)}
+.signs li::before{counter-increment:sg;content:counter(sg,decimal-leading-zero);content:counter(sg,decimal-leading-zero) / "";display:block;margin-bottom:1rem;font:500 .8125rem/1 var(--mono);color:var(--gold-soft)}
+.home .signs h3{margin-bottom:.45rem;font-size:1.1875rem;line-height:1.25}
+.signs p{font-size:.9375rem}
+.signs-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 2rem;margin-top:1.5rem;padding:1.5rem 1.75rem;border:1px solid rgba(95,221,236,.3);border-radius:14px;background:rgba(95,221,236,.06)}
+.signs-cta p{font:600 1.125rem/1.35 var(--serif);color:#fff}
+.stats{display:grid;gap:.75rem;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:2.5rem;padding:0;list-style:none}
+@media (min-width:900px){.stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}}
+.stats li{padding:clamp(1.1rem,3vw,1.75rem);background:var(--paper);border:1px solid var(--line);border-radius:14px}
+.stats b{display:block;margin-bottom:.75rem;font:600 clamp(1.625rem,1.2rem + 2vw,2.875rem)/1 var(--serif);letter-spacing:-.03em;color:var(--gold-ink)}
+.stats span{display:block;font-size:.9375rem;line-height:1.5;color:var(--muted)}
+.home .stats li{background:#0E1B33;border-color:rgba(255,255,255,.1)}
+.home .stats b{color:var(--gold-soft)}
+.home .stats span{color:var(--on-night)}
+.proof .stats{margin:0}
 </style>
 </head>
 <body class="home">
@@ -670,13 +677,7 @@ body.home{background:var(--night)}
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2 4.3 1.7V19a1.5 1.5 0 0 1-1.6 1.5A16.5 16.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4Z"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11Z"/><circle cx="12" cy="10" r="2.3"/></symbol>
-    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12h5M10 15.5h5"/></symbol>
-    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11 12 4l8 7"/><path d="M6.5 9.5V20h11V9.5"/></symbol>
-    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7"/></symbol>
     <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
-    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1"/></symbol>
-    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m4 17 5-5 4 3 7-8"/><path d="M15 7h5v5"/></symbol>
     <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.4 0-2.5.8-2.5 1.9 0 2.6 5 1.4 5 4.1 0 1.1-1.1 2-2.5 2-1.2 0-2.2-.5-2.7-1.4M12 6.5V8M12 16v1.5"/></symbol>
     <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 16v-4M12 16V8M17 16v-7"/></symbol>
   </defs>
@@ -746,18 +747,42 @@ body.home{background:var(--night)}
     </div>
   </section>
 
-  <section class="proof" aria-label="Credenciais">
+  <section class="proof" aria-label="A Edelmann em números">
     <div class="wrap">
-      <ul>
-        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>+15 anos em TI</li>
-        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-grid"/></svg>Diversos setores</li>
-        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Experiência com contratos públicos</li>
-        <li><svg class="i" aria-hidden="true" focusable="false"><use href="#i-trend"/></svg>Foco em resultado financeiro</li>
+      <ul class="stats reveal">
+        <li><b>15+</b><span>anos de experiência em tecnologia da informação</span></li>
+        <li><b>Diversos</b><span>setores atendidos ao longo da nossa trajetória</span></li>
+        <li><b>Público</b><span>experiência com contratos do setor público</span></li>
+        <li><b>4</b><span>soluções próprias desenvolvidas por nós</span></li>
       </ul>
     </div>
   </section>
 
-  <section class="section" id="como-funciona" aria-labelledby="como-funciona-titulo">
+  <section class="section" id="sinais" aria-labelledby="sinais-titulo">
+    <div class="wrap">
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow">Sinais</p>
+          <h2 id="sinais-titulo">Isso acontece <em>na sua empresa?</em></h2>
+        </div>
+        <p class="sub">Situações comuns quando o negócio cresce e os processos não acompanham. Todas pesam no resultado.</p>
+      </div>
+      <ul class="signs reveal">
+        <li><h3>Retrabalho e tarefas repetidas</h3><p>A equipe gasta horas fazendo à mão o que poderia ser rotina.</p></li>
+        <li><h3>Informação espalhada</h3><p>Dados em planilhas, cadernos e conversas, e ninguém tem o número certo na hora de decidir.</p></li>
+        <li><h3>Tecnologia que não se paga</h3><p>Sistemas, assinaturas e equipamentos que custam caro e não trazem retorno claro.</p></li>
+        <li><h3>Sistemas que não conversam</h3><p>Cada setor com a sua ferramenta, e a mesma informação digitada mais de uma vez.</p></li>
+        <li><h3>Dependência de uma pessoa</h3><p>Se alguém falta ou sai da empresa, parte do negócio para.</p></li>
+        <li><h3>Risco de parar</h3><p>Uma falha, um ataque ou a perda de dados pode deixar a empresa sem operar.</p></li>
+      </ul>
+      <div class="signs-cta reveal">
+        <p>Se você reconheceu algum desses pontos, vale uma conversa.</p>
+        <a class="btn btn-primary" href="#agendar">Agendar conversa<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="como-funciona" aria-labelledby="como-funciona-titulo">
     <div class="wrap">
       <div class="head reveal">
         <div>
@@ -775,7 +800,7 @@ body.home{background:var(--night)}
     </div>
   </section>
 
-  <section class="section alt" id="faq" aria-labelledby="faq-titulo">
+  <section class="section" id="faq" aria-labelledby="faq-titulo">
     <div class="wrap">
       <div class="head reveal"><div><p class="eyebrow">Dúvidas</p><h2 id="faq-titulo">Perguntas frequentes</h2></div></div>
       <div class="faq reveal"><details><summary>Como é a primeira conversa?</summary><p>Um encontro presencial, em Itaituba e região, ou por videochamada. Conversamos sobre o negócio, os objetivos e os principais desafios, e a partir daí indicamos os próximos passos.</p></details><details><summary>Que tipo de empresa vocês atendem?</summary><p>Empresas de pequeno e médio porte dos mais diversos setores. Também temos experiência com contratos públicos.</p></details><details><summary>Vocês atendem fora de Itaituba?</summary><p>Sim. Os encontros presenciais acontecem em Itaituba e região; para outras cidades, conversamos por videochamada.</p></details><details><summary>Como é definido o valor?</summary><p>Depois de entender o negócio, apresentamos uma proposta com o escopo, as etapas e o valor. Nada começa sem a sua aprovação.</p></details><details><summary>Qual a forma mais rápida de falar com vocês?</summary><p>O WhatsApp (93) 98121-2924. Também respondemos pelo e-mail edelmann.tecnologia@gmail.com.</p></details></div>

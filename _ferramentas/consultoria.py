@@ -4,7 +4,6 @@
 # - Serviços e Dicas viram redirecionamentos para o início e saem do sitemap.
 # Idempotente: pode rodar de novo (refaz as páginas a partir dos trechos e não duplica trocas).
 import os, re, json, glob
-from galeria import FOTOS, items, CSS as GAL_CSS
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(AQUI)
@@ -18,9 +17,6 @@ WA = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conve
 
 SYMBOLS = {
     'clock': '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
-    'grid': '<rect x="4" y="4" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1"/>',
-    'doc': '<path d="M7 3.5h7l4 4v13H7z"/><path d="M14 3.5v4h4M10 12h5M10 15.5h5"/>',
-    'trend': '<path d="m4 17 5-5 4 3 7-8"/><path d="M15 7h5v5"/>',
     'coin': '<circle cx="12" cy="12" r="8.5"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.4 0-2.5.8-2.5 1.9 0 2.6 5 1.4 5 4.1 0 1.1-1.1 2-2.5 2-1.2 0-2.2-.5-2.7-1.4M12 6.5V8M12 16v1.5"/>',
     'chart': '<path d="M4 20h16"/><path d="M7 16v-4M12 16V8M17 16v-7"/>',
 }
@@ -88,17 +84,45 @@ FORM_JS = '''<script>
 })();
 </script>
 '''
-PROOF = f'''  <section class="proof" aria-label="Credenciais">
+SINAIS_ITENS = [
+    ('Retrabalho e tarefas repetidas', 'A equipe gasta horas fazendo à mão o que poderia ser rotina.'),
+    ('Informação espalhada', 'Dados em planilhas, cadernos e conversas, e ninguém tem o número certo na hora de decidir.'),
+    ('Tecnologia que não se paga', 'Sistemas, assinaturas e equipamentos que custam caro e não trazem retorno claro.'),
+    ('Sistemas que não conversam', 'Cada setor com a sua ferramenta, e a mesma informação digitada mais de uma vez.'),
+    ('Dependência de uma pessoa', 'Se alguém falta ou sai da empresa, parte do negócio para.'),
+    ('Risco de parar', 'Uma falha, um ataque ou a perda de dados pode deixar a empresa sem operar.'),
+]
+SINAIS = f'''  <section class="section" id="sinais" aria-labelledby="sinais-titulo">
     <div class="wrap">
-      <ul>
-        <li>{icon('clock')}+15 anos em TI</li>
-        <li>{icon('grid')}Diversos setores</li>
-        <li>{icon('doc')}Experiência com contratos públicos</li>
-        <li>{icon('trend')}Foco em resultado financeiro</li>
+      <div class="head reveal">
+        <div>
+          <p class="eyebrow">Sinais</p>
+          <h2 id="sinais-titulo">Isso acontece <em>na sua empresa?</em></h2>
+        </div>
+        <p class="sub">Situações comuns quando o negócio cresce e os processos não acompanham. Todas pesam no resultado.</p>
+      </div>
+      <ul class="signs reveal">
+''' + '\n'.join(f'        <li><h3>{t}</h3><p>{d}</p></li>' for t, d in SINAIS_ITENS) + f'''
       </ul>
+      <div class="signs-cta reveal">
+        <p>Se você reconheceu algum desses pontos, vale uma conversa.</p>
+        <a class="btn btn-primary" href="#agendar">Agendar conversa{ARROW}</a>
+      </div>
     </div>
   </section>'''
-COMO_FUNCIONA = f'''  <section class="section" id="como-funciona" aria-labelledby="como-funciona-titulo">
+STATS = '''      <ul class="stats reveal">
+        <li><b>15+</b><span>anos de experiência em tecnologia da informação</span></li>
+        <li><b>Diversos</b><span>setores atendidos ao longo da nossa trajetória</span></li>
+        <li><b>Público</b><span>experiência com contratos do setor público</span></li>
+        <li><b>4</b><span>soluções próprias desenvolvidas por nós</span></li>
+      </ul>'''
+# faixa logo abaixo do topo (início e Itaituba): os números da experiência
+PROOF = f'''  <section class="proof" aria-label="A Edelmann em números">
+    <div class="wrap">
+{STATS}
+    </div>
+  </section>'''
+def como_funciona(classe): return f'''  <section class="{classe}" id="como-funciona" aria-labelledby="como-funciona-titulo">
     <div class="wrap">
       <div class="head reveal">
         <div>
@@ -139,11 +163,10 @@ FAQ_HTML = '      <div class="faq reveal">' + ''.join(f'<details><summary>{q}</s
 def ld(obj): return '<script type="application/ld+json">\n' + json.dumps(obj, ensure_ascii=False, indent=1) + '\n</script>\n'
 FAQ_LD = ld({"@context": "https://schema.org", "@type": "FAQPage",
              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]})
-def galeria(fotos): return f'      <ul class="gallery reveal">\n{items(fotos)}\n      </ul>'
-
-MARCAS = {'{{FORM_DARK}}': FORM_DARK, '{{FORM_CLARO}}': FORM_CLARO, '{{PROOF}}': PROOF, '{{COMO_FUNCIONA}}': COMO_FUNCIONA,
+MARCAS = {'{{FORM_DARK}}': FORM_DARK, '{{FORM_CLARO}}': FORM_CLARO, '{{PROOF}}': PROOF, '{{SINAIS}}': SINAIS, '{{STATS}}': STATS,
+          '{{COMO_FUNCIONA}}': como_funciona('section'), '{{COMO_FUNCIONA_ALT}}': como_funciona('section alt'),
           '{{CTA}}': cta('cta-accent', '#agendar'), '{{CTA_CLARO}}': cta('section band cta-band', '/contato/#agendar'),
-          '{{FAQ}}': FAQ_HTML, '{{GALERIA3}}': galeria(FOTOS[:3]), '{{GALERIA6}}': galeria(FOTOS), '{{ARROW}}': ARROW, '{{WA}}': WA}
+          '{{FAQ}}': FAQ_HTML, '{{ARROW}}': ARROW, '{{WA}}': WA}
 def trecho(nome):
     s = rd(os.path.join(AQUI, 'consultoria', nome))
     for k, v in MARCAS.items(): s = s.replace(k, v)
@@ -168,10 +191,14 @@ def com_js_form(s): return s.replace('<a class="wa-float"', FORM_JS + '<a class=
 def com_simbolos(s):
     novos = ''.join(f'    <symbol id="i-{n}" viewBox="0 0 24 24">{d}</symbol>\n' for n, d in SYMBOLS.items()
                     if f'#i-{n}"' in s and f'id="i-{n}"' not in s)
-    return s.replace('  </defs>\n</svg>', novos + '  </defs>\n</svg>', 1)
-def com_css(s, css, marca):
+    s = s.replace('  </defs>\n</svg>', novos + '  </defs>\n</svg>', 1)
+    for n in ('grid', 'doc', 'trend', 'pin', 'home', 'check'):  # ícones de versões anteriores que não são mais usados
+        if f'#i-{n}"' not in s: s = re.sub(r'    <symbol id="i-' + n + r'".*?</symbol>\n', '', s)
+    return s
+def com_css(s, css, marca):  # põe o bloco de CSS no fim do <style>; se já existe, troca pelo atual
     marca = f'/* ===== {marca} ===== */'
-    if marca in s: return s
+    if marca in s:
+        return re.sub(re.escape(marca) + r'\n.*?(?=\n/\* =====|</style>)', lambda m: marca + '\n' + css.rstrip('\n') + '\n', s, count=1, flags=re.S)
     return s.replace('</style>', f'\n{marca}\n{css}</style>', 1)
 
 def menu(atual, cta_href):
@@ -213,7 +240,8 @@ CSS_INICIO = '''.impacts{display:grid;gap:1rem;grid-template-columns:repeat(auto
 .home .alt .step::after{background:#0A1428}
 .home .step p{color:var(--on-night)}
 @media (min-width:760px){.steps.three{grid-template-columns:repeat(3,1fr)}}
-.exp-note{max-width:46rem;margin:0 0 2.5rem;padding:1.25rem 1.5rem;border-left:3px solid var(--gold-soft);border-radius:0 12px 12px 0;background:rgba(95,221,236,.06);color:#DCE2EC}
+.head.exp{margin-bottom:0;align-items:start}
+.exp-note{max-width:46rem;margin:1.5rem 0;padding:1.25rem 1.5rem;border-left:3px solid var(--gold-soft);border-radius:0 12px 12px 0;background:rgba(95,221,236,.06);color:#DCE2EC}
 .sols{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));padding:0;list-style:none}
 .sols a{display:flex;flex-direction:column;gap:.4rem;height:100%;padding:1.25rem 1.35rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:12px;color:#DCE2EC;text-decoration:none;transition:border-color .2s,background-color .2s}
 .sols a:hover{border-color:var(--gold-soft);background:rgba(95,221,236,.06)}
@@ -222,9 +250,31 @@ CSS_INICIO = '''.impacts{display:grid;gap:1rem;grid-template-columns:repeat(auto
 .sols a:hover .i{transform:translateX(4px)}
 .sols span{font-size:.9375rem;color:var(--on-night)}
 .home-hero .crumbs{margin-bottom:1.25rem}
+.signs{display:grid;gap:1px;grid-template-columns:minmax(0,1fr);padding:0;list-style:none;counter-reset:sg;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.09);border-radius:14px;overflow:hidden}
+@media (min-width:640px){.signs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:960px){.signs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.signs li{padding:1.6rem 1.75rem;background:var(--night)}
+.signs li::before{counter-increment:sg;content:counter(sg,decimal-leading-zero);content:counter(sg,decimal-leading-zero) / "";display:block;margin-bottom:1rem;font:500 .8125rem/1 var(--mono);color:var(--gold-soft)}
+.home .signs h3{margin-bottom:.45rem;font-size:1.1875rem;line-height:1.25}
+.signs p{font-size:.9375rem}
+.signs-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 2rem;margin-top:1.5rem;padding:1.5rem 1.75rem;border:1px solid rgba(95,221,236,.3);border-radius:14px;background:rgba(95,221,236,.06)}
+.signs-cta p{font:600 1.125rem/1.35 var(--serif);color:#fff}
 '''
-# seções que saíram da página inicial: o CSS delas sai junto
-OBSOLETO = re.compile(r'^(?:@media[^{]*\{)?(?:\.home )?\.(?:pillars|pillar-card|rows|modes|mode|why|why-title)\b')
+# números da experiência: claro (Sobre) e escuro (início e Itaituba)
+CSS_STATS = '''.stats{display:grid;gap:.75rem;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:2.5rem;padding:0;list-style:none}
+@media (min-width:900px){.stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}}
+.stats li{padding:clamp(1.1rem,3vw,1.75rem);background:var(--paper);border:1px solid var(--line);border-radius:14px}
+.stats b{display:block;margin-bottom:.75rem;font:600 clamp(1.625rem,1.2rem + 2vw,2.875rem)/1 var(--serif);letter-spacing:-.03em;color:var(--gold-ink)}
+.stats span{display:block;font-size:.9375rem;line-height:1.5;color:var(--muted)}
+.home .stats li{background:#0E1B33;border-color:rgba(255,255,255,.1)}
+.home .stats b{color:var(--gold-soft)}
+.home .stats span{color:var(--on-night)}
+.proof .stats{margin:0}
+'''
+CSS_INICIO += CSS_STATS
+# seções que saíram (áreas de atuação, atendimento, por que, galeria de fotos): o CSS delas sai junto
+OBSOLETO = re.compile(r'^(?:@media[^{]*\{)?(?:\.home )?\.(?:pillars|pillar-card|rows|modes|mode|why|why-title|gallery)\b'
+                      r'|^(?:@media[^{]*\{)?\.proof (?:ul|li|\.i)\b|^/\* ===== Galeria ===== \*/$')
 
 def ld_empresa(s):
     def f(m):
@@ -269,7 +319,8 @@ wr('itaituba/index.html', com_simbolos(s))
 s = rd('sobre/index.html')
 s = troca_main(s, trecho('sobre.html'))
 s = descricao(s, 'A Edelmann Tecnologia é uma consultoria em TI para empresas de pequeno e médio porte, com mais de 15 anos de experiência nos mais diversos setores e em contratos públicos.')
-s = com_css(s, GAL_CSS, 'Galeria')
+s = '\n'.join(l for l in s.split('\n') if not OBSOLETO.match(l))
+s = com_css(s, CSS_STATS, 'Experiência')
 wr('sobre/index.html', com_simbolos(comum('sobre/index.html', s)))
 
 # ---------- 4. Contato ----------
