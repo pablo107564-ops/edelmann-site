@@ -118,7 +118,6 @@ STATS = '''      <ul class="stats reveal">
         <li><b>15+</b><span>anos resolvendo problemas de tecnologia em empresas de comércio, saúde, educação e serviços</span></li>
         <li><b>Ponta a ponta</b><span>do diagnóstico à execução: planejamos, implantamos e acompanhamos junto com a sua equipe</span></li>
         <li><b>Rigor</b><span>a mesma exigência de prazo, documentação e prestação de contas dos contratos públicos</span></li>
-        <li><b>4</b><span>soluções próprias em uso: PDV, atendimento com IA no WhatsApp, chamados e leitor de documentos</span></li>
       </ul>'''
 # faixa logo abaixo do topo (início e Itaituba): os números da experiência
 PROOF = f'''  <section class="proof" aria-label="A Edelmann em números">
@@ -268,8 +267,8 @@ CSS_INICIO = '''.impacts{display:grid;gap:1rem;grid-template-columns:repeat(auto
 .signs-cta .btn-ghost:hover{border-color:#fff}
 '''
 # números da experiência: claro (Sobre) e escuro (início e Itaituba)
-CSS_STATS = '''.stats{display:grid;gap:.75rem;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:2.5rem;padding:0;list-style:none}
-@media (min-width:900px){.stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}}
+CSS_STATS = '''.stats{display:grid;gap:.75rem;grid-template-columns:minmax(0,1fr);margin-bottom:2.5rem;padding:0;list-style:none}
+@media (min-width:900px){.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}}
 .stats li{padding:clamp(1.1rem,3vw,1.75rem);background:var(--paper);border:1px solid var(--line);border-radius:14px}
 .stats b{display:block;margin-bottom:.75rem;font:600 clamp(1.625rem,1.2rem + 2vw,2.875rem)/1 var(--serif);letter-spacing:-.03em;color:var(--gold-ink)}
 .stats span{display:block;font-size:.9375rem;line-height:1.5;color:var(--muted)}

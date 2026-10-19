@@ -455,8 +455,8 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 
 
 /* ===== Experiência ===== */
-.stats{display:grid;gap:.75rem;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:2.5rem;padding:0;list-style:none}
-@media (min-width:900px){.stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem}}
+.stats{display:grid;gap:.75rem;grid-template-columns:minmax(0,1fr);margin-bottom:2.5rem;padding:0;list-style:none}
+@media (min-width:900px){.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}}
 .stats li{padding:clamp(1.1rem,3vw,1.75rem);background:var(--paper);border:1px solid var(--line);border-radius:14px}
 .stats b{display:block;margin-bottom:.75rem;font:600 clamp(1.625rem,1.2rem + 2vw,2.875rem)/1 var(--serif);letter-spacing:-.03em;color:var(--gold-ink)}
 .stats span{display:block;font-size:.9375rem;line-height:1.5;color:var(--muted)}
