@@ -115,10 +115,10 @@ SINAIS = f'''  <section class="section" id="sinais" aria-labelledby="sinais-titu
     </div>
   </section>'''
 STATS = '''      <ul class="stats reveal">
-        <li><b>15+</b><span>anos de experiência em tecnologia da informação</span></li>
-        <li><b>Diversos</b><span>setores atendidos ao longo da nossa trajetória</span></li>
-        <li><b>Público</b><span>experiência com contratos do setor público</span></li>
-        <li><b>4</b><span>soluções próprias desenvolvidas por nós</span></li>
+        <li><b>15+</b><span>anos resolvendo problemas de tecnologia em empresas de comércio, saúde, educação e serviços</span></li>
+        <li><b>Ponta a ponta</b><span>do diagnóstico à execução: planejamos, implantamos e acompanhamos junto com a sua equipe</span></li>
+        <li><b>Rigor</b><span>a mesma exigência de prazo, documentação e prestação de contas dos contratos públicos</span></li>
+        <li><b>4</b><span>soluções próprias em uso: PDV, atendimento com IA no WhatsApp, chamados e leitor de documentos</span></li>
       </ul>'''
 # faixa logo abaixo do topo (início e Itaituba): os números da experiência
 PROOF = f'''  <section class="proof" aria-label="A Edelmann em números">
