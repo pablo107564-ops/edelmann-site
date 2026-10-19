@@ -50,6 +50,44 @@ ARTIGOS = [
 <div class="note-box">O gasto mais caro com tecnologia nem sempre está na fatura. Muitas vezes está no tempo da equipe e na venda que não aconteceu.</div>
 <h2>E depois do levantamento?</h2>
 <p>Corte o que não é usado, junte o que está repetido e invista onde a tecnologia gera retorno claro: menos retrabalho, informação na hora certa e uma operação que não para.</p>'''),
+  ('backup-quanto-custa-perder-dados', 'Backup: quanto custa perder os dados da empresa',
+   'Um computador que queima, um vírus ou um celular perdido podem levar anos de informação. Veja quanto isso custa e o que uma boa rotina de cópia de segurança precisa ter.',
+   '''<p>Quase toda empresa só pensa em backup depois do primeiro susto. O problema é que, nesse dia, normalmente já é tarde: o cadastro de clientes, as notas, o financeiro e o histórico de vendas foram junto.</p>
+<h2>O custo que ninguém coloca na conta</h2>
+<ul>
+<li><strong>Dias parado</strong> enquanto se tenta recuperar ou refazer o que se perdeu.</li>
+<li><strong>Retrabalho</strong> para redigitar cadastros, pedidos e lançamentos.</li>
+<li><strong>Venda perdida</strong> com o cliente que não pôde ser atendido.</li>
+<li><strong>Problemas com o fisco e com clientes</strong> quando faltam notas e comprovantes.</li>
+</ul>
+<div class="note-box">A pergunta não é "se" um computador vai falhar, e sim "quando". Backup é o que decide se esse dia vai ser um susto ou um prejuízo.</div>
+<h2>O que uma boa rotina de backup precisa ter</h2>
+<ol>
+<li><strong>Ser automática.</strong> Backup que depende de alguém lembrar não acontece.</li>
+<li><strong>Ficar fora do computador principal</strong>, e de preferência também fora da empresa.</li>
+<li><strong>Ser testada.</strong> De vez em quando, recupere um arquivo para ter certeza de que a cópia funciona.</li>
+<li><strong>Ter alguém responsável</strong> por conferir que está tudo em dia.</li>
+</ol>
+<p>O custo de uma rotina bem feita é pequeno perto do custo de um único dia sem os dados da empresa.</p>'''),
+  ('whatsapp-atendimento-fora-do-horario', 'WhatsApp no atendimento: como não perder cliente fora do horário',
+   'O cliente manda mensagem às 21h e compra de quem responder primeiro. Veja como organizar o atendimento pelo WhatsApp para não deixar venda passar.',
+   '''<p>Hoje, a maior parte dos clientes chega pelo WhatsApp. E muitos chegam fora do horário: à noite, no fim de semana, no feriado. Quem responde primeiro, normalmente, leva a venda.</p>
+<h2>Onde o atendimento pelo WhatsApp costuma falhar</h2>
+<ul>
+<li><strong>Mensagem sem resposta</strong> por horas, porque ninguém está de olho.</li>
+<li><strong>Um único celular</strong> para todo mundo, sem saber quem respondeu o quê.</li>
+<li><strong>Perguntas repetidas</strong> (preço, horário, endereço) tomando o tempo da equipe.</li>
+<li><strong>Cliente esquecido</strong>: pediu orçamento, ninguém voltou a falar com ele.</li>
+</ul>
+<h2>Como organizar</h2>
+<ol>
+<li><strong>Use o WhatsApp Business</strong>, com mensagem de saudação e de ausência.</li>
+<li><strong>Deixe prontas as respostas das perguntas mais comuns.</strong></li>
+<li><strong>Defina quem responde e em quanto tempo.</strong></li>
+<li><strong>Volte a falar com quem não fechou</strong>, um ou dois dias depois.</li>
+<li><strong>Para volume maior, automatize</strong>: um atendente automático responde na hora, a qualquer hora, e passa para a equipe quando precisa.</li>
+</ol>
+<div class="note-box">Cada mensagem sem resposta é um cliente indo para o concorrente. Organizar o WhatsApp é uma das formas mais rápidas de vender mais sem gastar com anúncio.</div>'''),
 ]
 
 casca = open('sobre/index.html', encoding='utf-8').read()
