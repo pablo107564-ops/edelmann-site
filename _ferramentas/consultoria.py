@@ -84,6 +84,7 @@ FORM_JS = '''<script>
 })();
 </script>
 '''
+WA_CHECK = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20receber%20o%20checklist%20%2210%20perguntas%20para%20descobrir%20onde%20a%20empresa%20perde%20dinheiro%22.'
 SINAIS_ITENS = [
     ('Retrabalho e tarefas repetidas', 'A equipe gasta horas fazendo à mão o que poderia ser rotina.'),
     ('Informação espalhada', 'Dados em planilhas, cadernos e conversas, e ninguém tem o número certo na hora de decidir.'),
@@ -105,8 +106,11 @@ SINAIS = f'''  <section class="section" id="sinais" aria-labelledby="sinais-titu
 ''' + '\n'.join(f'        <li><h3>{t}</h3><p>{d}</p></li>' for t, d in SINAIS_ITENS) + f'''
       </ul>
       <div class="signs-cta reveal">
-        <p>Se você reconheceu algum desses pontos, vale uma conversa.</p>
-        <a class="btn btn-primary" href="#agendar">Agendar conversa{ARROW}</a>
+        <p>Se você reconheceu algum desses pontos, vale uma conversa. Ou comece pelo nosso checklist: 10 perguntas para descobrir onde a sua empresa perde dinheiro.</p>
+        <div class="ctas" style="margin:0">
+          <a class="btn btn-primary" href="#agendar">Agendar conversa{ARROW}</a>
+          <a class="btn btn-ghost" href="{WA_CHECK}" target="_blank" rel="noopener">Receber o checklist grátis<span class="sr"> (abre o WhatsApp em nova aba)</span></a>
+        </div>
       </div>
     </div>
   </section>'''
@@ -258,7 +262,9 @@ CSS_INICIO = '''.impacts{display:grid;gap:1rem;grid-template-columns:repeat(auto
 .home .signs h3{margin-bottom:.45rem;font-size:1.1875rem;line-height:1.25}
 .signs p{font-size:.9375rem}
 .signs-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem 2rem;margin-top:1.5rem;padding:1.5rem 1.75rem;border:1px solid rgba(95,221,236,.3);border-radius:14px;background:rgba(95,221,236,.06)}
-.signs-cta p{font:600 1.125rem/1.35 var(--serif);color:#fff}
+.signs-cta p{max-width:34rem;font:600 1.125rem/1.35 var(--serif);color:#fff}
+.signs-cta .btn-ghost{border-color:rgba(255,255,255,.28);color:#fff}
+.signs-cta .btn-ghost:hover{border-color:#fff}
 '''
 # números da experiência: claro (Sobre) e escuro (início e Itaituba)
 CSS_STATS = '''.stats{display:grid;gap:.75rem;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:2.5rem;padding:0;list-style:none}
