@@ -215,6 +215,7 @@ RODAPE = '''<ul>
           <li><a href="/#como-atuamos">Como atuamos</a></li>
           <li><a href="/sobre/">Sobre</a></li>
           <li><a href="/produtos/">Soluções</a></li>
+          <li><a href="/artigos/">Artigos</a></li>
           <li><a href="/contato/">Contato</a></li>
           <li><a href="/privacidade/">Privacidade</a></li>
         </ul>'''
