@@ -8,7 +8,7 @@ ARROW = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow
 
 ARTIGOS = [
   ('planilha-ou-sistema', 'Planilha ou sistema: quando vale a pena mudar',
-   'Planilha resolve no começo, mas cobra caro quando a empresa cresce. Veja os sinais de que chegou a hora de um sistema e como fazer a mudança sem parar o negócio.',
+   'Planilha resolve no começo, mas cobra caro quando a empresa cresce. Veja os sinais de que chegou a hora de um sistema.',
    '''<p>Toda empresa começa na planilha, e está tudo bem. Ela é barata, flexível e todo mundo sabe usar. O problema aparece quando o negócio cresce e a planilha continua sendo o centro de tudo.</p>
 <h2>Sinais de que a planilha já está custando caro</h2>
 <ul>
@@ -21,24 +21,15 @@ ARTIGOS = [
 <h2>Sistema não é sinônimo de gastar muito</h2>
 <p>O erro mais comum é comprar o sistema mais completo do mercado e usar 10% dele. O caminho certo é o contrário: entender o processo da empresa primeiro e escolher a ferramenta que resolve aquele processo, nem mais nem menos.</p>
 <div class="note-box">A pergunta certa não é "qual o melhor sistema?", e sim "qual problema da minha empresa o sistema precisa resolver?".</div>
-<h2>Como mudar sem parar a empresa</h2>
-<ol>
-<li><strong>Mapeie o processo atual</strong>, mesmo que seja bagunçado. É ele que o sistema vai substituir.</li>
-<li><strong>Comece pelo ponto que mais dói</strong>: normalmente vendas, estoque ou financeiro.</li>
-<li><strong>Rode os dois juntos por um período curto</strong>, para conferir os números.</li>
-<li><strong>Treine quem usa no dia a dia</strong>, não só quem decide.</li>
-</ol>
-<p>Feita com método, a troca se paga em tempo economizado e em decisões tomadas com o número certo na mão.</p>'''),
+<h2>Quanto essa demora custa por mês?</h2>
+<p>Some as horas que a equipe gasta redigitando, conferindo e procurando a versão certa. Agora multiplique pelo custo de cada hora. Quase sempre o número assusta, e ele não inclui as decisões tomadas com o dado errado.</p>
+<h2>Como a Edelmann ajuda</h2>
+<p>Olhamos a rotina da sua empresa, mostramos onde a planilha está custando caro e indicamos o caminho que se paga mais rápido. A mudança é conduzida por nós, junto com a sua equipe, sem parar a operação.</p>'''),
   ('gastos-com-tecnologia', 'Como saber se a sua empresa está gastando demais com tecnologia',
-   'Assinaturas esquecidas, equipamento parado e sistemas que não conversam: um roteiro simples para descobrir onde a tecnologia está pesando no caixa da sua empresa.',
+   'Assinaturas esquecidas, equipamento parado e sistemas que não conversam: saiba onde a tecnologia pode estar pesando no caixa da sua empresa.',
    '''<p>Tecnologia deveria economizar dinheiro. Quando ninguém olha para ela com calma, acontece o contrário: os gastos se acumulam em silêncio, um pouco a cada mês.</p>
-<h2>Faça o levantamento em uma tarde</h2>
-<p>Liste tudo o que a empresa paga em tecnologia: sistemas, assinaturas, internet, telefonia, licenças, manutenção e equipamentos alugados. Para cada item, responda três perguntas:</p>
-<ol>
-<li><strong>Quem usa?</strong> Se ninguém sabe responder, provavelmente ninguém usa.</li>
-<li><strong>Para quê?</strong> Qual tarefa ele resolve no dia a dia?</li>
-<li><strong>Existe outro item que faz a mesma coisa?</strong> Ferramentas repetidas são mais comuns do que parece.</li>
-</ol>
+<h2>O gasto que ninguém vê</h2>
+<p>Raramente o problema é uma conta grande. São várias pequenas, espalhadas em cartões, boletos e faturas diferentes, que ninguém olha em conjunto. Somadas ao longo do ano, viram um valor que faria diferença no caixa.</p>
 <h2>Onde o dinheiro costuma escapar</h2>
 <ul>
 <li><strong>Assinaturas esquecidas</strong> de testes que viraram cobrança mensal.</li>
@@ -48,10 +39,10 @@ ARTIGOS = [
 <li><strong>Falta de cópia de segurança</strong>: o custo só aparece no dia em que se perde tudo.</li>
 </ul>
 <div class="note-box">O gasto mais caro com tecnologia nem sempre está na fatura. Muitas vezes está no tempo da equipe e na venda que não aconteceu.</div>
-<h2>E depois do levantamento?</h2>
-<p>Corte o que não é usado, junte o que está repetido e invista onde a tecnologia gera retorno claro: menos retrabalho, informação na hora certa e uma operação que não para.</p>'''),
+<h2>Como a Edelmann ajuda</h2>
+<p>Fazemos o diagnóstico completo dos gastos com tecnologia da sua empresa e entregamos o que cortar, o que juntar e onde investir para ter retorno. Você decide com o número na mão.</p>'''),
   ('backup-quanto-custa-perder-dados', 'Backup: quanto custa perder os dados da empresa',
-   'Um computador que queima, um vírus ou um celular perdido podem levar anos de informação. Veja quanto isso custa e o que uma boa rotina de cópia de segurança precisa ter.',
+   'Um computador que queima, um vírus ou um celular perdido podem levar anos de informação. Veja quanto isso custa e por que ter backup não basta.',
    '''<p>Quase toda empresa só pensa em backup depois do primeiro susto. O problema é que, nesse dia, normalmente já é tarde: o cadastro de clientes, as notas, o financeiro e o histórico de vendas foram junto.</p>
 <h2>O custo que ninguém coloca na conta</h2>
 <ul>
@@ -61,16 +52,12 @@ ARTIGOS = [
 <li><strong>Problemas com o fisco e com clientes</strong> quando faltam notas e comprovantes.</li>
 </ul>
 <div class="note-box">A pergunta não é "se" um computador vai falhar, e sim "quando". Backup é o que decide se esse dia vai ser um susto ou um prejuízo.</div>
-<h2>O que uma boa rotina de backup precisa ter</h2>
-<ol>
-<li><strong>Ser automática.</strong> Backup que depende de alguém lembrar não acontece.</li>
-<li><strong>Ficar fora do computador principal</strong>, e de preferência também fora da empresa.</li>
-<li><strong>Ser testada.</strong> De vez em quando, recupere um arquivo para ter certeza de que a cópia funciona.</li>
-<li><strong>Ter alguém responsável</strong> por conferir que está tudo em dia.</li>
-</ol>
-<p>O custo de uma rotina bem feita é pequeno perto do custo de um único dia sem os dados da empresa.</p>'''),
-  ('whatsapp-atendimento-fora-do-horario', 'WhatsApp no atendimento: como não perder cliente fora do horário',
-   'O cliente manda mensagem às 21h e compra de quem responder primeiro. Veja como organizar o atendimento pelo WhatsApp para não deixar venda passar.',
+<h2>Ter backup não é o mesmo que estar protegido</h2>
+<p>Muitas empresas descobrem no pior momento que a cópia estava incompleta, desatualizada ou não abria. Um pendrive na gaveta ou uma pasta na nuvem configurada há anos raramente resolve.</p>
+<h2>Como a Edelmann ajuda</h2>
+<p>Avaliamos como os dados da sua empresa estão guardados hoje, mostramos os riscos reais e deixamos a proteção funcionando e conferida. Você não precisa se preocupar com isso.</p>'''),
+  ('whatsapp-atendimento-fora-do-horario', 'WhatsApp no atendimento: o cliente que você perde fora do horário',
+   'O cliente manda mensagem às 21h e compra de quem responder primeiro. Veja onde o atendimento pelo WhatsApp deixa venda passar.',
    '''<p>Hoje, a maior parte dos clientes chega pelo WhatsApp. E muitos chegam fora do horário: à noite, no fim de semana, no feriado. Quem responde primeiro, normalmente, leva a venda.</p>
 <h2>Onde o atendimento pelo WhatsApp costuma falhar</h2>
 <ul>
@@ -79,14 +66,8 @@ ARTIGOS = [
 <li><strong>Perguntas repetidas</strong> (preço, horário, endereço) tomando o tempo da equipe.</li>
 <li><strong>Cliente esquecido</strong>: pediu orçamento, ninguém voltou a falar com ele.</li>
 </ul>
-<h2>Como organizar</h2>
-<ol>
-<li><strong>Use o WhatsApp Business</strong>, com mensagem de saudação e de ausência.</li>
-<li><strong>Deixe prontas as respostas das perguntas mais comuns.</strong></li>
-<li><strong>Defina quem responde e em quanto tempo.</strong></li>
-<li><strong>Volte a falar com quem não fechou</strong>, um ou dois dias depois.</li>
-<li><strong>Para volume maior, automatize</strong>: um atendente automático responde na hora, a qualquer hora, e passa para a equipe quando precisa.</li>
-</ol>
+<h2>Como a Edelmann ajuda</h2>
+<p>Analisamos como a sua empresa atende hoje e montamos um atendimento que responde na hora, a qualquer hora, e passa para a equipe quando precisa, sem deixar nenhum cliente esquecido. Desenvolvemos a nossa própria solução de atendimento automático no WhatsApp.</p>
 <div class="note-box">Cada mensagem sem resposta é um cliente indo para o concorrente. Organizar o WhatsApp é uma das formas mais rápidas de vender mais sem gastar com anúncio.</div>'''),
 ]
 
