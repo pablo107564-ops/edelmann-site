@@ -209,7 +209,7 @@ def menu(atual, cta_href):
     def li(href, txt):
         cur = ' aria-current="page"' if href == atual else ''
         return f'        <li><a href="{href}"{cur}>{txt}</a></li>'
-    return '\n'.join(['<ul>', li('/#como-atuamos', 'Como atuamos'), li('/sobre/', 'Sobre'), li('/contato/', 'Contato'),
+    return '\n'.join(['<ul>', li('/#como-atuamos', 'Como atuamos'), li('/sobre/', 'Sobre'), li('/artigos/', 'Artigos'), li('/contato/', 'Contato'),
                       f'        <li class="menu-cta"><a class="btn btn-primary btn-sm" href="{cta_href}">Agendar conversa</a></li>', '      </ul>'])
 RODAPE = '''<ul>
           <li><a href="/#como-atuamos">Como atuamos</a></li>

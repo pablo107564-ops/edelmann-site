@@ -67,6 +67,7 @@ def pagina(slug, titulo, desc, h1, corpo, extra_ld=None):
     if extra_ld:
         s = s.replace('<style>', '<script type="application/ld+json">\n' + json.dumps(extra_ld, ensure_ascii=False, indent=1) + '\n</script>\n<style>', 1)
     s = s.replace('<a href="/sobre/" aria-current="page">Sobre</a>', '<a href="/sobre/">Sobre</a>')
+    s = s.replace('<li><a href="/artigos/">Artigos</a></li>\n        <li><a href="/contato/"', '<li><a href="/artigos/" aria-current="page">Artigos</a></li>\n        <li><a href="/contato/"', 1)  # menu do topo
     trilha = '<nav class="crumbs" aria-label="Trilha"><a href="/">Início</a> › <a href="/artigos/">Artigos</a></nav>' if slug else '<nav class="crumbs" aria-label="Trilha"><a href="/">Início</a> › <span aria-current="page">Artigos</span></nav>'
     main = f'''<main id="conteudo" tabindex="-1">
   <section class="section" aria-labelledby="titulo">
