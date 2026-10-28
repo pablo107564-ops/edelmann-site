@@ -9,6 +9,8 @@ for f in sorted(fs):
     s=open(f,encoding='utf-8').read(); d=os.path.dirname(f); idl=re.findall(r'id="([^"]+)"',s); ids=set(idl)
     h1=s.count('<h1')
     if h1!=1: bad.append((f,'h1=',h1))
+    hs=[int(x) for x in re.findall(r'<h([1-6])[\s>]',s)]
+    if any(b>a+1 for a,b in zip(hs,hs[1:])): bad.append((f,'salto de nivel de titulo',hs))
     t=re.search(r'<title>(.*?)</title>',s).group(1); titles.setdefault(t,[]).append(f)
     for m in re.findall(r'<script type="application/ld\+json">(.*?)</script>',s,re.S):
         try: json.loads(m)

@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://edelmann.com.br/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Edelmann Tecnologia: computadores, redes e sistemas em mãos competentes">
+<meta property="og:image:alt" content="Edelmann Tecnologia: tecnologia a serviço do resultado do seu negócio">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://edelmann.com.br/img/og.jpg">
 <meta name="twitter:title" content="Agente de IA no WhatsApp | Edelmann Tecnologia">
@@ -472,6 +472,16 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .svc-links{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,13rem),1fr));margin-top:2rem;padding:0;list-style:none}
 .svc-links a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 1.25rem;background:var(--paper);border:1px solid var(--line);border-radius:12px;font-weight:600;color:var(--ink);text-decoration:none}
 .svc-links a:hover{border-color:var(--gold)}
+
+/* ===== Primeira tela sem atraso ===== */
+.rv main>section:first-child .reveal,.rv :target .reveal,.rv .reveal:target{opacity:1;transform:none;transition:none}
+
+/* ===== Alvos de toque ===== */
+.alt-send,.copy{position:relative}
+.alt-send::after,.copy::after{content:"";position:absolute;inset:-12px -6px}
+.site-footer nav a,.foot-mail,.legal>a{display:inline-flex;align-items:center;min-height:44px}
+.site-footer nav ul{gap:0 1.5rem}
+.more .link{min-height:44px}
 </style>
 </head>
 <body>
@@ -516,7 +526,8 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
     </button>
     <nav class="menu" id="menu" aria-label="Principal">
       <ul>
-        <li><a href="/#como-atuamos">Como atuamos</a></li>
+        <li><a href="/#como-funciona">Como funciona</a></li>
+        <li><a href="/#setores">Setores</a></li>
         <li><a href="/sobre/">Sobre</a></li>
         <li><a href="/artigos/">Artigos</a></li>
         <li><a href="/contato/">Contato</a></li>
@@ -542,7 +553,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
         <h1 id="titulo"><span>Agente de IA</span> <em>no WhatsApp.</em></h1>
         <p class="lead">Responde aos clientes 24 horas por dia, com as informações e o tom de voz do seu negócio. Quando o caso pede uma pessoa, transfere a conversa para a sua equipe.</p>
         <div class="ctas">
-          <a class="btn btn-primary" href="mailto:edelmann.tecnologia@gmail.com?subject=Agente%20de%20IA%20no%20WhatsApp%20-%20Edelmann%20Tecnologia">Solicitar orçamento<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-primary" href="/contato/#agendar">Agendar conversa<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
           <a class="btn btn-ghost" href="#funcoes">Ver as funções</a>
         </div>
       </div>
@@ -630,7 +641,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
     <div class="wrap">
       <div class="head reveal">
         <div>
-          <p class="eyebrow"><span class="n" aria-hidden="true">02</span>Implantação</p>
+          <p class="eyebrow"><span class="n" aria-hidden="true">02</span>Como começamos</p>
           <h2 id="implantacao-titulo">Do cadastro à primeira resposta.</h2>
         </div>
         <p class="sub">Ramo, arquivos e número são definidos no painel, pelo navegador.</p>
@@ -646,7 +657,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
         </li>
         <li class="step">
           <h3>Conexão do número</h3>
-          <p>Basta ler um QR code com o celular do número, como no WhatsApp Web.</p>
+          <p>O número do negócio é conectado ao agente pelo painel.</p>
         </li>
         <li class="step">
           <h3>Atendimento</h3>
@@ -774,7 +785,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
         </details>
         <details>
           <summary>E enquanto o cliente espera?</summary>
-          <p>Se escrever durante a espera, ele recebe uma vez um aviso de que está na fila. Se preferir, digita 0 e volta a falar com o agente.</p>
+          <p>Se escrever durante a espera, ele recebe uma vez um aviso de que está na fila.</p>
         </details>
         <details>
           <summary>E se a inteligência artificial falhar?</summary>
@@ -801,7 +812,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
       <div class="reveal">
         <p class="eyebrow"><span class="n" aria-hidden="true">06</span>Contato</p>
         <h2 id="contato-titulo">Coloque o agente no WhatsApp do seu negócio.</h2>
-        <p class="sub">Respondemos a cada pedido com os próximos passos e, quando for o caso, com um orçamento.</p>
+        <p class="sub">Marcamos uma conversa, presencial em Itaituba e região ou por videochamada, para ver onde o agente pode gerar resultado no seu negócio.</p>
         <p class="check-label">Informe, se possível:</p>
         <ul class="checklist">
           <li>O ramo e o nome do negócio</li>
@@ -810,13 +821,14 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
         </ul>
       </div>
       <div class="reveal">
+        <div class="ctas"><a class="btn btn-primary" href="/contato/#agendar">Agendar conversa<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><a class="btn btn-ghost" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20com%20a%20Edelmann%20Tecnologia." target="_blank" rel="noopener">Falar no WhatsApp<span class="sr"> (abre em nova aba)</span></a></div>
         <a class="channel" href="mailto:edelmann.tecnologia@gmail.com?subject=Agente%20de%20IA%20no%20WhatsApp%20-%20Edelmann%20Tecnologia">
           <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>E-mail</span>
           <span class="channel-value">edelmann.tecnologia@<wbr>gmail.com</span>
           <span class="channel-cta">Escrever mensagem<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
         </a>
         <p class="note">O assunto já vem preenchido.</p>
-        <p class="more"><a class="link" href="/produtos/">Ver os outros produtos<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+        <p class="more"><a class="link" href="/produtos/">Ver as outras soluções<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
       </div>
     </div>
   </section>
@@ -832,7 +844,11 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
       </a>
       <nav aria-label="Rodapé">
         <ul>
-          <li><a href="/#como-atuamos">Como atuamos</a></li>
+          <li><a href="/#como-funciona">Como funciona</a></li>
+          <li><a href="/setores/comercio/">Para comércio</a></li>
+          <li><a href="/setores/saude/">Para saúde</a></li>
+          <li><a href="/setores/educacao/">Para educação</a></li>
+          <li><a href="/itaituba/">Consultoria em TI em Itaituba</a></li>
           <li><a href="/sobre/">Sobre</a></li>
           <li><a href="/produtos/">Soluções</a></li>
           <li><a href="/artigos/">Artigos</a></li>
@@ -891,6 +907,6 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
   });
 })();
 </script>
-<a class="wa-float" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Edelmann%20Tecnologia." target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M16 3.5C9.1 3.5 3.5 8.9 3.5 15.6c0 2.4.7 4.6 2 6.5L4 28l6-1.6c1.8 1 3.9 1.6 6 1.6 6.9 0 12.5-5.4 12.5-12.1S22.9 3.5 16 3.5z"/><path fill="currentColor" d="M12.2 9.8c.3 0 .6 0 .8.6l1 2.5c.1.3.1.6-.1.8l-.8 1c-.2.2-.2.5 0 .8.9 1.5 2.1 2.6 3.6 3.5.3.2.6.1.8-.1l1-1.1c.2-.3.5-.3.8-.2l2.5 1.1c.3.1.5.4.5.7 0 1.6-1.4 2.9-3 2.8-4.7-.4-8.5-4.2-8.9-8.8-.1-1.6 1-2.8 1.8-2.8z"/></svg><span>WhatsApp</span><span class="sr"> (abre em nova aba)</span></a>
+<a class="wa-float" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20com%20a%20Edelmann%20Tecnologia." target="_blank" rel="noopener"><svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M16 3.5C9.1 3.5 3.5 8.9 3.5 15.6c0 2.4.7 4.6 2 6.5L4 28l6-1.6c1.8 1 3.9 1.6 6 1.6 6.9 0 12.5-5.4 12.5-12.1S22.9 3.5 16 3.5z"/><path fill="currentColor" d="M12.2 9.8c.3 0 .6 0 .8.6l1 2.5c.1.3.1.6-.1.8l-.8 1c-.2.2-.2.5 0 .8.9 1.5 2.1 2.6 3.6 3.5.3.2.6.1.8-.1l1-1.1c.2-.3.5-.3.8-.2l2.5 1.1c.3.1.5.4.5.7 0 1.6-1.4 2.9-3 2.8-4.7-.4-8.5-4.2-8.9-8.8-.1-1.6 1-2.8 1.8-2.8z"/></svg><span>WhatsApp</span><span class="sr"> (abre em nova aba)</span></a>
 </body>
 </html>

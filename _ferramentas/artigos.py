@@ -16,13 +16,13 @@ ARTIGOS = [
 <li><strong>Informação digitada duas vezes.</strong> A venda vai para a planilha e depois para o financeiro, para o estoque, para a nota.</li>
 <li><strong>Só uma pessoa entende o arquivo.</strong> Se ela falta, ninguém fecha o mês.</li>
 <li><strong>Erros que só aparecem tarde.</strong> Uma fórmula quebrada pode distorcer meses de números sem ninguém perceber.</li>
-<li><strong>Demora para responder perguntas simples.</strong> "Quanto vendemos este mês?" vira meia hora de trabalho.</li>
+<li><strong>Demora para responder perguntas simples.</strong> "Quanto vendemos este mês?" vira um trabalho manual.</li>
 </ul>
 <h2>Sistema não é sinônimo de gastar muito</h2>
-<p>O erro mais comum é comprar o sistema mais completo do mercado e usar 10% dele. O caminho certo é o contrário: entender o processo da empresa primeiro e escolher a ferramenta que resolve aquele processo, nem mais nem menos.</p>
+<p>O erro mais comum é comprar o sistema mais completo do mercado e usar só uma pequena parte dele. O caminho certo é o contrário: entender o processo da empresa primeiro e escolher a ferramenta que resolve aquele processo, nem mais nem menos.</p>
 <div class="note-box">A pergunta certa não é "qual o melhor sistema?", e sim "qual problema da minha empresa o sistema precisa resolver?".</div>
 <h2>Quanto essa demora custa por mês?</h2>
-<p>Some as horas que a equipe gasta redigitando, conferindo e procurando a versão certa. Agora multiplique pelo custo de cada hora. Quase sempre o número assusta, e ele não inclui as decisões tomadas com o dado errado.</p>
+<p>Redigitar, conferir e procurar a versão certa consome horas da equipe todo mês, e esse custo costuma passar despercebido. Na conversa, calculamos juntos quanto isso pesa na sua empresa.</p>
 <h2>Como a Edelmann ajuda</h2>
 <p>Olhamos a rotina da sua empresa, mostramos onde a planilha está custando caro e indicamos o caminho que se paga mais rápido. A mudança é conduzida por nós, junto com a sua equipe, sem parar a operação.</p>'''),
   ('gastos-com-tecnologia', 'Como saber se a sua empresa está gastando demais com tecnologia',
@@ -55,10 +55,10 @@ ARTIGOS = [
 <h2>Ter backup não é o mesmo que estar protegido</h2>
 <p>Muitas empresas descobrem no pior momento que a cópia estava incompleta, desatualizada ou não abria. Um pendrive na gaveta ou uma pasta na nuvem configurada há anos raramente resolve.</p>
 <h2>Como a Edelmann ajuda</h2>
-<p>Avaliamos como os dados da sua empresa estão guardados hoje, mostramos os riscos reais e deixamos a proteção funcionando e conferida. Você não precisa se preocupar com isso.</p>'''),
+<p>Avaliamos como os dados da sua empresa estão guardados hoje, mostramos os riscos reais e deixamos a proteção funcionando e conferida.</p>'''),
   ('whatsapp-atendimento-fora-do-horario', 'WhatsApp no atendimento: o cliente que você perde fora do horário',
    'O cliente manda mensagem às 21h e compra de quem responder primeiro. Veja onde o atendimento pelo WhatsApp deixa venda passar.',
-   '''<p>Hoje, a maior parte dos clientes chega pelo WhatsApp. E muitos chegam fora do horário: à noite, no fim de semana, no feriado. Quem responde primeiro, normalmente, leva a venda.</p>
+   '''<p>Muitos clientes chegam pelo WhatsApp. E vários chegam fora do horário: à noite, no fim de semana, no feriado. Quem responde primeiro, normalmente, leva a venda.</p>
 <h2>Onde o atendimento pelo WhatsApp costuma falhar</h2>
 <ul>
 <li><strong>Mensagem sem resposta</strong> por horas, porque ninguém está de olho.</li>
@@ -67,27 +67,50 @@ ARTIGOS = [
 <li><strong>Cliente esquecido</strong>: pediu orçamento, ninguém voltou a falar com ele.</li>
 </ul>
 <h2>Como a Edelmann ajuda</h2>
-<p>Analisamos como a sua empresa atende hoje e montamos um atendimento que responde na hora, a qualquer hora, e passa para a equipe quando precisa, sem deixar nenhum cliente esquecido. Desenvolvemos a nossa própria solução de atendimento automático no WhatsApp.</p>
-<div class="note-box">Cada mensagem sem resposta é um cliente indo para o concorrente. Organizar o WhatsApp é uma das formas mais rápidas de vender mais sem gastar com anúncio.</div>'''),
+<p>Analisamos como a sua empresa atende hoje e montamos um atendimento que responde na hora, a qualquer hora, e passa para a equipe quando precisa, sem deixar nenhum cliente esquecido. Desenvolvemos a nossa própria <a href="/agente-whatsapp/">solução de atendimento automático no WhatsApp</a>.</p>
+<div class="note-box">Cada mensagem sem resposta é um cliente indo para o concorrente. Responder rápido costuma ser o que decide a venda.</div>'''),
 ]
+
+# datas reais de publicação e revisão (fixas: não ler o git durante a geração)
+DATAS = {s: ('2026-10-18', '2026-10-28') for s in ('planilha-ou-sistema', 'gastos-com-tecnologia',
+         'backup-quanto-custa-perder-dados', 'whatsapp-atendimento-fora-do-horario')}
+# título curto para o Google (só no <title> e no og:title; o h1 e o headline não mudam)
+SEO = {'gastos-com-tecnologia': 'Gastos com tecnologia: onde a empresa gasta demais',
+       'whatsapp-atendimento-fora-do-horario': 'WhatsApp fora do horário: o cliente que você perde'}
+EMPRESA = {"@type": "Organization", "@id": URL + "/#empresa", "name": "Edelmann Tecnologia", "url": URL + "/", "logo": URL + "/img/icon-512.png"}
+
+def trilha(*itens):  # BreadcrumbList: itens = (nome, caminho), o primeiro é o Início
+    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i, "name": n, "item": URL + c} for i, (n, c) in enumerate(itens, 1)]}
+
+def leia_tambem(slug):
+    outros = ''.join(f'<li><a href="/artigos/{s}/">{t}</a></li>' for s, t, *_ in ARTIGOS if s != slug)
+    return (f'\n<h2>Leia também</h2>\n<ul>{outros}</ul>\n'
+            '<p>Por ramo: <a href="/setores/comercio/">Comércio</a> · <a href="/setores/saude/">Saúde</a> · <a href="/setores/educacao/">Educação</a></p>')
 
 casca = open('sobre/index.html', encoding='utf-8').read()
 
-def pagina(slug, titulo, desc, h1, corpo, extra_ld=None):
+def pagina(slug, titulo, desc, h1, corpo, extra_ld=None, datas=None):
     url = f'{URL}/artigos/{slug}/' if slug else f'{URL}/artigos/'
-    s = re.sub(r'<title>.*?</title>', f'<title>{titulo} | Edelmann Tecnologia</title>', casca, count=1)
+    curto = SEO.get(slug, titulo)
+    s = re.sub(r'<title>.*?</title>', f'<title>{curto} | Edelmann</title>', casca, count=1)
     for k in ('description', 'og:description', 'twitter:description'):
         s = re.sub(r'(<meta (?:name|property)="' + k + r'" content=")[^"]*', lambda m: m.group(1) + desc, s)
     for k in ('og:title', 'twitter:title'):
-        s = re.sub(r'(<meta (?:name|property)="' + k + r'" content=")[^"]*', lambda m: m.group(1) + titulo, s)
+        s = re.sub(r'(<meta (?:name|property)="' + k + r'" content=")[^"]*', lambda m: m.group(1) + curto, s)
     s = s.replace('<link rel="canonical" href="https://edelmann.com.br/sobre/">', f'<link rel="canonical" href="{url}">')
     s = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + url, s)
     s = re.sub(r'<script type="application/ld\+json">.*?</script>\n?', '', s, flags=re.S)
     if extra_ld:
-        s = s.replace('<style>', '<script type="application/ld+json">\n' + json.dumps(extra_ld, ensure_ascii=False, indent=1) + '\n</script>\n<style>', 1)
+        blocos = ''.join('<script type="application/ld+json">\n' + json.dumps(o, ensure_ascii=False, indent=1) + '\n</script>\n'
+                         for o in (extra_ld if isinstance(extra_ld, list) else [extra_ld]))
+        s = s.replace('<style>', blocos + '<style>', 1)
+    if datas:  # só nos artigos
+        s = s.replace('<meta property="og:type" content="website">', '<meta property="og:type" content="article">\n'
+                      f'<meta property="article:published_time" content="{datas[0]}">\n<meta property="article:modified_time" content="{datas[1]}">', 1)
     s = s.replace('<a href="/sobre/" aria-current="page">Sobre</a>', '<a href="/sobre/">Sobre</a>')
-    s = s.replace('<li><a href="/artigos/">Artigos</a></li>\n        <li><a href="/contato/"', '<li><a href="/artigos/" aria-current="page">Artigos</a></li>\n        <li><a href="/contato/"', 1)  # menu do topo
-    trilha = '<nav class="crumbs" aria-label="Trilha"><a href="/">Início</a> › <a href="/artigos/">Artigos</a></nav>' if slug else '<nav class="crumbs" aria-label="Trilha"><a href="/">Início</a> › <span aria-current="page">Artigos</span></nav>'
+    s = s.replace('<li><a href="/artigos/">Artigos</a></li>', '<li><a href="/artigos/" aria-current="page">Artigos</a></li>', 1)  # menu do topo
+    trilha = f'<nav class="crumbs" aria-label="Trilha"><a href="/">Início</a> › <a href="/artigos/">Artigos</a> › <span aria-current="page">{titulo}</span></nav>' if slug else '<nav class="crumbs" aria-label="Trilha"><a href="/">Início</a> › <span aria-current="page">Artigos</span></nav>'
     main = f'''<main id="conteudo" tabindex="-1">
   <section class="section" aria-labelledby="titulo">
     <div class="wrap">
@@ -116,16 +139,25 @@ def pagina(slug, titulo, desc, h1, corpo, extra_ld=None):
     open(os.path.join(d, 'index.html'), 'w', encoding='utf-8', newline='\n').write(s)
 
 for slug, t, desc, corpo in ARTIGOS:
-    pagina(slug, t, desc, t, corpo, {"@context": "https://schema.org", "@type": "Article", "headline": t, "description": desc,
-           "inLanguage": "pt-BR", "author": {"@type": "Organization", "name": "Edelmann Tecnologia"},
-           "publisher": {"@type": "Organization", "name": "Edelmann Tecnologia"}, "mainEntityOfPage": f"{URL}/artigos/{slug}/"})
-lista = '<ul class="post-list">' + ''.join(f'<li><a href="/artigos/{s}/"><p class="eyebrow">Artigo</p><h3>{t}</h3><p>{d}</p></a></li>' for s, t, d, _ in ARTIGOS) + '</ul>'
-pagina('', 'Artigos sobre gestão e tecnologia', 'Artigos da Edelmann Tecnologia para donos de empresa: gestão, processos e tecnologia que gera resultado.', 'Gestão e tecnologia, <em>sem complicação.</em>', lista)
+    d0, d1 = DATAS[slug]
+    pagina(slug, t, desc, t, corpo + leia_tambem(slug), [
+           {"@context": "https://schema.org", "@type": "Article", "headline": t, "description": desc,
+            "inLanguage": "pt-BR", "datePublished": d0, "dateModified": d1, "image": URL + "/img/og.jpg",
+            "author": EMPRESA, "publisher": EMPRESA, "mainEntityOfPage": f"{URL}/artigos/{slug}/"},
+           trilha(('Início', '/'), ('Artigos', '/artigos/'), (t, f'/artigos/{slug}/'))], (d0, d1))
+lista = '<h2 class="sr">Artigos</h2><ul class="post-list">' + ''.join(f'<li><a href="/artigos/{s}/"><p class="eyebrow">Artigo</p><h3>{t}</h3><p>{d}</p></a></li>' for s, t, d, _ in ARTIGOS) + '</ul>'
+pagina('', 'Artigos sobre gestão e tecnologia', 'Artigos da Edelmann Tecnologia para donos de empresa: gestão, processos e tecnologia que gera resultado.', 'Gestão e tecnologia, <em>sem complicação.</em>', lista, [
+     {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Artigos sobre gestão e tecnologia", "url": f"{URL}/artigos/",
+      "inLanguage": "pt-BR", "description": 'Artigos da Edelmann Tecnologia para donos de empresa: gestão, processos e tecnologia que gera resultado.'},
+     trilha(('Início', '/'), ('Artigos', '/artigos/'))])
 
 # sitemap
 sm = open('sitemap.xml', encoding='utf-8').read()
 for u in ['/artigos/'] + [f'/artigos/{s}/' for s, *_ in ARTIGOS]:
     if f'<loc>{URL}{u}</loc>' not in sm:
         sm = sm.replace('</urlset>', f'  <url><loc>{URL}{u}</loc><lastmod>2026-10-18</lastmod></url>\n</urlset>')
+sm = re.sub(r'(<loc>' + re.escape(f'{URL}/artigos/') + r'</loc><lastmod>)[^<]*', r'\g<1>2026-10-28', sm)
+for sl, (_, mod) in DATAS.items():  # lastmod dos artigos = data da última revisão
+    sm = re.sub(r'(<loc>' + re.escape(f'{URL}/artigos/{sl}/') + r'</loc><lastmod>)[^<]*', r'\g<1>' + mod, sm)
 open('sitemap.xml', 'w', encoding='utf-8', newline='\n').write(sm)
 print('ok', len(ARTIGOS), 'artigos')

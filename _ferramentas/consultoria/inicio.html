@@ -3,11 +3,14 @@
   <section class="hero home-hero" aria-labelledby="titulo">
     <div class="wrap hero-grid">
       <div>
-        <p class="chip">Consultoria em TI para empresas · Itaituba (PA)</p>
-        <h1 id="titulo"><span>Tecnologia a serviço do</span> <em>resultado do seu negócio.</em></h1>
-        <p class="lead">Há mais de 15 anos apoiamos empresas dos mais diversos setores a organizar processos, reduzir custos e crescer com a tecnologia certa para cada fase da gestão.</p>
-        <p class="lead">Tudo começa com uma conversa.</p>
-        <p class="hero-links"><a class="link" href="#como-atuamos">Como atuamos{{ARROW}}</a></p>
+        <p class="chip">Consultoria em TI · Itaituba (PA) e região</p>
+        <h1 id="titulo"><span>Consultoria em TI que mostra onde a sua empresa</span> <em>perde tempo e dinheiro.</em></h1>
+        <p class="lead">Para pequenas e médias empresas. Com mais de 15 anos de experiência em TI, em diversos setores, organizamos processos e escolhemos a tecnologia certa para cada fase da gestão.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="#agendar">Agendar conversa{{ARROW}}</a>
+          <a class="btn btn-ghost" href="{{WA_CHECK}}" target="_blank" rel="noopener">Receber o checklist grátis<span class="sr"> (abre o WhatsApp em nova aba)</span></a>
+        </div>
+        <p class="hero-links">Presencial em <a class="link" href="/itaituba/">Itaituba e região</a>, ou por videochamada.</p>
       </div>
 {{FORM_DARK}}
     </div>
@@ -17,7 +20,9 @@
 
 {{SINAIS}}
 
-  <section class="section alt" id="resultados" aria-labelledby="resultados-titulo">
+{{COMO_FUNCIONA_ALT}}
+
+  <section class="section" id="resultados" aria-labelledby="resultados-titulo">
     <div class="wrap">
       <div class="head reveal">
         <div>
@@ -32,48 +37,12 @@
         <li class="impact">{{I:chart}}<h3>Decidir com informação</h3><p>Os números do negócio organizados e à vista de quem decide, no momento em que importam.</p></li>
         <li class="impact">{{I:shield}}<h3>Proteger a operação</h3><p>O negócio continua funcionando diante de falhas, invasões ou perda de dados.</p></li>
       </ul>
-      <p class="eyebrow reveal" style="margin-top:3.5rem">Para o seu setor</p>
+      <p class="eyebrow reveal" id="setores" style="margin-top:3.5rem">Para o seu setor</p>
       <ul class="sols reveal">
         <li><a href="/setores/comercio/"><b>Comércio{{ARROW}}</b><span>Supermercados, materiais de construção e lojas.</span></a></li>
         <li><a href="/setores/saude/"><b>Saúde{{ARROW}}</b><span>Clínicas, consultórios, farmácias e laboratórios.</span></a></li>
         <li><a href="/setores/educacao/"><b>Educação{{ARROW}}</b><span>Escolas particulares, cursos e faculdades.</span></a></li>
       </ul>
-    </div>
-  </section>
-
-  <section class="section" id="como-atuamos" aria-labelledby="como-atuamos-titulo">
-    <div class="wrap">
-      <div class="head reveal">
-        <div>
-          <p class="eyebrow">Como atuamos</p>
-          <h2 id="como-atuamos-titulo">Em todas as fases <em>da gestão.</em></h2>
-        </div>
-        <p class="sub">Do planejamento à melhoria contínua, ajudamos a gerir e aprimorar os processos que envolvem o seu negócio.</p>
-      </div>
-      <ol class="steps reveal">
-        <li class="step"><h3>Planejar</h3><p>Entendemos o negócio, os objetivos e onde estão os gargalos, e definimos as prioridades.</p></li>
-        <li class="step"><h3>Estruturar</h3><p>Organizamos processos, ferramentas e informações para que tudo trabalhe junto.</p></li>
-        <li class="step"><h3>Operar</h3><p>Acompanhamos a rotina para que o que foi planejado funcione no dia a dia.</p></li>
-        <li class="step"><h3>Evoluir</h3><p>Medimos os resultados e ajustamos o caminho para o negócio seguir crescendo.</p></li>
-      </ol>
-    </div>
-  </section>
-
-{{COMO_FUNCIONA_ALT}}
-
-  <section class="section" id="experiencia" aria-labelledby="experiencia-titulo">
-    <div class="wrap">
-      <div class="head exp reveal">
-        <div>
-          <p class="eyebrow">Experiência</p>
-          <h2 id="experiencia-titulo">Experiência que vem <em>da prática.</em></h2>
-        </div>
-        <div class="sub">
-          <p>Conhecimento construído ao longo de anos de projetos, aplicado à realidade de cada negócio.</p>
-          <p class="exp-note">Nos contratos públicos, prazo, documentação e conformidade não são opcionais. É esse mesmo rigor que levamos a cada cliente, do primeiro diagnóstico ao acompanhamento dos resultados.</p>
-          <p><a class="link" href="/sobre/">Conheça a Edelmann{{ARROW}}</a></p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -93,6 +62,13 @@
       </ul>
       <p class="more reveal"><a class="link" href="/produtos/">Ver todas as soluções{{ARROW}}</a></p>
       <p class="exp-note reveal" style="margin-top:2.5rem">Também cuidamos do suporte técnico do dia a dia: computadores, redes, servidores e backup. <a class="link" href="{{WA}}" target="_blank" rel="noopener">Fale no WhatsApp<span class="sr"> (abre em nova aba)</span></a></p>
+    </div>
+  </section>
+
+  <section class="section" id="faq" aria-labelledby="faq-titulo">
+    <div class="wrap">
+      <div class="head reveal"><div><p class="eyebrow">Dúvidas</p><h2 id="faq-titulo">Perguntas frequentes</h2></div></div>
+{{FAQ}}
     </div>
   </section>
 

@@ -23,68 +23,70 @@ SYMBOLS = {
 
 # ---------- trechos repetidos ----------
 CAMPOS = '''          <div class="row">
-            <label>Seu nome<input name="nome" autocomplete="name" required></label>
-            <label>Empresa<input name="empresa" autocomplete="organization" required></label>
+            <label>Seu nome<input name="nome" autocomplete="name" required pattern=".*\\S.*" title="Informe seu nome"></label>
+            <label><span>Empresa <small>(opcional)</small></span><input name="empresa" autocomplete="organization"></label>
           </div>
-          <div class="row">
-            <label><span>Segmento <small>(opcional)</small></span><input name="segmento" placeholder="Ex.: comércio, saúde"></label>
-            <label><span>Cidade <small>(opcional)</small></span><input name="cidade" autocomplete="address-level2"></label>
-          </div>
-          <div class="row">
-            <label>Formato
-              <select name="formato"><option>Presencial</option><option>Videochamada</option></select>
-            </label>
-            <label>Melhor período
-              <select name="periodo"><option>Qualquer horário</option><option>Manhã</option><option>Tarde</option></select>
-            </label>
-          </div>
-          <label><span>Qual o principal desafio do negócio hoje? <small>(opcional)</small></span><textarea name="desafio"></textarea></label>'''
-NOSCRIPT = '<noscript><p class="fine">Para agendar, use o WhatsApp (93) 98121-2924 ou o e-mail edelmann.tecnologia@gmail.com.</p></noscript>'
+          <label>Como prefere conversar?
+            <select name="formato"><option>Presencial, em Itaituba ou região</option><option>Videochamada</option></select>
+          </label>
+          <label><span>O que mais pesa na empresa hoje? <small>(opcional)</small></span><textarea name="desafio" placeholder="Ex.: o que a empresa faz e o que você espera alcançar"></textarea></label>'''
+NOSCRIPT = (f'<noscript><style>#form-agenda{{display:none}}</style><p class="fine">Para agendar, fale pelo <a href="{WA}">WhatsApp (93) 98121-2924</a> ou pelo '
+            '<a href="mailto:edelmann.tecnologia@gmail.com?subject=Agendar%20conversa%20-%20Edelmann%20Tecnologia">e-mail</a>.</p></noscript>')
 FORM_DARK = f'''      <div class="quote" id="agendar">
         <h2>Agende uma conversa.</h2>
-        <p>Presencial em Itaituba e região, ou por videochamada.</p>
         <form class="form" id="form-agenda">
 {CAMPOS}
-          <button class="btn btn-primary" type="submit">Agendar pelo WhatsApp{ARROW}</button>
-          <p class="fine">Prefere e-mail? <button class="alt-send" type="button" id="agenda-email">Enviar por e-mail</button>. Nada fica guardado no site. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
+          <button class="btn btn-primary" type="submit">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</button>
+          <p class="fine">Abre o WhatsApp com a mensagem pronta; por lá combinamos o dia e o horário. Prefere e-mail? <button class="alt-send" type="button" id="agenda-email">Enviar por e-mail</button>. Nada fica guardado no site. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
+          <p class="fine" id="agenda-status" role="status" aria-live="polite"></p>
         </form>
         {NOSCRIPT}
       </div>'''
 FORM_CLARO = f'''      <form class="form" id="form-agenda">
 {CAMPOS}
         <div class="actions">
-          <button class="btn btn-primary" type="submit">Agendar pelo WhatsApp{ARROW}</button>
+          <button class="btn btn-primary" type="submit">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</button>
           <button class="btn btn-ghost" type="button" id="agenda-email">Enviar por e-mail</button>
         </div>
-        <p class="fine">Ao enviar, abrimos o WhatsApp ou o e-mail com a mensagem pronta para você conferir. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
+        <p class="fine">Ao enviar, abrimos o WhatsApp ou o e-mail com a mensagem pronta para você conferir. Por lá combinamos o dia e o horário. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
+        <p class="fine" id="agenda-status" role="status" aria-live="polite"></p>
       </form>
       {NOSCRIPT}'''
 FORM_JS = '''<script>
 /* Agendamento: monta a mensagem no navegador e abre WhatsApp ou e-mail. Nada é enviado ao site. */
 (function(){
   var f=document.getElementById('form-agenda'); if(!f)return;
+  var st=document.getElementById('agenda-status');
+  function v(n){return String(new FormData(f).get(n)||'').trim()}
   function msg(){
-    var d=new FormData(f),l=['Olá! Quero agendar uma conversa com a Edelmann Tecnologia.','','Nome: '+d.get('nome'),'Empresa: '+d.get('empresa')];
-    if(d.get('segmento'))l.push('Segmento: '+d.get('segmento'));
-    if(d.get('cidade'))l.push('Cidade: '+d.get('cidade'));
-    l.push('Formato: '+d.get('formato'),'Melhor período: '+d.get('periodo'));
-    if(d.get('desafio'))l.push('','Principal desafio: '+d.get('desafio'));
+    var l=['Olá! Quero agendar uma conversa com a Edelmann Tecnologia.','','Nome: '+v('nome')];
+    if(v('empresa'))l.push('Empresa: '+v('empresa'));
+    l.push('Formato: '+v('formato'));
+    if(v('desafio'))l.push('','O que mais pesa hoje: '+v('desafio'));
     return l.join('\\n');
+  }
+  function aviso(antes,href,rotulo,depois){  /* texto + link de reserva, sem innerHTML */
+    if(!st)return; st.textContent=antes;
+    if(href){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=rotulo;st.appendChild(a)}
+    if(depois)st.appendChild(document.createTextNode(depois));
   }
   f.addEventListener('submit',function(e){
     e.preventDefault(); if(!f.reportValidity())return;
-    window.open('https://wa.me/5593981212924?text='+encodeURIComponent(msg()),'_blank','noopener');
+    var u='https://wa.me/5593981212924?text='+encodeURIComponent(msg());
+    window.open(u,'_blank','noopener');
+    aviso('Se o WhatsApp não abriu, ',u,'toque aqui','.');
   });
   document.getElementById('agenda-email').addEventListener('click',function(){
     if(!f.reportValidity())return;
     var a=document.createElement('a');
-    a.href='mailto:edelmann.tecnologia@gmail.com?subject='+encodeURIComponent('Agendar conversa - '+new FormData(f).get('empresa'))+'&body='+encodeURIComponent(msg());
+    a.href='mailto:edelmann.tecnologia@gmail.com?subject='+encodeURIComponent('Agendar conversa - '+(v('empresa')||v('nome')))+'&body='+encodeURIComponent(msg());
     document.body.appendChild(a); a.click(); a.remove();
+    aviso('Se o seu e-mail não abriu, escreva para edelmann.tecnologia@gmail.com.');
   });
 })();
 </script>
 '''
-WA_CHECK = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20receber%20o%20checklist%20%2210%20perguntas%20para%20descobrir%20onde%20a%20empresa%20perde%20dinheiro%22.'
+WA_CHECK = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20receber%20o%20checklist%20%2210%20perguntas%20para%20descobrir%20onde%20a%20empresa%20perde%20dinheiro%22.%20Meu%20nome%20%C3%A9%20'
 SINAIS_ITENS = [
     ('Retrabalho e tarefas repetidas', 'A equipe gasta horas fazendo à mão o que poderia ser rotina.'),
     ('Informação espalhada', 'Dados em planilhas, cadernos e conversas, e ninguém tem o número certo na hora de decidir.'),
@@ -115,7 +117,7 @@ SINAIS = f'''  <section class="section" id="sinais" aria-labelledby="sinais-titu
     </div>
   </section>'''
 STATS = '''      <ul class="stats reveal">
-        <li><b>15+</b><span>anos resolvendo problemas de tecnologia em empresas de comércio, saúde, educação e serviços</span></li>
+        <li><b>15+</b><span>anos de experiência em TI, em empresas dos mais diversos setores</span></li>
         <li><b>Ponta a ponta</b><span>do diagnóstico à execução: planejamos, implantamos e acompanhamos junto com a sua equipe</span></li>
         <li><b>Rigor</b><span>a mesma exigência de prazo, documentação e prestação de contas dos contratos públicos</span></li>
       </ul>'''
@@ -130,37 +132,40 @@ def como_funciona(classe): return f'''  <section class="{classe}" id="como-funci
       <div class="head reveal">
         <div>
           <p class="eyebrow">Como funciona</p>
-          <h2 id="como-funciona-titulo">Tudo começa <em>com uma conversa.</em></h2>
+          <h2 id="como-funciona-titulo">Do primeiro contato <em>ao resultado.</em></h2>
         </div>
-        <p class="sub">Presencial em Itaituba e região, ou por videochamada.</p>
+        <p class="sub">Em todas as fases da gestão: planejar, estruturar, operar e evoluir.</p>
       </div>
       <ol class="steps three reveal">
-        <li class="step"><h3>Conversa</h3><p>Nos encontramos para entender o seu negócio, os seus objetivos e o que hoje impede o crescimento.</p></li>
-        <li class="step"><h3>Diagnóstico e proposta</h3><p>Apresentamos as prioridades, o caminho e o impacto esperado para o negócio.</p></li>
-        <li class="step"><h3>Execução e acompanhamento</h3><p>Colocamos o plano em prática junto com a sua equipe e acompanhamos os resultados.</p></li>
+        <li class="step"><h3>Conversa</h3><p>Você conta como o negócio funciona e o que mais pesa hoje; nós ouvimos e perguntamos.</p></li>
+        <li class="step"><h3>Diagnóstico e proposta</h3><p>Mostramos o que encontramos, as prioridades e o impacto esperado, com escopo e etapas. Você decide se e quando seguir.</p></li>
+        <li class="step"><h3>Execução e acompanhamento</h3><p>Colocamos o plano em prática junto com a sua equipe e acompanhamos os resultados. Nada começa sem a sua aprovação.</p></li>
       </ol>
       <p class="more reveal"><a class="btn btn-primary" href="#agendar">Agendar conversa{ARROW}</a></p>
     </div>
   </section>'''
 CTA_TXT = 'Um encontro, presencial ou por videochamada, para entender os seus objetivos e mostrar onde a tecnologia pode gerar resultado.'
 WA_BTN = f'<a class="btn btn-ghost" href="{WA}" target="_blank" rel="noopener">Falar no WhatsApp<span class="sr"> (abre em nova aba)</span></a>'
-def cta(classe, alvo):
+CHECK_BTN = f'<a class="btn btn-ghost" href="{WA_CHECK}" target="_blank" rel="noopener">Receber o checklist grátis<span class="sr"> (abre o WhatsApp em nova aba)</span></a>'
+def cta(classe, alvo, final=False, titulo='Vamos conversar sobre o seu negócio?'):  # final: o último bloco da página abre o WhatsApp direto e oferece o checklist
+    botoes = (f'<a class="btn btn-primary" href="{WA}" target="_blank" rel="noopener">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</a>\n        {CHECK_BTN}' if final
+              else f'<a class="btn btn-primary" href="{alvo}">Agendar conversa{ARROW}</a>\n        {WA_BTN}')
     return f'''  <section class="{classe}" aria-labelledby="cta-titulo">
     <div class="wrap reveal">
-      <h2 id="cta-titulo">Vamos conversar sobre o seu negócio?</h2>
+      <h2 id="cta-titulo">{titulo}</h2>
       <p>{CTA_TXT}</p>
       <div class="ctas">
-        <a class="btn btn-primary" href="{alvo}">Agendar conversa{ARROW}</a>
-        {WA_BTN}
+        {botoes}
       </div>
     </div>
   </section>'''
 FAQ = [
     ('Como é a primeira conversa?', 'Um encontro presencial, em Itaituba e região, ou por videochamada. Conversamos sobre o negócio, os objetivos e os principais desafios, e a partir daí indicamos os próximos passos.'),
-    ('Que tipo de empresa vocês atendem?', 'Empresas de pequeno e médio porte dos mais diversos setores. Também temos experiência com contratos públicos.'),
+    ('Vocês conhecem o meu ramo?', 'Atendemos empresas de pequeno e médio porte de diversos setores, e também temos experiência com contratos públicos. A primeira conversa serve para entender como o seu negócio funciona; só depois propomos qualquer coisa.'),
+    ('Vai atrapalhar a rotina da minha empresa?', 'Nada muda sem a sua aprovação. Cada etapa é combinada antes e conduzida junto com a sua equipe, respeitando a rotina da empresa.'),
+    ('Preciso trocar os sistemas que já uso?', 'Recomendamos apenas o que traz retorno para o negócio, sempre explicando o motivo. Se o que você já usa atende, não há razão para trocar.'),
     ('Vocês atendem fora de Itaituba?', 'Sim. Os encontros presenciais acontecem em Itaituba e região; para outras cidades, conversamos por videochamada.'),
     ('Como é definido o valor?', 'Depois de entender o negócio, apresentamos uma proposta com o escopo, as etapas e o valor. Nada começa sem a sua aprovação.'),
-    ('Qual a forma mais rápida de falar com vocês?', 'O WhatsApp (93) 98121-2924. Também respondemos pelo e-mail edelmann.tecnologia@gmail.com.'),
 ]
 FAQ_HTML = '      <div class="faq reveal">' + ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ) + '</div>'
 def ld(obj): return '<script type="application/ld+json">\n' + json.dumps(obj, ensure_ascii=False, indent=1) + '\n</script>\n'
@@ -168,7 +173,9 @@ FAQ_LD = ld({"@context": "https://schema.org", "@type": "FAQPage",
              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]})
 MARCAS = {'{{FORM_DARK}}': FORM_DARK, '{{FORM_CLARO}}': FORM_CLARO, '{{PROOF}}': PROOF, '{{SINAIS}}': SINAIS, '{{STATS}}': STATS,
           '{{COMO_FUNCIONA}}': como_funciona('section'), '{{COMO_FUNCIONA_ALT}}': como_funciona('section alt'),
-          '{{CTA}}': cta('cta-accent', '#agendar'), '{{CTA_CLARO}}': cta('section band cta-band', '/contato/#agendar'),
+          '{{CTA}}': cta('cta-accent', '#agendar', final=True), '{{CTA_CLARO}}': cta('section band cta-band', '/contato/#agendar', titulo='Conheceu a Edelmann. Agora conte sobre o seu negócio.'),
+          '{{CTA_ITA}}': cta('cta-accent', '#agendar', final=True, titulo='Vamos conversar sobre a sua empresa em Itaituba?'),
+          '{{CTA_WA}}': cta('section band cta-band', None, final=True), '{{WA_CHECK}}': WA_CHECK,
           '{{FAQ}}': FAQ_HTML, '{{ARROW}}': ARROW, '{{WA}}': WA}
 def trecho(nome):
     s = rd(os.path.join(AQUI, 'consultoria', nome))
@@ -182,6 +189,10 @@ def troca_main(s, novo): return re.sub(r'<main id="conteudo" tabindex="-1">.*?</
 def meta(s, chave, valor):
     return re.sub(r'(<meta (?:name|property)="' + re.escape(chave) + r'" content=")[^"]*(")', lambda m: m.group(1) + valor + m.group(2), s)
 def titulo(s, t): return re.sub(r'<title>.*?</title>', f'<title>{t}</title>', s, count=1)
+def titulo_todos(s, t):  # <title>, og:title e twitter:title iguais
+    s = titulo(s, t)
+    for k in ('og:title', 'twitter:title'): s = meta(s, k, t)
+    return s
 def descricao(s, d):
     for k in ('description', 'og:description', 'twitter:description'): s = meta(s, k, d)
     return s
@@ -208,16 +219,31 @@ def menu(atual, cta_href):
     def li(href, txt):
         cur = ' aria-current="page"' if href == atual else ''
         return f'        <li><a href="{href}"{cur}>{txt}</a></li>'
-    return '\n'.join(['<ul>', li('/#como-atuamos', 'Como atuamos'), li('/sobre/', 'Sobre'), li('/artigos/', 'Artigos'), li('/contato/', 'Contato'),
+    return '\n'.join(['<ul>', li('/#como-funciona', 'Como funciona'), li('/#setores', 'Setores'), li('/sobre/', 'Sobre'), li('/artigos/', 'Artigos'), li('/contato/', 'Contato'),
                       f'        <li class="menu-cta"><a class="btn btn-primary btn-sm" href="{cta_href}">Agendar conversa</a></li>', '      </ul>'])
 RODAPE = '''<ul>
-          <li><a href="/#como-atuamos">Como atuamos</a></li>
+          <li><a href="/#como-funciona">Como funciona</a></li>
+          <li><a href="/setores/comercio/">Para comércio</a></li>
+          <li><a href="/setores/saude/">Para saúde</a></li>
+          <li><a href="/setores/educacao/">Para educação</a></li>
+          <li><a href="/itaituba/">Consultoria em TI em Itaituba</a></li>
           <li><a href="/sobre/">Sobre</a></li>
           <li><a href="/produtos/">Soluções</a></li>
           <li><a href="/artigos/">Artigos</a></li>
           <li><a href="/contato/">Contato</a></li>
           <li><a href="/privacidade/">Privacidade</a></li>
         </ul>'''
+
+# a primeira tela e quem chega por âncora veem o conteúdo na hora, sem esperar a animação de entrada
+CSS_REVELA = '.rv main>section:first-child .reveal,.rv :target .reveal,.rv .reveal:target{opacity:1;transform:none;transition:none}\n'
+# alvos de toque de 44px no rodapé e nos links secundários (não vale para links no meio de frase)
+CSS_TOQUE = '''.alt-send,.copy{position:relative}
+.alt-send::after,.copy::after{content:"";position:absolute;inset:-12px -6px}
+.site-footer nav a,.foot-mail,.legal>a{display:inline-flex;align-items:center;min-height:44px}
+.site-footer nav ul{gap:0 1.5rem}
+.more .link{min-height:44px}
+'''
+CSS_CAMPOS = '.form input,.form select,.form textarea{border-color:#7A8BA6}\n#agenda-status:empty{display:none}\n'
 
 def comum(p, s):
     """Menu, botão do topo, rodapé e faixa de chamada genérica: iguais em todas as páginas."""
@@ -230,6 +256,13 @@ def comum(p, s):
     s = s.replace('<p>Conte o que você precisa. Respondemos com os próximos passos e, quando for o caso, com um orçamento.</p>', f'<p>{CTA_TXT}</p>')
     s = s.replace('<h2 id="cta-titulo">Vamos conversar.</h2>', '<h2 id="cta-titulo">Vamos conversar sobre o seu negócio?</h2>')
     s = s.replace('<a class="btn btn-primary" href="/contato/">Solicitar orçamento', '<a class="btn btn-primary" href="/contato/#agendar">Agendar conversa')
+    s = s.replace('subject=Or%C3%A7amento%20-%20Edelmann%20Tecnologia', 'subject=Agendar%20conversa%20-%20Edelmann%20Tecnologia')
+    s = s.replace('computadores, redes e sistemas em mãos competentes', 'tecnologia a serviço do resultado do seu negócio')
+    s = com_css(s, CSS_REVELA, 'Primeira tela sem atraso')
+    s = com_css(s, CSS_TOQUE, 'Alvos de toque')
+    if p == 'produtos/index.html':  # faixa final da página de soluções
+        s = s.replace('Ol%C3%A1!%20Vim%20pelo%20site%20da%20Edelmann%20Tecnologia.', 'Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20com%20a%20Edelmann%20Tecnologia.')
+        s = s.replace('<h2 id="cta-titulo">Vamos conversar sobre o seu negócio?</h2>', '<h2 id="cta-titulo">Qual dessas soluções faz sentido para a sua empresa?</h2>')
     return s
 
 # ---------- CSS da página inicial (escura) ----------
@@ -277,6 +310,14 @@ CSS_STATS = '''.stats{display:grid;gap:.75rem;grid-template-columns:minmax(0,1fr
 .home .stats span{color:var(--on-night)}
 .proof .stats{margin:0}
 '''
+# celular de 320px: as colunas do topo podem encolher em vez de estourar a tela
+CSS_INICIO += '.hero-grid>*,.quote .form>*{min-width:0}\n'
+# botão primário único nas páginas escuras (as claras continuam com o azul)
+CSS_INICIO += '''.home .btn-primary{background:var(--gold-soft);color:var(--night);font-weight:600}
+.home .btn-primary:hover{background:#fff}
+.home .cta-accent .btn-primary{background:var(--night);color:#fff}
+.home .cta-accent .btn-primary:hover{background:var(--navy)}
+'''
 CSS_INICIO += CSS_STATS
 # seções que saíram (áreas de atuação, atendimento, por que, galeria de fotos): o CSS delas sai junto
 OBSOLETO = re.compile(r'^(?:@media[^{]*\{)?(?:\.home )?\.(?:pillars|pillar-card|rows|modes|mode|why|why-title|gallery)\b'
@@ -286,6 +327,9 @@ def ld_empresa(s):
     def f(m):
         o = json.loads(m.group(1))
         if o.get('@type') != 'ProfessionalService': return m.group(0)
+        o['@id'] = 'https://edelmann.com.br/#empresa'
+        o['image'] = 'https://edelmann.com.br/img/og.jpg'
+        o['logo'] = 'https://edelmann.com.br/apple-touch-icon.png'
         o['description'] = ('Consultoria em tecnologia da informação para empresas de pequeno e médio porte: gestão e melhoria de processos '
                             'e soluções para todas as fases da gestão, com foco em resultado financeiro.')
         o['knowsAbout'] = ['Consultoria em tecnologia da informação', 'Gestão de processos', 'Melhoria de processos', 'Transformação digital',
@@ -299,8 +343,9 @@ s = troca_main(s, trecho('inicio.html'))
 s = sem_js_form(s); s = com_js_form(s)
 s = '\n'.join(l for l in s.split('\n') if not OBSOLETO.match(l))
 s = com_css(s, CSS_INICIO, 'Consultoria')
-s = titulo(s, 'Edelmann Tecnologia | Consultoria em TI para empresas')
-s = meta(s, 'description', 'Consultoria em TI para empresas de pequeno e médio porte. Há mais de 15 anos apoiamos os mais diversos setores a organizar processos, reduzir custos e crescer. Itaituba (PA) e videochamada.')
+s = com_css(s, CSS_CAMPOS, 'Campos do formulário')
+s = titulo_todos(s, 'Consultoria em TI para empresas | Edelmann, Itaituba (PA)')
+s = meta(s, 'description', 'Consultoria em TI para pequenas e médias empresas de Itaituba (PA) e região. Mais de 15 anos em TI e melhoria de processos. Agende uma conversa.')
 for k in ('og:description', 'twitter:description'):
     s = meta(s, k, 'Tecnologia a serviço do resultado do seu negócio. Consultoria em TI para empresas de pequeno e médio porte.')
 s = meta(s, 'og:image:alt', 'Edelmann Tecnologia: tecnologia a serviço do resultado do seu negócio')
@@ -312,7 +357,7 @@ inicio = s
 # ---------- 2. Itaituba (versão local do início) ----------
 s = troca_main(inicio, trecho('itaituba.html'))
 s = titulo(s, 'Consultoria em TI em Itaituba (PA) | Edelmann Tecnologia')
-s = descricao(s, 'Consultoria em TI para empresas de Itaituba e região: gestão e melhoria de processos, redução de custos e tecnologia para cada fase do negócio. Mais de 15 anos de experiência.')
+s = descricao(s, 'Consultoria em TI para empresas de Itaituba e região: gestão e melhoria de processos. Mais de 15 anos de experiência em TI, em diversos setores.')
 for k in ('og:title', 'twitter:title'): s = meta(s, k, 'Consultoria em TI em Itaituba (PA) | Edelmann Tecnologia')
 s = s.replace('<link rel="canonical" href="https://edelmann.com.br/">', '<link rel="canonical" href="https://edelmann.com.br/itaituba/">')
 s = meta(s, 'og:url', 'https://edelmann.com.br/itaituba/')
@@ -324,7 +369,12 @@ wr('itaituba/index.html', com_simbolos(s))
 # ---------- 3. Sobre ----------
 s = rd('sobre/index.html')
 s = troca_main(s, trecho('sobre.html'))
-s = descricao(s, 'A Edelmann Tecnologia é uma consultoria em TI para empresas de pequeno e médio porte, com mais de 15 anos de experiência nos mais diversos setores e em contratos públicos.')
+DESC_SOBRE = 'Consultoria em TI para pequenas e médias empresas, com mais de 15 anos de experiência em TI, em diversos setores e em contratos públicos.'
+s = titulo_todos(s, 'Sobre a Edelmann | Consultoria em TI em Itaituba (PA)')
+s = descricao(s, DESC_SOBRE)
+s = sem_ld(s, 'AboutPage')
+s = com_ld(s, ld({"@context": "https://schema.org", "@type": "AboutPage", "name": "Sobre a Edelmann", "url": "https://edelmann.com.br/sobre/",
+                  "inLanguage": "pt-BR", "description": DESC_SOBRE, "about": {"@id": "https://edelmann.com.br/#empresa"}}))
 s = '\n'.join(l for l in s.split('\n') if not OBSOLETO.match(l))
 s = com_css(s, CSS_STATS, 'Experiência')
 wr('sobre/index.html', com_simbolos(comum('sobre/index.html', s)))
@@ -335,15 +385,24 @@ s = troca_main(s, trecho('contato.html'))
 s = sem_js_form(s); s = com_js_form(s)
 s = sem_ld(s, 'FAQPage'); s = com_ld(s, FAQ_LD)
 s = com_css(s, 'button.btn-ghost{background:transparent;font-family:inherit;cursor:pointer}\n', 'Botão de e-mail')
-s = descricao(s, 'Agende uma conversa com a Edelmann Tecnologia, presencial em Itaituba e região ou por videochamada. WhatsApp (93) 98121-2924 e e-mail edelmann.tecnologia@gmail.com.')
+s = com_css(s, CSS_CAMPOS, 'Campos do formulário')
+s = titulo_todos(s, 'Agende uma conversa em Itaituba | Edelmann Tecnologia')
+s = descricao(s, 'Agende uma conversa com a Edelmann Tecnologia: presencial em Itaituba e região ou por videochamada. WhatsApp (93) 98121-2924.')
 wr('contato/index.html', com_simbolos(comum('contato/index.html', s)))
 
 # ---------- 5. Soluções (antiga página de produtos) e páginas dos apps ----------
 s = rd('produtos/index.html')
-s = titulo(s, 'Soluções | Edelmann Tecnologia')
+s = titulo_todos(s, 'Soluções próprias: PDV, agente de IA e chamados | Edelmann')
+if '<h2 class="sr">Nossas soluções</h2>' not in s:  # evita o salto h1 -> h3
+    assert '<div class="apps reveal">' in s
+    s = s.replace('<div class="apps reveal">', '<h2 class="sr">Nossas soluções</h2>\n      <div class="apps reveal">', 1)
+s = sem_ld(s, 'CollectionPage')
+s = com_ld(s, ld({"@context": "https://schema.org", "@type": "CollectionPage", "name": "Soluções", "url": "https://edelmann.com.br/produtos/",
+                  "inLanguage": "pt-BR", "description": re.search(r'<meta name="description" content="([^"]*)"', s).group(1)}))
 s = s.replace('<p class="eyebrow">Produtos</p>', '<p class="eyebrow">Soluções</p>', 1)
 s = re.sub(r'(<h1[^>]*>)Produtos com a nossa assinatura\.', r'\1Soluções que desenvolvemos.', s, count=1)
 s = s.replace('Além dos serviços, a Edelmann desenvolve ferramentas', 'A Edelmann desenvolve ferramentas próprias')
+s = s.replace('>Conhecer o app<', '>Conhecer<')
 wr('produtos/index.html', comum('produtos/index.html', s))
 
 APPS = ['agente-whatsapp/index.html', 'balcao/index.html', 'chamados/index.html', 'leitor-de-bolso/index.html', 'leitor-de-bolso/privacidade.html']
@@ -351,12 +410,27 @@ for p in APPS + ['privacidade/index.html', '404.html']:
     s = rd(p)
     s = s.replace('<li><a href="/produtos/">Produtos</a></li>\n', '<li><a href="/produtos/">Soluções</a></li>\n')  # trilha
     s = re.sub(r'"name": *"Produtos"', '"name": "Soluções"', s)
+    if not p.startswith('leitor-de-bolso'):  # o Leitor de Bolso não muda
+        s = s.replace('Ver os outros produtos<', 'Ver as outras soluções<')
     s = s.replace('O formulário de orçamento só monta', 'O formulário de agendamento só monta')
     s = s.replace('(nome, contato, descrição do problema). Usamos só para responder, fazer o orçamento e prestar o serviço contratado.',
                   '(nome, empresa, contato, desafios do negócio). Usamos só para responder, agendar a conversa, preparar a proposta e prestar o serviço contratado.')
+    s = re.sub(r'<a class="btn btn-primary" href="mailto:[^"]*">Solicitar orçamento', '<a class="btn btn-primary" href="/contato/#agendar">Agendar conversa', s)
+    s = s.replace('Respondemos a cada pedido com os próximos passos e, quando for o caso, com um orçamento.',
+                  'Marcamos uma conversa, presencial em Itaituba e região ou por videochamada, para ver onde o agente pode gerar resultado no seu negócio.')
+    s = s.replace('Respondemos com os próximos passos e, quando for o caso, com um orçamento.',
+                  'Marcamos uma conversa, presencial em Itaituba e região ou por videochamada, para ver onde isso pode gerar resultado.')
+    if p in ('agente-whatsapp/index.html', 'chamados/index.html'):
+        bloco = f'<div class="ctas"><a class="btn btn-primary" href="/contato/#agendar">Agendar conversa{ARROW}</a>{WA_BTN}</div>'
+        if bloco not in s:
+            assert '<a class="channel" href="mailto:' in s, p
+            s = s.replace('<a class="channel" href="mailto:', bloco + '\n        <a class="channel" href="mailto:', 1)
+    if p == 'privacidade/index.html':
+        s = s.replace('<strong>Formulário de orçamento:</strong>', '<strong>Formulário de agendamento:</strong>')
+        s = re.sub(r'Última atualização: [^<]*\.', 'Última atualização: 28 de outubro de 2026.', s)
     if p == '404.html':
         s = re.sub(r'<ul class="svc-links">.*?</ul>', lambda m: '<ul class="svc-links">\n' + '\n'.join(
-            f'        <li><a href="{h}">{t}{ARROW}</a></li>' for h, t in [('/', 'Página inicial'), ('/#como-atuamos', 'Como atuamos'),
+            f'        <li><a href="{h}">{t}{ARROW}</a></li>' for h, t in [('/', 'Página inicial'), ('/#como-funciona', 'Como funciona'),
             ('/sobre/', 'Sobre'), ('/produtos/', 'Soluções'), ('/contato/', 'Agendar conversa')]) + '\n      </ul>', s, count=1, flags=re.S)
     wr(p, comum(p, s))
 
@@ -378,12 +452,13 @@ REDIR = '''<!doctype html>
 '''
 removidas = sorted(glob.glob('servicos/**/index.html', recursive=True) + glob.glob('dicas/**/index.html', recursive=True))
 for p in removidas: wr(p, REDIR)
+wr('setores/index.html', REDIR.replace('url=/"', 'url=/#setores"'))  # /setores/ não dá 404: leva ao bloco de setores da home
 
 # ---------- 7. sitemap e manifest ----------
 s = rd('sitemap.xml')
 s = re.sub(r'\n  <url><loc>https://edelmann\.com\.br/(?:servicos|dicas)/[^<]*</loc>.*?</url>', '', s)
-for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/'):
-    s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>2026-10-16', s)
+for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/', 'privacidade/', 'agente-whatsapp/', 'balcao/', 'chamados/', 'leitor-de-bolso/', 'leitor-de-bolso/privacidade.html'):
+    s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>2026-10-28', s)
 wr('sitemap.xml', s)
 m = json.loads(rd('manifest.webmanifest'))
 m['description'] = 'Consultoria em TI para empresas de pequeno e médio porte. Itaituba (PA) e videochamada.'

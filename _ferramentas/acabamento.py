@@ -5,7 +5,7 @@ import re, glob, os, sys
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # pasta do site
 FONTFACE = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'fontface.css'), encoding='utf-8').read()
 
-WA = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Edelmann%20Tecnologia.'
+WA = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20com%20a%20Edelmann%20Tecnologia.'
 WA_ICON = ('<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">'
            '<path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M16 3.5C9.1 3.5 3.5 8.9 3.5 15.6c0 2.4.7 4.6 2 6.5L4 28l6-1.6c1.8 1 3.9 1.6 6 1.6 6.9 0 12.5-5.4 12.5-12.1S22.9 3.5 16 3.5z"/>'
            '<path fill="currentColor" d="M12.2 9.8c.3 0 .6 0 .8.6l1 2.5c.1.3.1.6-.1.8l-.8 1c-.2.2-.2.5 0 .8.9 1.5 2.1 2.6 3.6 3.5.3.2.6.1.8-.1l1-1.1c.2-.3.5-.3.8-.2l2.5 1.1c.3.1.5.4.5.7 0 1.6-1.4 2.9-3 2.8-4.7-.4-8.5-4.2-8.9-8.8-.1-1.6 1-2.8 1.8-2.8z"/></svg>')
@@ -51,7 +51,7 @@ CSS = '''
 .form .row{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,14rem),1fr))}
 .form label{display:grid;gap:.4rem;font:600 .875rem/1.3 var(--sans);color:var(--ink)}
 .form label small{font-weight:400;color:var(--muted)}
-.form input,.form select,.form textarea{width:100%;min-height:3rem;padding:.7rem .85rem;border:1px solid var(--line-2);border-radius:8px;background:#fff;font:400 1rem/1.4 var(--sans);color:var(--ink)}
+.form input,.form select,.form textarea{width:100%;min-height:3rem;padding:.7rem .85rem;border:1px solid #7A8BA6;border-radius:8px;background:#fff;font:400 1rem/1.4 var(--sans);color:var(--ink)}
 .form textarea{min-height:7.5rem;resize:vertical}
 .form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
 .form fieldset{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin:0;padding:0;border:0}
@@ -66,14 +66,27 @@ CSS = '''
 .svc-links a:hover{border-color:var(--gold)}
 '''
 
+# o botão some enquanto o formulário de agendamento está na tela (só nas páginas que têm o formulário)
+CSS_AUTO = '''/* ===== wa-float auto-ocultar ===== */
+.wa-float{transition:opacity .2s,visibility .2s,background-color .2s,transform .2s}
+.wa-float.is-off{opacity:0;visibility:hidden;pointer-events:none}
+'''
+JS_AUTO = '''<script>
+/* wa-float auto-ocultar */
+(function(){var f=document.getElementById('form-agenda'),w=document.querySelector('.wa-float');
+if(f&&w&&'IntersectionObserver' in window){new IntersectionObserver(function(e){w.classList.toggle('is-off',e[e.length-1].isIntersecting)}).observe(f)}})();
+</script>
+'''
+
 FOOTER_ADD = '<li><a href="/dicas/">Dicas</a></li>\n          <li><a href="/privacidade/">Privacidade</a></li>'
 
 def pages():
     fs = glob.glob(os.path.join(SITE, '**', '*.html'), recursive=True)
-    return [f for f in fs if os.path.basename(f) != os.path.basename('google2e5f17acf4dcb527.html') and 'fonts' not in f]
+    return [f for f in fs if os.path.basename(f) != os.path.basename('google2e5f17acf4dcb527.html') and 'fonts' not in f and '_ferramentas' not in f]
 
 def process(f):
     s = open(f, encoding='utf-8').read()
+    if 'http-equiv="refresh"' in s: return False, False, True, False  # redirecionamento: sem estilo, rodapé nem botão
     o = s
     # 1. fontes locais
     s = re.sub(r'<link rel="preconnect" href="https://fonts\.(googleapis|gstatic)\.com"[^>]*>\n?', '', s)
@@ -92,6 +105,13 @@ def process(f):
     # 4. botão do WhatsApp
     if 'class="wa-float"' not in s:
         s = s.replace('</body>', FLOAT + '</body>', 1)
+    # 4b. botão com a mesma mensagem dos outros botões e auto-ocultar onde há formulário
+    s = re.sub(r'(<a class="wa-float" href=")[^"]*"', lambda m: m.group(1) + WA + '"', s, count=1)
+    if 'id="form-agenda"' in s and '/* ===== wa-float auto-ocultar ===== */' not in s:
+        s = s.replace('</style>', '\n' + CSS_AUTO + '</style>', 1)
+    s = s.replace('e[0].isIntersecting', 'e[e.length-1].isIntersecting')  # páginas geradas antes da correção
+    if 'id="form-agenda"' in s and '/* wa-float auto-ocultar */' not in s:
+        s = s.replace('</body>', JS_AUTO + '</body>', 1)
     # 5. rodapé: Dicas e Privacidade
     if 'href="/privacidade/"' not in s:
         s = re.sub(r'(<li><a href="/contato/"[^>]*>Contato</a></li>)(\s*</ul>\s*</nav>\s*<a class="foot-mail")',
