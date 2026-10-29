@@ -15,3 +15,4 @@ Ordem de geração (de uma pasta do site): `python _ferramentas/consultoria.py &
 - `og.html` — arte da imagem de prévia (`img/og.jpg`). Gerar: Chrome sem janela em 1200x800 e recortar 1200x630 do topo.
 
 Publicar = `git add -A && git commit && git push` (o Pages atualiza em cerca de 1 minuto).
+- `indexnow.py` — depois de publicar, rodar `python _ferramentas/indexnow.py` para avisar o Bing (IndexNow) das URLs do `sitemap.xml`; páginas removidas vão como argumentos (ex.: `python _ferramentas/indexnow.py https://edelmann.com.br/cal-as`). A chave é o arquivo `<32 hex>.txt` na raiz.
