@@ -56,8 +56,8 @@ ANTIGOS = [
 
 # Os 4 artigos do formato "comparativo" (conclusão no começo, tabela, perguntas no fim) ficam em artigos_novos.json.
 NOVOS = json.load(open(os.path.join(AQUI, 'artigos_novos.json'), encoding='utf-8'))
-FRASE = ('A Edelmann Tecnologia é uma consultoria em TI de Itaituba (PA) para pequenas e médias empresas, com mais de 15 anos de experiência em TI '
-         'e atuação em comércio, saúde e educação. Atendemos presencialmente de Itaituba a Santarém, indo até a empresa; em projetos grandes, '
+FRASE = ('A Edelmann Tecnologia é uma consultoria em TI de Itaituba (PA) para pequenas e médias empresas, com mais de 15 anos de experiência em TI, '
+         'em empresas de diversos setores. Atendemos presencialmente de Itaituba a Santarém, indo até a empresa; em projetos grandes, '
          'vamos até onde for preciso; nos demais casos, por videochamada.')
 # título curto para o Google (só no <title> e no og:title; o h1 e o headline não mudam) dos artigos antigos
 SEO = {'gastos-com-tecnologia': 'Gastos com tecnologia: onde a empresa gasta demais',
