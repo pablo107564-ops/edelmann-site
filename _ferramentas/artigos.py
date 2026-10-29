@@ -54,7 +54,7 @@ ANTIGOS = [
 <div class="note-box">Cada mensagem sem resposta é um cliente indo para o concorrente. Responder rápido costuma ser o que decide a venda.</div>'''),
 ]
 
-# Os 4 artigos do formato "comparativo" (conclusão no começo, tabela, perguntas no fim) ficam em artigos_novos.json.
+# Os 5 artigos do formato "comparativo" (conclusão no começo, tabela, perguntas no fim) ficam em artigos_novos.json.
 NOVOS = json.load(open(os.path.join(AQUI, 'artigos_novos.json'), encoding='utf-8'))
 FRASE = ('A Edelmann Tecnologia é uma consultoria em TI de Itaituba (PA) para pequenas e médias empresas, com mais de 15 anos de experiência em TI, '
          'em empresas de diversos setores. Atendemos presencialmente de Itaituba a Santarém, indo até a empresa; em projetos grandes, '
@@ -64,7 +64,7 @@ SEO = {'gastos-com-tecnologia': 'Gastos com tecnologia: onde a empresa gasta dem
        'whatsapp-atendimento-fora-do-horario': 'WhatsApp fora do horário: o cliente que você perde'}
 # ordem da lista em /artigos/: os comparativos primeiro. Datas fixas (não ler o git durante a geração): (publicado, atualizado)
 ORDEM = ['consultoria-de-ti-ou-tecnico-avulso', 'como-escolher-empresa-de-ti-itaituba-santarem', 'whatsapp-pessoas-robo-ou-agente-de-ia',
-         'planilha-ou-sistema', 'gastos-com-tecnologia', 'backup-quanto-custa-perder-dados', 'whatsapp-atendimento-fora-do-horario']
+         'planilha-ou-sistema', 'sistema-de-gestao-o-que-perguntar-antes-de-contratar', 'gastos-com-tecnologia', 'backup-quanto-custa-perder-dados', 'whatsapp-atendimento-fora-do-horario']
 DATAS = {s: ('2026-10-18', '2026-10-29') for s in ORDEM}
 DATAS.update({n['slug']: ('2026-10-29', '2026-10-29') for n in NOVOS if n['slug'] != 'planilha-ou-sistema'})
 DATAS.update({s: ('2026-10-18', '2026-10-28') for s, *_ in ANTIGOS})  # texto dos 3 antigos não mudou em 29/10: mantém a data da última revisão do texto
@@ -73,7 +73,8 @@ RELAC = {
   'consultoria-de-ti-ou-tecnico-avulso': ['como-escolher-empresa-de-ti-itaituba-santarem', 'gastos-com-tecnologia', 'planilha-ou-sistema', 'backup-quanto-custa-perder-dados'],
   'como-escolher-empresa-de-ti-itaituba-santarem': ['consultoria-de-ti-ou-tecnico-avulso', 'gastos-com-tecnologia', 'backup-quanto-custa-perder-dados', 'planilha-ou-sistema'],
   'whatsapp-pessoas-robo-ou-agente-de-ia': ['whatsapp-atendimento-fora-do-horario', 'consultoria-de-ti-ou-tecnico-avulso', 'planilha-ou-sistema'],
-  'planilha-ou-sistema': ['gastos-com-tecnologia', 'consultoria-de-ti-ou-tecnico-avulso', 'backup-quanto-custa-perder-dados', 'whatsapp-pessoas-robo-ou-agente-de-ia'],
+  'planilha-ou-sistema': ['sistema-de-gestao-o-que-perguntar-antes-de-contratar', 'gastos-com-tecnologia', 'consultoria-de-ti-ou-tecnico-avulso', 'backup-quanto-custa-perder-dados'],
+  'sistema-de-gestao-o-que-perguntar-antes-de-contratar': ['planilha-ou-sistema', 'consultoria-de-ti-ou-tecnico-avulso', 'como-escolher-empresa-de-ti-itaituba-santarem', 'gastos-com-tecnologia'],
   'gastos-com-tecnologia': ['planilha-ou-sistema', 'consultoria-de-ti-ou-tecnico-avulso', 'backup-quanto-custa-perder-dados', 'como-escolher-empresa-de-ti-itaituba-santarem'],
   'backup-quanto-custa-perder-dados': ['gastos-com-tecnologia', 'como-escolher-empresa-de-ti-itaituba-santarem', 'consultoria-de-ti-ou-tecnico-avulso', 'planilha-ou-sistema'],
   'whatsapp-atendimento-fora-do-horario': ['whatsapp-pessoas-robo-ou-agente-de-ia', 'planilha-ou-sistema', 'consultoria-de-ti-ou-tecnico-avulso', 'gastos-com-tecnologia'],
@@ -85,7 +86,7 @@ for sl, t, d, corpo in ANTIGOS:
 ARTS = [POR_SLUG[s] for s in ORDEM]
 # h1, titulo_seo e descricao entram no HTML sem escape (atributos meta, <title>, <h3>): recusa caracteres que quebrariam a página
 assert not [(a['slug'], k) for a in ARTS for k in ('h1', 'titulo_seo', 'descricao') if re.search(r'["<>&]', a[k])]
-assert len(ARTS) == len(POR_SLUG) == 7 and all(set(RELAC[s]) <= set(ORDEM) and len(RELAC[s]) <= 4 for s in ORDEM)
+assert len(ARTS) == len(POR_SLUG) == 8 and all(set(RELAC[s]) <= set(ORDEM) and len(RELAC[s]) <= 4 for s in ORDEM)
 
 MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
 def por_extenso(iso): a, m, d = iso.split('-'); return f'{int(d)} de {MESES[int(m) - 1]} de {a}'
@@ -194,7 +195,7 @@ for a in ARTS:
 lista = '<h2 class="sr">Artigos</h2><ul class="post-list">' + ''.join(
     f'<li><a href="/artigos/{a["slug"]}/"><p class="eyebrow">Artigo</p><h3>{a["h1"]}</h3><p>{a["descricao"]}</p></a></li>' for a in ARTS) + '</ul>'
 DESC_LISTA = ('Artigos para donos de empresa: consultoria de TI ou técnico avulso, como escolher uma empresa de TI, '
-              'atendimento no WhatsApp, planilha ou sistema, gastos e backup.')
+              'atendimento no WhatsApp, planilha ou sistema, o que perguntar antes de contratar um sistema de gestão, gastos e backup.')
 pagina('', 'Artigos sobre gestão e tecnologia', DESC_LISTA, 'Gestão e tecnologia, <em>sem complicação.</em>', lista, [
      {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Artigos sobre gestão e tecnologia", "url": f"{URL}/artigos/",
       "inLanguage": "pt-BR", "description": DESC_LISTA},

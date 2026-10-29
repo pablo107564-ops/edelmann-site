@@ -1,0 +1,27 @@
+{
+ "title": "Suporte técnico e manutenção de TI em Itaituba | Edelmann",
+ "description": "Suporte técnico para empresas: computadores, rede, Wi-Fi, servidores e backup. Avulso ou mensal, de Itaituba a Santarém, indo até a empresa ou remoto.",
+ "eyebrow": "Suporte técnico",
+ "h1": "Suporte técnico e manutenção para a sua empresa",
+ "lead": "Computador travando, internet caindo, sistema que não abre, backup que ninguém sabe se funciona? Atendemos quando você precisa e, se quiser, passamos a cuidar da tecnologia da empresa para que ela atrapalhe menos o seu dia.",
+ "secoes_html": "<h2>O que o suporte cobre</h2>\n<p>O foco é manter a sua empresa funcionando, sem você precisar entender de tecnologia para isso. Veja o que entra:</p>\n<ul>\n<li><strong>Computadores e notebooks:</strong> cuidamos de máquinas lentas, que não ligam ou que dão erro. Também fazemos a instalação e a configuração de equipamentos novos.</li>\n<li><strong>Rede cabeada e Wi-Fi:</strong> rede organizada e segura, com o Wi-Fi pensado para os lugares onde a equipe trabalha.</li>\n<li><strong>Servidores:</strong> o servidor da empresa acompanhado, para que arquivos e sistemas fiquem ao alcance de quem precisa.</li>\n<li><strong>Backup e proteção dos dados:</strong> cópias dos dados importantes guardadas com segurança, para reduzir o risco de perder dados.</li>\n<li><strong>Impressoras e programas:</strong> impressoras e programas instalados nos computadores da sua equipe. Se você usa o nosso Balcão PDV, o suporte dele também entra.</li>\n</ul>\n\n<h2>Duas formas de contratar</h2>\n<p>Você escolhe o formato que combina com a sua empresa.</p>\n<ul>\n<li><strong>Suporte avulso:</strong> você chama quando precisar. Apareceu um problema, atendemos. Indicado para quem só precisa de ajuda de vez em quando.</li>\n<li><strong>Suporte mensal:</strong> acompanhamento contínuo, com o que será cuidado combinado de acordo com a sua empresa. Indicado para quem quer ter alguém responsável pela tecnologia sem montar uma equipe própria.</li>\n</ul>\n<p>O valor depende do tamanho da empresa e do que precisa ser cuidado. Conte a sua situação pelo WhatsApp e combinamos a melhor forma.</p>\n\n<h2>Onde atendemos</h2>\n<p>Atendemos <strong>de Itaituba a Santarém</strong>, indo até a sua empresa. Quando o problema pode ser resolvido à distância, o atendimento é remoto.</p>\n\n<h2>Quando o problema sempre volta</h2>\n<p>Às vezes o chamado se repete: o mesmo erro, a mesma lentidão, o mesmo susto. Quando isso acontece, o problema pode não estar na máquina, e sim na forma como a tecnologia está montada e usada na empresa. Nesse caso, vale olhar o processo como um todo. Entenda a diferença no artigo <a href=\"/artigos/consultoria-de-ti-ou-tecnico-avulso/\">Consultoria de TI ou técnico avulso: qual escolher?</a> ou, se preferir, agende uma conversa sobre a consultoria.</p>",
+ "faq": [
+  {
+   "p": "Qual a diferença entre suporte avulso e mensal?",
+   "r": "No avulso você chama só quando tem um problema. No mensal há um acompanhamento contínuo, e o que será cuidado é combinado com você, para reduzir a chance de os problemas se repetirem."
+  },
+  {
+   "p": "Quanto custa o suporte?",
+   "r": "O valor é sob consulta, porque varia de empresa para empresa. Chame pelo WhatsApp, conte a sua situação e informamos o valor."
+  },
+  {
+   "p": "Vocês vão até a minha empresa?",
+   "r": "Sim, dentro da região de Itaituba a Santarém. Quando dá para resolver à distância, o atendimento é remoto."
+  },
+  {
+   "p": "Preciso de um sistema específico para contratar?",
+   "r": "Não. Podemos cuidar de computadores, rede, servidores e backup, além de impressoras e programas instalados nos computadores. Se quiser, também apresentamos nossas soluções próprias, como o Balcão PDV e o Agente de IA no WhatsApp."
+  }
+ ],
+ "msg_whatsapp": "Olá! Preciso de suporte técnico. Empresa: "
+}

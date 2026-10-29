@@ -42,7 +42,7 @@ SETORES = [
 # frase de abertura, pergunta depois das dores e links "Veja também" de cada setor
 EXTRA = {
   'comercio': dict(frase='Quem vende todos os dias não pode perder tempo conferindo caixa e estoque na mão.', exp='Temos experiência com empresas do comércio.',
-                   pergunta='Reconhece isso no seu comércio?', artigos=('planilha-ou-sistema', 'consultoria-de-ti-ou-tecnico-avulso'), solucao=('/balcao/', 'Conheça o Balcão PDV')),
+                   pergunta='Reconhece isso no seu comércio?', artigos=('planilha-ou-sistema', 'sistema-de-gestao-o-que-perguntar-antes-de-contratar', 'consultoria-de-ti-ou-tecnico-avulso'), solucao=('/balcao/', 'Conheça o Balcão PDV')),
   'saude': dict(frase='Agenda que falha e ficha de paciente sem proteção custam consulta e confiança.', exp='Temos experiência com empresas da saúde.',
                 pergunta='Reconhece isso na sua clínica ou farmácia?', artigos=('whatsapp-pessoas-robo-ou-agente-de-ia', 'backup-quanto-custa-perder-dados'),
                 solucao=('/agente-whatsapp/', 'Conheça o Agente de IA no WhatsApp')),

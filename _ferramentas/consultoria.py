@@ -1,9 +1,10 @@
 # Reposiciona o site como consultoria (outubro de 2026): o site prova quem somos e leva o cliente a agendar uma conversa.
 # - início, Sobre, Contato e Itaituba ganham conteúdo novo (trechos em consultoria/*.html, com marcadores {{...}});
 # - menu, rodapé e chamadas de todas as páginas passam a convidar para "Agendar conversa";
-# - Serviços e Dicas viram redirecionamentos para o início e saem do sitemap.
+# - Dicas vira redirecionamento para o início e Serviços para /suporte/; os dois saem do sitemap.
 # Idempotente: pode rodar de novo (refaz as páginas a partir dos trechos e não duplica trocas).
 import os, re, json, glob
+from urllib.parse import quote
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(AQUI)
@@ -14,6 +15,17 @@ def wr(p, s): open(p, 'w', encoding='utf-8', newline='\n').write(s)
 def icon(n): return f'<svg class="i" aria-hidden="true" focusable="false"><use href="#i-{n}"/></svg>'
 ARROW = icon('arrow')
 WA = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20com%20a%20Edelmann%20Tecnologia.'
+def wa_url(msg): return 'https://wa.me/5593981212924?text=' + quote(msg, safe='!')
+# página /suporte/: o texto fica em suporte.json (lido também pelo suporte.py); aqui só a mensagem do link da página inicial
+WA_SUPORTE = wa_url(json.load(open(os.path.join(AQUI, 'suporte.json'), encoding='utf-8'))['msg_whatsapp'])
+# botão secundário "Quero ver como funciona" (mensagem própria) só nos cards de /produtos/; nos fechos das soluções já há um WhatsApp
+DEMO = {'/balcao/': 'o Balcão PDV', '/agente-whatsapp/': 'o Agente de IA no WhatsApp', '/chamados/': 'o Sistema de Chamados'}
+def demo_btn(href, extra='', antigo=False):  # antigo=True: rótulo provisório ("Tirar dúvidas"), para remover das páginas
+    msg, rot = ((f"Olá! Tenho dúvidas sobre {DEMO[href]}.", 'Tirar dúvidas no WhatsApp') if antigo
+                else (f"Olá! Quero ver como funciona {DEMO[href]}.", 'Quero ver como funciona'))
+    return (f'<a class="btn btn-ghost{extra}" href="{wa_url(msg)}" target="_blank" rel="noopener">'
+            f'{rot}<span class="sr"> (abre o WhatsApp em nova aba)</span></a>')
+ARTIGO_GESTAO = '/artigos/sistema-de-gestao-o-que-perguntar-antes-de-contratar/'
 
 SYMBOLS = {
     'clock': '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
@@ -200,7 +212,7 @@ MARCAS = {'{{FORM_DARK}}': FORM_DARK, '{{FORM_CLARO}}': FORM_CLARO, '{{PROOF}}':
           '{{COMO_FUNCIONA}}': como_funciona('section'), '{{COMO_FUNCIONA_ALT}}': como_funciona('section alt'),
           '{{CTA}}': cta('cta-accent', '#agendar', final=True), '{{CTA_CLARO}}': cta('section band cta-band', '/contato/#agendar', titulo='Conheceu a Edelmann. Agora conte sobre o seu negócio.'),
           '{{CTA_ITA}}': cta('cta-accent', '#agendar', final=True, titulo='Vamos conversar sobre a sua empresa, de Itaituba a Santarém?'),
-          '{{CTA_WA}}': cta('section band cta-band', None, final=True), '{{WA_CHECK}}': WA_CHECK,
+          '{{CTA_WA}}': cta('section band cta-band', None, final=True), '{{WA_CHECK}}': WA_CHECK, '{{WA_SUPORTE}}': WA_SUPORTE,
           '{{FAQ}}': FAQ_HTML, '{{FAQ_ITA}}': FAQ_ITA_HTML, '{{ARROW}}': ARROW, '{{WA}}': WA}
 def trecho(nome):
     s = rd(os.path.join(AQUI, 'consultoria', nome))
@@ -254,6 +266,7 @@ RODAPE = '''<ul>
           <li><a href="/itaituba/">Consultoria em TI de Itaituba a Santarém</a></li>
           <li><a href="/sobre/">Sobre</a></li>
           <li><a href="/produtos/">Soluções</a></li>
+          <li><a href="/suporte/">Suporte técnico</a></li>
           <li><a href="/artigos/">Artigos</a></li>
           <li><a href="/contato/">Contato</a></li>
           <li><a href="/privacidade/">Privacidade</a></li>
@@ -277,7 +290,8 @@ def comum(p, s):
     s = re.sub(r'(<nav class="menu" id="menu" aria-label="Principal">\s*)<ul>.*?</ul>', lambda m: m.group(1) + menu(atual, cta_href), s, count=1, flags=re.S)
     s = re.sub(r'<a class="btn btn-primary btn-sm bar-cta" href="[^"]*"><span class="cta-l">[^<]*</span><span class="cta-s">[^<]*</span></a>',
                f'<a class="btn btn-primary btn-sm bar-cta" href="{cta_href}"><span class="cta-l">Agendar conversa</span><span class="cta-s">Agendar</span></a>', s, count=1)
-    s = re.sub(r'(<nav aria-label="Rodapé">\s*)<ul>.*?</ul>', lambda m: m.group(1) + RODAPE, s, count=1, flags=re.S)
+    rodape = RODAPE.replace('          <li><a href="/suporte/">Suporte técnico</a></li>\n', '') if p.startswith('leitor-de-bolso') else RODAPE  # o Leitor de Bolso não muda
+    s = re.sub(r'(<nav aria-label="Rodapé">\s*)<ul>.*?</ul>', lambda m: m.group(1) + rodape, s, count=1, flags=re.S)
     s = s.replace('<p>Conte o que você precisa. Respondemos com os próximos passos e, quando for o caso, com um orçamento.</p>', f'<p>{CTA_TXT}</p>')
     s = s.replace('<h2 id="cta-titulo">Vamos conversar.</h2>', '<h2 id="cta-titulo">Vamos conversar sobre o seu negócio?</h2>')
     s = s.replace('<a class="btn btn-primary" href="/contato/">Solicitar orçamento', '<a class="btn btn-primary" href="/contato/#agendar">Agendar conversa')
@@ -354,6 +368,12 @@ CSS_INICIO += '''.home .btn-primary{background:var(--gold-soft);color:var(--nigh
 .home .cta-accent .btn-primary:hover{background:var(--navy)}
 '''
 CSS_INICIO += CSS_STATS
+# linha discreta de suporte, logo abaixo do "de Itaituba a Santarém" do topo (abaixo dos botões: não muda a posição do "Agendar conversa")
+CSS_HERO_SUP = '''.hero-sup{display:flex;flex-wrap:wrap;align-items:center;gap:0 1.25rem;margin-top:1rem;font-size:.9375rem;color:var(--on-night)}
+.hero-sup .link{display:inline-flex;align-items:center;gap:.4rem;min-height:44px}
+.hero-sup .i{width:16px;height:16px}
+'''
+CSS_INICIO += CSS_HERO_SUP  # só a página inicial tem o <p class="hero-sup">; /itaituba/ tira este bloco
 # seções que saíram (áreas de atuação, atendimento, por que, galeria de fotos): o CSS delas sai junto
 OBSOLETO = re.compile(r'^(?:@media[^{]*\{)?(?:\.home )?\.(?:pillars|pillar-card|rows|modes|mode|why|why-title|gallery)\b'
                       r'|^(?:@media[^{]*\{)?\.proof (?:ul|li|\.i)\b|^/\* ===== Galeria ===== \*/$')
@@ -402,6 +422,7 @@ inicio = s
 
 # ---------- 2. Itaituba (versão local do início) ----------
 s = troca_main(inicio, trecho('itaituba.html'))
+s = s.replace(CSS_HERO_SUP, '')
 TIT_ITA = 'Consultoria em TI de Itaituba a Santarém (PA) | Edelmann'  # 58 caracteres
 s = titulo(s, TIT_ITA)
 s = descricao(s, 'Consultoria em TI de Itaituba a Santarém (PA): vamos até a sua empresa. Gestão e melhoria de processos, com mais de 15 anos de experiência em TI.')
@@ -456,6 +477,13 @@ s = s.replace('<p class="eyebrow">Produtos</p>', '<p class="eyebrow">Soluções<
 s = re.sub(r'(<h1[^>]*>)Produtos com a nossa assinatura\.', r'\1Soluções que desenvolvemos.', s, count=1)
 s = s.replace('Além dos serviços, a Edelmann desenvolve ferramentas', 'A Edelmann desenvolve ferramentas próprias')
 s = s.replace('>Conhecer o app<', '>Conhecer<')
+for href in DEMO:  # "Quero ver como funciona" em cada card (acima do link que cobre o card); não duplica
+    s = s.replace(f'<p class="app-demo">{demo_btn(href, " btn-sm", True)}</p>', '')  # tira o rótulo antigo
+    btn = f'<p class="app-demo">{demo_btn(href, " btn-sm")}</p>'
+    if btn not in s:
+        s, n = re.subn(r'(<h3><a href="' + re.escape(href) + r'">.*?<p class="app-go"[^>]*>.*?</p>)', lambda m: m.group(1) + '\n          ' + btn, s, count=1, flags=re.S)
+        assert n == 1, href
+s = com_css(s, '.app>p.app-go{margin-bottom:0}\n.app>p.app-demo{position:relative;z-index:2;margin:1rem 0 0}\n', 'Ver como funciona')
 s = com_css(s, '@media (min-width:1100px){.apps{grid-template-columns:repeat(3,minmax(0,1fr))}}\n', 'Soluções em 3 colunas')
 wr('produtos/index.html', comum('produtos/index.html', s))
 
@@ -480,10 +508,14 @@ for p in APPS + ['privacidade/index.html', '404.html']:
         s = re.sub(r'("(?:publisher|author|provider|brand)": *)(?:\{[^{}]*"@type": *"Organization"[^{}]*"name": *"Edelmann Tecnologia"[^{}]*\}|\{ *"@id": *"https://edelmann\.com\.br/#empresa" *\})',
                    lambda m: m.group(1) + EMPRESA_REF, s)
     if p in ('agente-whatsapp/index.html', 'chamados/index.html'):
-        bloco = f'<div class="ctas"><a class="btn btn-primary" href="/contato/#agendar">Agendar conversa{ARROW}</a>{WA_BTN}</div>'
-        if bloco not in s:
-            assert '<a class="channel" href="mailto:' in s, p
-            s = s.replace('<a class="channel" href="mailto:', bloco + '\n        <a class="channel" href="mailto:', 1)
+        # fecho com um só botão de WhatsApp ("Falar no WhatsApp"): tira o "Quero ver como funciona" que havia sido somado
+        s = s.replace(demo_btn('/' + p.split('/')[0] + '/', antigo=True), '')
+    if p == 'balcao/index.html':  # fecho: o WhatsApp já está no cartão de canal; tira o botão "Quero ver como funciona" e põe o link para o artigo
+        s = s.replace('\n          ' + demo_btn('/balcao/', antigo=True), '')
+        if ARTIGO_GESTAO not in s:
+            alvo = '<p class="more"><a class="link" href="/produtos/">'
+            assert s.count(alvo) == 1
+            s = s.replace(alvo, f'<p class="more"><a class="link" href="{ARTIGO_GESTAO}">Sistema de gestão: o que perguntar antes de contratar{ARROW}</a></p>\n        ' + alvo)
     if p == 'privacidade/index.html':
         s = s.replace('<strong>Formulário de orçamento:</strong>', '<strong>Formulário de agendamento:</strong>')
         s = re.sub(r'Última atualização: [^<]*\.', 'Última atualização: 28 de outubro de 2026.', s)
@@ -494,7 +526,7 @@ for p in APPS + ['privacidade/index.html', '404.html']:
             ('/sobre/', 'Sobre'), ('/produtos/', 'Soluções'), ('/contato/', 'Agendar conversa')]) + '\n      </ul>', s, count=1, flags=re.S)
     wr(p, comum(p, s))
 
-# ---------- 6. Serviços e Dicas: só redirecionam para o início ----------
+# ---------- 6. Dicas (-> início) e Serviços (-> /suporte/): só redirecionam ----------
 REDIR = '''<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -510,8 +542,15 @@ REDIR = '''<!doctype html>
 </body>
 </html>
 '''
-removidas = sorted(glob.glob('servicos/**/index.html', recursive=True) + glob.glob('dicas/**/index.html', recursive=True))
-for p in removidas: wr(p, REDIR)
+# /servicos/ (e subpáginas) levam ao /suporte/; /dicas/ continua levando ao início
+REDIR_SUPORTE = (REDIR.replace('<link rel="canonical" href="https://edelmann.com.br/">', '<link rel="canonical" href="https://edelmann.com.br/suporte/">')
+                 .replace('url=/"', 'url=/suporte/"').replace('<a href="/">Ir para a página inicial da Edelmann Tecnologia</a>', '<a href="/suporte/">Ver o suporte técnico da Edelmann Tecnologia</a>'))
+assert REDIR_SUPORTE.count('/suporte/') == 3
+servicos = sorted(glob.glob('servicos/**/index.html', recursive=True))
+dicas = sorted(glob.glob('dicas/**/index.html', recursive=True))
+removidas = sorted(servicos + dicas)
+for p in servicos: wr(p, REDIR_SUPORTE)
+for p in dicas: wr(p, REDIR)
 wr('setores/index.html', REDIR.replace('url=/"', 'url=/#setores"'))  # /setores/ não dá 404: leva ao bloco de setores da home
 
 # ---------- 7. sitemap e manifest ----------
