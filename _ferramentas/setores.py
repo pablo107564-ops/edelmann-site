@@ -1,6 +1,6 @@
 # Páginas por setor (/setores/<setor>/): dores típicas do ramo + o que muda + chamada para conversa e checklist.
 # Usa sobre/index.html como casca. Rodar depois do consultoria.py. Idempotente.
-import os, re, json
+import os, re, json, html
 AQUI = os.path.dirname(os.path.abspath(__file__)); SITE = os.path.dirname(AQUI); os.chdir(SITE)
 URL = 'https://edelmann.com.br'
 ARROW = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>'
@@ -18,7 +18,7 @@ SETORES = [
    ['Estoque, vendas e financeiro conversando entre si', 'Fechamento de caixa mais rápido e com menos conferência manual',
     'Relatórios simples do que vende e do que está parado', 'Operação que continua mesmo com falha de internet']),
   ('saude', 'Saúde', 'Consultoria em TI para clínicas e farmácias',
-   'Clínicas, consultórios, farmácias e laboratórios: agenda organizada, dados de pacientes protegidos e atendimento sem espera. Consultoria em TI de Itaituba a Santarém.',
+   'Clínicas, consultórios, farmácias e laboratórios: agenda organizada, dados de pacientes protegidos e atendimento ágil. Consultoria em TI de Itaituba a Santarém.',
    'Clínicas, consultórios, farmácias e laboratórios.',
    [('Agenda bagunçada', 'Horário duplicado, paciente esquecido e falta sem aviso.'),
     ('Dados de pacientes expostos', 'Fichas e exames sem cópia de segurança nem controle de acesso, um risco diante da LGPD.'),
@@ -41,17 +41,54 @@ SETORES = [
 
 # frase de abertura, pergunta depois das dores e links "Veja também" de cada setor
 EXTRA = {
-  'comercio': dict(frase='Quem vende todos os dias não pode perder tempo conferindo caixa e estoque na mão.', exp='Já atendemos empresas do comércio.',
-                   pergunta='Reconhece isso no seu comércio?', artigo='planilha-ou-sistema', solucao=('/balcao/', 'Conheça o Balcão PDV')),
-  'saude': dict(frase='Agenda que falha e ficha de paciente sem proteção custam consulta e confiança.', exp='Já atendemos empresas da saúde.',
-                pergunta='Reconhece isso na sua clínica ou farmácia?', artigo='backup-quanto-custa-perder-dados',
+  'comercio': dict(frase='Quem vende todos os dias não pode perder tempo conferindo caixa e estoque na mão.', exp='Temos experiência com empresas do comércio.',
+                   pergunta='Reconhece isso no seu comércio?', artigos=('planilha-ou-sistema', 'consultoria-de-ti-ou-tecnico-avulso'), solucao=('/balcao/', 'Conheça o Balcão PDV')),
+  'saude': dict(frase='Agenda que falha e ficha de paciente sem proteção custam consulta e confiança.', exp='Temos experiência com empresas da saúde.',
+                pergunta='Reconhece isso na sua clínica ou farmácia?', artigos=('whatsapp-pessoas-robo-ou-agente-de-ia', 'backup-quanto-custa-perder-dados'),
                 solucao=('/agente-whatsapp/', 'Conheça o Agente de IA no WhatsApp')),
-  'educacao': dict(frase='Secretaria sobrecarregada e dados de alunos sem proteção pesam no ano letivo.', exp='Já atendemos empresas da educação.',
-                   pergunta='Reconhece isso na sua escola?', artigo='backup-quanto-custa-perder-dados', solucao=None),
+  'educacao': dict(frase='Secretaria sobrecarregada e dados de alunos sem proteção pesam no ano letivo.', exp='Temos experiência com empresas da educação.',
+                   pergunta='Reconhece isso na sua escola?', artigos=('whatsapp-pessoas-robo-ou-agente-de-ia', 'backup-quanto-custa-perder-dados'), solucao=None),
+}
+# perguntas frequentes de cada setor: aparecem na página e no JSON-LD (FAQPage)
+FAQ_SETOR = {
+  'comercio': [
+    ('Vocês atendem comércios de Itaituba a Santarém?',
+     'Sim. Vamos até o seu comércio, de Itaituba a Santarém, e conversamos pessoalmente sobre como a loja funciona. Em projetos grandes, vamos até onde for preciso; nos demais casos, atendemos por videochamada.'),
+    ('Preciso trocar o sistema de vendas que já uso?',
+     'Só se não atender o seu negócio. Primeiro entendemos como você vende hoje e só recomendamos a troca quando ela traz retorno, sempre explicando o motivo.'),
+    ('E se a internet cair na hora de vender?',
+     'Esse é um ponto que avaliamos com atenção. O Balcão PDV, solução nossa, funciona sem internet e emite NFC-e, para o caixa continuar vendendo no horário de maior movimento.'),
+    ('Dá para ter estoque, caixa e financeiro conversando entre si?',
+     'Sim, esse é um objetivo frequente no comércio. Avaliamos o que você já usa e indicamos se vale integrar o que existe ou mudar, sem empurrar nada que não traga retorno.'),
+  ],
+  'saude': [
+    ('Vocês atendem clínicas e farmácias de Itaituba a Santarém?',
+     'Sim. Vamos até a sua clínica, consultório ou farmácia, de Itaituba a Santarém, e já temos experiência com empresas da saúde. Em projetos grandes, vamos até onde for preciso; nos demais casos, atendemos por videochamada.'),
+    ('Preciso trocar o sistema da clínica?',
+     'Não necessariamente. Primeiro entendemos como a agenda, os prontuários e o financeiro funcionam hoje. Se o sistema atual atende, não há motivo para trocar.'),
+    ('Como fica a proteção dos dados dos pacientes?',
+     'Dados de pacientes pedem cuidado, e a LGPD exige isso. Olhamos como as fichas e os exames são guardados, quem tem acesso e se existe cópia de segurança, e indicamos o que precisa melhorar.'),
+    ('Dá para reduzir as perguntas repetidas na recepção e no WhatsApp?',
+     'Pode ajudar. O Agente de IA no WhatsApp, solução nossa, responde as dúvidas mais comuns e deixa a equipe livre para o atendimento que exige uma pessoa. Avaliamos se faz sentido para a sua clínica antes de propor.'),
+  ],
+  'educacao': [
+    ('Vocês atendem escolas e cursos de Itaituba a Santarém?',
+     'Sim. Vamos até a sua escola, curso ou faculdade, de Itaituba a Santarém, e já temos experiência com empresas da educação. Em projetos grandes, vamos até onde for preciso; nos demais casos, atendemos por videochamada.'),
+    ('Preciso trocar o sistema de matrícula e mensalidades?',
+     'Só se ele não atender a escola. Primeiro entendemos como a secretaria e o financeiro trabalham hoje e só recomendamos mudança quando traz retorno, explicando o motivo.'),
+    ('Como fica a proteção dos dados dos alunos?',
+     'Documentos, notas e cadastros de alunos exigem cuidado, e a LGPD também vale para escolas. Avaliamos como esses dados são guardados e quem acessa, e indicamos o que precisa melhorar.'),
+    ('Dá para melhorar a rede e os computadores sem atrapalhar as aulas?',
+     'Esse é um cuidado importante. Combinamos cada etapa com a direção antes de começar e conduzimos junto com a equipe, respeitando a rotina da escola. Nada muda sem a sua aprovação.'),
+  ],
 }
 # títulos dos artigos (cópia local: importar artigos.py geraria as páginas)
-TIT_ARTIGO = {'planilha-ou-sistema': 'Planilha ou sistema: quando vale a pena mudar',
-              'backup-quanto-custa-perder-dados': 'Backup: quanto custa perder os dados da empresa'}
+# os artigos novos vêm do mesmo JSON do artigos.py (um h1 mudado lá muda aqui); só o antigo é digitado
+TIT_ARTIGO = {n['slug']: n['h1'] for n in json.load(open(os.path.join(AQUI, 'artigos_novos.json'), encoding='utf-8'))}
+TIT_ARTIGO['backup-quanto-custa-perder-dados'] = 'Backup: quanto custa perder os dados da empresa'
+assert all(a in TIT_ARTIGO for x in EXTRA.values() for a in x['artigos'])
+TITULO = {'comercio': 'TI para o comércio de Itaituba a Santarém', 'saude': 'TI para clínicas e farmácias de Itaituba a Santarém',
+          'educacao': 'TI para escolas de Itaituba a Santarém'}
 CHECK_BTN = f'<a class="btn btn-ghost" href="{WA_CHECK}" target="_blank" rel="noopener">Receber o checklist grátis<span class="sr"> (abre o WhatsApp em nova aba)</span></a>'
 
 def trilha(*itens):  # BreadcrumbList: itens = (nome, caminho), o primeiro é o Início
@@ -79,7 +116,7 @@ casca = open('sobre/index.html', encoding='utf-8').read()
 
 def gerar(slug, nome, h1, desc, quem, dores, ganhos):
     url = f'{URL}/setores/{slug}/'
-    titulo = f'{h1} em Itaituba'
+    titulo = TITULO[slug]  # curto para caber no Google (até 65 caracteres com ' | Edelmann')
     x = EXTRA[slug]
     s = re.sub(r'<title>.*?</title>', f'<title>{titulo} | Edelmann</title>', casca, count=1)
     for k in ('description', 'og:description', 'twitter:description'):
@@ -91,15 +128,19 @@ def gerar(slug, nome, h1, desc, quem, dores, ganhos):
     s = re.sub(r'<script type="application/ld\+json">.*?</script>\n?', '', s, flags=re.S)
     ld = {"@context": "https://schema.org", "@type": "Service", "name": h1, "serviceType": "Consultoria em TI",
           "areaServed": [{"@type": "City", "name": "Itaituba"}, {"@type": "City", "name": "Santarém"}, {"@type": "State", "name": "Pará"}], "provider": {"@type": "ProfessionalService", "@id": URL + "/#empresa", "name": "Edelmann Tecnologia", "url": URL + '/'}}
+    faq = FAQ_SETOR[slug]
+    faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
+              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
+    faq_html = ''.join(f'<h3>{html.escape(q, quote=False)}</h3><p>{html.escape(a, quote=False)}</p>' for q, a in faq)
     blocos = ''.join('<script type="application/ld+json">\n' + json.dumps(o, ensure_ascii=False, indent=1) + '\n</script>\n'
-                     for o in (ld, trilha(('Início', '/'), (nome, f'/setores/{slug}/'))))
+                     for o in (ld, trilha(('Início', '/'), (nome, f'/setores/{slug}/')), faq_ld))
     s = s.replace('<style>', blocos + '<style>', 1)
     s = s.replace('<a href="/sobre/" aria-current="page">Sobre</a>', '<a href="/sobre/">Sobre</a>')
     dores_html = ''.join(f'<li><strong>{t}.</strong> {d}</li>' for t, d in dores)
     ganhos_html = ''.join(f'<li>{g}</li>' for g in ganhos)
     veja = [(f'/setores/{sl}/', h) for sl, _, h, *_ in SETORES if sl != slug]
-    veja.append((f'/artigos/{x["artigo"]}/', TIT_ARTIGO[x['artigo']]))
-    veja.append(('/itaituba/', 'Consultoria em TI em Itaituba'))
+    veja += [(f'/artigos/{a}/', TIT_ARTIGO[a]) for a in x['artigos']]
+    veja.append(('/itaituba/', 'Consultoria em TI de Itaituba a Santarém'))
     if x['solucao']: veja.append(x['solucao'])
     veja_html = ''.join(f'<li><a href="{h}">{t}</a></li>' for h, t in veja)
     main = f'''<main id="conteudo" tabindex="-1">
@@ -107,8 +148,8 @@ def gerar(slug, nome, h1, desc, quem, dores, ganhos):
     <div class="wrap">
       <nav class="crumbs" aria-label="Trilha"><a href="/">Início</a> › <span aria-current="page">{nome}</span></nav>
       <p class="eyebrow">Setor · {nome}</p>
-      <h1 id="titulo" style="font-size:var(--h2);line-height:1.08;max-width:52rem">{h1} em Itaituba.</h1>
-      <p class="sub" style="margin-top:1.25rem;max-width:44rem">{x["frase"]} {x["exp"]} {quem} Vamos até a sua empresa, <a class="link" href="/itaituba/">de Itaituba a Santarém</a>, ou atendemos por videochamada.</p>
+      <h1 id="titulo" style="font-size:var(--h2);line-height:1.08;max-width:52rem">{h1} de Itaituba a Santarém.</h1>
+      <p class="sub" style="margin-top:1.25rem;max-width:44rem">{x["frase"]} {x["exp"]} Esta página é para {quem[0].lower() + quem[1:]} Vamos até a sua empresa (<a class="link" href="/itaituba/">veja como atendemos</a>) ou atendemos por videochamada.</p>
       <div class="prose" style="margin-top:2.5rem">
         <h2>O que mais pesa no dia a dia</h2>
         <ul>{dores_html}</ul>
@@ -119,6 +160,8 @@ def gerar(slug, nome, h1, desc, quem, dores, ganhos):
         <h2>O que buscamos alcançar</h2>
         <ul>{ganhos_html}</ul>
         <div class="note-box">Começamos entendendo como a sua empresa funciona hoje. Só depois apresentamos as prioridades e o resultado esperado. Nada começa sem a sua aprovação.</div>
+        <h2>Perguntas frequentes</h2>
+        {faq_html}
         <h2>Veja também</h2>
         <ul>{veja_html}</ul>
       </div>

@@ -45,14 +45,14 @@
  "dateModified": "2026-10-28",
  "image": "https://edelmann.com.br/img/og.jpg",
  "author": {
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   "@id": "https://edelmann.com.br/#empresa",
   "name": "Edelmann Tecnologia",
   "url": "https://edelmann.com.br/",
   "logo": "https://edelmann.com.br/img/icon-512.png"
  },
  "publisher": {
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   "@id": "https://edelmann.com.br/#empresa",
   "name": "Edelmann Tecnologia",
   "url": "https://edelmann.com.br/",
@@ -529,6 +529,23 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .site-footer nav a,.foot-mail,.legal>a{display:inline-flex;align-items:center;min-height:44px}
 .site-footer nav ul{gap:0 1.5rem}
 .more .link{min-height:44px}
+
+/* ===== Artigos ===== */
+.art-resumo{max-width:46rem;margin:1.75rem 0 0;padding:1.25rem 1.4rem;border-left:3px solid var(--gold);border-radius:0 10px 10px 0;background:var(--sand);font-size:1.0625rem;line-height:1.6;color:var(--ink)}
+.art-data{margin:1rem 0 0;font:500 .8125rem/1.4 var(--mono);color:var(--muted)}
+.tabela{margin:1.5rem 0 1.75rem;overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--paper);-webkit-overflow-scrolling:touch}
+.tabela:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.tabela table{width:100%;min-width:34rem;border-collapse:collapse;font-size:.9375rem;line-height:1.45}
+.tabela th,.tabela td{padding:.75rem .9rem;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);color:var(--text)}
+.tabela thead th{background:var(--sand);color:var(--ink);font-weight:600;white-space:nowrap}
+.tabela tbody tr:last-child td{border-bottom:0}
+.tabela tbody td:first-child{font-weight:600;color:var(--ink)}
+.art-faq h3{margin:1.5rem 0 .4rem;font-size:1.1875rem;line-height:1.3}
+.art-faq p{margin:0}
+.sobre-box{margin:2.5rem 0 0;padding:1.4rem 1.5rem;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.sobre-box h2{margin:0 0 .6rem;font-size:1.25rem}
+.sobre-box p{margin:0;font-size:.9375rem;line-height:1.6;color:var(--muted)}
+.prose .sobre-box h2{margin-top:0}
 </style>
 </head>
 <body>
@@ -585,6 +602,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
       <nav class="crumbs" aria-label="Trilha"><a href="/">Início</a> › <a href="/artigos/">Artigos</a> › <span aria-current="page">WhatsApp no atendimento: o cliente que você perde fora do horário</span></nav>
       <p class="eyebrow">Artigos</p>
       <h1 id="titulo" style="font-size:var(--h2);line-height:1.08;max-width:52rem">WhatsApp no atendimento: o cliente que você perde fora do horário</h1>
+      <p class="art-data">Atualizado em <time datetime="2026-10-28">28 de outubro de 2026</time></p>
       <div class="prose" style="margin-top:2.5rem">
 <p>Muitos clientes chegam pelo WhatsApp. E vários chegam fora do horário: à noite, no fim de semana, no feriado. Quem responde primeiro, normalmente, leva a venda.</p>
 <h2>Onde o atendimento pelo WhatsApp costuma falhar</h2>
@@ -598,8 +616,12 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 <p>Analisamos como a sua empresa atende hoje e montamos um atendimento que responde na hora, a qualquer hora, e passa para a equipe quando precisa, sem deixar nenhum cliente esquecido. Desenvolvemos a nossa própria <a href="/agente-whatsapp/">solução de atendimento automático no WhatsApp</a>.</p>
 <div class="note-box">Cada mensagem sem resposta é um cliente indo para o concorrente. Responder rápido costuma ser o que decide a venda.</div>
 <h2>Leia também</h2>
-<ul><li><a href="/artigos/planilha-ou-sistema/">Planilha ou sistema: quando vale a pena mudar</a></li><li><a href="/artigos/gastos-com-tecnologia/">Como saber se a sua empresa está gastando demais com tecnologia</a></li><li><a href="/artigos/backup-quanto-custa-perder-dados/">Backup: quanto custa perder os dados da empresa</a></li></ul>
+<ul><li><a href="/artigos/whatsapp-pessoas-robo-ou-agente-de-ia/">Atendimento no WhatsApp: só pessoas, robô de menu ou agente de IA?</a></li><li><a href="/artigos/planilha-ou-sistema/">Planilha ou sistema: quando a planilha deixa de compensar</a></li><li><a href="/artigos/consultoria-de-ti-ou-tecnico-avulso/">Consultoria de TI ou técnico avulso: do que a sua empresa precisa?</a></li><li><a href="/artigos/gastos-com-tecnologia/">Como saber se a sua empresa está gastando demais com tecnologia</a></li></ul>
 <p>Por ramo: <a href="/setores/comercio/">Comércio</a> · <a href="/setores/saude/">Saúde</a> · <a href="/setores/educacao/">Educação</a></p>
+<aside class="sobre-box" aria-labelledby="sobre-edelmann">
+<h2 id="sobre-edelmann">Sobre a Edelmann</h2>
+<p>A Edelmann Tecnologia é uma consultoria em TI de Itaituba (PA) para pequenas e médias empresas, com mais de 15 anos de experiência em TI e atuação em comércio, saúde e educação. Atendemos presencialmente de Itaituba a Santarém, indo até a empresa; em projetos grandes, vamos até onde for preciso; nos demais casos, por videochamada.</p>
+</aside>
       </div>
     </div>
   </section>
@@ -628,7 +650,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
           <li><a href="/setores/comercio/">Para comércio</a></li>
           <li><a href="/setores/saude/">Para saúde</a></li>
           <li><a href="/setores/educacao/">Para educação</a></li>
-          <li><a href="/itaituba/">Consultoria em TI em Itaituba</a></li>
+          <li><a href="/itaituba/">Consultoria em TI de Itaituba a Santarém</a></li>
           <li><a href="/sobre/">Sobre</a></li>
           <li><a href="/produtos/">Soluções</a></li>
           <li><a href="/artigos/">Artigos</a></li>

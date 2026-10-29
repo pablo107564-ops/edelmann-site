@@ -174,7 +174,7 @@ def cta(classe, alvo, final=False, titulo='Vamos conversar sobre o seu negócio?
   </section>'''
 FAQ = [
     ('Como é a primeira conversa?', 'Um encontro presencial, indo até a sua empresa entre Itaituba e Santarém, ou por videochamada. Conversamos sobre o negócio, os objetivos e os principais desafios, e a partir daí indicamos os próximos passos.'),
-    ('Vocês conhecem o meu ramo?', 'Sim. Já atendemos empresas de comércio, saúde e educação, entre outros setores, e também temos experiência com contratos públicos. A primeira conversa serve para entender como o seu negócio funciona; só depois propomos qualquer coisa.'),
+    ('Vocês conhecem o meu ramo?', 'Sim. Temos experiência com empresas de comércio, saúde e educação, entre outros setores, e também com contratos públicos. A primeira conversa serve para entender como o seu negócio funciona; só depois propomos qualquer coisa.'),
     ('Vai atrapalhar a rotina da minha empresa?', 'Nada muda sem a sua aprovação. Cada etapa é combinada antes e conduzida junto com a sua equipe, respeitando a rotina da empresa.'),
     ('Preciso trocar os sistemas que já uso?', 'Recomendamos apenas o que traz retorno para o negócio, sempre explicando o motivo. Se o que você já usa atende, não há razão para trocar.'),
     ('Vocês atendem fora de Itaituba?', 'Sim. Vamos até a sua empresa em toda a região entre Itaituba e Santarém. Para projetos maiores, vamos presencialmente até onde for preciso, como Marabá. Nos demais casos, a conversa e o acompanhamento são por videochamada.'),
@@ -184,12 +184,24 @@ FAQ_HTML = '      <div class="faq reveal">' + ''.join(f'<details><summary>{q}</s
 def ld(obj): return '<script type="application/ld+json">\n' + json.dumps(obj, ensure_ascii=False, indent=1) + '\n</script>\n'
 FAQ_LD = ld({"@context": "https://schema.org", "@type": "FAQPage",
              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]})
+# perguntas próprias da página /itaituba/ (atendimento): diferentes das da home e do /contato/
+FAQ_ITA = [
+    ('Vocês atendem em Santarém?', 'Sim. Santarém é a outra ponta do trecho em que vamos até a sua empresa para conversar pessoalmente.'),
+    ('Como funciona o atendimento por videochamada?', 'Fora dos casos que pedem presença, a conversa e o acompanhamento são feitos por videochamada. O combinado é o mesmo do atendimento presencial: entendemos o seu negócio primeiro e nada começa sem a sua aprovação.'),
+    ('E se a minha empresa fica fora do trecho entre Itaituba e Santarém?', 'Em projetos grandes, vamos presencialmente até onde for preciso, como Marabá. Nos demais casos, atendemos por videochamada.'),
+    ('Vocês também fazem o suporte técnico do dia a dia?', 'Sim. Além da consultoria, cuidamos do suporte técnico do dia a dia: computadores, redes, servidores e backup.'),
+    ('Que tipo de empresa vocês atendem?', 'Pequenas e médias empresas. Temos experiência em comércio, saúde e educação, entre outros setores, e também com contratos públicos.'),
+    ('Como escolher uma empresa de TI na região?', 'Pergunte onde ela atende presencialmente, se conhece o seu ramo e se explica em português claro. Reunimos oito critérios no artigo sobre como escolher uma empresa de TI em Itaituba e Santarém.'),
+]
+FAQ_ITA_HTML = '      <div class="faq reveal">' + ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ_ITA) + '</div>'
+FAQ_ITA_LD = ld({"@context": "https://schema.org", "@type": "FAQPage",
+                 "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ_ITA]})
 MARCAS = {'{{FORM_DARK}}': FORM_DARK, '{{FORM_CLARO}}': FORM_CLARO, '{{PROOF}}': PROOF, '{{SINAIS}}': SINAIS, '{{STATS}}': STATS,
           '{{COMO_FUNCIONA}}': como_funciona('section'), '{{COMO_FUNCIONA_ALT}}': como_funciona('section alt'),
           '{{CTA}}': cta('cta-accent', '#agendar', final=True), '{{CTA_CLARO}}': cta('section band cta-band', '/contato/#agendar', titulo='Conheceu a Edelmann. Agora conte sobre o seu negócio.'),
-          '{{CTA_ITA}}': cta('cta-accent', '#agendar', final=True, titulo='Vamos conversar sobre a sua empresa em Itaituba?'),
+          '{{CTA_ITA}}': cta('cta-accent', '#agendar', final=True, titulo='Vamos conversar sobre a sua empresa, de Itaituba a Santarém?'),
           '{{CTA_WA}}': cta('section band cta-band', None, final=True), '{{WA_CHECK}}': WA_CHECK,
-          '{{FAQ}}': FAQ_HTML, '{{ARROW}}': ARROW, '{{WA}}': WA}
+          '{{FAQ}}': FAQ_HTML, '{{FAQ_ITA}}': FAQ_ITA_HTML, '{{ARROW}}': ARROW, '{{WA}}': WA}
 def trecho(nome):
     s = rd(os.path.join(AQUI, 'consultoria', nome))
     for k, v in MARCAS.items(): s = s.replace(k, v)
@@ -239,7 +251,7 @@ RODAPE = '''<ul>
           <li><a href="/setores/comercio/">Para comércio</a></li>
           <li><a href="/setores/saude/">Para saúde</a></li>
           <li><a href="/setores/educacao/">Para educação</a></li>
-          <li><a href="/itaituba/">Consultoria em TI em Itaituba</a></li>
+          <li><a href="/itaituba/">Consultoria em TI de Itaituba a Santarém</a></li>
           <li><a href="/sobre/">Sobre</a></li>
           <li><a href="/produtos/">Soluções</a></li>
           <li><a href="/artigos/">Artigos</a></li>
@@ -346,6 +358,7 @@ CSS_INICIO += CSS_STATS
 OBSOLETO = re.compile(r'^(?:@media[^{]*\{)?(?:\.home )?\.(?:pillars|pillar-card|rows|modes|mode|why|why-title|gallery)\b'
                       r'|^(?:@media[^{]*\{)?\.proof (?:ul|li|\.i)\b|^/\* ===== Galeria ===== \*/$')
 
+EMPRESA_REF = '{ "@type": "ProfessionalService", "@id": "https://edelmann.com.br/#empresa", "name": "Edelmann Tecnologia", "url": "https://edelmann.com.br/" }'
 AREA_SERVIDA = [{'@type': 'City', 'name': 'Itaituba'}, {'@type': 'City', 'name': 'Santarém'}, {'@type': 'State', 'name': 'Pará'}]
 def ld_empresa(s):
     def f(m):
@@ -357,8 +370,16 @@ def ld_empresa(s):
         o['description'] = ('Consultoria em tecnologia da informação para empresas de pequeno e médio porte: gestão e melhoria de processos '
                             'e soluções para todas as fases da gestão, com foco em resultado financeiro.')
         o['areaServed'] = AREA_SERVIDA
-        o['knowsAbout'] = ['Consultoria em tecnologia da informação', 'Gestão de processos', 'Melhoria de processos', 'Transformação digital',
-                           'Planejamento de TI', 'Contratos públicos', 'Segurança da informação', 'Desenvolvimento de sistemas']
+        o['disambiguatingDescription'] = 'Consultoria em TI de Itaituba (PA), Brasil, para pequenas e médias empresas'
+        o['knowsAbout'] = ['consultoria em TI', 'gestão e melhoria de processos', 'tecnologia para comércio', 'tecnologia para clínicas e farmácias',
+                           'tecnologia para escolas', 'sistemas de PDV', 'atendimento por WhatsApp com IA', 'proteção de dados e backup']
+        serv = lambda n: {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': n}}
+        app = lambda n, u: {'@type': 'Offer', 'itemOffered': {'@type': 'SoftwareApplication', 'name': n, 'url': 'https://edelmann.com.br' + u}}
+        o['makesOffer'] = [serv('Consultoria em TI para pequenas e médias empresas'), serv('Gestão e melhoria de processos'), serv('Suporte técnico'),
+                           app('Balcão PDV', '/balcao/'), app('Agente de IA no WhatsApp', '/agente-whatsapp/'), app('Sistema de Chamados', '/chamados/')]
+        o['contactPoint'] = {'@type': 'ContactPoint', 'telephone': '+55-93-98121-2924', 'contactType': 'customer service',
+                             'areaServed': 'BR', 'availableLanguage': 'pt-BR'}
+        o['sameAs'] = ['https://www.instagram.com/edelmann.tecnologia/']
         return '<script type="application/ld+json">\n' + json.dumps(o, ensure_ascii=False, indent=2) + '\n</script>'
     return re.sub(r'<script type="application/ld\+json">\n(.*?)\n</script>', f, s, flags=re.S)
 
@@ -370,7 +391,7 @@ s = '\n'.join(l for l in s.split('\n') if not OBSOLETO.match(l))
 s = com_css(s, CSS_INICIO, 'Consultoria')
 s = com_css(s, CSS_CAMPOS, 'Campos do formulário')
 s = titulo_todos(s, 'Consultoria em TI para empresas | Edelmann, Itaituba (PA)')
-s = meta(s, 'description', 'Consultoria em TI para pequenas e médias empresas, de Itaituba a Santarém (PA). Mais de 15 anos em TI e melhoria de processos. Agende uma conversa.')
+s = meta(s, 'description', 'Edelmann Tecnologia: consultoria em TI para pequenas e médias empresas, de Itaituba a Santarém (PA). Mais de 15 anos em TI e melhoria de processos.')
 for k in ('og:description', 'twitter:description'):
     s = meta(s, k, 'Tecnologia a serviço do resultado do seu negócio. Consultoria em TI para empresas de pequeno e médio porte.')
 s = meta(s, 'og:image:alt', 'Edelmann Tecnologia: tecnologia a serviço do resultado do seu negócio')
@@ -381,14 +402,16 @@ inicio = s
 
 # ---------- 2. Itaituba (versão local do início) ----------
 s = troca_main(inicio, trecho('itaituba.html'))
-s = titulo(s, 'Consultoria em TI em Itaituba (PA) | Edelmann Tecnologia')
-s = descricao(s, 'Consultoria em TI para empresas de Itaituba a Santarém (PA): vamos até a sua empresa. Gestão e melhoria de processos, com mais de 15 anos de experiência em TI.')
-for k in ('og:title', 'twitter:title'): s = meta(s, k, 'Consultoria em TI em Itaituba (PA) | Edelmann Tecnologia')
+TIT_ITA = 'Consultoria em TI de Itaituba a Santarém (PA) | Edelmann'  # 58 caracteres
+s = titulo(s, TIT_ITA)
+s = descricao(s, 'Consultoria em TI de Itaituba a Santarém (PA): vamos até a sua empresa. Gestão e melhoria de processos, com mais de 15 anos de experiência em TI.')
+for k in ('og:title', 'twitter:title'): s = meta(s, k, TIT_ITA)
 s = s.replace('<link rel="canonical" href="https://edelmann.com.br/">', '<link rel="canonical" href="https://edelmann.com.br/itaituba/">')
 s = meta(s, 'og:url', 'https://edelmann.com.br/itaituba/')
-s = com_ld(s, FAQ_LD + ld({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+s = sem_ld(s, 'FAQPage')
+s = com_ld(s, FAQ_ITA_LD + ld({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Início", "item": "https://edelmann.com.br/"},
-    {"@type": "ListItem", "position": 2, "name": "Itaituba", "item": "https://edelmann.com.br/itaituba/"}]}))
+    {"@type": "ListItem", "position": 2, "name": "De Itaituba a Santarém", "item": "https://edelmann.com.br/itaituba/"}]}))
 wr('itaituba/index.html', com_simbolos(s))
 
 # ---------- 3. Sobre ----------
@@ -399,7 +422,7 @@ s = titulo_todos(s, 'Sobre a Edelmann | Consultoria em TI em Itaituba (PA)')
 s = descricao(s, DESC_SOBRE)
 s = sem_ld(s, 'AboutPage')
 s = com_ld(s, ld({"@context": "https://schema.org", "@type": "AboutPage", "name": "Sobre a Edelmann", "url": "https://edelmann.com.br/sobre/",
-                  "inLanguage": "pt-BR", "description": DESC_SOBRE, "about": {"@id": "https://edelmann.com.br/#empresa"}}))
+                  "inLanguage": "pt-BR", "description": DESC_SOBRE, "about": json.loads(EMPRESA_REF)}))
 s = '\n'.join(l for l in s.split('\n') if not OBSOLETO.match(l))
 s = com_css(s, CSS_STATS, 'Experiência')
 wr('sobre/index.html', com_simbolos(comum('sobre/index.html', s)))
@@ -418,7 +441,7 @@ wr('contato/index.html', com_simbolos(comum('contato/index.html', s)))
 # ---------- 5. Soluções (antiga página de produtos) e páginas dos apps ----------
 s = rd('produtos/index.html')
 s = titulo_todos(s, 'Soluções próprias: PDV, agente de IA e chamados | Edelmann')
-s = descricao(s, 'Agente de IA no WhatsApp, Balcão PDV e Sistema de Chamados: sistemas desenvolvidos pela Edelmann Tecnologia.')
+s = descricao(s, 'Soluções próprias da Edelmann Tecnologia: Agente de IA no WhatsApp, Balcão PDV (funciona sem internet e emite NFC-e) e Sistema de Chamados.')
 s = re.sub(r'("description": ")Agente de IA no WhatsApp, Balcão PDV, Sistema de Chamados e Leitor de Bolso:', r'\1Agente de IA no WhatsApp, Balcão PDV e Sistema de Chamados:', s)
 # o Leitor de Bolso não é mais listado como solução (as páginas dele continuam no ar)
 s = re.sub(r'\n        <article class="app">(?:(?!<article|</article>).)*?/leitor-de-bolso/(?:(?!</article>).)*</article>', '', s, flags=re.S)
@@ -452,6 +475,10 @@ for p in APPS + ['privacidade/index.html', '404.html']:
                   'Marcamos uma conversa, presencial de Itaituba a Santarém ou por videochamada, para ver onde o agente pode gerar resultado no seu negócio.')
     s = s.replace('Respondemos com os próximos passos e, quando for o caso, com um orçamento.',
                   'Marcamos uma conversa, presencial de Itaituba a Santarém ou por videochamada, para ver onde isso pode gerar resultado.')
+    if p in ('agente-whatsapp/index.html', 'chamados/index.html', 'balcao/index.html', 'leitor-de-bolso/index.html'):
+        # publisher/author/provider/brand soltos -> mesma entidade da empresa (@id) com nome e url, pois o Google lê o JSON-LD página a página
+        s = re.sub(r'("(?:publisher|author|provider|brand)": *)(?:\{[^{}]*"@type": *"Organization"[^{}]*"name": *"Edelmann Tecnologia"[^{}]*\}|\{ *"@id": *"https://edelmann\.com\.br/#empresa" *\})',
+                   lambda m: m.group(1) + EMPRESA_REF, s)
     if p in ('agente-whatsapp/index.html', 'chamados/index.html'):
         bloco = f'<div class="ctas"><a class="btn btn-primary" href="/contato/#agendar">Agendar conversa{ARROW}</a>{WA_BTN}</div>'
         if bloco not in s:
@@ -460,6 +487,7 @@ for p in APPS + ['privacidade/index.html', '404.html']:
     if p == 'privacidade/index.html':
         s = s.replace('<strong>Formulário de orçamento:</strong>', '<strong>Formulário de agendamento:</strong>')
         s = re.sub(r'Última atualização: [^<]*\.', 'Última atualização: 28 de outubro de 2026.', s)
+        s = descricao(s, 'Política de privacidade da Edelmann Tecnologia: como tratamos os dados pessoais recebidos no site e nos atendimentos, conforme a LGPD.')
     if p == '404.html':
         s = re.sub(r'<ul class="svc-links">.*?</ul>', lambda m: '<ul class="svc-links">\n' + '\n'.join(
             f'        <li><a href="{h}">{t}{ARROW}</a></li>' for h, t in [('/', 'Página inicial'), ('/#como-funciona', 'Como funciona'),
@@ -489,9 +517,8 @@ wr('setores/index.html', REDIR.replace('url=/"', 'url=/#setores"'))  # /setores/
 # ---------- 7. sitemap e manifest ----------
 s = rd('sitemap.xml')
 s = re.sub(r'\n  <url><loc>https://edelmann\.com\.br/(?:servicos|dicas)/[^<]*</loc>.*?</url>', '', s)
-for u in ('leitor-de-bolso/', 'leitor-de-bolso/privacidade.html', 'privacidade/', 'balcao/'):  # não mudaram em 29/10
-    s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>2026-10-28', s)
-for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/', 'agente-whatsapp/', 'chamados/'):  # alteradas em 29/10
+for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/', 'agente-whatsapp/', 'chamados/', 'balcao/', 'privacidade/',
+          'leitor-de-bolso/', 'leitor-de-bolso/privacidade.html'):  # alteradas em 29/10 (JSON-LD, rodapé ou texto)
     s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>2026-10-29', s)
 wr('sitemap.xml', s)
 m = json.loads(rd('manifest.webmanifest'))
