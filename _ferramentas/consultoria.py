@@ -1,9 +1,8 @@
 # Reposiciona o site como consultoria (outubro de 2026): o site prova quem somos e leva o cliente a agendar uma conversa.
 # - início, Sobre, Contato e Itaituba ganham conteúdo novo (trechos em consultoria/*.html, com marcadores {{...}});
-# - menu, rodapé e chamadas de todas as páginas passam a convidar para "Agendar conversa";
-# - Dicas vira redirecionamento para o início e Serviços para /suporte/; os dois saem do sitemap.
+# - menu, rodapé e chamadas de todas as páginas passam a convidar para "Agendar conversa".
 # Idempotente: pode rodar de novo (refaz as páginas a partir dos trechos e não duplica trocas).
-import os, re, json, glob
+import os, re, json
 from urllib.parse import quote
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
@@ -18,14 +17,6 @@ WA = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conve
 def wa_url(msg): return 'https://wa.me/5593981212924?text=' + quote(msg, safe='!')
 # página /suporte/: o texto fica em suporte.json (lido também pelo suporte.py); aqui só a mensagem do link da página inicial
 WA_SUPORTE = wa_url(json.load(open(os.path.join(AQUI, 'suporte.json'), encoding='utf-8'))['msg_whatsapp'])
-# botão secundário "Quero ver como funciona" (mensagem própria) só nos cards de /produtos/; nos fechos das soluções já há um WhatsApp
-DEMO = {'/balcao/': 'o Balcão PDV', '/agente-whatsapp/': 'o Agente de IA no WhatsApp', '/chamados/': 'o Sistema de Chamados'}
-def demo_btn(href, extra='', antigo=False):  # antigo=True: rótulo provisório ("Tirar dúvidas"), para remover das páginas
-    msg, rot = ((f"Olá! Tenho dúvidas sobre {DEMO[href]}.", 'Tirar dúvidas no WhatsApp') if antigo
-                else (f"Olá! Quero ver como funciona {DEMO[href]}.", 'Quero ver como funciona'))
-    return (f'<a class="btn btn-ghost{extra}" href="{wa_url(msg)}" target="_blank" rel="noopener">'
-            f'{rot}<span class="sr"> (abre o WhatsApp em nova aba)</span></a>')
-ARTIGO_GESTAO = '/artigos/sistema-de-gestao-o-que-perguntar-antes-de-contratar/'
 
 SYMBOLS = {
     'clock': '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
@@ -158,7 +149,7 @@ PROOF = f'''  <section class="proof" aria-label="A Edelmann em números">
 {STATS}
     </div>
   </section>'''
-def como_funciona(classe): return f'''  <section class="{classe}" id="como-funciona" aria-labelledby="como-funciona-titulo">
+COMO_FUNCIONA = f'''  <section class="section alt" id="como-funciona" aria-labelledby="como-funciona-titulo">
     <div class="wrap">
       <div class="head reveal">
         <div>
@@ -215,7 +206,7 @@ FAQ_ITA_HTML = '      <div class="faq reveal">' + ''.join(f'<details><summary>{q
 FAQ_ITA_LD = ld({"@context": "https://schema.org", "@type": "FAQPage",
                  "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ_ITA]})
 MARCAS = {'{{FORM_DARK}}': FORM_DARK, '{{FORM_CLARO}}': FORM_CLARO, '{{PROOF}}': PROOF, '{{SINAIS}}': SINAIS, '{{STATS}}': STATS,
-          '{{COMO_FUNCIONA}}': como_funciona('section'), '{{COMO_FUNCIONA_ALT}}': como_funciona('section alt'),
+          '{{COMO_FUNCIONA_ALT}}': COMO_FUNCIONA,
           '{{CTA}}': cta('cta-accent', '#agendar', final=True), '{{CTA_CLARO}}': cta('section band cta-band', '/contato/#agendar', titulo='Conheceu a Edelmann. Agora conte sobre o seu negócio.'),
           '{{CTA_ITA}}': cta('cta-accent', '#agendar', final=True, titulo='Vamos conversar sobre a sua empresa, de Itaituba a Santarém?'),
           '{{CTA_WA}}': cta('section band cta-band', None, final=True), '{{WA_CHECK}}': WA_CHECK, '{{WA_SUPORTE}}': WA_SUPORTE,
@@ -249,8 +240,6 @@ def com_simbolos(s):
     novos = ''.join(f'    <symbol id="i-{n}" viewBox="0 0 24 24">{d}</symbol>\n' for n, d in SYMBOLS.items()
                     if f'#i-{n}"' in s and f'id="i-{n}"' not in s)
     s = s.replace('  </defs>\n</svg>', novos + '  </defs>\n</svg>', 1)
-    for n in ('grid', 'doc', 'trend', 'pin', 'home', 'check'):  # ícones de versões anteriores que não são mais usados
-        if f'#i-{n}"' not in s: s = re.sub(r'    <symbol id="i-' + n + r'".*?</symbol>\n', '', s)
     return s
 def com_css(s, css, marca):  # põe o bloco de CSS no fim do <style>; se já existe, troca pelo atual
     marca = f'/* ===== {marca} ===== */'
@@ -298,16 +287,9 @@ def comum(p, s):
                f'<a class="btn btn-primary btn-sm bar-cta" href="{cta_href}"><span class="cta-l">Agendar conversa</span><span class="cta-s">Agendar</span></a>', s, count=1)
     rodape = RODAPE.replace('          <li><a href="/suporte/">Suporte técnico</a></li>\n', '') if p.startswith('leitor-de-bolso') else RODAPE  # o Leitor de Bolso não muda
     s = re.sub(r'(<nav aria-label="Rodapé">\s*)<ul>.*?</ul>', lambda m: m.group(1) + rodape, s, count=1, flags=re.S)
-    s = s.replace('<p>Conte o que você precisa. Respondemos com os próximos passos e, quando for o caso, com um orçamento.</p>', f'<p>{CTA_TXT}</p>')
-    s = s.replace('<h2 id="cta-titulo">Vamos conversar.</h2>', '<h2 id="cta-titulo">Vamos conversar sobre o seu negócio?</h2>')
-    s = s.replace('<a class="btn btn-primary" href="/contato/">Solicitar orçamento', '<a class="btn btn-primary" href="/contato/#agendar">Agendar conversa')
-    s = s.replace('subject=Or%C3%A7amento%20-%20Edelmann%20Tecnologia', 'subject=Agendar%20conversa%20-%20Edelmann%20Tecnologia')
-    s = s.replace('computadores, redes e sistemas em mãos competentes', 'tecnologia a serviço do resultado do seu negócio')
+    s = re.sub(r'(<a class="wa-float" href=")[^"]*"', lambda m: m.group(1) + WA + '"', s, count=1)  # botão flutuante com a mesma mensagem dos outros botões
     s = com_css(s, CSS_REVELA, 'Primeira tela sem atraso')
     s = com_css(s, CSS_TOQUE, 'Alvos de toque')
-    if p == 'produtos/index.html':  # faixa final da página de soluções
-        s = s.replace('Ol%C3%A1!%20Vim%20pelo%20site%20da%20Edelmann%20Tecnologia.', 'Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20com%20a%20Edelmann%20Tecnologia.')
-        s = s.replace('<h2 id="cta-titulo">Vamos conversar sobre o seu negócio?</h2>', '<h2 id="cta-titulo">Qual dessas soluções faz sentido para a sua empresa?</h2>')
     return s
 
 # ---------- CSS da página inicial (escura) ----------
@@ -322,7 +304,6 @@ CSS_INICIO = '''.impacts{display:grid;gap:1rem;grid-template-columns:repeat(auto
 .home .alt .step::after{background:#0A1428}
 .home .step p{color:var(--on-night)}
 @media (min-width:760px){.steps.three{grid-template-columns:repeat(3,1fr)}}
-.head.exp{margin-bottom:0;align-items:start}
 .exp-note{max-width:46rem;margin:1.5rem 0;padding:1.25rem 1.5rem;border-left:3px solid var(--gold-soft);border-radius:0 12px 12px 0;background:rgba(95,221,236,.06);color:#DCE2EC}
 .sols{display:grid;gap:.75rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));padding:0;list-style:none}
 .sols a{display:flex;flex-direction:column;gap:.4rem;height:100%;padding:1.25rem 1.35rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.09);border-radius:12px;color:#DCE2EC;text-decoration:none;transition:border-color .2s,background-color .2s}
@@ -380,9 +361,6 @@ CSS_HERO_SUP = '''.hero-sup{display:flex;flex-wrap:wrap;align-items:center;gap:0
 .hero-sup .i{width:16px;height:16px}
 '''
 CSS_INICIO += CSS_HERO_SUP  # só a página inicial tem o <p class="hero-sup">; /itaituba/ tira este bloco
-# seções que saíram (áreas de atuação, atendimento, por que, galeria de fotos): o CSS delas sai junto
-OBSOLETO = re.compile(r'^(?:@media[^{]*\{)?(?:\.home )?\.(?:pillars|pillar-card|rows|modes|mode|why|why-title|gallery)\b'
-                      r'|^(?:@media[^{]*\{)?\.proof (?:ul|li|\.i)\b|^/\* ===== Galeria ===== \*/$')
 
 EMPRESA_REF = '{ "@type": "ProfessionalService", "@id": "https://edelmann.com.br/#empresa", "name": "Edelmann Tecnologia", "url": "https://edelmann.com.br/" }'
 AREA_SERVIDA = [{'@type': 'City', 'name': 'Itaituba'}, {'@type': 'City', 'name': 'Santarém'}, {'@type': 'State', 'name': 'Pará'}]
@@ -413,7 +391,6 @@ def ld_empresa(s):
 s = rd('index.html')
 s = troca_main(s, trecho('inicio.html'))
 s = sem_js_form(s); s = com_js_form(s)
-s = '\n'.join(l for l in s.split('\n') if not OBSOLETO.match(l))
 s = com_css(s, CSS_INICIO, 'Consultoria')
 s = com_css(s, CSS_CAMPOS, 'Campos do formulário')
 s = titulo_todos(s, 'Consultoria em TI para empresas | Edelmann, Itaituba (PA)')
@@ -450,7 +427,6 @@ s = descricao(s, DESC_SOBRE)
 s = sem_ld(s, 'AboutPage')
 s = com_ld(s, ld({"@context": "https://schema.org", "@type": "AboutPage", "name": "Sobre a Edelmann", "url": "https://edelmann.com.br/sobre/",
                   "inLanguage": "pt-BR", "description": DESC_SOBRE, "about": json.loads(EMPRESA_REF)}))
-s = '\n'.join(l for l in s.split('\n') if not OBSOLETO.match(l))
 s = com_css(s, CSS_STATS, 'Experiência')
 wr('sobre/index.html', com_simbolos(comum('sobre/index.html', s)))
 
@@ -469,26 +445,9 @@ wr('contato/index.html', com_simbolos(comum('contato/index.html', s)))
 s = rd('produtos/index.html')
 s = titulo_todos(s, 'Soluções próprias: PDV, agente de IA e chamados | Edelmann')
 s = descricao(s, 'Soluções próprias da Edelmann Tecnologia: Agente de IA no WhatsApp, Balcão PDV (funciona sem internet e emite NFC-e) e Sistema de Chamados.')
-s = re.sub(r'("description": ")Agente de IA no WhatsApp, Balcão PDV, Sistema de Chamados e Leitor de Bolso:', r'\1Agente de IA no WhatsApp, Balcão PDV e Sistema de Chamados:', s)
-# o Leitor de Bolso não é mais listado como solução (as páginas dele continuam no ar)
-s = re.sub(r'\n        <article class="app">(?:(?!<article|</article>).)*?/leitor-de-bolso/(?:(?!</article>).)*</article>', '', s, flags=re.S)
-s = s.replace('vender, organizar o suporte e digitalizar documentos.', 'vender e organizar o suporte.')
-if '<h2 class="sr">Nossas soluções</h2>' not in s:  # evita o salto h1 -> h3
-    assert '<div class="apps reveal">' in s
-    s = s.replace('<div class="apps reveal">', '<h2 class="sr">Nossas soluções</h2>\n      <div class="apps reveal">', 1)
 s = sem_ld(s, 'CollectionPage')
 s = com_ld(s, ld({"@context": "https://schema.org", "@type": "CollectionPage", "name": "Soluções", "url": "https://edelmann.com.br/produtos/",
                   "inLanguage": "pt-BR", "description": re.search(r'<meta name="description" content="([^"]*)"', s).group(1)}))
-s = s.replace('<p class="eyebrow">Produtos</p>', '<p class="eyebrow">Soluções</p>', 1)
-s = re.sub(r'(<h1[^>]*>)Produtos com a nossa assinatura\.', r'\1Soluções que desenvolvemos.', s, count=1)
-s = s.replace('Além dos serviços, a Edelmann desenvolve ferramentas', 'A Edelmann desenvolve ferramentas próprias')
-s = s.replace('>Conhecer o app<', '>Conhecer<')
-for href in DEMO:  # "Quero ver como funciona" em cada card (acima do link que cobre o card); não duplica
-    s = s.replace(f'<p class="app-demo">{demo_btn(href, " btn-sm", True)}</p>', '')  # tira o rótulo antigo
-    btn = f'<p class="app-demo">{demo_btn(href, " btn-sm")}</p>'
-    if btn not in s:
-        s, n = re.subn(r'(<h3><a href="' + re.escape(href) + r'">.*?<p class="app-go"[^>]*>.*?</p>)', lambda m: m.group(1) + '\n          ' + btn, s, count=1, flags=re.S)
-        assert n == 1, href
 s = com_css(s, '.app>p.app-go{margin-bottom:0}\n.app>p.app-demo{position:relative;z-index:2;margin:1rem 0 0}\n', 'Ver como funciona')
 s = com_css(s, '@media (min-width:1100px){.apps{grid-template-columns:repeat(3,minmax(0,1fr))}}\n', 'Soluções em 3 colunas')
 wr('produtos/index.html', comum('produtos/index.html', s))
@@ -496,34 +455,7 @@ wr('produtos/index.html', comum('produtos/index.html', s))
 APPS = ['agente-whatsapp/index.html', 'balcao/index.html', 'chamados/index.html', 'leitor-de-bolso/index.html', 'leitor-de-bolso/privacidade.html']
 for p in APPS + ['privacidade/index.html', '404.html']:
     s = rd(p)
-    s = s.replace('<li><a href="/produtos/">Produtos</a></li>\n', '<li><a href="/produtos/">Soluções</a></li>\n')  # trilha
-    s = re.sub(r'"name": *"Produtos"', '"name": "Soluções"', s)
-    s = s.replace('presencial em Itaituba e região ou por videochamada', 'presencial de Itaituba a Santarém ou por videochamada')
-    if not p.startswith('leitor-de-bolso'):  # o Leitor de Bolso não muda
-        s = s.replace('Ver os outros produtos<', 'Ver as outras soluções<')
-    s = s.replace('O formulário de orçamento só monta', 'O formulário de agendamento só monta')
-    s = s.replace('(nome, contato, descrição do problema). Usamos só para responder, fazer o orçamento e prestar o serviço contratado.',
-                  '(nome, empresa, contato, desafios do negócio). Usamos só para responder, agendar a conversa, preparar a proposta e prestar o serviço contratado.')
-    s = re.sub(r'<a class="btn btn-primary" href="mailto:[^"]*">Solicitar orçamento', '<a class="btn btn-primary" href="/contato/#agendar">Agendar conversa', s)
-    s = s.replace('Respondemos a cada pedido com os próximos passos e, quando for o caso, com um orçamento.',
-                  'Marcamos uma conversa, presencial de Itaituba a Santarém ou por videochamada, para ver onde o agente pode gerar resultado no seu negócio.')
-    s = s.replace('Respondemos com os próximos passos e, quando for o caso, com um orçamento.',
-                  'Marcamos uma conversa, presencial de Itaituba a Santarém ou por videochamada, para ver onde isso pode gerar resultado.')
-    if p in ('agente-whatsapp/index.html', 'chamados/index.html', 'balcao/index.html', 'leitor-de-bolso/index.html'):
-        # publisher/author/provider/brand soltos -> mesma entidade da empresa (@id) com nome e url, pois o Google lê o JSON-LD página a página
-        s = re.sub(r'("(?:publisher|author|provider|brand)": *)(?:\{[^{}]*"@type": *"Organization"[^{}]*"name": *"Edelmann Tecnologia"[^{}]*\}|\{ *"@id": *"https://edelmann\.com\.br/#empresa" *\})',
-                   lambda m: m.group(1) + EMPRESA_REF, s)
-    if p in ('agente-whatsapp/index.html', 'chamados/index.html'):
-        # fecho com um só botão de WhatsApp ("Falar no WhatsApp"): tira o "Quero ver como funciona" que havia sido somado
-        s = s.replace(demo_btn('/' + p.split('/')[0] + '/', antigo=True), '')
-    if p == 'balcao/index.html':  # fecho: o WhatsApp já está no cartão de canal; tira o botão "Quero ver como funciona" e põe o link para o artigo
-        s = s.replace('\n          ' + demo_btn('/balcao/', antigo=True), '')
-        if ARTIGO_GESTAO not in s:
-            alvo = '<p class="more"><a class="link" href="/produtos/">'
-            assert s.count(alvo) == 1
-            s = s.replace(alvo, f'<p class="more"><a class="link" href="{ARTIGO_GESTAO}">Sistema de gestão: o que perguntar antes de contratar{ARROW}</a></p>\n        ' + alvo)
     if p == 'privacidade/index.html':
-        s = s.replace('<strong>Formulário de orçamento:</strong>', '<strong>Formulário de agendamento:</strong>')
         s = re.sub(r'Última atualização: [^<]*\.', 'Última atualização: 31 de outubro de 2026.', s)
         s = descricao(s, 'Política de privacidade da Edelmann Tecnologia: como tratamos os dados pessoais recebidos no site e nos atendimentos, conforme a LGPD.')
     if p == '404.html':
@@ -532,43 +464,11 @@ for p in APPS + ['privacidade/index.html', '404.html']:
             ('/sobre/', 'Sobre'), ('/produtos/', 'Soluções'), ('/contato/', 'Agendar conversa')]) + '\n      </ul>', s, count=1, flags=re.S)
     wr(p, comum(p, s))
 
-# ---------- 6. Dicas (-> início) e Serviços (-> /suporte/): só redirecionam ----------
-REDIR = '''<!doctype html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Edelmann Tecnologia</title>
-<meta name="robots" content="noindex">
-<link rel="canonical" href="https://edelmann.com.br/">
-<meta http-equiv="refresh" content="0; url=/">
-</head>
-<body>
-<p><a href="/">Ir para a página inicial da Edelmann Tecnologia</a></p>
-</body>
-</html>
-'''
-# /servicos/ (e subpáginas) levam ao /suporte/; /dicas/ continua levando ao início
-REDIR_SUPORTE = (REDIR.replace('<link rel="canonical" href="https://edelmann.com.br/">', '<link rel="canonical" href="https://edelmann.com.br/suporte/">')
-                 .replace('url=/"', 'url=/suporte/"').replace('<a href="/">Ir para a página inicial da Edelmann Tecnologia</a>', '<a href="/suporte/">Ver o suporte técnico da Edelmann Tecnologia</a>'))
-assert REDIR_SUPORTE.count('/suporte/') == 3
-servicos = sorted(glob.glob('servicos/**/index.html', recursive=True))
-dicas = sorted(glob.glob('dicas/**/index.html', recursive=True))
-removidas = sorted(servicos + dicas)
-for p in servicos: wr(p, REDIR_SUPORTE)
-for p in dicas: wr(p, REDIR)
-wr('setores/index.html', REDIR.replace('url=/"', 'url=/#setores"'))  # /setores/ não dá 404: leva ao bloco de setores da home
-
-# ---------- 7. sitemap e manifest ----------
+# ---------- 6. sitemap ----------
 s = rd('sitemap.xml')
-s = re.sub(r'\n  <url><loc>https://edelmann\.com\.br/(?:servicos|dicas)/[^<]*</loc>.*?</url>', '', s)
 for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/', 'agente-whatsapp/', 'chamados/', 'balcao/', 'privacidade/',
           'leitor-de-bolso/', 'leitor-de-bolso/privacidade.html'):  # alteradas em 29/10 (JSON-LD, rodapé ou texto)
     d = '2026-10-31' if u in ('', 'itaituba/', 'contato/', 'privacidade/') else '2026-10-29'  # 31/10: formulário avisa por e-mail (texto e política)
     s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>' + d, s)
 wr('sitemap.xml', s)
-m = json.loads(rd('manifest.webmanifest'))
-m['description'] = 'Consultoria em TI para empresas de pequeno e médio porte. De Itaituba a Santarém (PA) e videochamada.'
-wr('manifest.webmanifest', json.dumps(m, ensure_ascii=False, indent=2) + '\n')
-
-print('ok:', len(removidas), 'redirecionamentos;', s.count('<url>'), 'URLs no sitemap')
+print('ok:', s.count('<url>'), 'URLs no sitemap')

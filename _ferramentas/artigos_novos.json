@@ -27,7 +27,9 @@
     "p": "A consultoria começa algum projeto sem a minha aprovação?",
     "r": "Não. Nada começa sem a aprovação do cliente, e a Edelmann recomenda apenas o que traz retorno para a empresa."
    }
-  ]
+  ],
+  "publicado": "2026-10-29",
+  "atualizado": "2026-10-29"
  },
  {
   "slug": "como-escolher-empresa-de-ti-itaituba-santarem",
@@ -53,7 +55,9 @@
     "p": "Quem é dono das senhas e da documentação da minha TI?",
     "r": "Deve ser você. Peça que acessos e configurações sejam entregues por escrito, para não depender de uma única pessoa."
    }
-  ]
+  ],
+  "publicado": "2026-10-29",
+  "atualizado": "2026-10-29"
  },
  {
   "slug": "whatsapp-pessoas-robo-ou-agente-de-ia",
@@ -83,7 +87,9 @@
     "p": "Como saber qual opção serve para a minha empresa?",
     "r": "Compare quantas mensagens chegam, quantas se repetem e quantas ficam sem resposta. Numa conversa com a Edelmann você recebe uma recomendação baseada nisso."
    }
-  ]
+  ],
+  "publicado": "2026-10-29",
+  "atualizado": "2026-10-29"
  },
  {
   "slug": "planilha-ou-sistema",
@@ -109,7 +115,9 @@
     "p": "Sistema precisa funcionar com internet?",
     "r": "Depende do sistema. Nosso Balcão PDV, por exemplo, funciona mesmo sem internet. Vale conferir isso antes de escolher, principalmente se a conexão da empresa oscila."
    }
-  ]
+  ],
+  "publicado": "2026-10-18",
+  "atualizado": "2026-10-29"
  },
  {
   "slug": "sistema-de-gestao-o-que-perguntar-antes-de-contratar",
@@ -139,6 +147,41 @@
     "p": "Vale mais a pena continuar na planilha?",
     "r": "Para empresa muito pequena e com pouco volume, às vezes sim. Quando há várias versões do arquivo ou a mesma informação é digitada em mais de um lugar, um sistema costuma compensar."
    }
-  ]
+  ],
+  "publicado": "2026-10-29",
+  "atualizado": "2026-10-29"
+ },
+ {
+  "slug": "gastos-com-tecnologia",
+  "h1": "Como saber se a sua empresa está gastando demais com tecnologia",
+  "titulo_seo": "Gastos com tecnologia: onde a empresa gasta demais",
+  "descricao": "Assinaturas esquecidas, equipamento parado e sistemas que não conversam: saiba onde a tecnologia pode estar pesando no caixa da sua empresa.",
+  "conclusao": null,
+  "corpo_html": "<p>Tecnologia deveria economizar dinheiro. Quando ninguém olha para ela com calma, acontece o contrário: os gastos se acumulam em silêncio, um pouco a cada mês.</p>\n<h2>O gasto que ninguém vê</h2>\n<p>Raramente o problema é uma conta grande. São várias pequenas, espalhadas em cartões, boletos e faturas diferentes, que ninguém olha em conjunto. Somadas ao longo do ano, viram um valor que faria diferença no caixa.</p>\n<h2>Onde o dinheiro costuma escapar</h2>\n<ul>\n<li><strong>Assinaturas esquecidas</strong> de testes que viraram cobrança mensal.</li>\n<li><strong>Licenças a mais</strong> para funcionários que já saíram.</li>\n<li><strong>Sistemas que não conversam</strong>, obrigando alguém a redigitar informação.</li>\n<li><strong>Paradas não planejadas</strong>: um computador ou a internet fora do ar no horário de maior venda.</li>\n<li><strong>Falta de cópia de segurança</strong>: o custo só aparece no dia em que se perde tudo.</li>\n</ul>\n<div class=\"note-box\">O gasto mais caro com tecnologia nem sempre está na fatura. Muitas vezes está no tempo da equipe e na venda que não aconteceu.</div>\n<h2>Como a Edelmann ajuda</h2>\n<p>Fazemos o diagnóstico completo dos gastos com tecnologia da sua empresa e entregamos o que cortar, o que juntar e onde investir para ter retorno. Você decide com o número na mão.</p>",
+  "faq": [],
+  "publicado": "2026-10-18",
+  "atualizado": "2026-10-28"
+ },
+ {
+  "slug": "backup-quanto-custa-perder-dados",
+  "h1": "Backup: quanto custa perder os dados da empresa",
+  "titulo_seo": "Backup: quanto custa perder os dados da empresa",
+  "descricao": "Um computador que queima, um vírus ou um celular perdido podem levar anos de informação. Veja quanto isso custa e por que ter backup não basta.",
+  "conclusao": null,
+  "corpo_html": "<p>Quase toda empresa só pensa em backup depois do primeiro susto. O problema é que, nesse dia, normalmente já é tarde: o cadastro de clientes, as notas, o financeiro e o histórico de vendas foram junto.</p>\n<h2>O custo que ninguém coloca na conta</h2>\n<ul>\n<li><strong>Dias parado</strong> enquanto se tenta recuperar ou refazer o que se perdeu.</li>\n<li><strong>Retrabalho</strong> para redigitar cadastros, pedidos e lançamentos.</li>\n<li><strong>Venda perdida</strong> com o cliente que não pôde ser atendido.</li>\n<li><strong>Problemas com o fisco e com clientes</strong> quando faltam notas e comprovantes.</li>\n</ul>\n<div class=\"note-box\">A pergunta não é \"se\" um computador vai falhar, e sim \"quando\". Backup é o que decide se esse dia vai ser um susto ou um prejuízo.</div>\n<h2>Ter backup não é o mesmo que estar protegido</h2>\n<p>Muitas empresas descobrem no pior momento que a cópia estava incompleta, desatualizada ou não abria. Um pendrive na gaveta ou uma pasta na nuvem configurada há anos raramente resolve.</p>\n<h2>Como a Edelmann ajuda</h2>\n<p>Avaliamos como os dados da sua empresa estão guardados hoje, mostramos os riscos reais e deixamos a proteção funcionando e conferida.</p>",
+  "faq": [],
+  "publicado": "2026-10-18",
+  "atualizado": "2026-10-28"
+ },
+ {
+  "slug": "whatsapp-atendimento-fora-do-horario",
+  "h1": "WhatsApp no atendimento: o cliente que você perde fora do horário",
+  "titulo_seo": "WhatsApp fora do horário: o cliente que você perde",
+  "descricao": "O cliente manda mensagem às 21h e compra de quem responder primeiro. Veja onde o atendimento pelo WhatsApp deixa venda passar.",
+  "conclusao": null,
+  "corpo_html": "<p>Muitos clientes chegam pelo WhatsApp. E vários chegam fora do horário: à noite, no fim de semana, no feriado. Quem responde primeiro, normalmente, leva a venda.</p>\n<h2>Onde o atendimento pelo WhatsApp costuma falhar</h2>\n<ul>\n<li><strong>Mensagem sem resposta</strong> por horas, porque ninguém está de olho.</li>\n<li><strong>Um único celular</strong> para todo mundo, sem saber quem respondeu o quê.</li>\n<li><strong>Perguntas repetidas</strong> (preço, horário, endereço) tomando o tempo da equipe.</li>\n<li><strong>Cliente esquecido</strong>: pediu orçamento, ninguém voltou a falar com ele.</li>\n</ul>\n<h2>Como a Edelmann ajuda</h2>\n<p>Analisamos como a sua empresa atende hoje e montamos um atendimento que responde na hora, a qualquer hora, e passa para a equipe quando precisa, sem deixar nenhum cliente esquecido. Desenvolvemos a nossa própria <a href=\"/agente-whatsapp/\">solução de atendimento automático no WhatsApp</a>.</p>\n<div class=\"note-box\">Cada mensagem sem resposta é um cliente indo para o concorrente. Responder rápido costuma ser o que decide a venda.</div>",
+  "faq": [],
+  "publicado": "2026-10-18",
+  "atualizado": "2026-10-28"
  }
 ]

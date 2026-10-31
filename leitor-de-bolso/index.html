@@ -25,7 +25,6 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Crect%20width='48'%20height='48'%20rx='11'%20fill='%230F2A5C'/%3E%3Cpath%20fill='%23fff'%20d='M14%2012h20v5H20v4.5h11v5H20V31h14v5H14z'/%3E%3Crect%20x='36'%20y='31'%20width='4'%20height='5'%20rx='1'%20fill='%235FDDEC'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/manifest.webmanifest">
 <link rel="preload" href="/fonts/space-grotesk.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <script>document.documentElement.classList.add('js')</script>
@@ -335,7 +334,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.03em}
 h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3D6);-webkit-background-clip:text;background-clip:text;color:transparent}
 .site-header{background:rgba(244,247,251,.88)}
 .brand b{font-weight:700;letter-spacing:.08em}
-.brand small,.eyebrow,.num,.tags li,.status,.m-label,.channel-label,.entry dd,.origin,.crumbs,.feats li,.check-label{font-family:var(--mono)}
+.brand small,.eyebrow,.num,.tags li,.status,.channel-label,.entry dd,.origin,.crumbs,.feats li,.check-label{font-family:var(--mono)}
 .eyebrow{gap:.6rem;letter-spacing:.1em}
 .eyebrow::before{content:"//";width:auto;height:auto;background:none;color:var(--gold);letter-spacing:0}
 .num{font-style:normal;font-size:.8125rem;color:var(--gold-ink)}
@@ -351,8 +350,6 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .status{font-size:.75rem}
 .step::before,.principles h3::before{font-family:var(--mono);font-style:normal;font-weight:500}
 .entry dt{font-weight:600}
-.svc-mini{border-radius:14px;overflow:hidden}
-.svc-mini li{font-weight:500}
 /* Abertura escura com grade */
 .hero{background:var(--night);border-bottom:0;color:var(--on-night)}
 .hero::before{background:radial-gradient(50rem 28rem at 82% -5%,rgba(47,124,246,.32),transparent 60%),radial-gradient(34rem 22rem at 5% 105%,rgba(34,195,214,.14),transparent 60%),linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px) 0 0/48px 48px,linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px) 0 0/48px 48px;-webkit-mask-image:none;mask-image:none}
@@ -367,16 +364,6 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .hero a:not(.btn){color:#fff}
 .hero .status{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.16);color:#fff}
 .hero :focus-visible{outline-color:var(--gold-soft)}
-.m-disc{fill:rgba(255,255,255,.035)}
-.m-line{stroke:rgba(255,255,255,.16)}
-.m-ring{stroke:var(--gold-soft)}
-.m-node{fill:var(--night);stroke:var(--gold-soft)}
-.m-ico{stroke:#fff}
-.m-label{fill:var(--on-night)}
-.m-core{fill:var(--gold)}
-.m-core-ring{stroke:#fff;stroke-opacity:.35}
-.m-mark{fill:#fff}
-.map svg{filter:drop-shadow(0 0 70px rgba(47,124,246,.3))}
 .band{background:var(--night)}
 .channel{border-radius:14px}
 .channel:hover{background:var(--navy)}
@@ -422,7 +409,6 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .prose strong{color:var(--ink)}
 .prose a{color:var(--gold-ink)}
 .note-box{margin:2rem 0;padding:1.25rem 1.4rem;border-left:3px solid var(--gold);background:var(--sand);border-radius:0 10px 10px 0}
-.meta-line{margin-top:1rem;font:500 .8125rem/1.4 var(--mono);color:var(--on-night)}
 .post-list{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr));padding:0;list-style:none}
 .post-list a{display:block;height:100%;padding:1.5rem;background:var(--paper);border:1px solid var(--line);border-radius:14px;text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
 .post-list a:hover{border-color:var(--gold);transform:translateY(-2px)}
@@ -436,10 +422,6 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 .form input,.form select,.form textarea{width:100%;min-height:3rem;padding:.7rem .85rem;border:1px solid var(--line-2);border-radius:8px;background:#fff;font:400 1rem/1.4 var(--sans);color:var(--ink)}
 .form textarea{min-height:7.5rem;resize:vertical}
 .form input:focus,.form select:focus,.form textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
-.form fieldset{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin:0;padding:0;border:0}
-.form legend{margin-bottom:.5rem;font:600 .875rem/1.3 var(--sans);color:var(--ink)}
-.form fieldset label{display:inline-flex;align-items:center;gap:.45rem;font-weight:400}
-.form fieldset input{width:auto;min-height:0}
 .form .actions{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
 .form .fine{font-size:.8125rem;color:var(--muted)}
 @media (max-width:400px){.channel-value{font-size:1rem}.channel{min-width:0}}
@@ -477,7 +459,6 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="m3.5 6 8.5 7 8.5-7"/></symbol>
     <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.6 7.1L4 20l1.4-4.2A8 8 0 1 1 20 11.5Z"/><path d="M8.5 11.5h.01M12 11.5h.01M15.5 11.5h.01"/></symbol>
-    <symbol id="i-camera" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="3.75"/><path d="M16.75 7.25h.01"/></symbol>
   </defs>
 </svg>
 
@@ -752,16 +733,12 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
         <div class="channels">
           <a class="channel" href="mailto:edelmann.tecnologia@gmail.com?subject=Leitor%20de%20Bolso%20-%20Edelmann%20Tecnologia">
             <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>E-mail</span>
-            <span class="channel-value" data-email>edelmann.tecnologia@gmail.com</span>
+            <span class="channel-value">edelmann.tecnologia@gmail.com</span>
             <span class="channel-cta">Escrever mensagem<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
           </a>
-          <a class="channel channel-alt" data-link="whatsapp" href="#contato" hidden>
+          <a class="channel channel-alt" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20do%20Leitor%20de%20Bolso." target="_blank" rel="noopener">
             <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>WhatsApp</span>
             <span class="channel-cta">Iniciar conversa<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
-          </a>
-          <a class="channel channel-alt" data-link="instagram" href="#contato" hidden>
-            <span class="channel-label"><svg class="i" aria-hidden="true" focusable="false"><use href="#i-camera"/></svg>Instagram</span>
-            <span class="channel-cta">Ver o perfil<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
           </a>
         </div>
         <p class="note">O assunto já vem preenchido.</p>
@@ -793,7 +770,7 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
           <li><a href="/privacidade/">Privacidade</a></li>
         </ul>
       </nav>
-      <a class="foot-mail" href="mailto:edelmann.tecnologia@gmail.com?subject=Leitor%20de%20Bolso%20-%20Edelmann%20Tecnologia" data-email>edelmann.tecnologia@gmail.com</a>
+      <a class="foot-mail" href="mailto:edelmann.tecnologia@gmail.com?subject=Leitor%20de%20Bolso%20-%20Edelmann%20Tecnologia">edelmann.tecnologia@gmail.com</a>
     </div>
     <div class="legal">
       <p>© 2026 Edelmann Tecnologia · <a href="/itaituba/">Itaituba, Pará</a></p>
@@ -804,47 +781,26 @@ h1 em,h2 em{font-style:normal;background:linear-gradient(90deg,var(--gold),#22C3
 </footer>
 
 <script>
-/* ===== Configuração: preencha quando existir e publique de novo ===== */
-var CONFIG = {
-  email: "edelmann.tecnologia@gmail.com",
-  whatsapp: "93 98121-2924",   // DDD + número (o 55 entra sozinho); vazio esconde tudo o que depende dele
-  instagram: "",  // só o nome, sem @
-  download: "",   // link de download do app, se houver
-  loja: "",       // página do app numa loja
-  play: "",       // link do app na Google Play
-  apk: "",        // link direto do arquivo .apk
-  web: ""         // endereço do app no navegador
-};
-/* ================================================================== */
+/* ===== Quando o app sair na Google Play, ponha o link aqui e publique de novo ===== */
+var PLAY = "";
+var WEB = "";   // endereço do app no navegador (iPhone e computador); vazio esconde os botões
+/* ================================================================================= */
 (function(){
-  var d=document,C=CONFIG;
+  var d=document;
   function each(s,f){Array.prototype.forEach.call(d.querySelectorAll(s),f)}
   function abrir(a,url){a.href=url;a.target="_blank";a.rel="noopener";a.hidden=false}
 
-  // E-mail: troca o endereço e mantém assunto e texto
-  if(C.email){
-    each('a[href^="mailto:"]',function(a){a.href=a.href.replace(/^mailto:[^?]*/,"mailto:"+C.email)});
-    each("[data-email]",function(e){e.textContent=C.email});
-  }
-  // Android: Play ou loja, senão arquivo; sem nada, fica o pedido por e-mail
-  var loja=C.play||C.loja,arq=C.apk||C.download;
-  if(loja||arq){
-    each('[data-link="android"]',function(a){abrir(a,loja||arq);a.textContent=C.play?"Baixar na Google Play":C.loja?"Ver na loja":"Baixar o app"});
-    each('[data-status="android"]',function(s){s.classList.remove("soon");s.lastChild.textContent=C.play?"Disponível na Play Store":"Disponível"});
+  // Android: com o link da Play, botão e situação mudam; sem nada, fica o pedido por e-mail
+  if(PLAY){
+    each('[data-link="android"]',function(a){abrir(a,PLAY);a.textContent="Baixar na Google Play"});
+    each('[data-status="android"]',function(s){s.classList.remove("soon");s.lastChild.textContent="Disponível na Play Store"});
     each("[data-cta]",function(a){a.firstChild.textContent="Baixar grátis"});
   }
   // Navegador: os botões só aparecem com endereço
-  if(C.web){
-    each('[data-link="web"]',function(a){abrir(a,C.web)});
+  if(WEB){
+    each('[data-link="web"]',function(a){abrir(a,WEB)});
     each('[data-status="web"]',function(s){s.classList.remove("soon");s.lastChild.textContent="Disponível"});
   }
-  var n=C.whatsapp.replace(/\D/g,"");
-  if(n){
-    if(n.length===10||n.length===11)n="55"+n;
-    each('[data-link="whatsapp"]',function(a){abrir(a,"https://wa.me/"+n+"?text="+encodeURIComponent("Olá! Vim pela página do Leitor de Bolso."))});
-  }
-  if(C.instagram)each('[data-link="instagram"]',function(a){abrir(a,"https://instagram.com/"+encodeURIComponent(C.instagram.replace(/^@/,"")))});
-
   // Menu do celular
   var t=d.querySelector(".menu-toggle");
   if(!t)return;

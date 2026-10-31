@@ -1,10 +1,8 @@
 # Páginas por setor (/setores/<setor>/): dores típicas do ramo + o que muda + chamada para conversa e checklist.
 # Usa sobre/index.html como casca. Rodar depois do consultoria.py. Idempotente.
 import os, re, json, html
+from comum import URL, ARROW, WA_CHECK, trilha, faq_ld, casca, sitemap_add
 AQUI = os.path.dirname(os.path.abspath(__file__)); SITE = os.path.dirname(AQUI); os.chdir(SITE)
-URL = 'https://edelmann.com.br'
-ARROW = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>'
-WA_CHECK = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20receber%20o%20checklist%20%2210%20perguntas%20para%20descobrir%20onde%20a%20empresa%20perde%20dinheiro%22.%20Meu%20nome%20%C3%A9%20'
 
 SETORES = [
   ('comercio', 'Comércio', 'Consultoria em TI para o comércio',
@@ -82,18 +80,12 @@ FAQ_SETOR = {
      'Esse é um cuidado importante. Combinamos cada etapa com a direção antes de começar e conduzimos junto com a equipe, respeitando a rotina da escola. Nada muda sem a sua aprovação.'),
   ],
 }
-# títulos dos artigos (cópia local: importar artigos.py geraria as páginas)
-# os artigos novos vêm do mesmo JSON do artigos.py (um h1 mudado lá muda aqui); só o antigo é digitado
+# títulos dos artigos: do mesmo JSON do artigos.py (um h1 mudado lá muda aqui; importar artigos.py geraria as páginas)
 TIT_ARTIGO = {n['slug']: n['h1'] for n in json.load(open(os.path.join(AQUI, 'artigos_novos.json'), encoding='utf-8'))}
-TIT_ARTIGO['backup-quanto-custa-perder-dados'] = 'Backup: quanto custa perder os dados da empresa'
 assert all(a in TIT_ARTIGO for x in EXTRA.values() for a in x['artigos'])
 TITULO = {'comercio': 'TI para o comércio de Itaituba a Santarém', 'saude': 'TI para clínicas e farmácias de Itaituba a Santarém',
           'educacao': 'TI para escolas de Itaituba a Santarém'}
 CHECK_BTN = f'<a class="btn btn-ghost" href="{WA_CHECK}" target="_blank" rel="noopener">Receber o checklist grátis<span class="sr"> (abre o WhatsApp em nova aba)</span></a>'
-
-def trilha(*itens):  # BreadcrumbList: itens = (nome, caminho), o primeiro é o Início
-    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-        {"@type": "ListItem", "position": i, "name": n, "item": URL + c} for i, (n, c) in enumerate(itens, 1)]}
 
 # descrição do checklist e perguntas de amostra (iguais às de consultoria.py e do PDF em edelmann-divulgacao/checklist.html)
 CHECK_INFO = '''<div class="check-info">
@@ -112,30 +104,16 @@ CSS_CHECK = '''.check-info{max-width:34rem;margin:1.75rem auto 0;text-align:left
 .check-info ul{display:grid;gap:.5rem;margin:.6rem 0 0;padding:0;list-style:none}
 .check-info li{padding:.55rem .9rem;border-left:2px solid var(--gold-soft);border-radius:0 8px 8px 0;background:rgba(255,255,255,.04);font-size:.9375rem;line-height:1.4;color:#fff}
 '''
-casca = open('sobre/index.html', encoding='utf-8').read()
 
 def gerar(slug, nome, h1, desc, quem, dores, ganhos):
     url = f'{URL}/setores/{slug}/'
     titulo = TITULO[slug]  # curto para caber no Google (até 65 caracteres com ' | Edelmann')
     x = EXTRA[slug]
-    s = re.sub(r'<title>.*?</title>', f'<title>{titulo} | Edelmann</title>', casca, count=1)
-    for k in ('description', 'og:description', 'twitter:description'):
-        s = re.sub(r'(<meta (?:name|property)="' + k + r'" content=")[^"]*', lambda m: m.group(1) + desc, s)
-    for k in ('og:title', 'twitter:title'):
-        s = re.sub(r'(<meta (?:name|property)="' + k + r'" content=")[^"]*', lambda m: m.group(1) + titulo, s)
-    s = s.replace('<link rel="canonical" href="https://edelmann.com.br/sobre/">', f'<link rel="canonical" href="{url}">')
-    s = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + url, s)
-    s = re.sub(r'<script type="application/ld\+json">.*?</script>\n?', '', s, flags=re.S)
     ld = {"@context": "https://schema.org", "@type": "Service", "name": h1, "serviceType": "Consultoria em TI",
           "areaServed": [{"@type": "City", "name": "Itaituba"}, {"@type": "City", "name": "Santarém"}, {"@type": "State", "name": "Pará"}], "provider": {"@type": "ProfessionalService", "@id": URL + "/#empresa", "name": "Edelmann Tecnologia", "url": URL + '/'}}
     faq = FAQ_SETOR[slug]
-    faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
-              "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]}
     faq_html = ''.join(f'<h3>{html.escape(q, quote=False)}</h3><p>{html.escape(a, quote=False)}</p>' for q, a in faq)
-    blocos = ''.join('<script type="application/ld+json">\n' + json.dumps(o, ensure_ascii=False, indent=1) + '\n</script>\n'
-                     for o in (ld, trilha(('Início', '/'), (nome, f'/setores/{slug}/')), faq_ld))
-    s = s.replace('<style>', blocos + '<style>', 1)
-    s = s.replace('<a href="/sobre/" aria-current="page">Sobre</a>', '<a href="/sobre/">Sobre</a>')
+    s = casca(url, f'{titulo} | Edelmann', titulo, desc, [ld, trilha(('Início', '/'), (nome, f'/setores/{slug}/')), faq_ld(faq)])
     dores_html = ''.join(f'<li><strong>{t}.</strong> {d}</li>' for t, d in dores)
     ganhos_html = ''.join(f'<li>{g}</li>' for g in ganhos)
     veja = [(f'/setores/{sl}/', h) for sl, _, h, *_ in SETORES if sl != slug]
@@ -187,11 +165,5 @@ def gerar(slug, nome, h1, desc, quem, dores, ganhos):
 
 for st in SETORES: gerar(*st)
 
-sm = open('sitemap.xml', encoding='utf-8').read()
-for slug, *_ in SETORES:
-    u = f'{URL}/setores/{slug}/'
-    if f'<loc>{u}</loc>' not in sm:
-        sm = sm.replace('</urlset>', f'  <url><loc>{u}</loc><lastmod>2026-10-18</lastmod></url>\n</urlset>')
-sm = re.sub(r'(<loc>https://edelmann\.com\.br/setores/[a-z]+/</loc><lastmod>)[^<]*', r'\g<1>2026-10-29', sm)
-open('sitemap.xml', 'w', encoding='utf-8', newline='\n').write(sm)
+for slug, *_ in SETORES: sitemap_add(f'{URL}/setores/{slug}/', '2026-10-29')
 print('ok', len(SETORES), 'setores')

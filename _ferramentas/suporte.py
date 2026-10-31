@@ -1,39 +1,22 @@
 # Página /suporte/ (suporte técnico e manutenção): texto em suporte.json. Usa sobre/index.html como casca, como o setores.py.
-# Rodar depois do consultoria.py e antes do acabamento.py. Idempotente.
+# Rodar depois do consultoria.py. Idempotente.
 import os, re, json, html
 from urllib.parse import quote
+from comum import URL, ARROW, trilha, faq_ld, casca, sitemap_add
 AQUI = os.path.dirname(os.path.abspath(__file__)); SITE = os.path.dirname(AQUI); os.chdir(SITE)
-URL = 'https://edelmann.com.br'
-ARROW = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>'
 D = json.load(open(os.path.join(AQUI, 'suporte.json'), encoding='utf-8'))
 WA_SUP = 'https://wa.me/5593981212924?text=' + quote(D['msg_whatsapp'], safe='!')
 # o título completo já traz "| Edelmann"; nos metas de compartilhamento vai sem o sufixo
 assert not [k for k in ('title', 'description', 'h1') if re.search(r'["<>&]', D[k])]
 titulo_curto = D['title'].replace(' | Edelmann', '')
 
-def trilha(*itens):  # BreadcrumbList: itens = (nome, caminho), o primeiro é o Início
-    return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-        {"@type": "ListItem", "position": i, "name": n, "item": URL + c} for i, (n, c) in enumerate(itens, 1)]}
-
-s = open('sobre/index.html', encoding='utf-8').read()
-s = re.sub(r'<title>.*?</title>', f'<title>{D["title"]}</title>', s, count=1)
-for k in ('description', 'og:description', 'twitter:description'):
-    s = re.sub(r'(<meta (?:name|property)="' + k + r'" content=")[^"]*', lambda m: m.group(1) + D['description'], s)
-for k in ('og:title', 'twitter:title'):
-    s = re.sub(r'(<meta (?:name|property)="' + k + r'" content=")[^"]*', lambda m: m.group(1) + titulo_curto, s)
-s = s.replace('<link rel="canonical" href="https://edelmann.com.br/sobre/">', f'<link rel="canonical" href="{URL}/suporte/">')
-s = re.sub(r'(<meta property="og:url" content=")[^"]*', lambda m: m.group(1) + URL + '/suporte/', s)
-s = re.sub(r'<script type="application/ld\+json">.*?</script>\n?', '', s, flags=re.S)
-ld = {"@context": "https://schema.org", "@type": "Service", "name": D['h1'], "serviceType": "Suporte técnico e manutenção de TI",
-      "description": D['description'], "url": URL + "/suporte/",
-      "areaServed": [{"@type": "City", "name": "Itaituba"}, {"@type": "City", "name": "Santarém"}, {"@type": "State", "name": "Pará"}],
-      "provider": {"@type": "ProfessionalService", "@id": URL + "/#empresa", "name": "Edelmann Tecnologia", "url": URL + "/"}}
-faq_ld = {"@context": "https://schema.org", "@type": "FAQPage",
-          "mainEntity": [{"@type": "Question", "name": f['p'], "acceptedAnswer": {"@type": "Answer", "text": f['r']}} for f in D['faq']]}
-blocos = ''.join('<script type="application/ld+json">\n' + json.dumps(o, ensure_ascii=False, indent=1) + '\n</script>\n'
-                 for o in (ld, trilha(('Início', '/'), ('Suporte técnico', '/suporte/')), faq_ld))
-s = s.replace('<style>', blocos + '<style>', 1)
-s = s.replace('<a href="/sobre/" aria-current="page">Sobre</a>', '<a href="/sobre/">Sobre</a>')
+s = casca(f'{URL}/suporte/', D['title'], titulo_curto, D['description'], [
+    {"@context": "https://schema.org", "@type": "Service", "name": D['h1'], "serviceType": "Suporte técnico e manutenção de TI",
+     "description": D['description'], "url": URL + "/suporte/",
+     "areaServed": [{"@type": "City", "name": "Itaituba"}, {"@type": "City", "name": "Santarém"}, {"@type": "State", "name": "Pará"}],
+     "provider": {"@type": "ProfessionalService", "@id": URL + "/#empresa", "name": "Edelmann Tecnologia", "url": URL + "/"}},
+    trilha(('Início', '/'), ('Suporte técnico', '/suporte/')),
+    faq_ld([(f['p'], f['r']) for f in D['faq']])])
 
 faq_html = ''.join(f'<h3>{html.escape(f["p"], quote=False)}</h3><p>{html.escape(f["r"], quote=False)}</p>' for f in D['faq'])
 BTN_SUP = f'<a class="btn btn-primary" href="{WA_SUP}" target="_blank" rel="noopener">Preciso de suporte<span class="sr"> (abre o WhatsApp em nova aba)</span>{ARROW}</a>'
@@ -77,9 +60,5 @@ s = re.sub(r'<main id="conteudo" tabindex="-1">.*?</main>', lambda m: main, s, c
 os.makedirs('suporte', exist_ok=True)
 open('suporte/index.html', 'w', encoding='utf-8', newline='\n').write(s)
 
-sm = open('sitemap.xml', encoding='utf-8').read()
-u = f'{URL}/suporte/'
-if f'<loc>{u}</loc>' not in sm:
-    sm = sm.replace('</urlset>', f'  <url><loc>{u}</loc><lastmod>2026-10-29</lastmod></url>\n</urlset>')
-open('sitemap.xml', 'w', encoding='utf-8', newline='\n').write(sm)
+sitemap_add(f'{URL}/suporte/', '2026-10-29')
 print('ok /suporte/')
