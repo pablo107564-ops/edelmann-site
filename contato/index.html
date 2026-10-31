@@ -604,7 +604,7 @@ button.btn-ghost{background:transparent;font-family:inherit;cursor:pointer}
 
   <section class="section" id="agendar" aria-labelledby="agendar-titulo">
     <div class="wrap">
-      <div class="head reveal"><div><p class="eyebrow">Agendamento</p><h2 id="agendar-titulo">Agende pelo formulário.</h2></div><p class="sub">Preencha e envie pelo WhatsApp ou por e-mail. Nada fica guardado no site: a mensagem sai pronta no seu aplicativo.</p></div>
+      <div class="head reveal"><div><p class="eyebrow">Agendamento</p><h2 id="agendar-titulo">Agende pelo formulário.</h2></div><p class="sub">Preencha e envie pelo WhatsApp ou por e-mail: a mensagem sai pronta no seu aplicativo.</p></div>
       <form class="form" id="form-agenda">
           <div class="row">
             <label>Seu nome<input name="nome" autocomplete="name" required pattern=".*\S.*" title="Informe seu nome"></label>
@@ -614,11 +614,12 @@ button.btn-ghost{background:transparent;font-family:inherit;cursor:pointer}
             <select name="formato"><option>Presencial, de Itaituba a Santarém</option><option>Videochamada</option></select>
           </label>
           <label><span>O que mais pesa na empresa hoje? <small>(opcional)</small></span><textarea name="desafio" placeholder="Ex.: o que a empresa faz e o que você espera alcançar"></textarea></label>
+          <input type="text" name="site_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
         <div class="actions">
           <button class="btn btn-primary" type="submit">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></button>
           <button class="btn btn-ghost" type="button" id="agenda-email">Enviar por e-mail</button>
         </div>
-        <p class="fine">Ao enviar, abrimos o WhatsApp ou o e-mail com a mensagem pronta para você conferir. Por lá combinamos o dia e o horário. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
+        <p class="fine">Ao enviar, abrimos o WhatsApp ou o e-mail com a mensagem pronta para você conferir. Por lá combinamos o dia e o horário. O que você preencher também chega por e-mail à Edelmann. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
         <p class="fine" id="agenda-status" role="status" aria-live="polite"></p>
       </form>
       <noscript><style>#form-agenda{display:none}</style><p class="fine">Para agendar, fale pelo <a href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20com%20a%20Edelmann%20Tecnologia.">WhatsApp (93) 98121-2924</a> ou pelo <a href="mailto:edelmann.tecnologia@gmail.com?subject=Agendar%20conversa%20-%20Edelmann%20Tecnologia">e-mail</a>.</p></noscript>
@@ -718,7 +719,7 @@ button.btn-ghost{background:transparent;font-family:inherit;cursor:pointer}
 })();
 </script>
 <script>
-/* Agendamento: monta a mensagem no navegador e abre WhatsApp ou e-mail. Nada é enviado ao site. */
+/* Agendamento: avisa a Edelmann por e-mail e abre WhatsApp ou e-mail com a mensagem pronta. */
 (function(){
   var f=document.getElementById('form-agenda'); if(!f)return;
   var st=document.getElementById('agenda-status');
@@ -735,14 +736,19 @@ button.btn-ghost{background:transparent;font-family:inherit;cursor:pointer}
     if(href){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=rotulo;st.appendChild(a)}
     if(depois)st.appendChild(document.createTextNode(depois));
   }
+  function avisar(canal){  /* falhar aqui não pode atrapalhar o contato */
+    try{navigator.sendBeacon('https://script.google.com/macros/s/AKfycbyNPeHM773dNT-TjRz6RRBjaRp0qpdqfwVxtKJjhbkdtKf0nEbCRIZbzkZewQFxcFeA/exec',new URLSearchParams({nome:v('nome'),empresa:v('empresa'),formato:v('formato'),desafio:v('desafio'),canal:canal,pagina:location.pathname,site_url:v('site_url')}))}catch(_){}
+  }
   f.addEventListener('submit',function(e){
     e.preventDefault(); if(!f.reportValidity())return;
+    avisar('whatsapp');
     var u='https://wa.me/5593981212924?text='+encodeURIComponent(msg());
     window.open(u,'_blank','noopener');
     aviso('Se o WhatsApp não abriu, ',u,'toque aqui','.');
   });
   document.getElementById('agenda-email').addEventListener('click',function(){
     if(!f.reportValidity())return;
+    avisar('e-mail');
     var a=document.createElement('a');
     a.href='mailto:edelmann.tecnologia@gmail.com?subject='+encodeURIComponent('Agendar conversa - '+(v('empresa')||v('nome')))+'&body='+encodeURIComponent(msg());
     document.body.appendChild(a); a.click(); a.remove();

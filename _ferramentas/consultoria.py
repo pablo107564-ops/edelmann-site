@@ -41,7 +41,8 @@ CAMPOS = '''          <div class="row">
           <label>Como prefere conversar?
             <select name="formato"><option>Presencial, de Itaituba a Santarém</option><option>Videochamada</option></select>
           </label>
-          <label><span>O que mais pesa na empresa hoje? <small>(opcional)</small></span><textarea name="desafio" placeholder="Ex.: o que a empresa faz e o que você espera alcançar"></textarea></label>'''
+          <label><span>O que mais pesa na empresa hoje? <small>(opcional)</small></span><textarea name="desafio" placeholder="Ex.: o que a empresa faz e o que você espera alcançar"></textarea></label>
+          <input type="text" name="site_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">'''
 NOSCRIPT = (f'<noscript><style>#form-agenda{{display:none}}</style><p class="fine">Para agendar, fale pelo <a href="{WA}">WhatsApp (93) 98121-2924</a> ou pelo '
             '<a href="mailto:edelmann.tecnologia@gmail.com?subject=Agendar%20conversa%20-%20Edelmann%20Tecnologia">e-mail</a>.</p></noscript>')
 FORM_DARK = f'''      <div class="quote" id="agendar">
@@ -49,7 +50,7 @@ FORM_DARK = f'''      <div class="quote" id="agendar">
         <form class="form" id="form-agenda">
 {CAMPOS}
           <button class="btn btn-primary" type="submit">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</button>
-          <p class="fine">Abre o WhatsApp com a mensagem pronta; por lá combinamos o dia e o horário. Prefere e-mail? <button class="alt-send" type="button" id="agenda-email">Enviar por e-mail</button>. Nada fica guardado no site. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
+          <p class="fine">Abre o WhatsApp com a mensagem pronta; por lá combinamos o dia e o horário. Prefere e-mail? <button class="alt-send" type="button" id="agenda-email">Enviar por e-mail</button>. O que você preencher também chega por e-mail à Edelmann. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
           <p class="fine" id="agenda-status" role="status" aria-live="polite"></p>
         </form>
         {NOSCRIPT}
@@ -60,12 +61,12 @@ FORM_CLARO = f'''      <form class="form" id="form-agenda">
           <button class="btn btn-primary" type="submit">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</button>
           <button class="btn btn-ghost" type="button" id="agenda-email">Enviar por e-mail</button>
         </div>
-        <p class="fine">Ao enviar, abrimos o WhatsApp ou o e-mail com a mensagem pronta para você conferir. Por lá combinamos o dia e o horário. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
+        <p class="fine">Ao enviar, abrimos o WhatsApp ou o e-mail com a mensagem pronta para você conferir. Por lá combinamos o dia e o horário. O que você preencher também chega por e-mail à Edelmann. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
         <p class="fine" id="agenda-status" role="status" aria-live="polite"></p>
       </form>
       {NOSCRIPT}'''
 FORM_JS = '''<script>
-/* Agendamento: monta a mensagem no navegador e abre WhatsApp ou e-mail. Nada é enviado ao site. */
+/* Agendamento: avisa a Edelmann por e-mail e abre WhatsApp ou e-mail com a mensagem pronta. */
 (function(){
   var f=document.getElementById('form-agenda'); if(!f)return;
   var st=document.getElementById('agenda-status');
@@ -82,14 +83,19 @@ FORM_JS = '''<script>
     if(href){var a=document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener';a.textContent=rotulo;st.appendChild(a)}
     if(depois)st.appendChild(document.createTextNode(depois));
   }
+  function avisar(canal){  /* falhar aqui não pode atrapalhar o contato */
+    try{navigator.sendBeacon('https://script.google.com/macros/s/AKfycbyNPeHM773dNT-TjRz6RRBjaRp0qpdqfwVxtKJjhbkdtKf0nEbCRIZbzkZewQFxcFeA/exec',new URLSearchParams({nome:v('nome'),empresa:v('empresa'),formato:v('formato'),desafio:v('desafio'),canal:canal,pagina:location.pathname,site_url:v('site_url')}))}catch(_){}
+  }
   f.addEventListener('submit',function(e){
     e.preventDefault(); if(!f.reportValidity())return;
+    avisar('whatsapp');
     var u='https://wa.me/5593981212924?text='+encodeURIComponent(msg());
     window.open(u,'_blank','noopener');
     aviso('Se o WhatsApp não abriu, ',u,'toque aqui','.');
   });
   document.getElementById('agenda-email').addEventListener('click',function(){
     if(!f.reportValidity())return;
+    avisar('e-mail');
     var a=document.createElement('a');
     a.href='mailto:edelmann.tecnologia@gmail.com?subject='+encodeURIComponent('Agendar conversa - '+(v('empresa')||v('nome')))+'&body='+encodeURIComponent(msg());
     document.body.appendChild(a); a.click(); a.remove();
@@ -518,7 +524,7 @@ for p in APPS + ['privacidade/index.html', '404.html']:
             s = s.replace(alvo, f'<p class="more"><a class="link" href="{ARTIGO_GESTAO}">Sistema de gestão: o que perguntar antes de contratar{ARROW}</a></p>\n        ' + alvo)
     if p == 'privacidade/index.html':
         s = s.replace('<strong>Formulário de orçamento:</strong>', '<strong>Formulário de agendamento:</strong>')
-        s = re.sub(r'Última atualização: [^<]*\.', 'Última atualização: 28 de outubro de 2026.', s)
+        s = re.sub(r'Última atualização: [^<]*\.', 'Última atualização: 31 de outubro de 2026.', s)
         s = descricao(s, 'Política de privacidade da Edelmann Tecnologia: como tratamos os dados pessoais recebidos no site e nos atendimentos, conforme a LGPD.')
     if p == '404.html':
         s = re.sub(r'<ul class="svc-links">.*?</ul>', lambda m: '<ul class="svc-links">\n' + '\n'.join(
@@ -558,7 +564,8 @@ s = rd('sitemap.xml')
 s = re.sub(r'\n  <url><loc>https://edelmann\.com\.br/(?:servicos|dicas)/[^<]*</loc>.*?</url>', '', s)
 for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/', 'agente-whatsapp/', 'chamados/', 'balcao/', 'privacidade/',
           'leitor-de-bolso/', 'leitor-de-bolso/privacidade.html'):  # alteradas em 29/10 (JSON-LD, rodapé ou texto)
-    s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>2026-10-29', s)
+    d = '2026-10-31' if u in ('', 'itaituba/', 'contato/', 'privacidade/') else '2026-10-29'  # 31/10: formulário avisa por e-mail (texto e política)
+    s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>' + d, s)
 wr('sitemap.xml', s)
 m = json.loads(rd('manifest.webmanifest'))
 m['description'] = 'Consultoria em TI para empresas de pequeno e médio porte. De Itaituba a Santarém (PA) e videochamada.'
