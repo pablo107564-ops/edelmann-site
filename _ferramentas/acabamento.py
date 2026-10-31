@@ -78,6 +78,9 @@ if(f&&w&&'IntersectionObserver' in window){new IntersectionObserver(function(e){
 </script>
 '''
 
+# contador de visitas (GoatCounter, sem cookies); se tirar, atualizar /privacidade/ (ver LEIA-ME)
+GOAT = '<script data-goatcounter="https://edelmann.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>'
+
 FOOTER_ADD = '<li><a href="/dicas/">Dicas</a></li>\n          <li><a href="/privacidade/">Privacidade</a></li>'
 
 def pages():
@@ -116,6 +119,9 @@ def process(f):
     if 'href="/privacidade/"' not in s:
         s = re.sub(r'(<li><a href="/contato/"[^>]*>Contato</a></li>)(\s*</ul>\s*</nav>\s*<a class="foot-mail")',
                    lambda m: m.group(1) + '\n          ' + FOOTER_ADD + m.group(2), s, count=1)
+    # 6. contador de visitas (menos a política do app, que diz não usar ferramentas de análise)
+    if 'gc.zgo.at/count.js' not in s and not f.endswith('privacidade.html'):
+        s = s.replace('</body>', GOAT + '</body>', 1)
     if s != o:
         open(f, 'w', encoding='utf-8', newline='\n').write(s)
     return s != o, ('fonts.googleapis' in s), ('href="/privacidade/"' in s), ('class="wa-float"' in s)
