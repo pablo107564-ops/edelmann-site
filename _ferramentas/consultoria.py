@@ -235,7 +235,7 @@ def sem_ld(s, tipo):  # tira os blocos JSON-LD de um tipo
 def com_ld(s, bloco): return s.replace('<style>', bloco + '<style>', 1)
 def sem_js_form(s):  # tira os scripts antigos de formulário (orçamento) e o de agendamento, para pôr o atual
     return re.sub(r'<script>\n/\* (?:Orçamento do topo|Formulário de orçamento|Agendamento)[^\n]*\n.*?</script>\n', '', s, flags=re.S)
-def com_js_form(s): return s.replace('<a class="wa-float"', FORM_JS + '<a class="wa-float"', 1)
+def com_js_form(s): return s.replace('<aside aria-label="Contato rápido">', FORM_JS + '<aside aria-label="Contato rápido">', 1)
 def com_simbolos(s):
     novos = ''.join(f'    <symbol id="i-{n}" viewBox="0 0 24 24">{d}</symbol>\n' for n, d in SYMBOLS.items()
                     if f'#i-{n}"' in s and f'id="i-{n}"' not in s)
@@ -265,6 +265,7 @@ RODAPE = '''<ul>
           <li><a href="/artigos/">Artigos</a></li>
           <li><a href="/contato/">Contato</a></li>
           <li><a href="/privacidade/">Privacidade</a></li>
+          <li><a class="acess" href="/acessibilidade/"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="7" r="1.4" fill="currentColor" stroke="none"/><path d="M6.8 9.7c3.4.9 7 .9 10.4 0M12 10.6v3.9m0 0-2.5 4.4m2.5-4.4 2.5 4.4"/></svg>Acessibilidade</a></li>
         </ul>'''
 
 # a primeira tela e quem chega por âncora veem o conteúdo na hora, sem esperar a animação de entrada
@@ -272,11 +273,16 @@ CSS_REVELA = '.rv main>section:first-child .reveal,.rv :target .reveal,.rv .reve
 # alvos de toque de 44px no rodapé e nos links secundários (não vale para links no meio de frase)
 CSS_TOQUE = '''.alt-send,.copy{position:relative}
 .alt-send::after,.copy::after{content:"";position:absolute;inset:-12px -6px}
-.site-footer nav a,.foot-mail,.legal>a{display:inline-flex;align-items:center;min-height:44px}
+.site-footer nav a,.foot-mail,.legal>a,.legal-links>a{display:inline-flex;align-items:center;min-height:44px}
 .site-footer nav ul{gap:0 1.5rem}
 .more .link{min-height:44px}
 '''
-CSS_CAMPOS = '.form input,.form select,.form textarea{border-color:#7A8BA6}\n#agenda-status:empty{display:none}\n'
+CSS_CAMPOS = '.form input,.form select,.form textarea{border-color:#7A8BA6}\n.form ::placeholder{color:var(--muted);opacity:1}\n#agenda-status:empty{display:none}\n'
+# símbolo exigido pela Lei 13.146/2015, art. 63, § 1º, no rodapé de todas as páginas
+CSS_ACESS = '.site-footer nav a.acess{gap:.45rem;font-weight:600}\n.acess svg{width:1.5rem;height:1.5rem;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}\n'
+# topo escuro das páginas de produto: a trilha some sem isto (cor própria do item atual), e "soon" é a bolinha vazada de quem ainda não está em operação
+CSS_TOPO = '.hero .crumbs [aria-current]{color:#fff}\n.hero .crumbs li+li::before{color:var(--on-night)}\n.hero .status{margin-right:.5rem}\n.status.soon::before{background:transparent;border:1.5px solid var(--gold-soft);box-shadow:none}\n'
+TOPO_ESCURO = ('agente-whatsapp/index.html', 'balcao/index.html', 'chamados/index.html', 'leitor-de-bolso/index.html')
 
 def comum(p, s):
     """Menu, botão do topo, rodapé e faixa de chamada genérica: iguais em todas as páginas."""
@@ -290,10 +296,12 @@ def comum(p, s):
     s = re.sub(r'(<a class="wa-float" href=")[^"]*"', lambda m: m.group(1) + WA + '"', s, count=1)  # botão flutuante com a mesma mensagem dos outros botões
     s = com_css(s, CSS_REVELA, 'Primeira tela sem atraso')
     s = com_css(s, CSS_TOQUE, 'Alvos de toque')
+    s = com_css(s, CSS_ACESS, 'Símbolo de acessibilidade')
     return s
 
 # ---------- CSS da página inicial (escura) ----------
-CSS_INICIO = '''.impacts{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));padding:0;list-style:none}
+CSS_INICIO = '''.home .wa-float:focus-visible{outline-color:#fff}
+.impacts{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(min(100%,15rem),1fr));padding:0;list-style:none}
 .impact{padding:1.75rem;background:#0E1B33;border:1px solid rgba(255,255,255,.1);border-radius:14px}
 .impact .i{width:30px;height:30px;margin-bottom:1.25rem;stroke-width:1.4;color:var(--gold-soft)}
 .home .impact h3{margin-bottom:.5rem;font-size:1.375rem}
@@ -444,7 +452,7 @@ wr('contato/index.html', com_simbolos(comum('contato/index.html', s)))
 # ---------- 5. Soluções (antiga página de produtos) e páginas dos apps ----------
 s = rd('produtos/index.html')
 s = titulo_todos(s, 'Soluções próprias: PDV, agente de IA e chamados | Edelmann')
-s = descricao(s, 'Soluções próprias da Edelmann Tecnologia: Agente de IA no WhatsApp, Balcão PDV (funciona sem internet e emite NFC-e) e Sistema de Chamados.')
+s = descricao(s, 'Soluções próprias da Edelmann Tecnologia: Agente de IA no WhatsApp, sob encomenda; Balcão PDV, que funciona sem internet; e Sistema de Chamados.')
 s = sem_ld(s, 'CollectionPage')
 s = com_ld(s, ld({"@context": "https://schema.org", "@type": "CollectionPage", "name": "Soluções", "url": "https://edelmann.com.br/produtos/",
                   "inLanguage": "pt-BR", "description": re.search(r'<meta name="description" content="([^"]*)"', s).group(1)}))
@@ -453,10 +461,11 @@ s = com_css(s, '@media (min-width:1100px){.apps{grid-template-columns:repeat(3,m
 wr('produtos/index.html', comum('produtos/index.html', s))
 
 APPS = ['agente-whatsapp/index.html', 'balcao/index.html', 'chamados/index.html', 'leitor-de-bolso/index.html', 'leitor-de-bolso/privacidade.html']
-for p in APPS + ['privacidade/index.html', '404.html']:
+for p in APPS + ['privacidade/index.html', 'acessibilidade/index.html', '404.html']:
     s = rd(p)
+    if p in TOPO_ESCURO: s = com_css(s, CSS_TOPO, 'Topo escuro')
     if p == 'privacidade/index.html':
-        s = re.sub(r'Última atualização: [^<]*\.', 'Última atualização: 31 de outubro de 2026.', s)
+        s = re.sub(r'Última atualização: [^<]*\.', 'Última atualização: 2 de novembro de 2026.', s)
         s = descricao(s, 'Política de privacidade da Edelmann Tecnologia: como tratamos os dados pessoais recebidos no site e nos atendimentos, conforme a LGPD.')
     if p == '404.html':
         s = re.sub(r'<ul class="svc-links">.*?</ul>', lambda m: '<ul class="svc-links">\n' + '\n'.join(
@@ -466,9 +475,9 @@ for p in APPS + ['privacidade/index.html', '404.html']:
 
 # ---------- 6. sitemap ----------
 s = rd('sitemap.xml')
-for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/', 'agente-whatsapp/', 'chamados/', 'balcao/', 'privacidade/',
+for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/', 'agente-whatsapp/', 'chamados/', 'balcao/', 'privacidade/', 'acessibilidade/',
           'leitor-de-bolso/', 'leitor-de-bolso/privacidade.html'):  # alteradas em 29/10 (JSON-LD, rodapé ou texto)
-    d = '2026-10-31' if u in ('', 'itaituba/', 'contato/', 'privacidade/') else '2026-10-29'  # 31/10: formulário avisa por e-mail (texto e política)
+    d = '2026-11-02' if u in ('', 'itaituba/', 'contato/', 'produtos/', 'agente-whatsapp/', 'balcao/', 'privacidade/', 'acessibilidade/') else '2026-10-29'  # 02/11: situação das soluções, política e acessibilidade
     s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>' + d, s)
 wr('sitemap.xml', s)
 print('ok:', s.count('<url>'), 'URLs no sitemap')

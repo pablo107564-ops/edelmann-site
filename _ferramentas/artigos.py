@@ -62,7 +62,7 @@ SOBRE_BOX = ('\n<aside class="sobre-box" aria-labelledby="sobre-edelmann">\n<h2 
              f'<p>{FRASE}</p>\n</aside>')
 
 def tabelas(corpo):  # tabela dentro de um quadro que rola na horizontal (a página não rola)
-    return re.sub(r'<table>(.*?)</table>', lambda m: '<div class="tabela" role="region" aria-label="Tabela comparativa" tabindex="0"><table>' + m.group(1) + '</table></div>', corpo, flags=re.S)
+    return re.sub(r'<table>(.*?)</table>', lambda m: '<div class="tabela" role="region" aria-label="Tabela comparativa" tabindex="0"><table>' + m.group(1).replace('<th>', '<th scope="col">') + '</table></div>', corpo, flags=re.S)
 
 def pagina(slug, titulo_seo, desc, h1, corpo, lds, datas=None, conclusao=None):
     url = f'{URL}/artigos/{slug}/' if slug else f'{URL}/artigos/'
@@ -117,7 +117,7 @@ lista = '<h2 class="sr">Artigos</h2><ul class="post-list">' + ''.join(
     f'<li><a href="/artigos/{a["slug"]}/"><p class="eyebrow">Artigo</p><h3>{a["h1"]}</h3><p>{a["descricao"]}</p></a></li>' for a in ARTS) + '</ul>'
 DESC_LISTA = ('Artigos para donos de empresa: consultoria de TI ou técnico avulso, como escolher uma empresa de TI, '
               'atendimento no WhatsApp, planilha ou sistema, o que perguntar antes de contratar um sistema de gestão, gastos e backup.')
-pagina('', 'Artigos sobre gestão e tecnologia', DESC_LISTA, 'Gestão e tecnologia, <em>sem complicação.</em>', lista, [
+pagina('', 'Artigos sobre gestão e tecnologia', DESC_LISTA, 'Gestão e tecnologia, sem complicação.', lista, [
      {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Artigos sobre gestão e tecnologia", "url": f"{URL}/artigos/",
       "inLanguage": "pt-BR", "description": DESC_LISTA},
      trilha(('Início', '/'), ('Artigos', '/artigos/'))])

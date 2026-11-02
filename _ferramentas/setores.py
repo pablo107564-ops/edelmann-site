@@ -55,7 +55,7 @@ FAQ_SETOR = {
     ('Preciso trocar o sistema de vendas que já uso?',
      'Só se não atender o seu negócio. Primeiro entendemos como você vende hoje e só recomendamos a troca quando ela traz retorno, sempre explicando o motivo.'),
     ('E se a internet cair na hora de vender?',
-     'Esse é um ponto que avaliamos com atenção. O Balcão PDV, solução nossa, funciona sem internet e emite NFC-e, para o caixa continuar vendendo no horário de maior movimento.'),
+     'Esse é um ponto que avaliamos com atenção. O Balcão PDV, solução nossa, funciona sem internet, para o caixa continuar vendendo no horário de maior movimento. A emissão de NFC-e está em homologação.'),
     ('Dá para ter estoque, caixa e financeiro conversando entre si?',
      'Sim, esse é um objetivo frequente no comércio. Avaliamos o que você já usa e indicamos se vale integrar o que existe ou mudar, sem empurrar nada que não traga retorno.'),
   ],
@@ -67,7 +67,7 @@ FAQ_SETOR = {
     ('Como fica a proteção dos dados dos pacientes?',
      'Dados de pacientes pedem cuidado, e a LGPD exige isso. Olhamos como as fichas e os exames são guardados, quem tem acesso e se existe cópia de segurança, e indicamos o que precisa melhorar.'),
     ('Dá para reduzir as perguntas repetidas na recepção e no WhatsApp?',
-     'Pode ajudar. O Agente de IA no WhatsApp, solução nossa, responde as dúvidas mais comuns e deixa a equipe livre para o atendimento que exige uma pessoa. Avaliamos se faz sentido para a sua clínica antes de propor.'),
+     'Pode ajudar. O Agente de IA no WhatsApp, solução nossa sob encomenda, responde as dúvidas mais comuns e deixa a equipe livre para o atendimento que exige uma pessoa. Avaliamos se faz sentido para a sua clínica antes de propor.'),
   ],
   'educacao': [
     ('Vocês atendem escolas e cursos de Itaituba a Santarém?',
@@ -165,5 +165,5 @@ def gerar(slug, nome, h1, desc, quem, dores, ganhos):
 
 for st in SETORES: gerar(*st)
 
-for slug, *_ in SETORES: sitemap_add(f'{URL}/setores/{slug}/', '2026-10-29')
+for slug, *_ in SETORES: sitemap_add(f'{URL}/setores/{slug}/', '2026-11-02' if slug in ('comercio', 'saude') else '2026-10-29')
 print('ok', len(SETORES), 'setores')
