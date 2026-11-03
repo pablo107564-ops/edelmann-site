@@ -206,12 +206,26 @@ FAQ_ITA = [
 FAQ_ITA_HTML = '      <div class="faq reveal">' + ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ_ITA) + '</div>'
 FAQ_ITA_LD = ld({"@context": "https://schema.org", "@type": "FAQPage",
                  "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ_ITA]})
+# perguntas próprias da página /santarem/: ângulo de quem está em Santarém
+FAQ_STM = [
+    ('Vocês têm escritório em Santarém?', 'A base da Edelmann é em Itaituba, e Santarém faz parte da área de atendimento presencial: vamos até a sua empresa para conversar e acompanhar o trabalho.'),
+    ('O deslocamento até Santarém encarece o serviço?', 'O deslocamento já é considerado na proposta. Antes de qualquer começo, você recebe o escopo, as etapas e o valor, e nada anda sem a sua aprovação.'),
+    ('O acompanhamento é sempre presencial?', 'Combinamos no início. Os encontros presenciais acontecem quando o trabalho pede; no dia a dia, o acompanhamento segue por videochamada e WhatsApp.'),
+    ('Vocês atendem as cidades vizinhas de Santarém?', 'Atendemos presencialmente o trecho entre Itaituba e Santarém. Em projetos grandes, vamos até onde for preciso; nos demais casos, por videochamada.'),
+    ('Que tipo de empresa vocês atendem em Santarém?', 'Pequenas e médias empresas. Temos experiência em comércio, saúde e educação, entre outros setores, e também com contratos públicos.'),
+    ('Por onde a gente começa?', 'Por uma conversa, sem compromisso: você conta como o negócio funciona e o que mais pesa hoje, e a partir daí indicamos os próximos passos.'),
+]
+FAQ_STM_HTML = '      <div class="faq reveal">' + ''.join(f'<details><summary>{q}</summary><p>{a}</p></details>' for q, a in FAQ_STM) + '</div>'
+FAQ_STM_LD = ld({"@context": "https://schema.org", "@type": "FAQPage",
+                 "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ_STM]})
 MARCAS = {'{{FORM_DARK}}': FORM_DARK, '{{FORM_CLARO}}': FORM_CLARO, '{{PROOF}}': PROOF, '{{SINAIS}}': SINAIS, '{{STATS}}': STATS,
           '{{COMO_FUNCIONA_ALT}}': COMO_FUNCIONA,
           '{{CTA}}': cta('cta-accent', '#agendar', final=True), '{{CTA_CLARO}}': cta('section band cta-band', '/contato/#agendar', titulo='Conheceu a Edelmann. Agora conte sobre o seu negócio.'),
           '{{CTA_ITA}}': cta('cta-accent', '#agendar', final=True, titulo='Vamos conversar sobre a sua empresa, de Itaituba a Santarém?'),
           '{{CTA_WA}}': cta('section band cta-band', None, final=True), '{{WA_CHECK}}': WA_CHECK, '{{WA_SUPORTE}}': WA_SUPORTE,
-          '{{FAQ}}': FAQ_HTML, '{{FAQ_ITA}}': FAQ_ITA_HTML, '{{ARROW}}': ARROW, '{{WA}}': WA}
+          '{{FAQ}}': FAQ_HTML, '{{FAQ_ITA}}': FAQ_ITA_HTML, '{{FAQ_STM}}': FAQ_STM_HTML,
+          '{{CTA_STM}}': cta('cta-accent', '#agendar', final=True, titulo='Vamos conversar sobre a sua empresa em Santarém?'),
+          '{{ARROW}}': ARROW, '{{WA}}': WA}
 def trecho(nome):
     s = rd(os.path.join(AQUI, 'consultoria', nome))
     for k, v in MARCAS.items(): s = s.replace(k, v)
@@ -260,6 +274,7 @@ RODAPE = '''<ul>
           <li><a href="/setores/saude/">Para saúde</a></li>
           <li><a href="/setores/educacao/">Para educação</a></li>
           <li><a href="/itaituba/">Consultoria em TI de Itaituba a Santarém</a></li>
+          <li><a href="/santarem/">Consultoria em TI em Santarém</a></li>
           <li><a href="/sobre/">Sobre</a></li>
           <li><a href="/produtos/">Soluções</a></li>
           <li><a href="/suporte/">Suporte técnico</a></li>
@@ -378,7 +393,7 @@ def ld_empresa(s):
         o = json.loads(m.group(1))
         if o.get('@type') != 'ProfessionalService': return m.group(0)
         o['@id'] = 'https://edelmann.com.br/#empresa'
-        o['image'] = 'https://edelmann.com.br/img/og.jpg'
+        o['image'] = 'https://edelmann.com.br/img/og-2026.jpg'
         o['logo'] = 'https://edelmann.com.br/apple-touch-icon.png'
         o['description'] = ('Consultoria em tecnologia da informação para empresas de pequeno e médio porte: gestão e melhoria de processos '
                             'e soluções para todas as fases da gestão, com foco em resultado financeiro.')
@@ -426,6 +441,21 @@ s = com_ld(s, FAQ_ITA_LD + ld({"@context": "https://schema.org", "@type": "Bread
     {"@type": "ListItem", "position": 1, "name": "Início", "item": "https://edelmann.com.br/"},
     {"@type": "ListItem", "position": 2, "name": "De Itaituba a Santarém", "item": "https://edelmann.com.br/itaituba/"}]}))
 wr('itaituba/index.html', com_simbolos(s))
+
+# ---------- 2b. Santarém (versão local do início, ângulo de quem está na outra ponta do trecho) ----------
+s = troca_main(inicio, trecho('santarem.html'))
+s = s.replace(CSS_HERO_SUP, '')
+TIT_STM = 'Consultoria em TI em Santarém (PA) | Edelmann Tecnologia'  # 56 caracteres
+s = titulo(s, TIT_STM)
+s = descricao(s, 'Consultoria em TI em Santarém (PA): vamos até a sua empresa. Gestão e melhoria de processos, com mais de 15 anos de experiência em TI.')
+for k in ('og:title', 'twitter:title'): s = meta(s, k, TIT_STM)
+s = s.replace('<link rel="canonical" href="https://edelmann.com.br/">', '<link rel="canonical" href="https://edelmann.com.br/santarem/">')
+s = meta(s, 'og:url', 'https://edelmann.com.br/santarem/')
+s = sem_ld(s, 'FAQPage')
+s = com_ld(s, FAQ_STM_LD + ld({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Início", "item": "https://edelmann.com.br/"},
+    {"@type": "ListItem", "position": 2, "name": "Santarém", "item": "https://edelmann.com.br/santarem/"}]}))
+wr('santarem/index.html', com_simbolos(s))
 
 # ---------- 3. Sobre ----------
 s = rd('sobre/index.html')
@@ -480,5 +510,7 @@ for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/', 'agente-whatsapp/'
           'leitor-de-bolso/', 'leitor-de-bolso/privacidade.html'):  # alteradas em 29/10 (JSON-LD, rodapé ou texto)
     d = '2026-11-02' if u in ('', 'itaituba/', 'contato/', 'produtos/', 'agente-whatsapp/', 'balcao/', 'privacidade/', 'acessibilidade/') else '2026-10-29'  # 02/11: situação das soluções, política e acessibilidade
     s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>' + d, s)
+if '<loc>https://edelmann.com.br/santarem/</loc>' not in s:
+    s = s.replace('</urlset>', '  <url><loc>https://edelmann.com.br/santarem/</loc><lastmod>2026-11-03</lastmod></url>\n</urlset>')
 wr('sitemap.xml', s)
 print('ok:', s.count('<url>'), 'URLs no sitemap')

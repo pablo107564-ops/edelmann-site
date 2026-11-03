@@ -1,5 +1,5 @@
 # Artigos de consultoria (/artigos/): textos que o dono de empresa procura no Google, cada um levando a "Agendar conversa".
-# Os 8 artigos (texto, FAQ e datas) vêm de artigos_novos.json. Usa sobre/index.html como casca (cabeçalho, estilos, rodapé). Rodar depois do consultoria.py. Idempotente.
+# Os 9 artigos (texto, FAQ e datas) vêm de artigos_novos.json. Usa sobre/index.html como casca (cabeçalho, estilos, rodapé). Rodar depois do consultoria.py. Idempotente.
 import os, re, json, html
 from comum import URL, ARROW, WA, trilha, faq_ld, casca, sitemap_add, com_visual
 AQUI = os.path.dirname(os.path.abspath(__file__)); SITE = os.path.dirname(AQUI); os.chdir(SITE)
@@ -8,25 +8,26 @@ FRASE = ('A Edelmann Tecnologia é uma consultoria em TI de Itaituba (PA) para p
          'em empresas de diversos setores. Atendemos presencialmente de Itaituba a Santarém, indo até a empresa; em projetos grandes, '
          'vamos até onde for preciso; nos demais casos, por videochamada.')
 # ordem da lista em /artigos/: os comparativos primeiro. Datas fixas no JSON (publicado, atualizado): não ler o git durante a geração
-ORDEM = ['consultoria-de-ti-ou-tecnico-avulso', 'como-escolher-empresa-de-ti-itaituba-santarem', 'whatsapp-pessoas-robo-ou-agente-de-ia',
+ORDEM = ['consultoria-de-ti-ou-tecnico-avulso', 'como-escolher-empresa-de-ti-itaituba-santarem', 'quanto-custa-suporte-de-ti', 'whatsapp-pessoas-robo-ou-agente-de-ia',
          'planilha-ou-sistema', 'sistema-de-gestao-o-que-perguntar-antes-de-contratar', 'gastos-com-tecnologia', 'backup-quanto-custa-perder-dados', 'whatsapp-atendimento-fora-do-horario']
 # "Leia também": até 4 artigos relacionados de cada um
 RELAC = {
-  'consultoria-de-ti-ou-tecnico-avulso': ['como-escolher-empresa-de-ti-itaituba-santarem', 'gastos-com-tecnologia', 'planilha-ou-sistema', 'backup-quanto-custa-perder-dados'],
+  'consultoria-de-ti-ou-tecnico-avulso': ['quanto-custa-suporte-de-ti', 'como-escolher-empresa-de-ti-itaituba-santarem', 'gastos-com-tecnologia', 'planilha-ou-sistema'],
+  'quanto-custa-suporte-de-ti': ['consultoria-de-ti-ou-tecnico-avulso', 'gastos-com-tecnologia', 'como-escolher-empresa-de-ti-itaituba-santarem', 'backup-quanto-custa-perder-dados'],
   'como-escolher-empresa-de-ti-itaituba-santarem': ['consultoria-de-ti-ou-tecnico-avulso', 'gastos-com-tecnologia', 'backup-quanto-custa-perder-dados', 'planilha-ou-sistema'],
   'whatsapp-pessoas-robo-ou-agente-de-ia': ['whatsapp-atendimento-fora-do-horario', 'consultoria-de-ti-ou-tecnico-avulso', 'planilha-ou-sistema'],
   'planilha-ou-sistema': ['sistema-de-gestao-o-que-perguntar-antes-de-contratar', 'gastos-com-tecnologia', 'consultoria-de-ti-ou-tecnico-avulso', 'backup-quanto-custa-perder-dados'],
   'sistema-de-gestao-o-que-perguntar-antes-de-contratar': ['planilha-ou-sistema', 'consultoria-de-ti-ou-tecnico-avulso', 'como-escolher-empresa-de-ti-itaituba-santarem', 'gastos-com-tecnologia'],
-  'gastos-com-tecnologia': ['planilha-ou-sistema', 'consultoria-de-ti-ou-tecnico-avulso', 'backup-quanto-custa-perder-dados', 'como-escolher-empresa-de-ti-itaituba-santarem'],
+  'gastos-com-tecnologia': ['quanto-custa-suporte-de-ti', 'planilha-ou-sistema', 'consultoria-de-ti-ou-tecnico-avulso', 'backup-quanto-custa-perder-dados'],
   'backup-quanto-custa-perder-dados': ['gastos-com-tecnologia', 'como-escolher-empresa-de-ti-itaituba-santarem', 'consultoria-de-ti-ou-tecnico-avulso', 'planilha-ou-sistema'],
   'whatsapp-atendimento-fora-do-horario': ['whatsapp-pessoas-robo-ou-agente-de-ia', 'planilha-ou-sistema', 'consultoria-de-ti-ou-tecnico-avulso', 'gastos-com-tecnologia'],
 }
-# os 8 artigos (texto, FAQ e datas) vêm de artigos_novos.json: {slug, h1, titulo_seo, descricao, conclusao, corpo_html, faq, publicado, atualizado}
+# os 9 artigos (texto, FAQ e datas) vêm de artigos_novos.json: {slug, h1, titulo_seo, descricao, conclusao, corpo_html, faq, publicado, atualizado}
 ARTS = sorted(json.load(open(os.path.join(AQUI, 'artigos_novos.json'), encoding='utf-8')), key=lambda a: ORDEM.index(a['slug']))
 POR_SLUG = {a['slug']: a for a in ARTS}
 # h1, titulo_seo e descricao entram no HTML sem escape (atributos meta, <title>, <h3>): recusa caracteres que quebrariam a página
 assert not [(a['slug'], k) for a in ARTS for k in ('h1', 'titulo_seo', 'descricao') if re.search(r'["<>&]', a[k])]
-assert len(ARTS) == len(POR_SLUG) == 8 and all(set(RELAC[s]) <= set(ORDEM) and len(RELAC[s]) <= 4 for s in ORDEM)
+assert len(ARTS) == len(POR_SLUG) == 9 and all(set(RELAC[s]) <= set(ORDEM) and len(RELAC[s]) <= 4 for s in ORDEM)
 
 MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro']
 def por_extenso(iso): a, m, d = iso.split('-'); return f'{int(d)} de {MESES[int(m) - 1]} de {a}'
@@ -110,7 +111,7 @@ def pagina(slug, titulo_seo, desc, h1, corpo, lds, datas=None, conclusao=None):
 for a in ARTS:
     sl = a['slug']; d0, d1 = a['publicado'], a['atualizado']
     ld = [{"@context": "https://schema.org", "@type": "Article", "headline": a['h1'], "description": a['descricao'],
-           "inLanguage": "pt-BR", "datePublished": d0, "dateModified": d1, "image": URL + "/img/og.jpg",
+           "inLanguage": "pt-BR", "datePublished": d0, "dateModified": d1, "image": URL + "/img/og-2026.jpg",
            "author": EMPRESA, "publisher": EMPRESA, "mainEntityOfPage": f"{URL}/artigos/{sl}/"},
           trilha(('Início', '/'), ('Artigos', '/artigos/'), (a['h1'], f'/artigos/{sl}/'))]
     if a['faq']:
@@ -127,6 +128,6 @@ pagina('', 'Artigos sobre gestão e tecnologia', DESC_LISTA, 'Gestão e tecnolog
      trilha(('Início', '/'), ('Artigos', '/artigos/'))])
 
 # sitemap: lastmod dos artigos = data da última revisão
-sitemap_add(f'{URL}/artigos/', '2026-10-29')
+sitemap_add(f'{URL}/artigos/', '2026-11-03')
 for a in ARTS: sitemap_add(f'{URL}/artigos/{a["slug"]}/', a['atualizado'])
 print('ok', len(ARTS), 'artigos')

@@ -183,5 +183,33 @@
   "faq": [],
   "publicado": "2026-10-18",
   "atualizado": "2026-11-02"
+ },
+ {
+  "slug": "quanto-custa-suporte-de-ti",
+  "h1": "Quanto custa o suporte de TI para uma pequena empresa?",
+  "titulo_seo": "Quanto custa o suporte de TI para pequena empresa?",
+  "descricao": "Por chamado, contrato mensal ou por projeto? Veja o que define o preço do suporte de TI, o que entra em cada formato e como comparar propostas.",
+  "conclusao": "Não existe tabela única: o preço do suporte de TI depende do tamanho do ambiente, da urgência que o negócio exige e do formato de cobrança. A comparação justa é pelo escopo escrito, não pelo número solto. Se quiser, conte como é a sua empresa e dizemos o que faria sentido no seu caso.",
+  "corpo_html": "<h2>O que define o preço do suporte de TI?</h2>\n<p>Antes de qualquer número, o fornecedor olha o tamanho e a urgência do que vai cuidar. Cinco coisas pesam mais:</p>\n<ul class=\"cartoes\">\n<li><strong>Quantidade de computadores e pessoas:</strong> mais máquinas e mais gente usando significam mais chamados e mais manutenção.</li>\n<li><strong>Servidores e sistemas:</strong> um servidor, um sistema de gestão ou um banco de dados pedem cuidado além do computador da mesa.</li>\n<li><strong>Urgência:</strong> quanto menor o tempo que a empresa aguenta parada, maior o compromisso que o fornecedor assume, e isso entra no preço.</li>\n<li><strong>Distância:</strong> atendimento presencial fora da cidade inclui deslocamento; parte do dia a dia pode ser resolvida de forma remota.</li>\n<li><strong>O estado atual:</strong> um ambiente bagunçado, sem backup e sem padrão custa mais no começo, porque antes de manter é preciso arrumar.</li>\n</ul>\n\n<h2>Quais são os formatos de cobrança?</h2>\n<table>\n<thead>\n<tr><th>Formato</th><th>Como funciona</th><th>Vantagem</th><th>Limite</th></tr>\n</thead>\n<tbody>\n<tr><td>Por chamado</td><td>Você paga quando algo quebra e alguém vem resolver</td><td>Sem compromisso mensal; serve para quem tem poucos equipamentos</td><td>Ninguém previne nada: o problema aparece, a empresa para e só então alguém age</td></tr>\n<tr><td>Contrato mensal</td><td>Valor fixo por mês para manter o ambiente funcionando e atender os chamados</td><td>Previsibilidade no orçamento e alguém que conhece o seu ambiente</td><td>Compare o escopo: o que está incluído, o tempo de resposta e o que é cobrado à parte</td></tr>\n<tr><td>Por projeto</td><td>Preço fechado para uma entrega definida, como trocar um servidor ou organizar a rede</td><td>Começo, meio e fim claros, com valor aprovado antes</td><td>Não cobre o dia a dia: terminado o projeto, a manutenção continua sendo necessária</td></tr>\n</tbody>\n</table>\n<p>Muitas empresas combinam os formatos: um projeto para arrumar a casa e um contrato mensal para manter.</p>\n\n<h2>Por que o barato às vezes sai caro?</h2>\n<p>O preço do suporte não aparece sozinho na conta. Ele divide espaço com o custo do que acontece quando a TI falha: caixa parado, equipe esperando, venda perdida e, no pior caso, dados que não voltam. Um suporte mais barato que demora a responder ou não faz backup transfere esse risco para o seu negócio. A pergunta certa não é só &quot;quanto custa por mês?&quot;, e sim &quot;quanto custa uma parada, e quem me protege dela?&quot;.</p>\n\n<h2>Como comparar propostas de suporte?</h2>\n<p>Peça as propostas por escrito e compare os mesmos pontos em todas:</p>\n<ul class=\"cartoes\">\n<li><strong>Escopo:</strong> o que está incluído no valor e o que é cobrado à parte, como peças, visitas extras e atendimento fora do horário.</li>\n<li><strong>Tempo de resposta:</strong> em quanto tempo alguém atende quando a empresa está parada e quando o problema pode esperar.</li>\n<li><strong>Backup:</strong> se está incluído, com que frequência acontece e se alguém testa a restauração de verdade.</li>\n<li><strong>Registro:</strong> se você recebe a lista do que foi feito, para saber pelo que está pagando.</li>\n<li><strong>Fim do contrato:</strong> o que acontece se você quiser trocar de fornecedor, e se as senhas e as documentações ficam com você.</li>\n</ul>\n<p>Com os mesmos pontos lado a lado, a diferença de preço passa a ter explicação, e você escolhe sabendo o que leva.</p>",
+  "faq": [
+   {
+    "p": "O contrato mensal compensa para uma empresa pequena?",
+    "r": "Depende de quanto a empresa sofre quando a TI para. Se os problemas são raros e uma parada não custa caro, o atendimento por chamado resolve. Se o caixa, as vendas ou o atendimento dependem de sistema, a previsibilidade do contrato costuma compensar."
+   },
+   {
+    "p": "Posso contratar suporte só quando algo quebra?",
+    "r": "Pode, e para ambientes pequenos é um começo razoável. O limite é que ninguém previne nada: sem manutenção e sem backup, o mesmo problema volta e o custo aparece de uma vez, na hora em que a empresa está parada."
+   },
+   {
+    "p": "O que costuma ficar fora do contrato de suporte?",
+    "r": "Varia por fornecedor, e por isso o escopo escrito importa. É comum ficarem de fora peças e equipamentos novos, projetos grandes, como trocar servidor ou rede, e atendimento fora do horário combinado."
+   },
+   {
+    "p": "Suporte de TI e consultoria de TI são a mesma coisa?",
+    "r": "Não. O suporte mantém o que existe funcionando e atende os chamados. A consultoria olha a empresa como um todo, encontra onde se perde tempo e dinheiro e orienta as decisões de tecnologia. Uma coisa complementa a outra."
+   }
+  ],
+  "publicado": "2026-11-03",
+  "atualizado": "2026-11-03"
  }
 ]
