@@ -1,7 +1,7 @@
 # Páginas por setor (/setores/<setor>/): dores típicas do ramo + o que muda + chamada para conversa e checklist.
 # Usa sobre/index.html como casca. Rodar depois do consultoria.py. Idempotente.
 import os, re, json, html
-from comum import URL, ARROW, WA_CHECK, trilha, faq_ld, casca, sitemap_add
+from comum import URL, ARROW, WA_CHECK, trilha, faq_ld, casca, sitemap_add, com_visual
 AQUI = os.path.dirname(os.path.abspath(__file__)); SITE = os.path.dirname(AQUI); os.chdir(SITE)
 
 SETORES = [
@@ -122,15 +122,19 @@ def gerar(slug, nome, h1, desc, quem, dores, ganhos):
     if x['solucao']: veja.append(x['solucao'])
     veja_html = ''.join(f'<li><a href="{h}">{t}</a></li>' for h, t in veja)
     main = f'''<main id="conteudo" tabindex="-1">
-  <section class="section" aria-labelledby="titulo">
+  <section class="section topo motivo" aria-labelledby="titulo">
     <div class="wrap">
       <nav class="crumbs" aria-label="Trilha"><a href="/">Início</a> › <span aria-current="page">{nome}</span></nav>
       <p class="eyebrow">Setor · {nome}</p>
       <h1 id="titulo" style="font-size:var(--h2);line-height:1.08;max-width:52rem">{h1} de Itaituba a Santarém.</h1>
-      <p class="sub" style="margin-top:1.25rem;max-width:44rem">{x["frase"]} {x["exp"]} Esta página é para {quem[0].lower() + quem[1:]} Vamos até a sua empresa (<a class="link" href="/itaituba/">veja como atendemos</a>) ou atendemos por videochamada.</p>
-      <div class="prose" style="margin-top:2.5rem">
+      <p class="sub" style="margin-top:1.25rem;max-width:44rem">{x["frase"]} {x["exp"]} Esta página é para {quem[0].lower() + quem[1:]} Vamos até a sua empresa (<a href="/itaituba/">veja como atendemos</a>) ou atendemos por videochamada.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="prose">
         <h2>O que mais pesa no dia a dia</h2>
-        <ul>{dores_html}</ul>
+        <ul class="cartoes dores">{dores_html}</ul>
         <p><strong>{x["pergunta"]}</strong></p>
       </div>
       <div class="ctas" style="margin-top:0">{CHECK_BTN}</div>
@@ -141,7 +145,7 @@ def gerar(slug, nome, h1, desc, quem, dores, ganhos):
         <h2>Perguntas frequentes</h2>
         {faq_html}
         <h2>Veja também</h2>
-        <ul>{veja_html}</ul>
+        <ul class="links">{veja_html}</ul>
       </div>
     </div>
   </section>
@@ -161,7 +165,7 @@ def gerar(slug, nome, h1, desc, quem, dores, ganhos):
     s = re.sub(r'<main id="conteudo" tabindex="-1">.*?</main>', lambda m: main, s, count=1, flags=re.S)
     s = s.replace('</style>', '\n/* ===== Checklist ===== */\n' + CSS_CHECK + '</style>', 1)  # a casca (Sobre) é regerada do zero: não duplica
     os.makedirs(f'setores/{slug}', exist_ok=True)
-    open(f'setores/{slug}/index.html', 'w', encoding='utf-8', newline='\n').write(s)
+    open(f'setores/{slug}/index.html', 'w', encoding='utf-8', newline='\n').write(com_visual(s))
 
 for st in SETORES: gerar(*st)
 

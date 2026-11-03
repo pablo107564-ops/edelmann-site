@@ -4,6 +4,7 @@
 # Idempotente: pode rodar de novo (refaz as páginas a partir dos trechos e não duplica trocas).
 import os, re, json
 from urllib.parse import quote
+from comum import com_visual  # visual.css: último bloco do <style> de todas as páginas
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(AQUI)
@@ -297,7 +298,7 @@ def comum(p, s):
     s = com_css(s, CSS_REVELA, 'Primeira tela sem atraso')
     s = com_css(s, CSS_TOQUE, 'Alvos de toque')
     s = com_css(s, CSS_ACESS, 'Símbolo de acessibilidade')
-    return s
+    return com_visual(s)  # sempre por último: sobrescreve os blocos acima
 
 # ---------- CSS da página inicial (escura) ----------
 CSS_INICIO = '''.home .wa-float:focus-visible{outline-color:#fff}

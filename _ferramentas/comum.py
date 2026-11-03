@@ -38,3 +38,10 @@ def sitemap_add(url, data):  # põe a URL no sitemap.xml se faltar e deixa o las
         sm = sm.replace('</urlset>', f'  <url><loc>{url}</loc><lastmod>{data}</lastmod></url>\n</urlset>')
     sm = re.sub(r'(<loc>' + re.escape(url) + r'</loc><lastmod>)[^<]*', r'\g<1>' + data, sm)
     open(p, 'w', encoding='utf-8', newline='\n').write(sm)
+
+VISUAL = '/* ===== Visual ===== */'
+def com_visual(s):
+    """Põe o visual.css como último bloco do <style> (sobrescreve os outros); se já existe, tira e põe de novo no fim."""
+    css = open(os.path.join(SITE, '_ferramentas', 'visual.css'), encoding='utf-8').read()
+    s = re.sub(r'\n' + re.escape(VISUAL) + r'\n.*?(?=\n/\* =====|</style>)', '', s, count=1, flags=re.S)
+    return s.replace('</style>', f'\n{VISUAL}\n{css}</style>', 1)

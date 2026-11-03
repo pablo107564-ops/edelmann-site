@@ -26,7 +26,7 @@ veja = [('/itaituba/', 'Consultoria em TI de Itaituba a Santarém'), ('/produtos
         ('/artigos/sistema-de-gestao-o-que-perguntar-antes-de-contratar/', 'Sistema de gestão para pequena empresa: o que perguntar antes de contratar')]
 veja_html = ''.join(f'<li><a href="{h}">{t}</a></li>' for h, t in veja)
 main = f'''<main id="conteudo" tabindex="-1">
-  <section class="section" aria-labelledby="titulo">
+  <section class="section topo motivo" aria-labelledby="titulo">
     <div class="wrap">
       <nav class="crumbs" aria-label="Trilha"><a href="/">Início</a> › <span aria-current="page">Suporte técnico</span></nav>
       <p class="eyebrow">{D['eyebrow']}</p>
@@ -36,12 +36,16 @@ main = f'''<main id="conteudo" tabindex="-1">
         {BTN_SUP}
         {BTN_AGENDA}
       </div>
-      <div class="prose" style="margin-top:2.5rem">
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="prose">
         {D['secoes_html']}
         <h2>Perguntas frequentes</h2>
         {faq_html}
         <h2>Veja também</h2>
-        <ul>{veja_html}</ul>
+        <ul class="links">{veja_html}</ul>
       </div>
     </div>
   </section>

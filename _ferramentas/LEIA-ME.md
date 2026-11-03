@@ -17,6 +17,7 @@ Desde outubro de 2026 o site é de **consultoria**: não lista serviços, passa 
 Datas fixas: `publicado`/`atualizado` no `artigos_novos.json`; o lastmod do sitemap em `artigos.py` (lista), `setores.py` e `suporte.py` (`sitemap_add` sempre regrava a data do script, então um lastmod ajustado à mão no `sitemap.xml` se perde na próxima geração). Atualizar à mão ao mudar texto.
 
 Ordem de geração (de uma pasta do site): `python _ferramentas/consultoria.py && python _ferramentas/artigos.py && python _ferramentas/setores.py && python _ferramentas/suporte.py && python _ferramentas/checar.py` (o `checar.py` deve terminar em "problemas: nenhum").
+- `visual.css` — fonte única do visual (cores, topo escuro, cartões, chamada final, rodapé). O `consultoria.py` (função `com_visual` do `comum.py`) o põe como **último** bloco `/* ===== Visual ===== */` do `<style>` de todas as páginas, inclusive as escritas à mão e as que `artigos.py`, `setores.py` e `suporte.py` geram da casca; o `checar.py` acusa página com o bloco diferente do arquivo. Mudou o visual: edite o `visual.css` e gere de novo. Dentro dele, nada de comentário começando com `/* =====` (corta o bloco).
 - `og.html` — arte da imagem de prévia (`img/og.jpg`). Gerar: Chrome sem janela em 1200x800 e recortar 1200x630 do topo.
 
 Publicar = `git add -A && git commit && git push` (o Pages atualiza em cerca de 1 minuto).

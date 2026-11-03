@@ -1,7 +1,7 @@
 # Artigos de consultoria (/artigos/): textos que o dono de empresa procura no Google, cada um levando a "Agendar conversa".
 # Os 8 artigos (texto, FAQ e datas) vêm de artigos_novos.json. Usa sobre/index.html como casca (cabeçalho, estilos, rodapé). Rodar depois do consultoria.py. Idempotente.
 import os, re, json, html
-from comum import URL, ARROW, WA, trilha, faq_ld, casca, sitemap_add
+from comum import URL, ARROW, WA, trilha, faq_ld, casca, sitemap_add, com_visual
 AQUI = os.path.dirname(os.path.abspath(__file__)); SITE = os.path.dirname(AQUI); os.chdir(SITE)
 
 FRASE = ('A Edelmann Tecnologia é uma consultoria em TI de Itaituba (PA) para pequenas e médias empresas, com mais de 15 anos de experiência em TI, '
@@ -50,7 +50,7 @@ CSS_ART = '''.art-resumo{max-width:46rem;margin:1.75rem 0 0;padding:1.25rem 1.4r
 '''
 def leia_tambem(slug):
     itens = ''.join(f'<li><a href="/artigos/{s}/">{POR_SLUG[s]["h1"]}</a></li>' for s in RELAC[slug])
-    return (f'\n<h2>Leia também</h2>\n<ul>{itens}</ul>\n'
+    return (f'\n<h2>Leia também</h2>\n<ul class="links">{itens}</ul>\n'
             '<p>Por ramo: <a href="/setores/comercio/">Comércio</a> · <a href="/setores/saude/">Saúde</a> · <a href="/setores/educacao/">Educação</a></p>')
 
 def faq_html(faq):
@@ -77,12 +77,16 @@ def pagina(slug, titulo_seo, desc, h1, corpo, lds, datas=None, conclusao=None):
     resumo = f'\n      <p class="art-resumo">{conclusao}</p>' if conclusao else ''
     data = (f'\n      <p class="art-data">Atualizado em <time datetime="{datas[1]}">{por_extenso(datas[1])}</time></p>' if datas else '')
     main = f'''<main id="conteudo" tabindex="-1">
-  <section class="section" aria-labelledby="titulo">
+  <section class="section topo motivo" aria-labelledby="titulo">
     <div class="wrap">
       {trilha_html}
       <p class="eyebrow">Artigos</p>
       <h1 id="titulo" style="font-size:var(--h2);line-height:1.08;max-width:52rem">{h1}</h1>{resumo}{data}
-      <div class="prose" style="margin-top:2.5rem">
+    </div>
+  </section>
+  <section class="section">
+    <div class="wrap">
+      <div class="prose">
 {corpo}
       </div>
     </div>
@@ -101,7 +105,7 @@ def pagina(slug, titulo_seo, desc, h1, corpo, lds, datas=None, conclusao=None):
     s = re.sub(r'<main id="conteudo" tabindex="-1">.*?</main>', lambda m: main, s, count=1, flags=re.S)
     d = os.path.join('artigos', slug) if slug else 'artigos'
     os.makedirs(d, exist_ok=True)
-    open(os.path.join(d, 'index.html'), 'w', encoding='utf-8', newline='\n').write(s)
+    open(os.path.join(d, 'index.html'), 'w', encoding='utf-8', newline='\n').write(com_visual(s))
 
 for a in ARTS:
     sl = a['slug']; d0, d1 = a['publicado'], a['atualizado']

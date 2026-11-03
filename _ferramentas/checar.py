@@ -5,8 +5,10 @@ fs=[f.replace(os.sep,'/') for f in glob.glob('**/*.html',recursive=True) if 'goo
 # páginas que só redirecionam (conteúdo removido): não são checadas, e nenhuma página deve apontar para elas
 redir={f for f in fs if 'http-equiv="refresh"' in open(f,encoding='utf-8').read()}
 fs=[f for f in fs if f not in redir]
+VIS=open('_ferramentas/visual.css',encoding='utf-8').read()  # o bloco Visual tem de ser igual ao arquivo e o último do <style>
 for f in sorted(fs):
     s=open(f,encoding='utf-8').read(); d=os.path.dirname(f); idl=re.findall(r'id="([^"]+)"',s); ids=set(idl)
+    if '<style>' in s and s.split('/* ===== Visual ===== */\n',1)[-1].split('</style>',1)[0]!=VIS: bad.append((f,'bloco Visual ausente, diferente do visual.css ou fora do fim do <style>'))
     h1=s.count('<h1')
     if h1!=1: bad.append((f,'h1=',h1))
     hs=[int(x) for x in re.findall(r'<h([1-6])[\s>]',s)]
