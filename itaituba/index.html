@@ -1037,6 +1037,29 @@ body,body.home{background:var(--bg)}
 .svc-links a{flex:1;gap:.5rem;padding-inline:1.125rem}
 /* movimento reduzido: o cartão não sobe nem a seta anda no hover */
 @media (prefers-reduced-motion:reduce){.impact:hover,.sols a:hover,.prose .links a:hover::after{transform:none}}
+
+/* -- Revisão 2: acabamento (cartões antigos, ramos, contato 960-1020, política do Leitor, galeria, rodapé) -- */
+.niche,.card,.opt{border-radius:var(--r);border-color:var(--card-line)}
+.niche:not(.base){box-shadow:var(--shadow)}
+.niche.base .tags li{background:var(--paper)}
+.fx,.services{border-radius:var(--r);overflow:hidden;border-color:var(--card-line)}
+@media (min-width:960px){
+  .niches:has(.count){row-gap:0}
+  .niches:has(.count)>.niche{display:grid;grid-row:span 5;grid-template-rows:subgrid;margin-bottom:1.25rem;align-content:start}
+  .niches:has(.count) .niche .count{margin-top:0}
+  .niches:has(.count) .tags{align-items:flex-start;align-content:flex-start}
+}
+.galeria{-webkit-mask-image:linear-gradient(90deg,transparent,#000 var(--gutter),#000 calc(100% - var(--gutter)),transparent);mask-image:linear-gradient(90deg,transparent,#000 var(--gutter),#000 calc(100% - var(--gutter)),transparent)}
+.exp-note .link{display:inline}
+.exp-note .link .i{display:inline-block;vertical-align:-.2em;margin-left:.4rem}
+.stats{gap:1rem}
+.texto{max-width:none;font-size:1.125rem;line-height:1.7}
+.texto>*{max-width:48rem}
+.texto>h2{max-width:none;font-size:clamp(1.625rem,1.3rem + 1.2vw,2.125rem)}
+.texto h1{max-width:none}
+.channels{grid-template-columns:minmax(0,1fr)}
+@media (min-width:960px) and (max-width:1239.98px){.contact .channel-value{font-size:clamp(1.125rem,1.9vw,1.5rem)}}
+.site-footer nav ul{align-items:start}
 </style>
 </head>
 <body class="home">
