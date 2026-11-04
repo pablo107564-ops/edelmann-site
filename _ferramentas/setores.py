@@ -1,7 +1,7 @@
 # Páginas por setor (/setores/<setor>/): dores típicas do ramo + o que muda + chamada para conversa e checklist.
 # Usa sobre/index.html como casca. Rodar depois do consultoria.py. Idempotente.
 import os, re, json, html
-from comum import URL, ARROW, WA_CHECK, trilha, faq_ld, casca, sitemap_add, com_visual
+from comum import URL, ARROW, WA_CHECK, CHECK_INFO, CSS_CHECK, trilha, faq_ld, casca, sitemap_add, com_visual
 AQUI = os.path.dirname(os.path.abspath(__file__)); SITE = os.path.dirname(AQUI); os.chdir(SITE)
 
 SETORES = [
@@ -87,23 +87,8 @@ TITULO = {'comercio': 'TI para o comércio de Itaituba a Santarém', 'saude': 'T
           'educacao': 'TI para escolas de Itaituba a Santarém'}
 CHECK_BTN = f'<a class="btn btn-ghost" href="{WA_CHECK}" target="_blank" rel="noopener">Receber o checklist grátis<span class="sr"> (abre o WhatsApp em nova aba)</span></a>'
 
-# descrição do checklist e perguntas de amostra (iguais às de consultoria.py e do PDF em edelmann-divulgacao/checklist.html)
-CHECK_INFO = '''<div class="check-info">
-        <p class="check-t">Checklist grátis</p>
-        <p>Um checklist em PDF com 10 perguntas sobre o dia a dia da empresa. Enviamos pelo WhatsApp, você responde no seu tempo e vê onde pode estar perdendo tempo e dinheiro.</p>
-        <p class="check-t">Duas perguntas de amostra</p>
-        <ul>
-          <li>Você sabe quanto vendeu ontem, sem precisar perguntar a ninguém?</li>
-          <li>Você sabe quanto paga por mês em sistemas, assinaturas e internet?</li>
-        </ul>
-      </div>'''
-CSS_CHECK = '''.check-info{max-width:34rem;margin:1.75rem auto 0;text-align:left}
-.check-info p{max-width:none;margin:0;font:400 .9375rem/1.5 var(--sans);color:var(--on-night)}
-.check-info .check-t{margin-top:1rem;font:500 .75rem/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--gold-soft)}
-.check-info .check-t:first-child{margin-top:0}
-.check-info ul{display:grid;gap:.5rem;margin:.6rem 0 0;padding:0;list-style:none}
-.check-info li{padding:.55rem .9rem;border-left:2px solid var(--gold-soft);border-radius:0 8px 8px 0;background:rgba(255,255,255,.04);font-size:.9375rem;line-height:1.4;color:#fff}
-'''
+# descrição do checklist (CHECK_INFO) e CSS: em comum.py, compartilhados com consultoria.py; o texto bate com o PDF em edelmann-divulgacao/checklist.html
+# aqui o .check-info fica dentro de .cta-band, então vale a regra `.cta-band .check-info{margin:1.75rem auto 0}` do CSS_CHECK
 
 def gerar(slug, nome, h1, desc, quem, dores, ganhos):
     url = f'{URL}/setores/{slug}/'

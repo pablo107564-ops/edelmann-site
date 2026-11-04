@@ -1,11 +1,10 @@
 # Página /suporte/ (suporte técnico e manutenção): texto em suporte.json. Usa sobre/index.html como casca, como o setores.py.
 # Rodar depois do consultoria.py. Idempotente.
 import os, re, json, html
-from urllib.parse import quote
-from comum import URL, ARROW, trilha, faq_ld, casca, sitemap_add
+from comum import URL, ARROW, wa_url, trilha, faq_ld, casca, sitemap_add
 AQUI = os.path.dirname(os.path.abspath(__file__)); SITE = os.path.dirname(AQUI); os.chdir(SITE)
 D = json.load(open(os.path.join(AQUI, 'suporte.json'), encoding='utf-8'))
-WA_SUP = 'https://wa.me/5593981212924?text=' + quote(D['msg_whatsapp'], safe='!')
+WA_SUP = wa_url(D['msg_whatsapp'])
 # o título completo já traz "| Edelmann"; nos metas de compartilhamento vai sem o sufixo
 assert not [k for k in ('title', 'description', 'h1') if re.search(r'["<>&]', D[k])]
 titulo_curto = D['title'].replace(' | Edelmann', '')

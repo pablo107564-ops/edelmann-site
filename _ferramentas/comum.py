@@ -1,11 +1,34 @@
 # Trechos comuns de artigos.py, setores.py e suporte.py (sem efeitos colaterais: pode ser importado).
 # As funções leem e gravam a partir da pasta do site (a pasta acima desta).
 import os, re, json
+from urllib.parse import quote
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 URL = 'https://edelmann.com.br'
 ARROW = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>'
-WA = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20com%20a%20Edelmann%20Tecnologia.'
-WA_CHECK = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20receber%20o%20checklist%20%2210%20perguntas%20para%20descobrir%20onde%20a%20empresa%20perde%20dinheiro%22.%20Meu%20nome%20%C3%A9%20'
+FONE = '5593981212924'  # único lugar com o número do WhatsApp nos scripts (nos HTML escritos à mão ele aparece como tel: e texto)
+def wa_url(msg): return f'https://wa.me/{FONE}?text=' + quote(msg, safe='!')
+WA = wa_url('Olá! Quero agendar uma conversa com a Edelmann Tecnologia.')
+WA_CHECK = wa_url('Olá! Quero receber o checklist "10 perguntas para descobrir onde a empresa perde dinheiro". Meu nome é ')
+
+# descrição do checklist e duas perguntas de amostra (iguais às do PDF em edelmann-divulgacao/checklist.html)
+CHECK_INFO = '''<div class="check-info">
+        <p class="check-t">Checklist grátis</p>
+        <p>Um checklist em PDF com 10 perguntas sobre o dia a dia da empresa. Enviamos pelo WhatsApp, você responde no seu tempo e vê onde pode estar perdendo tempo e dinheiro.</p>
+        <p class="check-t">Duas perguntas de amostra</p>
+        <ul>
+          <li>Você sabe quanto vendeu ontem, sem precisar perguntar a ninguém?</li>
+          <li>Você sabe quanto paga por mês em sistemas, assinaturas e internet?</li>
+        </ul>
+      </div>'''
+CSS_CHECK = '''.signs-cta>div:first-child{flex:1 1 24rem}
+.check-info{max-width:34rem;margin-top:1.1rem;text-align:left}
+.check-info p{max-width:none;margin:0;font:400 .9375rem/1.5 var(--sans);color:var(--on-night)}
+.check-info .check-t{margin-top:1rem;font:500 .75rem/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--gold-soft)}
+.check-info .check-t:first-child{margin-top:0}
+.check-info ul{display:grid;gap:.5rem;margin:.6rem 0 0;padding:0;list-style:none}
+.check-info li{padding:.55rem .9rem;border-left:2px solid var(--gold-soft);border-radius:0 8px 8px 0;background:rgba(255,255,255,.04);font-size:.9375rem;line-height:1.4;color:#fff}
+.cta-band .check-info{margin:1.75rem auto 0}
+'''
 
 def trilha(*itens):  # BreadcrumbList: itens = (nome, caminho), o primeiro é o Início
     return {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -19,7 +42,7 @@ def casca(url, titulo, curto, desc, lds):
     """Sobre como casca (cabeçalho, estilos, rodapé): título, metas, canonical, og:url e JSON-LD (lista de objetos) da página nova.
     `titulo` vai no <title>; `curto` (sem o sufixo '| Edelmann') nos og:title e twitter:title."""
     s = open(os.path.join(SITE, 'sobre', 'index.html'), encoding='utf-8').read()
-    s = re.sub(r'<title>.*?</title>', f'<title>{titulo}</title>', s, count=1)
+    s = re.sub(r'<title>.*?</title>', lambda m: f'<title>{titulo}</title>', s, count=1)
     for k in ('description', 'og:description', 'twitter:description'):
         s = re.sub(r'(<meta (?:name|property)="' + k + r'" content=")[^"]*', lambda m: m.group(1) + desc, s)
     for k in ('og:title', 'twitter:title'):

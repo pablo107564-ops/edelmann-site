@@ -3,8 +3,7 @@
 # - menu, rodapé e chamadas de todas as páginas passam a convidar para "Agendar conversa".
 # Idempotente: pode rodar de novo (refaz as páginas a partir dos trechos e não duplica trocas).
 import os, re, json
-from urllib.parse import quote
-from comum import com_visual  # visual.css: último bloco do <style> de todas as páginas
+from comum import com_visual, ARROW, WA, WA_CHECK, FONE, wa_url, CHECK_INFO, CSS_CHECK  # com_visual: visual.css como último bloco do <style>
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.dirname(AQUI)
@@ -13,9 +12,6 @@ os.chdir(SITE)
 def rd(p): return open(p, encoding='utf-8').read()
 def wr(p, s): open(p, 'w', encoding='utf-8', newline='\n').write(s)
 def icon(n): return f'<svg class="i" aria-hidden="true" focusable="false"><use href="#i-{n}"/></svg>'
-ARROW = icon('arrow')
-WA = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20agendar%20uma%20conversa%20com%20a%20Edelmann%20Tecnologia.'
-def wa_url(msg): return 'https://wa.me/5593981212924?text=' + quote(msg, safe='!')
 # página /suporte/: o texto fica em suporte.json (lido também pelo suporte.py); aqui só a mensagem do link da página inicial
 WA_SUPORTE = wa_url(json.load(open(os.path.join(AQUI, 'suporte.json'), encoding='utf-8'))['msg_whatsapp'])
 
@@ -81,7 +77,7 @@ FORM_JS = '''<script>
   f.addEventListener('submit',function(e){
     e.preventDefault(); if(!f.reportValidity())return;
     avisar('whatsapp');
-    var u='https://wa.me/5593981212924?text='+encodeURIComponent(msg());
+    var u='https://wa.me/''' + FONE + '''?text='+encodeURIComponent(msg());
     window.open(u,'_blank','noopener');
     aviso('Se o WhatsApp não abriu, ',u,'toque aqui','.');
   });
@@ -96,7 +92,6 @@ FORM_JS = '''<script>
 })();
 </script>
 '''
-WA_CHECK = 'https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20receber%20o%20checklist%20%2210%20perguntas%20para%20descobrir%20onde%20a%20empresa%20perde%20dinheiro%22.%20Meu%20nome%20%C3%A9%20'
 SINAIS_ITENS = [
     ('Retrabalho e tarefas repetidas', 'A equipe gasta horas fazendo à mão o que poderia ser rotina.'),
     ('Informação espalhada', 'Dados em planilhas, cadernos e conversas, e ninguém tem o número certo na hora de decidir.'),
@@ -105,16 +100,6 @@ SINAIS_ITENS = [
     ('Dependência de uma pessoa', 'Se alguém falta ou sai da empresa, parte do negócio para.'),
     ('Risco de parar', 'Uma falha, um ataque ou a perda de dados pode deixar a empresa sem operar.'),
 ]
-# descrição do checklist e duas perguntas de amostra (iguais às do PDF em edelmann-divulgacao/checklist.html)
-CHECK_INFO = '''<div class="check-info">
-          <p class="check-t">Checklist grátis</p>
-          <p>Um checklist em PDF com 10 perguntas sobre o dia a dia da empresa. Enviamos pelo WhatsApp, você responde no seu tempo e vê onde pode estar perdendo tempo e dinheiro.</p>
-          <p class="check-t">Duas perguntas de amostra</p>
-          <ul>
-            <li>Você sabe quanto vendeu ontem, sem precisar perguntar a ninguém?</li>
-            <li>Você sabe quanto paga por mês em sistemas, assinaturas e internet?</li>
-          </ul>
-        </div>'''
 SINAIS = f'''  <section class="section" id="sinais" aria-labelledby="sinais-titulo">
     <div class="wrap">
       <div class="head reveal">
@@ -349,16 +334,7 @@ CSS_INICIO = '''.home .wa-float:focus-visible{outline-color:#fff}
 .signs-cta .btn-ghost{border-color:rgba(255,255,255,.28);color:#fff}
 .signs-cta .btn-ghost:hover{border-color:#fff}
 '''
-CSS_CHECK = '''.signs-cta>div:first-child{flex:1 1 24rem}
-.check-info{max-width:34rem;margin-top:1.1rem;text-align:left}
-.check-info p{max-width:none;margin:0;font:400 .9375rem/1.5 var(--sans);color:var(--on-night)}
-.check-info .check-t{margin-top:1rem;font:500 .75rem/1 var(--mono);letter-spacing:.04em;text-transform:uppercase;color:var(--gold-soft)}
-.check-info .check-t:first-child{margin-top:0}
-.check-info ul{display:grid;gap:.5rem;margin:.6rem 0 0;padding:0;list-style:none}
-.check-info li{padding:.55rem .9rem;border-left:2px solid var(--gold-soft);border-radius:0 8px 8px 0;background:rgba(255,255,255,.04);font-size:.9375rem;line-height:1.4;color:#fff}
-.cta-band .check-info{margin:1.75rem auto 0}
-'''
-CSS_INICIO += CSS_CHECK
+CSS_INICIO += CSS_CHECK  # checklist: texto e CSS em comum.py (compartilhados com setores.py)
 # números da experiência: claro (Sobre) e escuro (início e Itaituba)
 CSS_STATS = '''.stats{display:grid;gap:.75rem;grid-template-columns:minmax(0,1fr);margin-bottom:2.5rem;padding:0;list-style:none}
 @media (min-width:900px){.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}}

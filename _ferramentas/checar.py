@@ -6,6 +6,9 @@ fs=[f.replace(os.sep,'/') for f in glob.glob('**/*.html',recursive=True) if 'goo
 redir={f for f in fs if 'http-equiv="refresh"' in open(f,encoding='utf-8').read()}
 fs=[f for f in fs if f not in redir]
 VIS=open('_ferramentas/visual.css',encoding='utf-8').read()  # o bloco Visual tem de ser igual ao arquivo e o último do <style>
+BASE='https://edelmann.com.br/'
+SM=set(re.findall(r'<loc>(.*?)</loc>',open('sitemap.xml',encoding='utf-8').read()))
+def url_de(f): return BASE+(f[:-10] if f.endswith('index.html') else f)  # pasta/index.html -> pasta/
 for f in sorted(fs):
     s=open(f,encoding='utf-8').read(); d=os.path.dirname(f); idl=re.findall(r'id="([^"]+)"',s); ids=set(idl)
     if '<style>' in s and s.split('/* ===== Visual ===== */\n',1)[-1].split('</style>',1)[0]!=VIS: bad.append((f,'bloco Visual ausente, diferente do visual.css ou fora do fim do <style>'))
@@ -13,7 +16,15 @@ for f in sorted(fs):
     if h1!=1: bad.append((f,'h1=',h1))
     hs=[int(x) for x in re.findall(r'<h([1-6])[\s>]',s)]
     if any(b>a+1 for a,b in zip(hs,hs[1:])): bad.append((f,'salto de nivel de titulo',hs))
-    t=re.search(r'<title>(.*?)</title>',s).group(1); titles.setdefault(t,[]).append(f)
+    m=re.search(r'<title>(.*?)</title>',s)
+    if m: titles.setdefault(m.group(1),[]).append(f)
+    else: bad.append((f,'sem <title>'))
+    if f!='404.html':  # canonical e og:url têm de apontar para a própria página (as derivadas trocam por replace, que falha calado), e toda página fica no sitemap
+        u=url_de(f)
+        for rotulo,pad in (('canonical',r'<link rel="canonical" href="([^"]*)"'),('og:url',r'<meta property="og:url" content="([^"]*)"')):
+            m=re.search(pad,s)
+            if not m or m.group(1)!=u: bad.append((f,rotulo,m.group(1) if m else 'ausente','devia ser',u))
+        if u not in SM: bad.append((f,'fora do sitemap.xml'))
     for m in re.findall(r'<script type="application/ld\+json">(.*?)</script>',s,re.S):
         try: json.loads(m)
         except Exception as e: bad.append((f,'jsonld',str(e)[:60]))
@@ -32,4 +43,6 @@ for f in sorted(fs):
         if frag and tgt.endswith('.html') and f'id="{frag}"' not in open(tgt,encoding='utf-8').read(): bad.append((f,u))
 for t,l in titles.items():
     if len(l)>1: bad.append(('titulo repetido',t,l))
+for u in SM-{url_de(f) for f in fs}:
+    bad.append(('sitemap',u,'sem página ou é redirecionamento'))
 print(len(fs),'paginas,',len(redir),'redirecionamentos'); print('problemas:',bad or 'nenhum')
