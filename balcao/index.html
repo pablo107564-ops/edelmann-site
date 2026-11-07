@@ -247,7 +247,6 @@ main:focus{outline:none}
 /* Ramos */
 .niches{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;padding:0;list-style:none}
 .niche{display:flex;flex-direction:column;padding:clamp(1.5rem,3vw,2.25rem);background:var(--paper);border:1px solid var(--line)}
-.niche.base{background:var(--sand)}
 .niche .i{width:32px;height:32px;margin-bottom:1.5rem;stroke-width:1.25;color:var(--gold-ink)}
 .niche h3{font-size:1.5rem;line-height:1.2}
 .niche>p{margin-top:.75rem;font-size:1rem;color:var(--muted)}
@@ -826,8 +825,7 @@ body,body.home{background:var(--bg)}
 
 /* -- Revisão 2: acabamento (cartões antigos, ramos, contato 960-1020, política do Leitor, galeria, rodapé) -- */
 .niche,.card,.opt{border-radius:var(--r);border-color:var(--card-line)}
-.niche:not(.base){box-shadow:var(--shadow)}
-.niche.base .tags li{background:var(--paper)}
+.niche{box-shadow:var(--shadow)}
 .fx,.services{border-radius:var(--r);overflow:hidden;border-color:var(--card-line)}
 @media (min-width:960px){
   .niches:has(.count){row-gap:0}
@@ -924,9 +922,9 @@ body,body.home{background:var(--bg)}
           <h1 id="titulo"><span>Balcão PDV</span> <em>bipou, somou, fechou.</em></h1>
           <p class="lead">O sistema de frente de caixa da sua loja: registra as vendas com rapidez, controla o estoque e não para quando a internet cai. A emissão da NFC-e está em homologação. Você escolhe o tipo de negócio e vê só o que usa.</p>
           <div class="ctas">
-            <a class="btn btn-primary" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Balc%C3%A3o%20PDV." target="_blank" rel="noopener">Pedir o teste pelo WhatsApp<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn-ghost" href="#demonstracao">Ver funcionando</a>
+            <a class="btn btn-primary" href="https://github.com/pablo107564-ops/balcao-download/releases/latest/download/InstalarBalcao.exe">Baixar grátis para Windows<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
             <a class="btn btn-ghost" href="#planos">Ver os planos</a>
+            <a class="btn btn-ghost" href="#demonstracao">Ver funcionando</a>
           </div>
           <ul class="checks">
             <li>Sem fidelidade</li>
@@ -1344,7 +1342,8 @@ body,body.home{background:var(--bg)}
         <h2 id="contato-titulo">Teste o Balcão por 15 dias, grátis.</h2>
         <p class="sub">Instale, escolha o seu tipo de negócio e comece a vender hoje.</p>
         <div class="ctas">
-          <a class="btn btn-primary" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Balc%C3%A3o%20PDV." target="_blank" rel="noopener">Pedir o teste pelo WhatsApp<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-primary" href="https://github.com/pablo107564-ops/balcao-download/releases/latest/download/InstalarBalcao.exe">Baixar grátis para Windows<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-ghost" href="#planos">Ver os planos</a>
         </div>
       </div>
       <div class="channels">
