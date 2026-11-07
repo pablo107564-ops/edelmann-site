@@ -60,6 +60,7 @@ main = f'''<main id="conteudo" tabindex="-1">
   </section>
 </main>'''
 s = re.sub(r'<main id="conteudo" tabindex="-1">.*?</main>', lambda m: main, s, count=1, flags=re.S)
+s = s.replace('contato@edelmann.com.br', 'tecnico@edelmann.com.br')  # e-mail do rodapé: na página de suporte técnico é o tecnico@
 os.makedirs('suporte', exist_ok=True)
 open('suporte/index.html', 'w', encoding='utf-8', newline='\n').write(s)
 

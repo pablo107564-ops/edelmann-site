@@ -32,7 +32,7 @@ CAMPOS = '''          <div class="row">
           <label><span>O que mais pesa na empresa hoje? <small>(opcional)</small></span><textarea name="desafio" placeholder="Ex.: o que a empresa faz e o que você espera alcançar"></textarea></label>
           <input type="text" name="site_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">'''
 NOSCRIPT = (f'<noscript><style>#form-agenda{{display:none}}</style><p class="fine">Para agendar, fale pelo <a href="{WA}">WhatsApp (93) 98121-2924</a> ou pelo '
-            '<a href="mailto:edelmann.tecnologia@gmail.com?subject=Agendar%20conversa%20-%20Edelmann%20Tecnologia">e-mail</a>.</p></noscript>')
+            '<a href="mailto:contato@edelmann.com.br?subject=Agendar%20conversa%20-%20Edelmann%20Tecnologia">e-mail</a>.</p></noscript>')
 FORM_DARK = f'''      <div class="quote" id="agendar">
         <h2>Agende uma conversa.</h2>
         <form class="form" id="form-agenda">
@@ -85,9 +85,9 @@ FORM_JS = '''<script>
     if(!f.reportValidity())return;
     avisar('e-mail');
     var a=document.createElement('a');
-    a.href='mailto:edelmann.tecnologia@gmail.com?subject='+encodeURIComponent('Agendar conversa - '+(v('empresa')||v('nome')))+'&body='+encodeURIComponent(msg());
+    a.href='mailto:contato@edelmann.com.br?subject='+encodeURIComponent('Agendar conversa - '+(v('empresa')||v('nome')))+'&body='+encodeURIComponent(msg());
     document.body.appendChild(a); a.click(); a.remove();
-    aviso('Se o seu e-mail não abriu, escreva para edelmann.tecnologia@gmail.com.');
+    aviso('Se o seu e-mail não abriu, escreva para contato@edelmann.com.br.');
   });
 })();
 </script>
@@ -369,6 +369,7 @@ def ld_empresa(s):
         o = json.loads(m.group(1))
         if o.get('@type') != 'ProfessionalService': return m.group(0)
         o['@id'] = 'https://edelmann.com.br/#empresa'
+        o['email'] = 'contato@edelmann.com.br'
         o['image'] = 'https://edelmann.com.br/img/og-2026.jpg'
         o['logo'] = 'https://edelmann.com.br/apple-touch-icon.png'
         o['description'] = ('Consultoria em tecnologia da informação para empresas de pequeno e médio porte: gestão e melhoria de processos '
