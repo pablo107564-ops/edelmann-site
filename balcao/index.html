@@ -78,6 +78,19 @@
 }
 </script>
 <style>
+/* Passo a passo da instalação (#instalar): o Windows avisa porque o instalador ainda não tem assinatura de código */
+.install{margin-top:4rem;padding-top:3rem;border-top:1px solid var(--line-2);max-width:46rem}
+.install h3.install-title{font-size:1.75rem;line-height:1.2}
+.install>p{margin-top:.75rem;color:var(--muted)}
+.install-steps{list-style:none;padding:0;margin:2.25rem 0 0;display:grid;gap:2.25rem;counter-reset:i}
+.install-steps>li{position:relative;padding-left:3.25rem}
+.install-steps>li::before{counter-increment:i;content:counter(i);position:absolute;left:0;top:-.375rem;width:2.25rem;height:2.25rem;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-weight:600}
+.install-steps h4{margin:0;font-size:1.125rem;line-height:1.35}
+.install-steps p{margin-top:.4rem;color:var(--muted)}
+.install-steps .btn{margin-top:1rem}
+.install-steps figure{margin:1rem 0 0;max-width:534px}
+.install-steps img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid var(--card-line)}
+.install .install-note{margin-top:2.5rem;padding:1.25rem 1.5rem;border-radius:12px;background:var(--paper);border:1px solid var(--card-line)}
 :root{
   --bg:#F4F7FB;
   --paper:#FFFFFF;
@@ -922,7 +935,7 @@ body,body.home{background:var(--bg)}
           <h1 id="titulo"><span>Balcão PDV</span> <em>bipou, somou, fechou.</em></h1>
           <p class="lead">O sistema de frente de caixa da sua loja: registra as vendas com rapidez, controla o estoque e não para quando a internet cai. A emissão da NFC-e está em homologação. Você escolhe o tipo de negócio e vê só o que usa.</p>
           <div class="ctas">
-            <a class="btn btn-primary" href="https://github.com/pablo107564-ops/balcao-download/releases/latest/download/InstalarBalcao.exe">Baixar grátis para Windows<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-primary" href="#instalar">Baixar grátis para Windows<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
             <a class="btn btn-ghost" href="#planos">Ver os planos</a>
             <a class="btn btn-ghost" href="#demonstracao">Ver funcionando</a>
           </div>
@@ -1285,6 +1298,36 @@ body,body.home{background:var(--bg)}
           <p>Importe os produtos por planilha ou pelo XML das notas, abra o caixa e comece a vender.</p>
         </li>
       </ol>
+
+      <div class="install" id="instalar">
+        <h3 class="install-title">Instalar no Windows, passo a passo</h3>
+        <p>O Balcão ainda não tem a assinatura digital paga da Microsoft. Por isso, na primeira vez, o Windows mostra um aviso de “aplicativo não reconhecido”. É o que acontece com todo programa novo sem essa assinatura. Baixe o instalador só por esta página.</p>
+        <ol class="install-steps">
+          <li>
+            <h4>Baixe o instalador</h4>
+            <p>Se o navegador avisar que o arquivo não é baixado com frequência, escolha <strong>Manter</strong>. No Edge, essa opção fica nos três pontinhos ao lado do nome do arquivo.</p>
+            <a class="btn btn-primary" href="https://github.com/pablo107564-ops/balcao-download/releases/latest/download/InstalarBalcao.exe">Baixar o instalador<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </li>
+          <li>
+            <h4>Abra o arquivo InstalarBalcao.exe</h4>
+            <p>Clique nele na lista de downloads do navegador ou na pasta Downloads.</p>
+          </li>
+          <li>
+            <h4>No aviso “O Windows protegeu o computador”, clique em Mais informações</h4>
+            <figure><img src="img/instalar-1.png" width="534" height="498" loading="lazy" alt="Aviso do Windows: O Windows protegeu o computador. O link Mais informações está destacado."></figure>
+          </li>
+          <li>
+            <h4>Clique em Executar assim mesmo</h4>
+            <p>O aviso mostra “Fornecedor desconhecido” porque o programa ainda não tem a assinatura. Se aparecer outra janela, “Aviso de Segurança”, clique em <strong>Executar</strong>.</p>
+            <figure><img src="img/instalar-2.png" width="534" height="498" loading="lazy" alt="O mesmo aviso aberto, com o aplicativo InstalarBalcao.exe e o botão Executar assim mesmo destacado."></figure>
+          </li>
+          <li>
+            <h4>Siga o assistente</h4>
+            <p>O instalador baixa a versão mais nova do Balcão e abre o assistente: clique em <strong>Próximo</strong>, <strong>Instalar</strong> e <strong>Concluir</strong>. O Balcão abre sozinho e deixa um atalho na área de trabalho.</p>
+          </li>
+        </ol>
+        <p class="install-note">Se o antivírus bloquear o arquivo ou algo não funcionar, <a href="#contato">fale com o suporte</a>, que a gente ajuda a instalar.</p>
+      </div>
     </div>
   </section>
 
@@ -1342,7 +1385,7 @@ body,body.home{background:var(--bg)}
         <h2 id="contato-titulo">Teste o Balcão por 15 dias, grátis.</h2>
         <p class="sub">Instale, escolha o seu tipo de negócio e comece a vender hoje.</p>
         <div class="ctas">
-          <a class="btn btn-primary" href="https://github.com/pablo107564-ops/balcao-download/releases/latest/download/InstalarBalcao.exe">Baixar grátis para Windows<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          <a class="btn btn-primary" href="#instalar">Baixar grátis para Windows<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
           <a class="btn btn-ghost" href="#planos">Ver os planos</a>
         </div>
       </div>
