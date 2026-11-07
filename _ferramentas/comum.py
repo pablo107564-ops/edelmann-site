@@ -5,7 +5,7 @@ from urllib.parse import quote
 SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 URL = 'https://edelmann.com.br'
 ARROW = '<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>'
-FONE = '5593981212924'  # único lugar com o número do WhatsApp nos scripts (nos HTML escritos à mão ele aparece como tel: e texto)
+FONE = '5593992222945'  # único lugar com o número do WhatsApp nos scripts (nos HTML escritos à mão ele aparece como tel: e texto)
 def wa_url(msg): return f'https://wa.me/{FONE}?text=' + quote(msg, safe='!')
 WA = wa_url('Olá! Quero agendar uma conversa com a Edelmann Tecnologia.')
 WA_CHECK = wa_url('Olá! Quero receber o checklist "10 perguntas para descobrir onde a empresa perde dinheiro". Meu nome é ')

@@ -31,7 +31,7 @@ CAMPOS = '''          <div class="row">
           </label>
           <label><span>O que mais pesa na empresa hoje? <small>(opcional)</small></span><textarea name="desafio" placeholder="Ex.: o que a empresa faz e o que você espera alcançar"></textarea></label>
           <input type="text" name="site_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">'''
-NOSCRIPT = (f'<noscript><style>#form-agenda{{display:none}}</style><p class="fine">Para agendar, fale pelo <a href="{WA}">WhatsApp (93) 98121-2924</a> ou pelo '
+NOSCRIPT = (f'<noscript><style>#form-agenda{{display:none}}</style><p class="fine">Para agendar, fale pelo <a href="{WA}">WhatsApp (93) 99222-2945</a> ou pelo '
             '<a href="mailto:contato@edelmann.com.br?subject=Agendar%20conversa%20-%20Edelmann%20Tecnologia">e-mail</a>.</p></noscript>')
 FORM_DARK = f'''      <div class="quote" id="agendar">
         <h2>Agende uma conversa.</h2>
@@ -382,7 +382,7 @@ def ld_empresa(s):
         app = lambda n, u: {'@type': 'Offer', 'itemOffered': {'@type': 'SoftwareApplication', 'name': n, 'url': 'https://edelmann.com.br' + u}}
         o['makesOffer'] = [serv('Consultoria em TI para pequenas e médias empresas'), serv('Gestão e melhoria de processos'), serv('Suporte técnico'),
                            app('Balcão PDV', '/balcao/'), app('Agente de IA no WhatsApp', '/agente-whatsapp/'), app('Sistema de Chamados', '/chamados/')]
-        o['contactPoint'] = {'@type': 'ContactPoint', 'telephone': '+55-93-98121-2924', 'contactType': 'customer service',
+        o['contactPoint'] = {'@type': 'ContactPoint', 'telephone': '+55-93-99222-2945', 'contactType': 'customer service',
                              'areaServed': 'BR', 'availableLanguage': 'pt-BR'}
         o['sameAs'] = ['https://www.instagram.com/edelmann.tecnologia/']
         return '<script type="application/ld+json">\n' + json.dumps(o, ensure_ascii=False, indent=2) + '\n</script>'
@@ -454,7 +454,7 @@ s = sem_ld(s, 'FAQPage'); s = com_ld(s, FAQ_LD)
 s = com_css(s, 'button.btn-ghost{background:transparent;font-family:inherit;cursor:pointer}\n', 'Botão de e-mail')
 s = com_css(s, CSS_CAMPOS, 'Campos do formulário')
 s = titulo_todos(s, 'Agende uma conversa em Itaituba | Edelmann Tecnologia')
-s = descricao(s, 'Agende uma conversa com a Edelmann Tecnologia: presencial de Itaituba a Santarém ou por videochamada. WhatsApp (93) 98121-2924.')
+s = descricao(s, 'Agende uma conversa com a Edelmann Tecnologia: presencial de Itaituba a Santarém ou por videochamada. WhatsApp (93) 99222-2945.')
 wr('contato/index.html', com_simbolos(comum('contato/index.html', s)))
 
 # ---------- 5. Soluções (antiga página de produtos) e páginas dos apps ----------
