@@ -266,6 +266,7 @@ main:focus{outline:none}
   .shots figcaption{margin-top:0}
 }
 @media (min-width:1000px){.shots{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.frame video{display:block;width:100%;height:auto;background:#0d1210}
 
 /* Sem internet */
 .band{background:var(--night);color:var(--on-night)}
@@ -924,6 +925,7 @@ body,body.home{background:var(--bg)}
           <p class="lead">O sistema de frente de caixa da sua loja: registra as vendas com rapidez, controla o estoque e não para quando a internet cai. A emissão da NFC-e está em homologação. Você escolhe o tipo de negócio e vê só o que usa.</p>
           <div class="ctas">
             <a class="btn btn-primary" href="https://wa.me/5593981212924?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Balc%C3%A3o%20PDV." target="_blank" rel="noopener">Pedir o teste pelo WhatsApp<span class="sr"> (abre em nova aba)</span><svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="#demonstracao">Ver funcionando</a>
             <a class="btn btn-ghost" href="#planos">Ver os planos</a>
           </div>
           <ul class="checks">
@@ -1041,10 +1043,42 @@ body,body.home{background:var(--bg)}
     </div>
   </section>
 
+  <section class="section" id="demonstracao" aria-labelledby="demonstracao-titulo">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="eyebrow"><span class="n" aria-hidden="true">03</span>Demonstração</p>
+          <h2 id="demonstracao-titulo">Veja o Balcão funcionando.</h2>
+        </div>
+        <p class="sub">Vídeos curtos, gravados no próprio programa, no tema escuro, com produtos de exemplo. Têm música de fundo.</p>
+      </div>
+      <ul class="shots">
+        <li>
+          <figure>
+            <div class="frame"><video controls preload="none" playsinline width="1280" height="800" poster="video/cadastro-produto.jpg"><source src="video/cadastro-produto.mp4" type="video/mp4"><a href="video/cadastro-produto.mp4">Baixar o vídeo: Cadastrar um produto</a></video></div>
+            <figcaption><h3>Cadastrar um produto</h3><p>Nome, categoria, código de barras, preço e estoque. A margem aparece enquanto você digita o custo, e o produto já entra na lista.</p></figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <div class="frame"><video controls preload="none" playsinline width="1280" height="800" poster="video/venda-caixa.jpg"><source src="video/venda-caixa.mp4" type="video/mp4"><a href="video/venda-caixa.mp4">Baixar o vídeo: Venda no caixa com troco</a></video></div>
+            <figcaption><h3>Venda no caixa com troco</h3><p>Busca pelo nome, itens no carrinho e pagamento em dinheiro, com o troco calculado na hora. No fim, o cupom para imprimir ou mandar pelo WhatsApp.</p></figcaption>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <div class="frame"><video controls preload="none" playsinline width="1280" height="800" poster="video/mesa-comanda.jpg"><source src="video/mesa-comanda.mp4" type="video/mp4"><a href="video/mesa-comanda.mp4">Baixar o vídeo: Mesa com taxa de serviço</a></video></div>
+            <figcaption><h3>Mesa com taxa de serviço</h3><p>Abre a mesa, lança os pedidos e fecha a conta com 10% de taxa de serviço, já somada no cupom.</p></figcaption>
+          </figure>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <section class="section band" id="internet" aria-labelledby="internet-titulo">
     <div class="wrap about">
       <div>
-        <p class="eyebrow"><span class="n" aria-hidden="true">03</span>Sem internet</p>
+        <p class="eyebrow"><span class="n" aria-hidden="true">04</span>Sem internet</p>
         <h2 id="internet-titulo">A internet caiu. O caixa não.</h2>
         <p class="about-text">O Balcão guarda tudo no computador da loja e, sem internet, continua vendendo por até 30 dias.</p>
       </div>
@@ -1072,7 +1106,7 @@ body,body.home{background:var(--bg)}
     <div class="wrap">
       <div class="head">
         <div>
-          <p class="eyebrow"><span class="n" aria-hidden="true">04</span>Funções</p>
+          <p class="eyebrow"><span class="n" aria-hidden="true">05</span>Funções</p>
           <h2 id="funcoes-titulo">Tudo o que o Balcão faz.</h2>
         </div>
         <p class="sub">Atualização automática no Windows; no Linux e no Mac, o programa avisa quando há versão nova.</p>
@@ -1146,7 +1180,7 @@ body,body.home{background:var(--bg)}
     <div class="wrap">
       <div class="head">
         <div>
-          <p class="eyebrow"><span class="n" aria-hidden="true">05</span>Planos</p>
+          <p class="eyebrow"><span class="n" aria-hidden="true">06</span>Planos</p>
           <h2 id="planos-titulo">Mensal, por loja. Sem fidelidade.</h2>
         </div>
         <p class="sub">Pagamento por Pix ou cartão. Antes, teste por 15 dias com tudo liberado, sem pagar nada.</p>
@@ -1235,7 +1269,7 @@ body,body.home{background:var(--bg)}
     <div class="wrap">
       <div class="head">
         <div>
-          <p class="eyebrow"><span class="n" aria-hidden="true">06</span>Como começar</p>
+          <p class="eyebrow"><span class="n" aria-hidden="true">07</span>Como começar</p>
           <h2 id="comecar-titulo">Vendendo hoje, em 3 passos.</h2>
         </div>
         <p class="sub">Sem técnico nem visita: você mesmo instala, em poucos minutos.</p>
@@ -1260,7 +1294,7 @@ body,body.home{background:var(--bg)}
   <section class="section paper" id="duvidas" aria-labelledby="duvidas-titulo">
     <div class="wrap qa">
       <div>
-        <p class="eyebrow"><span class="n" aria-hidden="true">07</span>Dúvidas</p>
+        <p class="eyebrow"><span class="n" aria-hidden="true">08</span>Dúvidas</p>
         <h2 id="duvidas-titulo">Perguntas de quem está no balcão.</h2>
         <p class="ask">Não encontrou a resposta?
           <a class="link" href="mailto:suporte@edelmann.com.br?subject=Balc%C3%A3o%20PDV%20-%20Edelmann%20Tecnologia">Escreva para nós<svg class="i" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
@@ -1307,7 +1341,7 @@ body,body.home{background:var(--bg)}
   <section class="section" id="contato" aria-labelledby="contato-titulo">
     <div class="wrap contact">
       <div>
-        <p class="eyebrow"><span class="n" aria-hidden="true">08</span>Contato</p>
+        <p class="eyebrow"><span class="n" aria-hidden="true">09</span>Contato</p>
         <h2 id="contato-titulo">Teste o Balcão por 15 dias, grátis.</h2>
         <p class="sub">Instale, escolha o seu tipo de negócio e comece a vender hoje.</p>
         <div class="ctas">

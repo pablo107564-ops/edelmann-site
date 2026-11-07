@@ -486,6 +486,7 @@ s = rd('sitemap.xml')
 for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/', 'agente-whatsapp/', 'chamados/', 'balcao/', 'privacidade/', 'acessibilidade/',
           'leitor-de-bolso/', 'leitor-de-bolso/privacidade.html'):  # alteradas em 29/10 (JSON-LD, rodapé ou texto)
     d = '2026-11-02' if u in ('', 'itaituba/', 'contato/', 'produtos/', 'agente-whatsapp/', 'balcao/', 'privacidade/', 'acessibilidade/') else '2026-10-29'  # 02/11: situação das soluções, política e acessibilidade
+    if u == 'balcao/': d = '2026-11-07'  # 07/11: seção Demonstração com vídeos
     s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>' + d, s)
 if '<loc>https://edelmann.com.br/santarem/</loc>' not in s:
     s = s.replace('</urlset>', '  <url><loc>https://edelmann.com.br/santarem/</loc><lastmod>2026-11-03</lastmod></url>\n</urlset>')
