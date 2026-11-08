@@ -1,3 +1,6 @@
+# © 2026 Edelmann Tecnologia — edelmann.com.br
+# Todos os direitos reservados. Proibido copiar, modificar, distribuir ou fazer engenharia reversa
+# deste código sem autorização por escrito da Edelmann Tecnologia.
 import re,os,json,glob
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # pasta do site
 bad=[];titles={}

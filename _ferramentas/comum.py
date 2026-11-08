@@ -1,3 +1,6 @@
+# © 2026 Edelmann Tecnologia — edelmann.com.br
+# Todos os direitos reservados. Proibido copiar, modificar, distribuir ou fazer engenharia reversa
+# deste código sem autorização por escrito da Edelmann Tecnologia.
 # Trechos comuns de artigos.py, setores.py e suporte.py (sem efeitos colaterais: pode ser importado).
 # As funções leem e gravam a partir da pasta do site (a pasta acima desta).
 import os, re, json

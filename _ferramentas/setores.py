@@ -1,3 +1,6 @@
+# © 2026 Edelmann Tecnologia — edelmann.com.br
+# Todos os direitos reservados. Proibido copiar, modificar, distribuir ou fazer engenharia reversa
+# deste código sem autorização por escrito da Edelmann Tecnologia.
 # Páginas por setor (/setores/<setor>/): dores típicas do ramo + o que muda + chamada para conversa e checklist.
 # Usa sobre/index.html como casca. Rodar depois do consultoria.py. Idempotente.
 import os, re, json, html

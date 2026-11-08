@@ -1,3 +1,6 @@
+# © 2026 Edelmann Tecnologia — edelmann.com.br
+# Todos os direitos reservados. Proibido copiar, modificar, distribuir ou fazer engenharia reversa
+# deste código sem autorização por escrito da Edelmann Tecnologia.
 # Página /suporte/ (suporte técnico e manutenção): texto em suporte.json. Usa sobre/index.html como casca, como o setores.py.
 # Rodar depois do consultoria.py. Idempotente.
 import os, re, json, html

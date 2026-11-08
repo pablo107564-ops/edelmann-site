@@ -1,3 +1,6 @@
+# © 2026 Edelmann Tecnologia — edelmann.com.br
+# Todos os direitos reservados. Proibido copiar, modificar, distribuir ou fazer engenharia reversa
+# deste código sem autorização por escrito da Edelmann Tecnologia.
 # Reposiciona o site como consultoria (outubro de 2026): o site prova quem somos e leva o cliente a agendar uma conversa.
 # - início, Sobre, Contato e Itaituba ganham conteúdo novo (trechos em consultoria/*.html, com marcadores {{...}});
 # - menu, rodapé e chamadas de todas as páginas passam a convidar para "Agendar conversa".

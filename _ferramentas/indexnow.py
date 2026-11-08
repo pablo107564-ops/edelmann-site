@@ -1,3 +1,6 @@
+# © 2026 Edelmann Tecnologia — edelmann.com.br
+# Todos os direitos reservados. Proibido copiar, modificar, distribuir ou fazer engenharia reversa
+# deste código sem autorização por escrito da Edelmann Tecnologia.
 # Avisa o Bing (IndexNow) das páginas do sitemap.xml e de URLs extras (ex.: páginas removidas, que viram 404).
 # Uso, depois de publicar: python _ferramentas/indexnow.py [url_removida ...]
 # A chave é o nome do arquivo <32 hex>.txt na raiz do site (o Pages precisa já estar servindo esse arquivo).
