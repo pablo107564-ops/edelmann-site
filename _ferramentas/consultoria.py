@@ -40,8 +40,8 @@ FORM_DARK = f'''      <div class="quote" id="agendar">
         <h2>Agende uma conversa.</h2>
         <form class="form" id="form-agenda">
 {CAMPOS}
-          <button class="btn btn-primary" type="submit">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</button>
-          <p class="fine">Abre o WhatsApp com a mensagem pronta; por lá combinamos o dia e o horário. Prefere e-mail? <button class="alt-send" type="button" id="agenda-email">Enviar por e-mail</button>. O que você preencher também chega por e-mail à Edelmann. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
+          <button class="btn btn-primary" type="submit" data-goatcounter-click="form-whatsapp">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</button>
+          <p class="fine">Abre o WhatsApp com a mensagem pronta; por lá combinamos o dia e o horário. Prefere e-mail? <button class="alt-send" type="button" id="agenda-email" data-goatcounter-click="form-email">Enviar por e-mail</button>. O que você preencher também chega por e-mail à Edelmann. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
           <p class="fine" id="agenda-status" role="status" aria-live="polite"></p>
         </form>
         {NOSCRIPT}
@@ -49,8 +49,8 @@ FORM_DARK = f'''      <div class="quote" id="agendar">
 FORM_CLARO = f'''      <form class="form" id="form-agenda">
 {CAMPOS}
         <div class="actions">
-          <button class="btn btn-primary" type="submit">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</button>
-          <button class="btn btn-ghost" type="button" id="agenda-email">Enviar por e-mail</button>
+          <button class="btn btn-primary" type="submit" data-goatcounter-click="form-whatsapp">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</button>
+          <button class="btn btn-ghost" type="button" id="agenda-email" data-goatcounter-click="form-email">Enviar por e-mail</button>
         </div>
         <p class="fine">Ao enviar, abrimos o WhatsApp ou o e-mail com a mensagem pronta para você conferir. Por lá combinamos o dia e o horário. O que você preencher também chega por e-mail à Edelmann. Veja a <a href="/privacidade/">política de privacidade</a>.</p>
         <p class="fine" id="agenda-status" role="status" aria-live="polite"></p>
@@ -121,8 +121,8 @@ SINAIS = f'''  <section class="section" id="sinais" aria-labelledby="sinais-titu
           {CHECK_INFO}
         </div>
         <div class="ctas" style="margin:0">
-          <a class="btn btn-primary" href="#agendar">Agendar conversa{ARROW}</a>
-          <a class="btn btn-ghost" href="{WA_CHECK}" target="_blank" rel="noopener">Receber o checklist grátis<span class="sr"> (abre o WhatsApp em nova aba)</span></a>
+          <a class="btn btn-primary" href="#agendar" data-goatcounter-click="sinais-agendar">Agendar conversa{ARROW}</a>
+          <a class="btn btn-ghost" href="{WA_CHECK}" target="_blank" rel="noopener" data-goatcounter-click="sinais-checklist">Receber o checklist grátis<span class="sr"> (abre o WhatsApp em nova aba)</span></a>
         </div>
       </div>
     </div>
@@ -152,15 +152,15 @@ COMO_FUNCIONA = f'''  <section class="section alt" id="como-funciona" aria-label
         <li class="step"><h3>Diagnóstico e proposta</h3><p>Mostramos o que encontramos, as prioridades e o impacto esperado, com escopo e etapas. Você decide se e quando seguir.</p></li>
         <li class="step"><h3>Execução e acompanhamento</h3><p>Colocamos o plano em prática junto com a sua equipe e acompanhamos os resultados. Nada começa sem a sua aprovação.</p></li>
       </ol>
-      <p class="more reveal"><a class="btn btn-primary" href="#agendar">Agendar conversa{ARROW}</a></p>
+      <p class="more reveal"><a class="btn btn-primary" href="#agendar" data-goatcounter-click="como-funciona-agendar">Agendar conversa{ARROW}</a></p>
     </div>
   </section>'''
 CTA_TXT = 'Um encontro, presencial ou por videochamada, para entender os seus objetivos e mostrar onde a tecnologia pode gerar resultado.'
-WA_BTN = f'<a class="btn btn-ghost" href="{WA}" target="_blank" rel="noopener">Falar no WhatsApp<span class="sr"> (abre em nova aba)</span></a>'
-CHECK_BTN = f'<a class="btn btn-ghost" href="{WA_CHECK}" target="_blank" rel="noopener">Receber o checklist grátis<span class="sr"> (abre o WhatsApp em nova aba)</span></a>'
+WA_BTN = f'<a class="btn btn-ghost" href="{WA}" target="_blank" rel="noopener" data-goatcounter-click="cta-whatsapp">Falar no WhatsApp<span class="sr"> (abre em nova aba)</span></a>'
+CHECK_BTN = f'<a class="btn btn-ghost" href="{WA_CHECK}" target="_blank" rel="noopener" data-goatcounter-click="cta-checklist">Receber o checklist grátis<span class="sr"> (abre o WhatsApp em nova aba)</span></a>'
 def cta(classe, alvo, final=False, titulo='Vamos conversar sobre o seu negócio?'):  # final: o último bloco da página abre o WhatsApp direto e oferece o checklist
-    botoes = (f'<a class="btn btn-primary" href="{WA}" target="_blank" rel="noopener">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</a>\n        {CHECK_BTN}' if final
-              else f'<a class="btn btn-primary" href="{alvo}">Agendar conversa{ARROW}</a>\n        {WA_BTN}')
+    botoes = (f'<a class="btn btn-primary" href="{WA}" target="_blank" rel="noopener" data-goatcounter-click="cta-whatsapp">Agendar pelo WhatsApp<span class="sr"> (abre em nova aba)</span>{ARROW}</a>\n        {CHECK_BTN}' if final
+              else f'<a class="btn btn-primary" href="{alvo}" data-goatcounter-click="cta-agendar">Agendar conversa{ARROW}</a>\n        {WA_BTN}')
     return f'''  <section class="{classe}" aria-labelledby="cta-titulo">
     <div class="wrap reveal">
       <h2 id="cta-titulo">{titulo}</h2>
@@ -478,7 +478,7 @@ for p in APPS + ['privacidade/index.html', 'acessibilidade/index.html', '404.htm
     s = rd(p)
     if p in TOPO_ESCURO: s = com_css(s, CSS_TOPO, 'Topo escuro')
     if p == 'privacidade/index.html':
-        s = re.sub(r'Última atualização: [^<]*\.', 'Última atualização: 2 de novembro de 2026.', s)
+        s = re.sub(r'Última atualização: [^<]*\.', 'Última atualização: 14 de novembro de 2026.', s)
         s = descricao(s, 'Política de privacidade da Edelmann Tecnologia: como tratamos os dados pessoais recebidos no site e nos atendimentos, conforme a LGPD.')
     if p == '404.html':
         s = re.sub(r'<ul class="svc-links">.*?</ul>', lambda m: '<ul class="svc-links">\n' + '\n'.join(
@@ -492,6 +492,7 @@ for u in ('', 'itaituba/', 'sobre/', 'contato/', 'produtos/', 'agente-whatsapp/'
           'leitor-de-bolso/', 'leitor-de-bolso/privacidade.html'):  # alteradas em 29/10 (JSON-LD, rodapé ou texto)
     d = '2026-11-02' if u in ('', 'itaituba/', 'contato/', 'produtos/', 'agente-whatsapp/', 'balcao/', 'privacidade/', 'acessibilidade/') else '2026-10-29'  # 02/11: situação das soluções, política e acessibilidade
     if u == 'balcao/': d = '2026-11-07'  # 07/11: seção Demonstração com vídeos
+    if u in ('agente-whatsapp/', 'chamados/', 'balcao/', 'privacidade/'): d = '2026-11-14'  # 14/11: revisão (backup, NFC-e, contatos, Cloudflare)
     s = re.sub(r'(<loc>https://edelmann\.com\.br/' + re.escape(u) + r'</loc><lastmod>)[^<]*', r'\g<1>' + d, s)
 if '<loc>https://edelmann.com.br/santarem/</loc>' not in s:
     s = s.replace('</urlset>', '  <url><loc>https://edelmann.com.br/santarem/</loc><lastmod>2026-11-03</lastmod></url>\n</urlset>')
