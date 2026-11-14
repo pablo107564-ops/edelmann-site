@@ -17,6 +17,7 @@ for f in sorted(fs):
     if '<style>' in s and s.split('/* ===== Visual ===== */\n',1)[-1].split('</style>',1)[0]!=VIS: bad.append((f,'bloco Visual ausente, diferente do visual.css ou fora do fim do <style>'))
     h1=s.count('<h1')
     if h1!=1: bad.append((f,'h1=',h1))
+    if len(re.findall(r'<!--\s*© 2026 Edelmann',s))>1: bad.append((f,'marca de autoria repetida'))
     hs=[int(x) for x in re.findall(r'<h([1-6])[\s>]',s)]
     if any(b>a+1 for a,b in zip(hs,hs[1:])): bad.append((f,'salto de nivel de titulo',hs))
     m=re.search(r'<title>(.*?)</title>',s)

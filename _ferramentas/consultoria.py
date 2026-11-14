@@ -214,15 +214,17 @@ MARCAS = {'{{FORM_DARK}}': FORM_DARK, '{{FORM_CLARO}}': FORM_CLARO, '{{PROOF}}':
           '{{FAQ}}': FAQ_HTML, '{{FAQ_ITA}}': FAQ_ITA_HTML, '{{FAQ_STM}}': FAQ_STM_HTML,
           '{{CTA_STM}}': cta('cta-accent', '#agendar', final=True, titulo='Vamos conversar sobre a sua empresa em Santarém?'),
           '{{ARROW}}': ARROW, '{{WA}}': WA}
+AUTORIA = r'<!--\s*© 2026 Edelmann Tecnologia(?:(?!-->).)*-->\s*'  # comentário de autoria (não atravessa outro -->)
 def trecho(nome):
     s = rd(os.path.join(AQUI, 'consultoria', nome))
+    s = re.sub(r'\A' + AUTORIA, '', s, flags=re.S)  # o © do modelo marca o arquivo-fonte; a página já tem o dela no topo
     for k, v in MARCAS.items(): s = s.replace(k, v)
     s = re.sub(r'\{\{I:([a-z-]+)\}\}', lambda m: icon(m.group(1)), s)
     assert '{{' not in s, nome
     return s.strip()
 
 # ---------- ajudantes ----------
-def troca_main(s, novo): return re.sub(r'<main id="conteudo" tabindex="-1">.*?</main>', lambda m: novo, s, count=1, flags=re.S)
+def troca_main(s, novo): return re.sub(r'(?:' + AUTORIA + r')*<main id="conteudo" tabindex="-1">.*?</main>', lambda m: novo, s, count=1, flags=re.S)  # leva junto os © velhos colados antes do <main>
 def meta(s, chave, valor):
     return re.sub(r'(<meta (?:name|property)="' + re.escape(chave) + r'" content=")[^"]*(")', lambda m: m.group(1) + valor + m.group(2), s)
 def titulo(s, t): return re.sub(r'<title>.*?</title>', f'<title>{t}</title>', s, count=1)
