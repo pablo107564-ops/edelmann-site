@@ -108,6 +108,10 @@
 .aulas details[open] .play::after{margin:0;width:.75rem;height:.75rem;border:0;background:#fff;border-radius:2px}
 .aulas .t{flex:1}
 .aulas .d{flex:none;color:var(--muted);font-weight:400;font-size:.9375rem}
+.aulas summary::after{content:"Assistir";flex:none;padding:.4rem .95rem;border-radius:999px;background:var(--accent);color:#fff;font-size:.9375rem;font-weight:600}
+.aulas details[open] summary::after{content:"Fechar";background:transparent;color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+.aulas summary:hover{background:var(--paper)}
+@media (max-width:520px){.aulas .d{display:none}.aulas summary{gap:.75rem;padding:.875rem 1rem}}
 .aulas .frame{margin:0 1.25rem 1.25rem;border-radius:10px;overflow:hidden}
 .aulas details>p{margin:-.25rem 1.25rem 1rem;color:var(--muted);font-size:.9375rem}
 :root{
@@ -1306,7 +1310,7 @@ body,body.home{background:var(--bg)}
           <p class="eyebrow"><span class="n" aria-hidden="true">07</span>Como começar</p>
           <h2 id="comecar-titulo">Vendendo hoje, em 3 passos.</h2>
         </div>
-        <p class="sub">Sem técnico nem visita: você mesmo instala, em poucos minutos.</p>
+        <p class="sub">Sem técnico nem visita: você mesmo instala, em poucos minutos. <a href="#videos">Veja os vídeos de ajuda</a>.</p>
       </div>
       <ol class="steps">
         <li class="step">
@@ -1356,12 +1360,27 @@ body,body.home{background:var(--bg)}
 
       <div class="aprenda" id="videos">
         <h3 class="install-title">Aprenda em vídeo</h3>
-        <p>Toque no assunto para abrir o vídeo, com narração e legenda.</p>
+        <p>Toque no assunto para abrir o vídeo, com narração e legenda. Toque de novo para fechar.</p>
         <div class="aulas">
           <details name="aula" id="video-instalar">
             <summary><span class="play" aria-hidden="true"></span><span class="t">Como instalar no Windows</span><span class="d">54 s</span></summary>
             <p>Do arquivo baixado até a primeira tela do Balcão, passando pelo aviso do Windows.</p>
             <div class="frame"><video controls preload="none" playsinline width="1280" height="720" poster="video/instalar.jpg"><source src="video/instalar.mp4" type="video/mp4"><a href="video/instalar.mp4">Baixar o vídeo: Como instalar no Windows</a></video></div>
+          </details>
+          <details name="aula" id="video-primeiro-acesso">
+            <summary><span class="play" aria-hidden="true"></span><span class="t">Primeiro acesso e abrir o caixa</span><span class="d">44 s</span></summary>
+            <p>Criar o operador com nome e senha, escolher o tipo do negócio e abrir o caixa com o troco.</p>
+            <div class="frame"><video controls preload="none" playsinline width="1280" height="800" poster="video/aula-primeiro.jpg"><source src="video/aula-primeiro.mp4" type="video/mp4"><a href="video/aula-primeiro.mp4">Baixar o vídeo: Primeiro acesso e abrir o caixa</a></video></div>
+          </details>
+          <details name="aula" id="video-venda">
+            <summary><span class="play" aria-hidden="true"></span><span class="t">Fazer uma venda</span><span class="d">50 s</span></summary>
+            <p>Busca pelo nome, leitor de código de barras, pagamento em dinheiro com troco e o cupom.</p>
+            <div class="frame"><video controls preload="none" playsinline width="1280" height="800" poster="video/aula-venda.jpg"><source src="video/aula-venda.mp4" type="video/mp4"><a href="video/aula-venda.mp4">Baixar o vídeo: Fazer uma venda</a></video></div>
+          </details>
+          <details name="aula" id="video-produto">
+            <summary><span class="play" aria-hidden="true"></span><span class="t">Cadastrar um produto</span><span class="d">36 s</span></summary>
+            <p>Nome, categoria, código de barras, preço, custo com a margem na hora e estoque.</p>
+            <div class="frame"><video controls preload="none" playsinline width="1280" height="800" poster="video/aula-produto.jpg"><source src="video/aula-produto.mp4" type="video/mp4"><a href="video/aula-produto.mp4">Baixar o vídeo: Cadastrar um produto</a></video></div>
           </details>
         </div>
       </div>
