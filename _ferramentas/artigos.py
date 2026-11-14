@@ -7,7 +7,7 @@ import os, re, json, html
 from comum import URL, ARROW, WA, trilha, faq_ld, casca, sitemap_add, com_visual
 AQUI = os.path.dirname(os.path.abspath(__file__)); SITE = os.path.dirname(AQUI); os.chdir(SITE)
 
-FRASE = ('A Edelmann Tecnologia é uma consultoria em TI de Itaituba (PA) para pequenas e médias empresas, com mais de 15 anos de experiência em TI, '
+FRASE = ('A Edelmann Tecnologia é uma consultoria em TI de Itaituba (PA) para pequenas e médias empresas, com experiência em TI '
          'em empresas de diversos setores. Atendemos presencialmente de Itaituba a Santarém, indo até a empresa; em projetos grandes, '
          'vamos até onde for preciso; nos demais casos, por videochamada.')
 # ordem da lista em /artigos/: os comparativos primeiro. Datas fixas no JSON (publicado, atualizado): não ler o git durante a geração
